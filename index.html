@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <title>FIN15 – Älykäs nettisivugeneraattori</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     :root {
       --bg: #020617;
@@ -27,11 +29,13 @@
       display: flex;
       justify-content: center;
     }
+
     .page {
       width: 100%;
       max-width: 1120px;
       padding: 32px 16px 64px;
     }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -39,6 +43,7 @@
       margin-bottom: 32px;
       gap: 16px;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -48,6 +53,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .logo-mark {
       width: 32px;
       height: 32px;
@@ -61,6 +67,7 @@
       font-weight: 900;
       font-size: 16px;
     }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -72,16 +79,19 @@
       color: var(--accent);
       border: 1px solid rgba(248, 250, 252, 0.05);
     }
+
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       gap: 32px;
     }
+
     @media (max-width: 880px) {
       .layout {
         grid-template-columns: minmax(0, 1fr);
       }
     }
+
     .hero-card {
       background: radial-gradient(circle at top left, rgba(249,115,22,0.12), transparent),
                   var(--bg-card);
@@ -94,6 +104,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .hero-card::after {
       content: "";
       position: absolute;
@@ -102,28 +113,34 @@
       opacity: 0.9;
       pointer-events: none;
     }
+
     .hero-card > * { position: relative; z-index: 1; }
+
     h1 {
       font-size: clamp(32px, 4vw, 40px);
       margin: 8px 0 12px;
     }
+
     h1 span {
       background: linear-gradient(120deg, #f97316, #fde68a);
       -webkit-background-clip: text;
       color: transparent;
     }
+
     .lead {
       color: var(--muted);
       line-height: 1.6;
       font-size: 15px;
       max-width: 480px;
     }
+
     .hero-kpi-row {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       margin-top: 20px;
     }
+
     .kpi {
       padding: 10px 14px;
       border-radius: 999px;
@@ -136,13 +153,16 @@
       background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.5));
       color: #e5e7eb;
     }
+
     .kpi strong { font-weight: 600; }
+
     .pill-dot {
       width: 7px; height: 7px;
       border-radius: 999px;
       background: #22c55e;
       box-shadow: 0 0 0 6px rgba(34,197,94,0.25);
     }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -151,12 +171,14 @@
       font-size: 13px;
       color: var(--muted);
     }
+
     .step {
       padding: 12px 12px;
       border-radius: 16px;
       border: 1px dashed rgba(148,163,184,0.5);
       background: rgba(15,23,42,0.8);
     }
+
     .step-title {
       font-size: 12px;
       text-transform: uppercase;
@@ -164,6 +186,7 @@
       color: #e5e7eb;
       margin-bottom: 6px;
     }
+
     .step-num {
       font-size: 11px;
       opacity: 0.7;
@@ -178,37 +201,45 @@
       box-shadow: 0 18px 40px rgba(0,0,0,0.85);
       backdrop-filter: blur(18px);
     }
+
     .form-title {
       font-size: 17px;
       margin: 0 0 6px;
     }
+
     .form-sub {
       font-size: 12px;
       color: var(--muted);
       margin-bottom: 16px;
     }
+
     form {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px 12px;
     }
+
     .field {
       display: flex;
       flex-direction: column;
       gap: 5px;
       font-size: 12px;
     }
+
     .field.full {
       grid-column: 1 / -1;
     }
+
     label span {
       color: #9ca3af;
       font-weight: 500;
     }
+
     label small {
       color: #6b7280;
       font-size: 11px;
     }
+
     input, textarea, select {
       background: #020617;
       border-radius: 11px;
@@ -219,30 +250,36 @@
       outline: none;
       transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
     }
+
     input:focus, textarea:focus, select:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 1px rgba(249,115,22,0.35);
       background: #020617;
     }
+
     textarea {
       min-height: 70px;
       resize: vertical;
     }
+
     input[type="color"] {
       padding: 0;
       height: 32px;
       cursor: pointer;
     }
+
     .hint {
       font-size: 10px;
       color: #6b7280;
     }
+
     .submit-row {
       display: flex;
       gap: 12px;
       align-items: center;
       margin-top: 4px;
     }
+
     button[type="submit"] {
       border: none;
       border-radius: 999px;
@@ -260,6 +297,7 @@
       gap: 8px;
       transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.1s;
     }
+
     button[type="submit"]:hover {
       transform: translateY(-1px);
       filter: brightness(1.05);
@@ -267,12 +305,14 @@
         0 18px 40px rgba(0,0,0,0.9),
         0 0 0 1px rgba(248,250,252,0.12);
     }
+
     button[type="submit"]:disabled {
       opacity: 0.6;
       cursor: wait;
       transform: none;
       box-shadow: 0 10px 20px rgba(0,0,0,0.6);
     }
+
     .spinner {
       border: 2px solid rgba(15,23,42,0.0);
       border-top-color: #111827;
@@ -282,13 +322,16 @@
       height: 16px;
       animation: spin 0.7s linear infinite;
     }
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
     .status {
       font-size: 11px;
       color: var(--muted);
     }
+
     .status.success { color: var(--success); }
     .status.error   { color: var(--error); }
 
@@ -296,10 +339,12 @@
       margin-top: 6px;
       font-size: 11px;
     }
+
     .result-link a {
       color: #bfdbfe;
       text-decoration: none;
     }
+
     .result-link a:hover { text-decoration: underline; }
 
     footer {
@@ -313,6 +358,7 @@
     }
   </style>
 </head>
+
 <body>
   <main class="page">
     <header>
@@ -327,11 +373,14 @@
     </header>
 
     <section class="layout">
+      <!-- ==================== HERO CARD ==================== -->
       <section class="hero-card">
         <p class="badge">Automaattinen FIN15-generaattori</p>
+
         <h1>
           Luo <span>uudet nettisivut</span> automaattisesti, kunhan täytät lomakkeen.
         </h1>
+
         <p class="lead">
           FIN15 nappaa yrityksesi perustiedot, generoi modernin etusivun, lataa sen GitHubiin,
           julkaisee Netlifyyn ja tallentaa kaiken FIN15 CRM -järjestelmään – täysin automaattisesti.
@@ -340,11 +389,13 @@
         <div class="hero-kpi-row">
           <div class="kpi">
             <span class="pill-dot"></span>
-            <span><strong>Github & Netlify</strong> kytketty valmiiksi</span>
+            <span><strong>GitHub & Netlify</strong> kytketty valmiiksi</span>
           </div>
+
           <div class="kpi">
             ⚡ <strong>n8n-automaatio</strong> generoi sivun & kuvat
           </div>
+
           <div class="kpi">
             📊 <strong>Airtable CRM</strong> tallentaa liidin
           </div>
@@ -357,21 +408,24 @@
             </div>
             <div>Yrityksen nimi, toimiala, palvelut, väri ja tyyli – vain tärkeimmät kentät.</div>
           </div>
+
           <div class="step">
             <div class="step-title">
               <span class="step-num">2/3</span> FIN15 generoi sivun
             </div>
             <div>AI tuottaa tekstin, hero-kuvan ja HTML-rungon Fin-tyyliin.</div>
           </div>
+
           <div class="step">
             <div class="step-title">
               <span class="step-num">3/3</span> Saat linkin luonnokseen
             </div>
-            <div>Sivu julkaistaan automaattisesti &amp; näet linkin heti tässä näkymässä.</div>
+            <div>Sivu julkaistaan automaattisesti & näet linkin heti tässä näkymässä.</div>
           </div>
         </div>
       </section>
 
+      <!-- ==================== FORM CARD ==================== -->
       <section class="form-card">
         <h2 class="form-title">Käynnistä FIN15-generaattori</h2>
         <p class="form-sub">
@@ -393,7 +447,7 @@
               <span>Toimiala *</span><br />
               <small>Ytimekkäästi, mitä teette?</small>
             </label>
-            <input type="text" name="industry" placeholder="Siivouspalvelut, rakennus, kauneus..." required />
+            <input type="text" name="industry" placeholder="Siivouspalvelut, rakennus..." required />
           </div>
 
           <div class="field">
@@ -421,7 +475,7 @@
           <div class="field full">
             <label>
               <span>Lyhyt kuvaus *</span><br />
-              <small>2–4 virkettä, jotka kuvaavat yritystä.</small>
+              <small>2–4 virkettä, jotka kuvaavat yritystä</small>
             </label>
             <textarea name="description" required></textarea>
           </div>
@@ -429,15 +483,14 @@
           <div class="field full">
             <label>
               <span>Palvelut *</span><br />
-              <small>Yksi palvelu per rivi. FIN15 muuntaa nämä listoiksi sivulle.</small>
+              <small>Yksi palvelu per rivi</small>
             </label>
-            <textarea name="services" placeholder="Kotisiivous&#10;Toimistosiivous&#10;Ikkunanpesu" required></textarea>
+            <textarea name="services" placeholder="Kotisiivous&#10;Ikkunanpesu&#10;Toimistosiivous" required></textarea>
           </div>
 
           <div class="field">
             <label>
-              <span>Sivun tyyli *</span><br />
-              <small>Valitse millainen fiilis sivulle tulee.</small>
+              <span>Sivun tyyli *</span>
             </label>
             <select name="tone" required>
               <option value="modern minimalistic" selected>Moderni & minimalistinen</option>
@@ -451,10 +504,10 @@
           <div class="field">
             <label>
               <span>Pääväri *</span><br />
-              <small>Näkyy painikkeissa ja korostuksissa.</small>
+              <small>Näkyy painikkeissa ja korostuksissa</small>
             </label>
             <input type="color" name="primary_color" value="#f97316" />
-            <div class="hint">Voit käyttää yrityksesi brändiväriä.</div>
+            <div class="hint">Voit käyttää yrityksesi brändiväriä</div>
           </div>
 
           <div class="field full">
@@ -474,10 +527,12 @@
     </section>
 
     <footer>
-      <span>FIN15 – automaattinen nettisivugeneraattori.</span>
+      <span>FIN15 – automaattinen nettisivugeneraattori</span>
       <span>Taustalla: n8n • OpenAI • GitHub • Netlify • Airtable</span>
     </footer>
   </main>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
 
   <script>
     const form = document.getElementById('fin15-form');
@@ -485,8 +540,8 @@
     const resultEl = document.getElementById('result-link');
     const spinner = document.getElementById('spinner');
 
-    // VAIHDA TÄMÄ OIKEAAN WEBHOOK-OSOITTEESEESI
-    const WEBHOOK_URL = 'https://pg1.app.n8n.cloud/webhook-test/generate-site';
+    /* 🔥 VAIHDA TÄHÄN OIKEA N8N PRODUCTION WEBHOOK URL: */
+    const WEBHOOK_URL = "https://pg1.app.n8n.cloud/webhook/generate-site";
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -517,7 +572,7 @@
         phone,
         address,
         tone,
-        primary_color
+        primary_color,
       };
 
       try {
@@ -529,11 +584,11 @@
         const res = await fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
         });
 
         if (!res.ok) {
-          throw new Error('Palvelin vastasi virheellä: ' + res.status);
+          throw new Error('Virhe: ' + res.status);
         }
 
         const json = await res.json();
@@ -543,13 +598,11 @@
 
         if (json.pageUrl || json.pageurl || json.page_url) {
           const url = json.pageUrl || json.pageurl || json.page_url;
+
           resultEl.innerHTML =
             'Katso luotu sivu: <a href="' + url + '" target="_blank" rel="noopener noreferrer">' +
             url +
             '</a>';
-        } else if (json.slug) {
-          resultEl.textContent =
-            'Sivu luotu. Slug: ' + json.slug + ' – lisätty GitHub/Netlify-projektiin.';
         }
       } catch (err) {
         console.error(err);
@@ -561,5 +614,6 @@
       }
     });
   </script>
+
 </body>
 </html>
