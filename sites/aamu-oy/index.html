@@ -1,0 +1,130 @@
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aamu Oy - Laitehuolto ja Vesiesteet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #f97316;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        section {
+            margin: 40px 0;
+        }
+        h2 {
+            color: #f97316;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f97316;
+            color: white;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #f97316;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d56e14;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Aamu Oy</h1>
+    <p>Laitehuolto ja Vesiesteet</p>
+</header>
+
+<div class="hero">
+    <h1>Tervetuloa Aamu Oy:lle</h1>
+</div>
+
+<div class="container">
+    <section id="about">
+        <h2>Meistä</h2>
+        <p>Aamu Oy on erikoistunut laitehuoltoon ja vesiesteiden rakentamiseen. Tarjoamme asiantuntevaa palvelua ja laadukkaita ratkaisuja, jotka vastaavat asiakkaidemme tarpeita.</p>
+    </section>
+
+    <section id="services">
+        <h2>Palvelumme</h2>
+        <ul>
+            <li>Vesiesteiden rakentaminen</li>
+            <li>Laitehuolto ja -korjaus</li>
+            <li>Neuvonta ja suunnittelu</li>
+        </ul>
+    </section>
+
+    <section id="why-choose-us">
+        <h2>Miksi valita meidät?</h2>
+        <p>Meillä on vankka kokemus alalta ja sitoudumme tarjoamaan asiakkaillemme parasta mahdollista palvelua. Meidän asiantunteva tiimimme varmistaa, että kaikki työt tehdään korkealaatuisesti ja aikataulussa.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Ota yhteyttä</h2>
+        <form action="mailto:porigroup@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Nimi" required>
+            <input type="email" name="email" placeholder="Sähköposti" required>
+            <textarea name="message" placeholder="Viesti" required></textarea>
+            <button type="submit">Lähetä</button>
+        </form>
+    </section>
+</div>
+
+<footer>
+    <p>Osoite: Rollo</p>
+    <p>Puhelin: 044000</p>
+    <p>Sähköposti: <a href="mailto:porigroup@gmail.com" style="color: white;">porigroup@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
+```
