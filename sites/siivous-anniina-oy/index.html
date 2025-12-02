@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Siivous anniina Oy – Siivouspalvelut</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+      color: #e5e7eb;
+    }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .hero-text { flex: 1 1 260px; }
+    .hero-img  { flex: 1 1 260px; text-align: center; }
+    .hero-img img {
+      max-width: 100%;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .8rem;
+      border-radius: 999px;
+      font-size: .75rem;
+      background: rgba(15,23,42,.9);
+      border: 1px solid rgba(148,163,184,.5);
+    }
+    .dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 999px;
+      background: #f91543;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin: .9rem 0 .4rem;
+      color: #f9fafb;
+      letter-spacing: -.03em;
+    }
+    .subtitle {
+      font-size: .95rem;
+      color: #9ca3af;
+      margin-bottom: 1.2rem;
+    }
+    p { line-height: 1.6; }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.4rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      padding: .9rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #0f172a;
+      background: #f91543;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.5);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .85rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.6);
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: .9rem;
+      background: transparent;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0,2fr) minmax(0,1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background: rgba(15,23,42,.96);
+      border-radius: 1.2rem;
+      padding: 1.5rem 1.6rem;
+      border: 1px solid rgba(148,163,184,.35);
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      margin: 0 0 1rem;
+      color: #e5e7eb;
+    }
+    .services ul { padding-left: 1.1rem; margin: 0; }
+    .services li { margin-bottom: .35rem; }
+    .contact p { margin: .15rem 0; }
+    .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #9ca3af;
+      margin-bottom: .3rem;
+    }
+    .footer {
+      font-size: .8rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 768px) {
+      main { padding-top: 2.2rem; }
+      h1   { font-size: 2rem; }
+      .hero { flex-direction: column; }
+      .grid { grid-template-columns: minmax(0,1fr); }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <div class="badge">
+        <span class="dot"></span>
+        <span>Siivouspalvelut</span>
+      </div>
+      <h1>Siivous anniina Oy</h1>
+      <div class="subtitle">
+        Iso siivousalan yritys keskisuomessa
+      </div>
+      <div class="actions">
+        <a href="mailto:porigroup@gmail.com" class="btn-primary">Pyydä tarjous</a>
+        <a href="#yhteystiedot" class="btn-ghost">Katso yhteystiedot</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://source.unsplash.com/1600x900/?Siivouspalvelut,business" alt="Siivous anniina Oy" />
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card services">
+      <h2>Palvelumme</h2>
+      <ul><li>Kotisiivous</li><li>ikkunanpesu</li><li>muuttosiivous</li></ul>
+    </div>
+    <div class="card contact" id="yhteystiedot">
+      <h2>Yhteystiedot</h2>
+      <div><div class="label">Osoite</div><p>Hyypäntie</p></div>
+      <div style="margin-top:.6rem;"><div class="label">Puhelin</div><p>0445641933</p></div>
+      <div style="margin-top:.6rem;"><div class="label">Sähköposti</div><p>porigroup@gmail.com</p></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    FIN15 – automaattisesti luotu laskeutumissivu.
+  </div>
+</main>
+</body>
+</html>
