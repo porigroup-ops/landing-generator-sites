@@ -1,0 +1,131 @@
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAAAAA - Laitehuolto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #f97316;
+        }
+        header {
+            background-color: #f97316;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .services, .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .service {
+            background-color: white;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f97316;
+            color: white;
+        }
+        @media (min-width: 600px) {
+            .services {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .service {
+                flex: 1;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>JAAAAA</h1>
+    <p>Laitehuolto - Rakennetaan vesiesteitä</p>
+</header>
+
+<section class="hero">
+    <h2>Tervetuloa JAAAAA:han</h2>
+    <p>Olemme erikoistuneet laitehuoltoon ja veden esteiden rakentamiseen.</p>
+</section>
+
+<section class="section about">
+    <h2>Meistä</h2>
+    <p>JAAAAA on innovatiivinen yritys, joka tarjoaa korkealaatuisia laitehuoltopalveluja. Meillä on vuosien kokemus alalta ja asiakaslähtöinen lähestymistapa, joka takaa tyytyväiset asiakkaat.</p>
+</section>
+
+<section class="section services">
+    <h2>Palvelumme</h2>
+    <div class="service">
+        <h3>Vesiesteiden rakentaminen</h3>
+        <p>Tarjoamme ammattitaitoista palvelua vesiesteiden rakentamisessa, joka takaa turvallisuuden ja esteettisyyden.</p>
+    </div>
+    <div class="service">
+        <h3>Laitehuolto</h3>
+        <p>Huollamme ja korjaamme laitteet tehokkaasti varmistaen niiden pitkän käyttöiän.</p>
+    </div>
+    <div class="service">
+        <h3>Konsultointi</h3>
+        <p>Tarjoamme asiantuntevaa konsultointia jokaisessa vaiheessa projektia, jotta voit tehdä parhaita päätöksiä.</p>
+    </div>
+</section>
+
+<section class="section why-choose-us">
+    <h2>Miksi valita meidät?</h2>
+    <p>Valitsemalla JAAAAA, saat:</p>
+    <ul>
+        <li>Asiantuntevaa palvelua</li>
+        <li>Laatua ja luotettavuutta</li>
+        <li>Kilpailukykyiset hinnat</li>
+        <li>Yksilöllistä asiakaspalvelua</li>
+    </ul>
+</section>
+
+<section class="section contact">
+    <h2>Ota yhteyttä</h2>
+    <form class="contact-form" action="mailto:porigroup@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Nimi:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Sähköposti:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Viesti:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit">Lähetä</button>
+    </form>
+</section>
+
+<footer>
+    <p>Osoite: Rollo</p>
+    <p>Puhelin: 044000</p>
+    <p>Sähköposti: <a href="mailto:porigroup@gmail.com" style="color: white;">porigroup@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
+```
