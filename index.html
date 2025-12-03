@@ -433,104 +433,128 @@
           FIN15-landing-sivuun.
         </p>
 
-        <form id="fin15-form">
-          <div class="field full">
-            <label>
-              <span>Yrityksen nimi *</span><br />
-              <small>Esim. “Siivous Rannikko Oy”</small>
-            </label>
-            <input type="text" name="business_name" required />
-          </div>
+<form id="fin15-form">
 
-          <div class="field">
-            <label>
-              <span>Toimiala *</span><br />
-              <small>Ytimekkäästi, mitä teette?</small>
-            </label>
-            <input type="text" name="industry" placeholder="Siivouspalvelut, rakennus..." required />
-          </div>
+  <!-- Piilotettu template -->
+  <input type="hidden" name="template_id" value="business-classic" />
 
-          <div class="field">
-            <label>
-              <span>Sähköposti *</span><br />
-              <small>Yhteydenotto-osoite sivulle</small>
-            </label>
-            <input type="email" name="email" required />
-          </div>
+  <!-- YRITYKSEN TIEDOT -->
+  <div class="field full">
+    <label><span>Yrityksen nimi *</span></label>
+    <input type="text" name="business_name" required />
+  </div>
 
-          <div class="field">
-            <label>
-              <span>Puhelin *</span>
-            </label>
-            <input type="tel" name="phone" placeholder="040 123 123" required />
-          </div>
+  <div class="field">
+    <label><span>Toimiala *</span></label>
+    <input type="text" name="industry" required />
+  </div>
 
-          <div class="field">
-            <label>
-              <span>Toimipaikka / alue *</span>
-            </label>
-            <input type="text" name="address" placeholder="Pori, Satakunta..." required />
-          </div>
+  <div class="field">
+    <label><span>Sähköposti *</span></label>
+    <input type="email" name="email" required />
+  </div>
 
-          <div class="field full">
-            <label>
-              <span>Lyhyt kuvaus *</span><br />
-              <small>2–4 virkettä, jotka kuvaavat yritystä</small>
-            </label>
-            <textarea name="description" required></textarea>
-          </div>
+  <div class="field">
+    <label><span>Puhelin *</span></label>
+    <input type="tel" name="phone" required />
+  </div>
 
-          <div class="field full">
-            <label>
-              <span>Palvelut *</span><br />
-              <small>Yksi palvelu per rivi</small>
-            </label>
-            <textarea name="services" placeholder="Kotisiivous&#10;Ikkunanpesu&#10;Toimistosiivous" required></textarea>
-          </div>
+  <div class="field">
+    <label><span>Toimipaikka (kaupunki / alue) *</span></label>
+    <input type="text" name="address" required />
+  </div>
 
-          <div class="field">
-            <label>
-              <span>Sivun tyyli *</span>
-            </label>
-            <select name="tone" required>
-              <option value="modern minimalistic" selected>Moderni & minimalistinen</option>
-              <option value="warm and friendly">Lämmin & ystävällinen</option>
-              <option value="premium and luxurious">Premium & ylellinen</option>
-              <option value="bold and colorful">Rohkea & värikäs</option>
-              <option value="corporate professional">Yrityksellinen & asiallinen</option>
-            </select>
-          </div>
+  <div class="field full">
+    <label><span>Lyhyt kuvaus *</span></label>
+    <textarea name="description_short" required></textarea>
+  </div>
 
-          <div class="field">
-            <label>
-              <span>Pääväri *</span><br />
-              <small>Näkyy painikkeissa ja korostuksissa</small>
-            </label>
-            <input type="color" name="primary_color" value="#f97316" />
-            <div class="hint">Voit käyttää yrityksesi brändiväriä</div>
-          </div>
+  <div class="field full">
+    <label><span>Pidempi kuvaus (valinnainen)</span></label>
+    <textarea name="description_long"></textarea>
+  </div>
 
-          <div class="field full">
-            <div class="submit-row">
-              <button type="submit">
-                <span>Luo FIN15-sivu</span>
-                <div class="spinner" id="spinner" style="display:none;"></div>
-              </button>
-              <div class="status" id="status-text">
-                Täytä kentät ja käynnistä generaattori.
-              </div>
-            </div>
-            <div class="result-link" id="result-link"></div>
-          </div>
-        </form>
-      </section>
-    </section>
+  <!-- PALVELUT -->
+  <div class="field full">
+    <label><span>Palvelut *</span><br><small>Yksi palvelu per rivi</small></label>
+    <textarea name="services_raw" placeholder="Kotisiivous&#10;Ikkunanpesu&#10;Muuttosiivous" required></textarea>
+  </div>
 
-    <footer>
-      <span>FIN15 – automaattinen nettisivugeneraattori</span>
-      <span>Taustalla: n8n • OpenAI • GitHub • Netlify • Airtable</span>
-    </footer>
-  </main>
+  <!-- ULKOASU -->
+  <div class="field">
+    <label><span>Pääväri</span></label>
+    <input type="color" name="primary_color" value="#f97316" />
+  </div>
+
+  <div class="field">
+    <label><span>Korosteväri</span></label>
+    <input type="color" name="accent_color" value="#22c55e" />
+  </div>
+
+  <div class="field">
+    <label><span>Teema</span></label>
+    <select name="theme">
+      <option value="dark" selected>Tumma</option>
+      <option value="light">Vaalea</option>
+    </select>
+  </div>
+
+  <!-- HINNASTO (VALINNAINEN) -->
+  <div class="field full">
+    <label>
+      <input type="checkbox" name="show_pricing" value="true" />
+      <span>Näytä hinnasto sivulla</span>
+    </label>
+  </div>
+
+  <div class="field">
+    <label><span>Palvelu 1 – nimi</span></label>
+    <input type="text" name="pricing[0][name]" />
+  </div>
+  <div class="field">
+    <label><span>Palvelu 1 – hinta</span></label>
+    <input type="text" name="pricing[0][price]" />
+  </div>
+
+  <div class="field full">
+    <label><span>Palvelu 1 – lisätiedot</span></label>
+    <input type="text" name="pricing[0][details]" />
+  </div>
+
+  <!-- EXISTING WEBSITE -->
+  <div class="field full">
+    <label>
+      <input type="checkbox" name="has_existing_site" value="true" />
+      <span>Minulla on jo nettisivu – hae tietoja automaattisesti</span>
+    </label>
+  </div>
+
+  <div class="field full">
+    <label><span>Nykyinen sivu (URL)</span></label>
+    <input type="url" name="existing_url" placeholder="https://yritys.fi" />
+  </div>
+
+  <!-- DOMAIN -->
+  <div class="field full">
+    <label><span>Haluttu domain (valinnainen)</span></label>
+    <input type="text" name="desired_domain" placeholder="yritys.fi" />
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="field full">
+    <div class="submit-row">
+      <button type="submit">
+        <span>Luo FIN15-sivu</span>
+        <div class="spinner" id="spinner" style="display:none;"></div>
+      </button>
+      <div class="status" id="status-text">
+        Täytä kentät ja käynnistä generaattori.
+      </div>
+    </div>
+    <div class="result-link" id="result-link"></div>
+  </div>
+
+</form>
 
   <!-- ==================== JAVASCRIPT ==================== -->
 
