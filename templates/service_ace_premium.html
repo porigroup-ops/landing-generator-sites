@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{business_name}} – {{industry}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #020617;
+      --primary: {{primary_color}};
+      --accent: {{accent_color}};
+      --gold: #facc15;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 16px 64px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .logo { font-weight: 700; letter-spacing: .12em; text-transform: uppercase;}
+    .badge { font-size:11px; color:var(--gold);}
+    .hero {
+      border-radius: 32px;
+      padding: 32px 28px;
+      background:
+        radial-gradient(circle at top left, rgba(250,204,21,0.25), transparent),
+        radial-gradient(circle at bottom right, rgba(56,189,248,0.2), transparent),
+        linear-gradient(135deg,#020617,#020617);
+      border:1px solid rgba(250,204,21,0.3);
+      box-shadow:0 30px 70px rgba(0,0,0,0.85);
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+      gap:28px;
+    }
+    @media(max-width:880px){.hero{grid-template-columns:minmax(0,1fr);}}
+    h1{font-size:clamp(34px,4vw,42px);margin:0 0 10px;}
+    h1 span{color:var(--gold);}
+    .lead{color:var(--muted);margin-bottom:18px;}
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+    .btn{border-radius:999px;padding:9px 20px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    .btn-primary{background:linear-gradient(135deg,var(--gold),var(--primary));color:#111827;}
+    .btn-ghost{border:1px solid rgba(148,163,184,0.7);color:var(--text);}
+    .pillbar{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--muted);}
+    .pill{padding:4px 10px;border-radius:999px;background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.4);}
+    .hero-img{
+      border-radius:24px;
+      background:rgba(15,23,42,0.95);
+      border:1px solid rgba(148,163,184,0.5);
+      padding:10px;
+    }
+    .hero-img img{width:100%;border-radius:18px;max-height:260px;object-fit:cover;}
+    .cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);gap:24px;margin-top:28px;}
+    @media(max-width:880px){.cols{grid-template-columns:minmax(0,1fr);}}
+    .card{background:#020617;border-radius:20px;border:1px solid rgba(31,41,55,1);padding:20px;}
+    .card h2{margin:0 0 8px;font-size:18px;}
+    .services-list{list-style:none;margin:8px 0 0;padding:0;font-size:14px;}
+    .services-list li{padding:5px 0;border-top:1px solid rgba(31,41,55,1);}
+    .contact p{margin:6px 0;font-size:14px;color:var(--muted);}
+    .contact a{color:#bfdbfe;text-decoration:none;}
+    footer{margin-top:26px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="logo">FIN15 PRO</div>
+      <div class="badge">Premium-sivupohja</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p style="text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--muted);">{{industry}}</p>
+        <h1><span>{{business_name}}</span></h1>
+        <p class="lead">{{description_short}}</p>
+        <div class="cta-row">
+          <a href="#yhteydenotto" class="btn btn-primary">Pyydä tarjous</a>
+          <a href="#yhteystiedot" class="btn btn-ghost">Ota yhteyttä</a>
+        </div>
+        <div class="pillbar">
+          <span class="pill">Laatutakuu</span>
+          <span class="pill">Joustava palvelu</span>
+          <span class="pill">Asiakaslähtöisyys</span>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="{{hero_image_url}}" alt="{{business_name}} hero-kuva" />
+      </div>
+    </section>
+
+    <section class="cols">
+      <article class="card">
+        <h2>Palvelumme</h2>
+        <p>{{description_long}}</p>
+        <ul class="services-list">
+          {{services_list}}
+        </ul>
+      </article>
+      <aside class="card contact" id="yhteystiedot">
+        <h2>Yhteystiedot</h2>
+        <p><strong>Sähköposti:</strong><br><a href="mailto:{{email}}">{{email}}</a></p>
+        <p><strong>Puhelin:</strong><br><a href="tel:{{phone}}">{{phone}}</a></p>
+        <p><strong>Osoite:</strong><br>{{address}}</p>
+      </aside>
+    </section>
+
+    <footer>
+      <span>FIN15 PRO – premium-pohja.</span>
+      <span>Luotu automaattisesti FIN15-järjestelmällä.</span>
+    </footer>
+  </main>
+</body>
+</html>
