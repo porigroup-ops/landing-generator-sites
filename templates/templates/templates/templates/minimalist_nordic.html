@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{business_name}} – {{industry}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#020617;
+      --card:#020617;
+      --primary:{{primary_color}};
+      --accent:{{accent_color}};
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:system-ui,sans-serif;
+      background:linear-gradient(to bottom,#020617,#020617);
+      color:var(--text);
+    }
+    .page{max-width:960px;margin:0 auto;padding:40px 18px 64px;}
+    header{text-align:left;margin-bottom:28px;}
+    .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:10px;color:var(--muted);}
+    h1{margin:10px 0 8px;font-size:32px;}
+    .sub{color:var(--muted);font-size:14px;max-width:520px;}
+    .hero-img{margin:28px 0;border-radius:24px;overflow:hidden;}
+    .hero-img img{width:100%;max-height:260px;object-fit:cover;filter:brightness(0.9);}
+    .grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:24px;}
+    @media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr);}}
+    .card{background:var(--card);border-radius:18px;border:1px solid rgba(31,41,55,1);padding:20px;}
+    .card h2{margin:0 0 10px;font-size:17px;}
+    .card p{margin:0 0 10px;font-size:14px;color:var(--muted);}
+    .services-list{list-style:none;margin:0;padding:0;font-size:14px;}
+    .services-list li{padding:4px 0;border-top:1px solid rgba(31,41,55,1);}
+    .contact p{margin:5px 0;font-size:14px;color:var(--muted);}
+    .contact a{color:#bfdbfe;text-decoration:none;}
+    footer{margin-top:32px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">{{industry}}</div>
+      <h1>{{business_name}}</h1>
+      <p class="sub">{{description_short}}</p>
+    </header>
+
+    <div class="hero-img">
+      <img src="{{hero_image_url}}" alt="{{business_name}} hero-kuva" />
+    </div>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Palvelumme</h2>
+        <p>{{description_long}}</p>
+        <ul class="services-list">
+          {{services_list}}
+        </ul>
+      </article>
+      <aside class="card contact" id="yhteystiedot">
+        <h2>Yhteystiedot</h2>
+        <p><strong>Sähköposti:</strong><br><a href="mailto:{{email}}">{{email}}</a></p>
+        <p><strong>Puhelin:</strong><br><a href="tel:{{phone}}">{{phone}}</a></p>
+        <p><strong>Osoite:</strong><br>{{address}}</p>
+      </aside>
+    </section>
+
+    <footer>
+      <span>FIN15 Minimalist Nordic</span>
+      <span>Luotu automaattisesti FIN15 PRO -generaattorilla.</span>
+    </footer>
+  </main>
+</body>
+</html>
