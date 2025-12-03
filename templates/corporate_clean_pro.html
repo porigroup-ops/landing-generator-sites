@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{business_name}} – {{industry}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0b1220;
+      --card: #0f172a;
+      --primary: {{primary_color}};
+      --accent: {{accent_color}};
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .page {
+      width: 100%;
+      max-width: 1120px;
+      padding: 32px 16px 64px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #fee2b7, var(--primary));
+      box-shadow: 0 0 0 2px rgba(15,23,42,0.9), 0 16px 40px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #020617;
+      font-weight: 900;
+      font-size: 16px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 11px;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,0.25);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 880px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+    }
+    .hero {
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.16), transparent),
+                  var(--bg-soft);
+      border-radius: 28px;
+      padding: 28px 24px 24px;
+      border: 1px solid rgba(15,23,42,0.9);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 120% -20%, rgba(96,165,250,0.25), transparent);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    h1 {
+      font-size: clamp(32px, 4vw, 40px);
+      margin: 12px 0 8px;
+    }
+    h1 span {
+      background: linear-gradient(120deg, var(--primary), #fde68a);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-sub {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .lead {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #facc15);
+      color: #111827;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(148,163,184,0.7);
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .tag-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: rgba(15,23,42,0.8);
+    }
+    .hero-image-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 10px;
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .hero-image-card img {
+      width: 100%;
+      border-radius: 18px;
+      display: block;
+      object-fit: cover;
+      max-height: 260px;
+    }
+    .hero-image-caption {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-image-label {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      font-size: 11px;
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+    .columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 24px;
+      margin-top: 28px;
+    }
+    @media (max-width: 880px) {
+      .columns { grid-template-columns: minmax(0, 1fr); }
+    }
+    .card {
+      background: rgba(15,23,42,0.98);
+      border-radius: var(--radius);
+      padding: 20px 20px 18px;
+      border: 1px solid rgba(31,41,55,1);
+    }
+    .card h2 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .services-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .services-list li {
+      padding: 5px 0;
+      border-top: 1px solid rgba(31,41,55,1);
+    }
+    .services-list li:first-child {
+      border-top: none;
+    }
+    .contact-row {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .contact-row strong {
+      color: var(--text);
+    }
+    footer {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">F</div>
+        <div>FIN15 PRO</div>
+      </div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        FIN15 automaattinen sivugeneraattori
+      </div>
+    </header>
+
+    <section class="layout">
+      <section class="hero">
+        <div class="hero-sub">{{industry}}</div>
+        <h1><span>{{business_name}}</span></h1>
+        <p class="lead">{{description_short}}</p>
+
+        <div class="cta-row">
+          <a href="#yhteydenotto" class="btn btn-primary">Pyydä tarjous</a>
+          <a href="#yhteystiedot" class="btn btn-secondary">Katso yhteystiedot</a>
+        </div>
+
+        <div class="tags">
+          <div class="tag-pill">Palvelemme alueella {{city}}</div>
+          <div class="tag-pill">Nopea yhteydenotto</div>
+          <div class="tag-pill">Luotettava kumppani</div>
+        </div>
+      </section>
+
+      <aside class="hero-image-card">
+        <img src="{{hero_image_url}}" alt="{{business_name}} hero-kuva" />
+        <div class="hero-image-caption">
+          <span>{{business_name}}</span>
+          <span class="hero-image-label">{{industry}}</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="columns">
+      <article class="card" id="palvelut">
+        <h2>Palvelumme</h2>
+        <p>{{description_long}}</p>
+        <ul class="services-list">
+          {{services_list}}
+        </ul>
+      </article>
+
+      <aside class="card" id="yhteystiedot">
+        <h2>Yhteystiedot</h2>
+        <div class="contact-row">
+          <strong>Sähköposti:</strong><br />
+          <a href="mailto:{{email}}" style="color: #bfdbfe; text-decoration:none;">{{email}}</a>
+        </div>
+        <div class="contact-row">
+          <strong>Puhelin:</strong><br />
+          <a href="tel:{{phone}}" style="color: #bfdbfe; text-decoration:none;">{{phone}}</a>
+        </div>
+        <div class="contact-row">
+          <strong>Osoite:</strong><br />
+          {{address}}
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <span>FIN15 – automaattisesti luotu laskeutumissivu.</span>
+      <span>Taustalla: n8n • OpenAI • GitHub • Netlify • Airtable</span>
+    </footer>
+  </main>
+</body>
+</html>
