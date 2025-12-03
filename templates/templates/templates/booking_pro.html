@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{business_name}} – ajanvaraus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#020617;
+      --card:#020617;
+      --primary:{{primary_color}};
+      --accent:{{accent_color}};
+      --text:#f9fafb;
+      --muted:#9ca3af;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:system-ui,sans-serif;
+      background:radial-gradient(circle at top,#111827,#020617);
+      color:var(--text);
+    }
+    .page{max-width:1040px;margin:0 auto;padding:36px 16px 64px;}
+    header{text-align:center;margin-bottom:24px;}
+    h1{margin:8px 0 6px;font-size:34px;}
+    .sub{color:var(--muted);font-size:14px;}
+    .layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.9fr);gap:24px;margin-top:24px;}
+    @media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr);}}
+    .card{background:var(--card);border-radius:20px;border:1px solid rgba(31,41,55,1);padding:20px;}
+    .card h2{margin:0 0 8px;font-size:18px;}
+    .card p{margin:0 0 8px;font-size:14px;color:var(--muted);}
+    .services-list{list-style:none;margin:0;padding:0;font-size:14px;}
+    .services-list li{padding:4px 0;border-top:1px solid rgba(31,41,55,1);}
+    .hero-img{border-radius:18px;overflow:hidden;margin:18px 0;}
+    .hero-img img{width:100%;object-fit:cover;max-height:260px;}
+    .booking-cta{margin-top:10px;}
+    .btn{border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+    .btn-main{background:var(--primary);color:#111827;}
+    .contact p{margin:4px 0;font-size:14px;color:var(--muted);}
+    .contact a{color:#bfdbfe;text-decoration:none;}
+    footer{margin-top:26px;font-size:11px;color:var(--muted);text-align:center;}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p style="text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);">{{industry}}</p>
+      <h1>{{business_name}}</h1>
+      <p class="sub">{{description_short}}</p>
+    </header>
+
+    <section class="layout">
+      <article class="card">
+        <h2>Varaa aika</h2>
+        <div class="hero-img">
+          <img src="{{hero_image_url}}" alt="{{business_name}} hero-kuva" />
+        </div>
+        <p>{{description_long}}</p>
+        <div class="booking-cta">
+          <a href="#yhteydenotto" class="btn btn-main">Varaa aika / pyydä tarjous</a>
+        </div>
+        <h3 style="margin-top:16px;font-size:15px;">Palvelut & hinnasto</h3>
+        <ul class="services-list">
+          {{services_list}}
+        </ul>
+      </article>
+
+      <aside class="card contact" id="yhteystiedot">
+        <h2>Yhteystiedot</h2>
+        <p><strong>Sähköposti:</strong><br><a href="mailto:{{email}}">{{email}}</a></p>
+        <p><strong>Puhelin:</strong><br><a href="tel:{{phone}}">{{phone}}</a></p>
+        <p><strong>Osoite:</strong><br>{{address}}</p>
+        <p style="margin-top:12px;font-size:13px;">Voit varata ajan puhelimitse, sähköpostilla tai lomakkeella.</p>
+      </aside>
+    </section>
+
+    <footer>
+      FIN15 Booking Pro – sivu luotu automaattisesti.
+    </footer>
+  </main>
+</body>
+</html>
