@@ -1,0 +1,666 @@
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitaalinen Kehitystoimisto - Modernit Verkkoratkaisut</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Basic Styles */
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue */
+            --secondary-color: #3498db; /* Blue */
+            --accent-color: #e67e22; /* Orange */
+            --light-bg-color: #f4f7f6; /* Light Grey */
+            --dark-text-color: #333;
+            --light-text-color: #fff;
+            --border-radius: 5px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text-color);
+            background-color: var(--light-bg-color);
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        h1 { font-size: 3em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        h4 { font-size: 1.4em; }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            padding: 0.8em 1.5em;
+            border-radius: var(--border-radius);
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            background-color: #d35400; /* Darker orange */
+            text-decoration: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3em;
+            position: relative;
+            padding-bottom: 0.5em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/random/1600x900?web-development,coding,office') no-repeat center center/cover;
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 8em 0;
+            min-height: 100vh; /* Full viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            margin-bottom: 0.5em;
+            color: var(--light-text-color);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 2em;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.95); /* Semi-transparent dark blue */
+            padding: 1em 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--light-text-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline-block;
+            margin-left: 1.5em;
+        }
+
+        .nav-links a {
+            color: var(--light-text-color);
+            font-weight: 600;
+            padding: 0.5em 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+
+        /* Sections */
+        section {
+            padding: 6em 0;
+            background-color: var(--light-bg-color);
+        }
+
+        section:nth-of-type(even) {
+            background-color: #eef2f1; /* Slightly different background for alternating sections */
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2em;
+        }
+
+        #about .about-text,
+        #about .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #about .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2em;
+            margin-top: 3em;
+        }
+
+        .service-card {
+            background-color: var(--light-text-color);
+            padding: 2em;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .service-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.8em;
+        }
+
+        .service-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2em;
+            margin-top: 3em;
+        }
+
+        .price-card {
+            background-color: var(--light-text-color);
+            padding: 2.5em;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .price-card.featured {
+            background-color: var(--secondary-color);
+            color: var(--light-text-color);
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .price-card.featured h3,
+        .price-card.featured .price-value {
+            color: var(--light-text-color);
+        }
+
+        .price-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+            color: var(--primary-color);
+        }
+
+        .price-card .price-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1em;
+        }
+        .price-card.featured .price-value {
+             color: var(--light-text-color); /* Lighter for featured */
+        }
+
+
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2em;
+            flex-grow: 1;
+        }
+
+        .price-card ul li {
+            margin-bottom: 0.8em;
+            position: relative;
+            padding-left: 1.5em;
+        }
+
+        .price-card ul li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        .price-card.featured ul li::before {
+             color: var(--light-text-color);
+        }
+
+        .price-card.featured .btn {
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+        }
+        .price-card.featured .btn:hover {
+            background-color: #d35400;
+        }
+
+        /* Contact Section */
+        #contact .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em;
+            justify-content: center;
+        }
+
+        #contact .contact-form-container,
+        #contact .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #contact .contact-form-container {
+            background-color: var(--light-text-color);
+            padding: 2.5em;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        #contact .contact-form-container h3 {
+            margin-bottom: 1.5em;
+            color: var(--primary-color);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5em;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            padding: 2.5em;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h3 {
+            color: var(--light-text-color);
+            margin-bottom: 1.5em;
+        }
+
+        .contact-info p {
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .contact-info p strong {
+            margin-right: 0.5em;
+            min-width: 80px; /* Align text */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 2em 0;
+            font-size: 0.9em;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .navbar .container {
+                flex-direction: column;
+                padding-top: 1em;
+            }
+            .nav-links {
+                margin-top: 1em;
+                padding-left: 0; /* Remove default ul padding */
+            }
+            .nav-links li {
+                margin: 0 0.8em;
+            }
+            #about .about-content {
+                flex-direction: column;
+            }
+            #about .about-image {
+                order: -1; /* Image first on mobile */
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            .section-title { margin-bottom: 2em; }
+            section { padding: 4em 0; }
+            .hero { padding: 6em 0; }
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.1em; }
+
+            .services-grid,
+            .pricing-grid,
+            #contact .contact-content {
+                grid-template-columns: 1fr; /* Single column layout */
+            }
+            .service-card, .price-card {
+                padding: 1.5em;
+            }
+            .price-card.featured {
+                transform: none; /* Remove scale effect on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            .nav-links li {
+                margin: 0 0.5em;
+            }
+            .btn {
+                padding: 0.6em 1em;
+                font-size: 0.9em;
+            }
+            .hero {
+                min-height: 80vh; /* Adjust hero height for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">Digitaalinen Kehitystoimisto</a>
+            <ul class="nav-links">
+                <li><a href="#about">Meistä</a></li>
+                <li><a href="#services">Palvelut</a></li>
+                <li><a href="#pricing">Hinnoittelu</a></li>
+                <li><a href="#contact">Ota yhteyttä</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Digitaalinen Kehitystoimisto</h1>
+            <p>Modernit ja tehokkaat verkkoratkaisut liiketoimintasi kasvuun.</p>
+            <a href="#contact" class="btn">Pyydä tarjous</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">Keitä Olemme?</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Olemme <strong>Digitaalinen Kehitystoimisto</strong>, Helsingissä sijaitseva dynaaminen tiimi, joka on erikoistunut luomaan vaikuttavia ja toimivia digitaalisia ratkaisuja. Autamme yrityksiä menestymään verkossa tarjoamalla räätälöityä web-suunnittelua, kehitystä ja digitaalisen markkinoinnin strategioita.</p>
+                        <p>Ymmärrämme, että jokainen yritys on ainutlaatuinen. Siksi lähestymme jokaista projektia yksilöllisesti, keskittyen asiakkaidemme tavoitteisiin ja kohdeyleisöön. Intohimomme on rakentaa verkkosivustoja, jotka eivät vain näytä upeilta, vaan myös tuottavat mitattavia tuloksia.</p>
+                        <p>Luota meihin digitaalisen läsnäolosi rakentamisessa ja kasvattamisessa.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://source.unsplash.com/random/800x600?business,team,meeting" alt="Tiimimme työskentelee toimistolla">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">Palvelumme</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Verkkosivujen Suunnittelu ja Kehitys</h3>
+                        <p>Luomme responsiivisia, käyttäjäystävällisiä ja hakukoneoptimoituja verkkosivustoja, jotka heijastavat brändiäsi ja palvelevat tavoitteitasi.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Verkkokaupparatkaisut</h3>
+                        <p>Rakennamme tehokkaita ja turvallisia verkkokauppoja, jotka maksimoivat myyntisi ja tarjoavat saumattoman ostokokemuksen asiakkaillesi.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Hakukoneoptimointi (SEO)</h3>
+                        <p>Parannamme verkkosivustosi näkyvyyttä hakukoneissa, jotta löydettävyytesi paranee ja saat enemmän orgaanista liikennettä.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Digitaalinen Markkinointi</h3>
+                        <p>Kehitämme kattavia digitaalisen markkinoinnin strategioita sisältäen sosiaalisen median markkinoinnin ja sisältömarkkinoinnin.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Mobiilisovellukset</h3>
+                        <p>Suunnittelemme ja kehitämme innovatiivisia mobiilisovelluksia, jotka tarjoavat arvoa käyttäjillesi ja vahvistavat brändiäsi.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Ylläpito ja Tuki</h3>
+                        <p>Tarjoamme jatkuvaa tukea ja ylläpitopalveluita varmistaaksemme verkkosivustosi toimivuuden ja turvallisuuden.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="container">
+                <h2 class="section-title">Hinnoittelu</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 3em;">Tarjoamme joustavia paketteja, jotka on suunniteltu vastaamaan eri tarpeita ja budjetteja. Katso alta valmiit ratkaisumme tai pyydä räätälöity tarjous!</p>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3>Peruspaketti</h3>
+                        <div class="price-value">Alk. 999€</div>
+                        <ul>
+                            <li>✓ Moderni verkkosivusto (3-5 sivua)</li>
+                            <li>✓ Responsiivinen design</li>
+                            <li>✓ Perus-SEO-optimointi</li>
+                            <li>✓ Yhteyslomake</li>
+                            <li>✓ Koulutus sisällönhallintaan</li>
+                        </ul>
+                        <a href="#contact" class="btn">Pyydä tarjous</a>
+                    </div>
+                    <div class="price-card featured">
+                        <h3>Premium-paketti</h3>
+                        <div class="price-value">Alk. 2499€</div>
+                        <ul>
+                            <li>✓ Laaja verkkosivusto (yli 10 sivua)</li>
+                            <li>✓ Räätälöity visuaalinen ilme</li>
+                            <li>✓ Edistynyt SEO & analytiikka</li>
+                            <li>✓ Verkkokauppaintegraatio</li>
+                            <li>✓ Priorisoitu tuki</li>
+                            <li>✓ Sosiaalisen median integraatio</li>
+                        </ul>
+                        <a href="#contact" class="btn">Pyydä tarjous</a>
+                    </div>
+                    <div class="price-card">
+                        <h3>Räätälöity ratkaisu</h3>
+                        <div class="price-value">Tarjouksen mukaan</div>
+                        <ul>
+                            <li>✓ Täysin räätälöity projekti</li>
+                            <li>✓ Monimutkaiset integraatiot</li>
+                            <li>✓ Mobiilisovelluskehitys</li>
+                            <li>✓ Jatkuva kehitys ja ylläpito</li>
+                            <li>✓ Dedicated projektipäällikkö</li>
+                        </ul>
+                        <a href="#contact" class="btn">Pyydä tarjous</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Ota Yhteyttä</h2>
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <h3>Lähetä meille viesti</h3>
+                        <form action="#" method="POST" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nimi:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Sähköposti:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Viesti:</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Lähetä Viesti</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Yhteystiedot</h3>
+                        <p><strong>Sähköposti:</strong> <a href="mailto:info@digitaalinenkehitystoimisto.fi">info@digitaalinenkehitystoimisto.fi</a></p>
+                        <p><strong>Puhelin:</strong> <a href="tel:+358123456789">+358 12 345 6789</a></p>
+                        <p><strong>Sijainti:</strong> Helsinki, Suomi</p>
+                        <p>Olemme täällä auttaaksemme sinua! Ota yhteyttä sähköpostitse, puhelimitse tai täyttämällä lomake. Vastaamme kyselyihisi mahdollisimman pian.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Digitaalinen Kehitystoimisto. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```
