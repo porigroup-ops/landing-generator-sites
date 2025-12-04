@@ -1,0 +1,468 @@
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohjelmistokehitys OY - Digitaalisia Ratkaisuja Tulevaisuuden Tarpeisiin</title>
+    <meta name="description" content="Ohjelmistokehitys OY tarjoaa innovatiivisia ja skaalautuvia ohjelmistoratkaisuja yrityksesi menestykseen Helsingissä. Web-kehitys, mobiilisovellukset ja konsultointi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --white-color: #ffffff;
+            --container-max-width: 1200px;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Poppins', sans-serif;
+            --spacing-sm: 10px;
+            --spacing-md: 20px;
+            --spacing-lg: 40px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--white-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        p { margin-bottom: 1em; }
+        .lead { font-size: 1.25em; margin-bottom: 1.5em; }
+
+        /* Utilities */
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section-padding {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .bg-light { background-color: var(--light-color); }
+        .bg-dark { background-color: var(--dark-color); }
+        .text-white { color: var(--white-color); }
+        .text-center { text-align: center; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1em;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--white-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: var(--spacing-md);
+        }
+
+        nav ul li a {
+            color: var(--white-color);
+            font-weight: 600;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://source.unsplash.com/random/1200x600/?technology,software') no-repeat center center/cover;
+            position: relative;
+            height: 70vh; /* Adjust as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white-color);
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        }
+
+        #hero .container {
+            position: relative; /* To bring content above overlay */
+            z-index: 1;
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        #hero p {
+            font-size: 1.3em;
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        #about .about-content > div {
+            flex: 1;
+            min-width: 300px; /* Minimum width for flex items */
+        }
+
+        #about .image-content img {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-item {
+            background-color: var(--white-color);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        /* Contact Section */
+        #contact .contact-details {
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.1em;
+        }
+
+        #contact .contact-details p {
+            margin-bottom: 0.5em;
+        }
+
+        #contact .contact-details a {
+            color: var(--white-color);
+            font-weight: 600;
+        }
+
+        #contact .contact-details a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: var(--spacing-md) 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: var(--spacing-md);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px var(--spacing-sm);
+            }
+
+            #hero {
+                height: 60vh;
+            }
+
+            #hero h1 {
+                font-size: 2.2em;
+            }
+
+            #hero p {
+                font-size: 1em;
+                padding: 0 var(--spacing-sm);
+            }
+
+            #about .about-content {
+                flex-direction: column;
+            }
+
+            #about .about-content > div {
+                min-width: unset; /* Remove min-width restriction */
+                width: 100%;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            nav ul li {
+                margin: 5px 5px;
+            }
+            #hero h1 {
+                font-size: 1.8em;
+            }
+            #hero p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Ohjelmistokehitys OY</a>
+                <ul>
+                    <li><a href="#about">Meistä</a></li>
+                    <li><a href="#services">Palvelumme</a></li>
+                    <li><a href="#pricing">Hinnoittelu</a></li>
+                    <li><a href="#contact">Yhteystiedot</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Digitaalisia ratkaisuja tulevaisuuden tarpeisiin</h1>
+            <p>Rakennamme innovatiivisia ja skaalautuvia ohjelmistoratkaisuja, jotka auttavat yritystäsi menestymään digitaalisessa maailmassa.</p>
+            <a href="#contact" class="btn btn-primary">Pyydä tarjous</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-content">
+                <div class="text-content">
+                    <h2>Meistä</h2>
+                    <p>Ohjelmistokehitys OY on Helsingissä toimiva ohjelmistotalo, joka on omistautunut luomaan korkealaatuisia ja käyttäjäystävällisiä ohjelmistoja. Ymmärrämme, että jokainen yritys on ainutlaatuinen, ja siksi räätälöimme ratkaisumme vastaamaan juuri sinun tarpeitasi.</p>
+                    <p>Tiimimme koostuu kokeneista ammattilaisista, jotka ovat intohimoisia teknologian ja innovaation parissa. Panostamme asiakaslähtöiseen kehitykseen ja läpinäkyvään kommunikaatioon, jotta voimme varmistaa parhaan mahdollisen lopputuloksen jokaisessa projektissa. Tavoitteenamme on olla luotettava kumppanisi digitaalisessa muutoksessa.</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://source.unsplash.com/random/600x400/?coding,development,team" alt="Koodaava tiimi">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center">Palvelumme</h2>
+            <div class="service-grid">
+                <div class="service-item">
+                    <img src="https://source.unsplash.com/random/400x300/?web,design,frontend" alt="Web-kehitys">
+                    <h3>Web-kehitys</h3>
+                    <p>Modernit ja responsiiviset verkkosivustot ja -sovellukset, jotka toimivat saumattomasti kaikilla laitteilla.</p>
+                </div>
+                <div class="service-item">
+                    <img src="https://source.unsplash.com/random/400x300/?mobile,app,development" alt="Mobiilisovellukset">
+                    <h3>Mobiilisovellukset</h3>
+                    <p>Kehitämme natiiveja ja cross-platform mobiilisovelluksia iOS- ja Android-alustoille.</p>
+                </div>
+                <div class="service-item">
+                    <img src="https://source.unsplash.com/random/400x300/?consulting,business,strategy" alt="Ohjelmistokonsultointi">
+                    <h3>Ohjelmistokonsultointi</h3>
+                    <p>Autamme sinua valitsemaan oikeat teknologiat ja strategiat digitaalisten tavoitteidesi saavuttamiseksi.</p>
+                </div>
+                <div class="service-item">
+                    <img src="https://source.unsplash.com/random/400x300/?cloud,software,custom" alt="Räätälöidyt ohjelmistot">
+                    <h3>Räätälöidyt ohjelmistot</h3>
+                    <p>Suunnittelemme ja toteutamme ainutlaatuisia ohjelmistoratkaisuja, jotka optimoivat liiketoimintaprosessisi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section-padding">
+        <div class="container text-center">
+            <h2>Hinnoittelu</h2>
+            <p class="lead">Ymmärrämme, että jokainen projekti on yksilöllinen. Siksi emme tarjoa kiinteää hinnastoa, vaan räätälöimme tarjouksemme aina asiakkaan tarpeiden ja projektin laajuuden mukaan.</p>
+            <p>Ota meihin yhteyttä, niin keskustellaan ratkaisuistasi ja annamme sinulle kilpailukykyisen tarjouksen!</p>
+            <a href="#contact" class="btn btn-secondary">Kysy tarjous</a>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center">Ota yhteyttä</h2>
+            <p class="text-center">Olemme valmiina kuulemaan projektistasi ja auttamaan sinua digitaalisten haasteiden ratkaisemisessa. Älä epäröi ottaa yhteyttä!</p>
+            <div class="contact-details text-center">
+                <p><strong>Sähköposti:</strong> <a href="mailto:info@ohjelmistokehitys.fi">info@ohjelmistokehitys.fi</a></p>
+                <p><strong>Puhelin:</strong> <a href="tel:+358401234567">+358 40 123 4567</a></p>
+                <p><strong>Toimipiste:</strong> Helsinki, Suomi</p>
+            </div>
+            <div class="text-center">
+                <a href="mailto:info@ohjelmistokehitys.fi" class="btn btn-primary">Lähetä sähköpostia</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Ohjelmistokehitys OY. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```
