@@ -1,0 +1,27 @@
+{
+  "slug": "siivous-rannikko",
+  "pageTitle": "Siivouspalvelut Pori | Siivous Rannikko",
+  "companyName": "Siivous Rannikko",
+  "hero": {
+    "title": "Luotettavaa siivouspalvelua Porin alueella",
+    "text": "Ammattitaitoinen siivouspalvelu koteihin ja yrityksille. Laadukas ja joustava palvelu yli 10 vuoden kokemuksella.",
+    "cta": "Pyydä tarjous",
+    "imagePath": "images/siivous-rannikko-hero.png",
+    "imageAlt": "Siisti suomalainen olohuone"
+  },
+  "services": {
+    "title": "Palvelumme",
+    "cards": [
+      { "title": "Kotisiivous", "text": "Säännöllinen tai kertaluontoinen siivous tarpeidesi mukaan." },
+      { "title": "Yrityssiivous", "text": "Toimistot, liiketilat ja tuotantotilat." },
+      { "title": "Muuttosiivous", "text": "Huolellinen siivous muuton yhteydessä." }
+    ]
+  },
+  "about": {
+    "title": "Paikallinen perheyritys",
+    "text": "Olemme porilainen siivousalan yritys, joka tarjoaa luotettavaa ja joustavaa palvelua."
+  },
+  "contact": {
+    "text": "Ota yhteyttä: 040 123 4567 · info@siivousrannikko.fi"
+  }
+}
