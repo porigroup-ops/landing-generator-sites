@@ -1,54 +1,583 @@
-Sisällön nouto osoitteesta `https://maalaava.fi` on suoritettu.
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maalaava Oy – Ammattitaitoista Maalauspalvelua Porissa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue */
+            --secondary-color: #3498db; /* Bright Blue */
+            --accent-color: #e67e22; /* Orange */
+            --text-color: #333;
+            --light-grey: #f4f4f4;
+            --white: #fff;
+            --border-radius: 5px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-Koska tarkkaa "samaa promptia kuin aiemmin" ei ole saatavilla tässä kontekstissa, tulkitsen sen tarkoittavan kattavaa yhteenvetoa ja avainkohdista poimintaa verkkosivuston sisällöstä.
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-Tässä yhteenveto ja avainkohdat maalaava.fi -sivuston sisällöstä:
+        html {
+            scroll-behavior: smooth;
+        }
 
----
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
 
-### Verkkosivuston sisällön analyysi: Maalaava.fi
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-**URL:** https://maalaava.fi
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        p { margin-bottom: 1rem; }
 
-**Yleiskuvaus ja tarkoitus:**
-Maalaava.fi on suomalaisen maalaus- ja remontointipalveluita tarjoavan yrityksen verkkosivusto. Sivuston päätarkoitus on esitellä yrityksen palveluita, vakuuttaa potentiaaliset asiakkaat heidän ammattitaidostaan ja luotettavuudestaan sekä ohjata heidät pyytämään tarjous palveluista. Sivusto on suunnattu sekä yksityisasiakkaille että yrityksille.
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
 
-**Keskeiset palvelut / Palvelualueet:**
+        a:hover {
+            text-decoration: underline;
+        }
 
-1.  **Sisämaalaus:** Ammattitaitoiset sisämaalaukset eri tiloihin, kuten olohuoneisiin, makuuhuoneisiin, keittiöihin ja muihin asuintiloihin.
-2.  **Ulkomaalaus:** Talon ulkoseinien, aitojen ja muiden ulkopintojen maalaukset, jotka suojaavat ja kaunistavat rakennusta.
-3.  **Julkisivuremontti:** Kattojen maalaus ja pinnoitus kestävyyden ja ulkonäön parantamiseksi.
-4.  **Kattomaalaus:** Kattojen maalaus ja pinnoitus kestävyyden ja ulkonäön parantamiseksi.
-5.  **Pintakäsittely:** Erilaiset pintakäsittelypalvelut.
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
 
-**Avainviestit ja myyntivaltit:**
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
 
-*   **Ammattitaito ja Kokemus:** Korostetaan pitkää kokemusta ja ammattitaitoista henkilökuntaa.
-*   **Laatu ja Kestävyys:** Luvataan laadukasta työtä ja kestäviä lopputuloksia.
-*   **Asiakaslähtöisyys:** Tarjouspyyntömahdollisuus ja asiakaspalvelu.
-*   **Ilmainen Tarjous:** Kannustetaan pyytämään maksuton ja sitoumukseton tarjous.
-*   **Kotitalousvähennys:** Muistutetaan mahdollisuudesta hyödyntää kotitalousvähennystä.
+        .btn:hover {
+            background-color: #d35400; /* Darker orange */
+            text-decoration: none;
+        }
 
-**Kohdeyleisö:**
-Pääasiassa yksityishenkilöt (kotitaloudet), jotka tarvitsevat maalaus- tai remontointipalveluita. Mahdollisesti myös yritykset tai taloyhtiöt.
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        .btn-secondary:hover {
+            background-color: #2980b9; /* Darker blue */
+        }
 
-**Toimintakehotteet (Call-to-Action):**
-*   "Pyydä tarjous" (yleisin)
-*   Yhteystietojen kautta yhteydenotto (puhelin, sähköposti).
+        /* Header */
+        .site-header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-grey);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
 
-**Yhteystiedot (poimittu sivustolta):**
-*   **Puhelin:** +358 40 706 7014
-*   **Sähköposti:** info@maalaava.fi
-*   **Toimisto / Osoite:** Mäkelänkatu 2 B, 00500 Helsinki
-*   **Y-tunnus:** 2596409-5
-*   **Alueellinen kattavuus:** Toimipaikka Helsingissä viittaa pääkaupunkiseudun ja lähialueiden palveluun.
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
 
-**Sivuston rakenne ja käytettävyys:**
-Sivusto vaikuttaa selkeältä ja helposti navigoitavalta. Päävalikosta löytyvät tärkeimmät palvelukategoriat ja yhteystiedot. Sivustolla on todennäköisesti käytetty kuvia aiemmista töistä esimerkkeinä.
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            white-space: nowrap; /* Prevent Maalaava Oy from breaking */
+        }
 
-**Tekninen huomio:**
-Sisältö on pääosin staattista HTML-tekstiä, mikä helpottaa sen indeksointia ja sisällön poimintaa. Sivusto on selkeästi suomenkielinen.
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            justify-content: center; /* Center items if wrapped */
+            margin-top: 0; /* Reset margin from wrapping */
+        }
 
----
+        .main-nav a {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
 
-Jos sinulla oli mielessä jokin *tarkempi* analyysi tai tietty formaatti edellisellä kerralla, kerro minulle tarkemmin, niin muokkaan tätä vastaamaan tarpeitasi!
+        .main-nav a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1920x1080/?painting,home,renovation') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 1.5rem;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* Section styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-grey);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* About section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 280px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Services section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Call to action banner */
+        .cta-banner {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .cta-banner h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact section */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .contact-info h3, .contact-form h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.7rem;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .contact-info p strong {
+            color: var(--primary-color);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form input[type="submit"] {
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .site-footer p {
+            margin-bottom: 0.5rem;
+        }
+        .site-footer a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        .site-footer a:hover {
+            color: var(--secondary-color);
+        }
+
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            h3 { font-size: 2rem; }
+            .hero {
+                padding: 10rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .hero p {
+                font-size: 1.5rem;
+            }
+
+            .main-nav ul {
+                margin-top: 0;
+            }
+
+            .about-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 4rem;
+            }
+            .about-text {
+                text-align: left;
+                max-width: none;
+            }
+
+            .contact-content {
+                flex-direction: row;
+                justify-content: center;
+                gap: 4rem;
+                text-align: left;
+            }
+            .contact-info h3, .contact-form h3 {
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h1 { font-size: 4rem; }
+            h2 { font-size: 3rem; }
+            .site-header .container {
+                flex-wrap: nowrap;
+            }
+            .main-nav ul {
+                flex-wrap: nowrap;
+            }
+            .site-header {
+                padding: 1rem 0; /* Adjust header padding for larger screens */
+            }
+        }
+
+        /* Icon-like styling for contact info (simple text representation) */
+        .contact-info p::before {
+            content: '✉️'; /* Default envelope for email */
+            font-size: 1.2em;
+            vertical-align: middle;
+            margin-right: 0.5em;
+        }
+        .contact-info p:nth-child(2)::before {
+            content: '📞'; /* Phone icon for phone number */
+        }
+        .contact-info p:nth-child(3)::before {
+            content: '📍'; /* Location icon for city */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo">Maalaava Oy</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Etusivu</a></li>
+                    <li><a href="#about">Meistä</a></li>
+                    <li><a href="#services">Palvelut</a></li>
+                    <li><a href="#contact">Yhteystiedot</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Ammattitaitoista maalauspalvelua Porissa ja lähialueilla</h1>
+                <p>Maalaava Oy – Uutta ilmettä kotiisi ja kiinteistöösi pitkällä kokemuksella.</p>
+                <a href="#contact" class="btn">Pyydä ilmainen tarjous</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">Maalaava Oy – Laadun ja kokemuksen merkki</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Maalaava Oy on Porissa toimiva maalauspalveluiden asiantuntija. Tarjoamme laadukkaita ja luotettavia maalauspalveluita niin yksityisille kuin yritysasiakkaillekin, aina pienistä pintaremonteista suuriin kokonaisuuksiin.</p>
+                        <p>Panostamme työssämme tarkkuuteen, kestävään lopputulokseen ja ennen kaikkea asiakastyytyväisyyteen. Olipa mielessäsi kodin sisätilojen uudistus tai kiinteistösi ulkomaalaus, meiltä saat ammattitaitoisen ja joustavan palvelun, joka vastaa tarpeitasi ja ylittää odotuksesi.</p>
+                        <p>Toiminta-alueemme kattaa Porin ja lähikunnat. Luotamme vain parhaisiin materiaaleihin ja vuosien kokemukseemme, jotta voimme taata virheettömän ja kestävän lopputuloksen jokaisessa projektissa.</p>
+                        <a href="#contact" class="btn btn-secondary">Ota yhteyttä</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://source.unsplash.com/random/800x600/?painter,professional,team" alt="Maalaava Oy:n ammattilaiset työssään">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Palvelumme</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="https://source.unsplash.com/random/400x300/?interior,paint,room" alt="Sisämaalaus">
+                        <div class="service-card-content">
+                            <h3>Sisämaalaus</h3>
+                            <p>Annamme uuden elämän kotisi pinnoille. Huolellinen pohjatyö ja laadukkaat maalit takaavat kestävän ja kauniin lopputuloksen jokaiseen huoneeseen.</p>
+                            <a href="#contact" class="btn">Pyydä tarjous</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://source.unsplash.com/random/400x300/?exterior,house,paint" alt="Ulkomaalaus">
+                        <div class="service-card-content">
+                            <h3>Ulkomaalaus</h3>
+                            <p>Suojaa ja kaunista kiinteistösi julkisivua. Ammattitaitoisesti toteutettu ulkomaalaus pidentää rakennuksen ikää ja parantaa sen ulkonäköä vuosiksi eteenpäin.</p>
+                            <a href="#contact" class="btn">Pyydä tarjous</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://source.unsplash.com/random/400x300/?wallpaper,pattern,design" alt="Tapetointi">
+                        <div class="service-card-content">
+                            <h3>Tapetointi</h3>
+                            <p>Tuo persoonallisuutta ja tyyliä kotiisi valitsemallasi tapetilla. Asennamme tapetit huolellisesti ja tarkasti, jotta lopputulos on virheetön ja kestävä.</p>
+                            <a href="#contact" class="btn">Pyydä tarjous</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://source.unsplash.com/random/400x300/?renovation,house,construction" alt="Pintaremontit">
+                        <div class="service-card-content">
+                            <h3>Pintaremontit</h3>
+                            <p>Kattavat pintaremontit lattiasta kattoon. Uudistamme tilat toiveidesi mukaisesti, aina suunnittelusta viimeistelyyn saakka, luotettavasti ja tehokkaasti.</p>
+                            <a href="#contact" class="btn">Pyydä tarjous</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://source.unsplash.com/random/400x300/?roof,painting,maintenance" alt="Kattomaalaus">
+                        <div class="service-card-content">
+                            <h3>Kattomaalaus</h3>
+                            <p>Katon maalaus parantaa rakennuksen energiatehokkuutta ja suojaa sitä sään vaikutuksilta. Asiantunteva kattomaalaus säästää kustannuksia pitkällä aikavälillä.</p>
+                            <a href="#contact" class="btn">Pyydä tarjous</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://source.unsplash.com/random/400x300/?facade,restoration,paint" alt="Julkisivumaalaus">
+                        <div class="service-card-content">
+                            <h3>Julkisivumaalaus</h3>
+                            <p>Kaunis ja kestävä julkisivu nostaa kiinteistösi arvoa ja suojaa rakenteita. Toteutamme julkisivumaalaukset huolellisesti ja ammattitaidolla.</p>
+                            <a href="#contact" class="btn">Pyydä tarjous</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta-banner" class="cta-banner">
+            <div class="container">
+                <h2>Haluatko uudistaa kotisi ilmettä?</h2>
+                <p>Ota yhteyttä Maalaava Oy:hyn ja pyydä ilmainen arvio remonttitarpeestasi. Olemme valmiina auttamaan sinua luomaan unelmiesi tilan Porissa ja lähialueilla.</p>
+                <a href="#contact" class="btn">Pyydä tarjous jo tänään!</a>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Ota yhteyttä</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Maalaava Oy</h3>
+                        <p><strong>Sähköposti:</strong> <a href="mailto:info@maalaava.fi">info@maalaava.fi</a></p>
+                        <p><strong>Puhelin:</strong> <a href="tel:+358401234567">0401234567</a></p>
+                        <p><strong>Toimialue:</strong> Pori ja lähialueet</p>
+                        <p>Olemme valmiina vastaamaan kysymyksiisi ja auttamaan sinua projektisi kanssa!</p>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Lähetä meille viesti</h3>
+                        <!-- A real contact form would typically involve backend processing. This is a static HTML example. -->
+                        <form action="#" method="POST">
+                            <label for="name">Nimi:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email">Sähköposti:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="message">Viesti:</label>
+                            <textarea id="message" name="message" required></textarea>
+
+                            <button type="submit" class="btn">Lähetä viesti</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 Maalaava Oy. Kaikki oikeudet pidätetään.</p>
+            <p>Pori, Suomi</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
