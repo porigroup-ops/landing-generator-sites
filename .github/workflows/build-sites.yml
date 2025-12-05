@@ -1,0 +1,43 @@
+name: Build sites from specs
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'site_specs/*.json'
+
+jobs:
+  build-sites:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build all specs
+        run: |
+          if [ ! -d site_specs ]; then exit 0; fi
+          for file in site_specs/*.json; do
+            [ -e "$file" ] || continue
+            echo "Building $file"
+            node build.js "$file"
+          done
+
+      - name: Commit built sites
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "Build sites from specs [skip ci]"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
