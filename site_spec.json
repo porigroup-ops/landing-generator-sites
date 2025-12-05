@@ -1,0 +1,32 @@
+{
+  "slug": "testi-firma",
+  "pageTitle": "Testi Firma | Esittelysivu",
+  "companyName": "Testi Firma Oy",
+  "hero": {
+    "title": "Moderni kotisivu yrityksellesi",
+    "text": "Tarjoamme laadukkaita kotisivuratkaisuja pienille yrityksille automaatiolla.",
+    "cta": "Ota yhteyttä",
+    "imagePath": "https://source.unsplash.com/featured/?office,minimal",
+    "imageAlt": "Moderni toimisto"
+  },
+  "services": {
+    "title": "Palvelumme",
+    "cards": [
+      {
+        "title": "Kotisivut",
+        "text": "Rakennamme modernit ja nopeammat sivut kuin kilpailijat."
+      },
+      {
+        "title": "Automaatio",
+        "text": "Aikaa säästävät integraatiot ja taustaprosessit."
+      }
+    ]
+  },
+  "about": {
+    "title": "Keitä olemme?",
+    "text": "Olemme Suomalainen yritys joka tekee automaattisesti kotisivuja yrityksille."
+  },
+  "contact": {
+    "text": "Sähköposti: yritys@example.com"
+  }
+}
