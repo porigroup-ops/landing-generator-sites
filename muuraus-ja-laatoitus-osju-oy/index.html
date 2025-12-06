@@ -1,0 +1,674 @@
+Tässä moderni, selkeä ja responsiivinen yhden sivun HTML5+CSS-kotisivu "Muuraus ja laatoitus Osju Oy" -yritykselle, perustuen antamiisi ohjeisiin ja kuvitteelliseen vanhaan HTML-sivuun, josta tiedot on poimittu.
+
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muuraus ja laatoitus Osju Oy – Laadukkaat Laatoituspalvelut Porissa</title>
+    <meta name="description" content="Ammattitaitoiset laatoitus- ja muurauspalvelut Porissa ja lähialueilla. Osju Oy tarjoaa kestäviä ja kauniita ratkaisuja kotiisi tai yrityksellesi.">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Yleiset säännöt */
+        :root {
+            --primary-color: #007bff; /* Esimerkiksi sininen */
+            --secondary-color: #343a40; /* Tumma harmaa */
+            --accent-color: #28a745; /* Vihreä korostus */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #212529;
+            --white: #fff;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: 1rem; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navigaatio */
+        .navbar {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .navbar-brand {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar-nav li {
+            margin-left: 2rem;
+        }
+
+        .navbar-nav a {
+            color: var(--white);
+            font-weight: 400;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .navbar-nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero-osio */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/1600x900/?tiling,bathroom,modern') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 1.5rem;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Palvelut-osio */
+        .services {
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .service-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+
+        .service-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-item ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .service-item ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .service-item ul li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Miksi valita meidät -osio */
+        .why-us {
+            background-color: var(--white);
+            padding-bottom: 4rem;
+        }
+
+        .why-us-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2.5rem;
+        }
+
+        .why-us-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .why-us-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .why-us-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .why-us ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1.5rem;
+        }
+
+        .why-us ul li {
+            margin-bottom: 1rem;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .why-us ul li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Hinnasto-osio */
+        .pricing {
+            background-color: var(--light-bg);
+            padding-bottom: 4rem;
+        }
+
+        .pricing table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden; /* For rounded corners */
+        }
+
+        .pricing th, .pricing td {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pricing th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pricing tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .pricing tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .pricing .note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        /* Yhteydenotto ja lomake -osio */
+        .contact {
+            background-color: var(--white);
+            padding-bottom: 4rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info strong {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info .social-links {
+            margin-top: 1.5rem;
+        }
+
+        .contact-info .social-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        .contact-info .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .contact-form h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        
+        .form-group .checkbox-label {
+            display: inline-block;
+            font-weight: normal;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+            }
+            .navbar-nav {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar-nav li {
+                margin: 0.5rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .why-us-content {
+                flex-direction: column;
+            }
+            .why-us-image {
+                order: -1; /* Image first on mobile */
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .hero {
+                padding: 4rem 1rem;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .pricing th, .pricing td {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            .service-item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">Osju Oy</a>
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="#palvelut">Palvelut</a></li>
+                    <li><a href="#miksi-me">Miksi meidät?</a></li>
+                    <li><a href="#hinnasto">Hinnasto</a></li>
+                    <li><a href="#yhteydenotto">Yhteydenotto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Muuraus ja laatoitus Osju Oy</h1>
+                <p>Ammattitaitoista ja luotettavaa laatoitusosaamista Porissa – luomme kestäviä ja kauniita pintoja toiveidesi mukaan.</p>
+                <a href="#yhteydenotto" class="btn">Pyydä maksuton tarjous!</a>
+            </div>
+        </section>
+
+        <section id="palvelut" class="services container">
+            <h2 class="text-center">Palvelumme Porin seudulla</h2>
+            <p class="text-center">Tarjoamme kattavat laatoitus- ja muurauspalvelut niin koteihin kuin yritystenkin tarpeisiin.</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Laatoitustyöt</h3>
+                    <p>Monipuoliset laatoituspalvelut, asiantuntevasti toteutettuina:</p>
+                    <ul>
+                        <li>Kylpyhuoneet ja saunatilojen laatoitukset</li>
+                        <li>Keittiön välitilojen modernisointi</li>
+                        <li>Lattialaatoitukset (eteiset, kodinhoitohuoneet)</li>
+                        <li>Ulkotilojen laatoitukset (parvekkeet, terassit)</li>
+                        <li>Suuret kohteet, yritykset ja julkiset tilat</li>
+                        <li><strong>Märkätilasertifioidut vesieristykset</strong></li>
+                        <li>Vanhojen laattojen purku ja pohjatyöt</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Muuraustyöt</h3>
+                    <p>Laadukkaat muurauspalvelut kestävään rakentamiseen:</p>
+                    <ul>
+                        <li>Takkojen ja hormien ammattitaitoiset muuraukset</li>
+                        <li>Seinämuuraukset (esim. tiili, harkko)</li>
+                        <li>Pienemmät korjausmuurausprojektit</li>
+                        <li>Räätälöidyt muurausratkaisut</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="miksi-me" class="why-us container">
+            <h2 class="text-center">Miksi valita Muuraus ja laatoitus Osju Oy?</h2>
+            <div class="why-us-content">
+                <div class="why-us-text">
+                    <p>Osju Oy on Porissa ja lähiympäristössä toimiva luotettava perheyritys, jolla on jo yli 15 vuoden kokemus laatoitus- ja muuraustöistä.</p>
+                    <p>Panostamme tinkimättömään laatuun, asiakaslähtöiseen palveluun ja kestäviin lopputuloksiin. Kun valitset meidät, voit odottaa:</p>
+                    <ul>
+                        <li><strong>Tarkkaa työnjälkeä:</strong> Jokainen projekti viimeistellään huolellisesti ja ammattitaidolla.</li>
+                        <li><strong>Luotettavaa palvelua:</strong> Pidämme kiinni aikatauluista ja sovituista asioista.</li>
+                        <li><strong>Asiakastyytyväisyyttä:</strong> Kuuntelemme toiveitasi ja pyrimme ylittämään odotuksesi.</li>
+                        <li><strong>Parhaita materiaaleja:</strong> Käytämme vain laadukkaita, kestäviä tuotteita.</li>
+                        <li><strong>Kattavaa osaamista:</strong> Hallitsemme sekä pienet korjaukset että suuret urakat.</li>
+                    </ul>
+                </div>
+                <div class="why-us-image">
+                    <img src="https://source.unsplash.com/800x600/?construction,tiles,skilled-worker" alt="Ammattitaitoinen laatoittaja työssään">
+                </div>
+            </div>
+        </section>
+
+        <section id="hinnasto" class="pricing container">
+            <h2 class="text-center">Hinnasto (suuntaa-antava)</h2>
+            <p class="text-center">Tarjoamme aina tarkan tarjouksen kohteesi yksityiskohtien perusteella. Alla on esimerkkihintoja yleisimmistä palveluistamme.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Palvelu</th>
+                        <th>Hinta-arvio (sis. ALV 24%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kylpyhuoneen laatoitus (pieni, n. 5-7 m²)</td>
+                        <td>Alk. 1200 € (sis. työn ja vesieristeet)</td>
+                    </tr>
+                    <tr>
+                        <td>Keittiön välitilan laatoitus</td>
+                        <td>Alk. 350 €</td>
+                    </tr>
+                    <tr>
+                        <td>Lattialaatoitus (esim. eteinen, n. 3-5 m²)</td>
+                        <td>Alk. 500 €</td>
+                    </tr>
+                    <tr>
+                        <td>Tuntiveloitus (pienet työt, minimi 2h)</td>
+                        <td>55 €/h</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">Huom! Hinnat eivät yleensä sisällä itse laattoja tai kiinnityslaasteja, ellei toisin erikseen sovita. Kaikki hinnat sisältävät arvonlisäveron. Pyydä aina sitova tarjous omasta kohteestasi!</p>
+        </section>
+
+        <section id="yhteydenotto" class="contact container">
+            <h2 class="text-center">Ajanvaraus & Yhteydenotto</h2>
+            <p class="text-center">Ota meihin yhteyttä helposti puhelimitse, sähköpostilla tai täyttämällä alla oleva lomake. Keskustellaan projektistasi ja sovitaan ilmainen arviokäynti!</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Yhteystiedot</h3>
+                    <p>Meidät tavoittaa arkisin:</p>
+                    <p><strong>Puhelin:</strong> <a href="tel:+358401234567">040 123 4567</a></p>
+                    <p><strong>Sähköposti:</strong> <a href="mailto:info@osjuoy.fi">info@osjuoy.fi</a></p>
+                    <p><strong>Toimipiste:</strong> Laatoitustie 1 A, 28100 Pori</p>
+
+                    <strong>Aukioloajat:</strong>
+                    <ul>
+                        <li>Ma-Pe: 8:00 - 16:00</li>
+                        <li>La-Su: Suljettu</li>
+                    </ul>
+
+                    <div class="social-links">
+                        <strong>Seuraa meitä somessa:</strong><br>
+                        <a href="https://facebook.com/osjuoy" target="_blank" aria-label="Osju Oy Facebookissa"><img src="https://img.icons8.com/ios-filled/24/007bff/facebook-new.png" alt="Facebook"></a>
+                        <a href="https://instagram.com/osjuoy" target="_blank" aria-label="Osju Oy Instagramissa"><img src="https://img.icons8.com/ios-filled/24/007bff/instagram-new.png" alt="Instagram"></a>
+                        <!-- Voit lisätä lisää some-linkkejä tästä, tarvittaessa lataa kuvakkeet icons8.com tms. -->
+                    </div>
+                    <div class="why-us-image" style="margin-top: 2rem;">
+                        <img src="https://source.unsplash.com/800x600/?Pori,city,finnish-architecture" alt="Näkymä Porista">
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Jätä tarjouspyyntö / Ota yhteyttä</h3>
+                    <form action="#" method="POST"> <!-- Tässä olisi todellisuudessa back-end endpoint -->
+                        <div class="form-group">
+                            <label for="name">Nimi:</label>
+                            <input type="text" id="name" name="nimi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Sähköposti:</label>
+                            <input type="email" id="email" name="sahkoposti" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Puhelin (valinnainen):</label>
+                            <input type="tel" id="phone" name="puhelin">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Minkälaisesta palvelusta olet kiinnostunut?</label>
+                            <select id="service" name="palvelu">
+                                <option value="laatoitus">Laatoitus</option>
+                                <option value="muuraus">Muuraus</option>
+                                <option value="muu">Muu palvelu / Kysymys</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Viesti / Kuvaus tarpeestasi:</label>
+                            <textarea id="message" name="viesti" rows="6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="consent" name="yhteydenotto" value="kylla" required>
+                            <label for="consent" class="checkbox-label">Haluan, että Osju Oy ottaa minuun yhteyttä.</label>
+                        </div>
+                        <button type="submit" class="btn">Lähetä viesti</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 Muuraus ja laatoitus Osju Oy. Kaikki oikeudet pidätetään.</p>
+    </footer>
+</body>
+</html>
+```
