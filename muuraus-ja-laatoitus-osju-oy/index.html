@@ -1,27 +1,21 @@
+Tässä on moderni, selkeä ja responsiivinen yhden sivun HTML5+CSS-kotisivu "Muuraus ja laatoitus Osju Oy" -yritykselle, perustuen antamaasi vanhaan HTML-sisältöön. Kaikki HTML ja CSS on yhdessä tiedostossa.
+
 ```html
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muuraus ja laatoitus Osju Oy – Laadukkaat Laatoitukset Porissa</title>
-    <meta name="description" content="Muuraus ja laatoitus Osju Oy tarjoaa ammattitaitoisia laatoituspalveluita Porissa ja lähialueilla. Luotettavaa laatua kylpyhuoneisiin, keittiöihin ja muihin tiloihin.">
-    <meta name="keywords" content="laatoitus, muuraus, Pori, Osju Oy, kylpyhuoneremontti, keittiöremontti, laatta-asennus, vedeneristys, saneeraus">
+    <title>Muuraus ja laatoitus Osju Oy – Ammattitaitoiset laatoituspalvelut Porissa</title>
+    <meta name="description" content="Ammattitaitoiset muuraus- ja laatoituspalvelut Porin alueella. Kylpyhuoneremontit, vedeneristykset, takka- ja leivinuunimuuraukset luotettavasti ja laadukkaasti.">
+
+    <!-- Google Fonts for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Yleiset tyylit ja perusasetukset */
-        :root {
-            --primary-color: #0056b3; /* Tumma sininen */
-            --secondary-color: #007bff; /* Kirkkaampi sininen */
-            --accent-color: #28a745; /* Vihreä korostus */
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --dark-bg: #343a40;
-            --white: #fff;
-            --border-radius: 5px;
-            --spacing-unit: 1.5rem;
-        }
-
+        /* Yleiset resetoinnit ja perusasetukset */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -33,530 +27,457 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
+            color: #333;
+            background-color: #f8f8f8;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Kontti sisällön keskittämiseen ja maksimileveyteen */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Otsikot */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; text-align: center; margin-bottom: 1.5em; }
+        h3 { font-size: 1.6em; }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        /* Linkit */
         a {
-            color: var(--secondary-color);
+            color: #3498db;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: var(--primary-color);
+            color: #2980b9;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-unit);
+        /* Napit */
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 5px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
         }
 
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.2rem; }
-        h3 { font-size: 1.8rem; }
-        p { margin-bottom: 1rem; }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-unit);
+        .button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
         }
 
-        section {
-            padding: calc(2 * var(--spacing-unit)) 0;
-            border-bottom: 1px solid #e9ecef;
+        .button-secondary {
+            background-color: #f39c12;
         }
 
-        section:last-of-type {
-            border-bottom: none;
+        .button-secondary:hover {
+            background-color: #e67e22;
         }
 
-        /* Header ja navigointi */
+        /* Navigaatio */
         header {
-            background-color: var(--white);
-            color: var(--primary-color);
-            padding: var(--spacing-unit) 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .navbar {
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Salli rivitys pienillä näytöillä */
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #2c3e50;
         }
 
-        .nav-links {
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center; /* Keskittää linkit pienillä näytöillä */
         }
 
-        .nav-links a {
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 0.5rem 0;
-            display: block;
-            position: relative;
+        nav ul li {
+            margin-left: 25px;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary-color);
-            transition: width 0.3s ease;
+        nav ul li a {
+            color: #555;
+            font-weight: 600;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #3498db;
         }
 
-        /* Hero-intro */
+        /* Sektiot */
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #f2f7fb;
+        }
+
+        /* Hero-osio */
         #hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1549729837-e5470d050587?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfHNlYXJjaHw2fHxyZW5vdmF0aW9uJTIwdG9vbHN8ZW58MHx8fHwxNzE1NDY2OTU3fDA&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
-            color: var(--white);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/1600x900/?tiling,construction,renovation,modern') no-repeat center center/cover;
+            color: #fff;
             text-align: center;
-            padding: calc(4 * var(--spacing-unit)) 0;
+            padding: 150px 20px;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            min-height: 70vh;
+            min-height: 60vh;
         }
 
         #hero h1 {
-            font-size: 4rem;
-            margin-bottom: var(--spacing-unit);
-            color: var(--white);
+            font-size: 3.8em;
+            margin-bottom: 0.2em;
+            color: #fff;
         }
 
         #hero p {
-            font-size: 1.5rem;
-            margin-bottom: calc(2 * var(--spacing-unit));
+            font-size: 1.5em;
+            margin-bottom: 2em;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .btn:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
+            opacity: 0.9;
         }
 
         /* Palvelut-osio */
         #palvelut .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: calc(2 * var(--spacing-unit));
-            margin-top: calc(2 * var(--spacing-unit));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .service-item {
-            background-color: var(--white);
-            padding: calc(1.5 * var(--spacing-unit));
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        #palvelut .service-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #palvelut .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        #palvelut .service-item h3 {
+            color: #3498db;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        #palvelut .service-item ul {
+            list-style: none;
+            text-align: left;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        #palvelut .service-item ul li {
+            padding-left: 25px;
             position: relative;
-            overflow: hidden;
+            margin-bottom: 8px;
         }
 
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+        #palvelut .service-item ul li::before {
+            content: '✓';
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
-
-        .service-item h3 {
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-unit);
-            font-size: 1.5rem;
-        }
-        
-        .service-item p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .service-item img {
-            max-width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-            margin-bottom: var(--spacing-unit);
-        }
-
 
         /* Miksi valita meidät -osio */
-        #miksi-me {
-            background-color: var(--white);
-        }
-
-        .why-choose-us-grid {
+        #miksi-me .reason-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: calc(2 * var(--spacing-unit));
-            margin-top: calc(2 * var(--spacing-unit));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .why-item {
-            background-color: var(--light-bg);
-            padding: calc(1.5 * var(--spacing-unit));
-            border-left: 5px solid var(--secondary-color);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        #miksi-me .reason-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .why-item:hover {
-            transform: translateY(-3px);
+        #miksi-me .reason-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
-        .why-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
+        #miksi-me .reason-item h3 {
+            color: #f39c12;
+            margin-top: 15px;
         }
-        
-        .why-item p {
-            font-size: 0.95rem;
+
+        #miksi-me .reason-item p {
+            font-size: 0.95em;
             color: #555;
+        }
+
+        #miksi-me img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         /* Hinnasto-osio */
         #hinnasto {
             text-align: center;
         }
-        
-        #hinnasto .price-info {
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-            font-size: 1.1rem;
+
+        #hinnasto p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
-        /* Ajanvarausosio */
+        /* Ajanvaraus-osio */
         #ajanvaraus {
             text-align: center;
-            background-color: var(--light-bg);
+        }
+
+        #ajanvaraus p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
         #ajanvaraus .iframe-wrapper {
-            margin-top: calc(2 * var(--spacing-unit));
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            overflow: hidden; /* Piilottaa reunat iframe-upotuksesta */
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         #ajanvaraus iframe {
             width: 100%;
-            height: 600px;
-            border: 0;
-            display: block; /* Poistaa ylimääräisen tilan iframen ympäriltä */
+            height: 600px; /* Säädä tarpeen mukaan */
+            border: none;
+            display: block;
         }
 
-        /* Yhteystiedot */
-        #yhteystiedot {
-            text-align: center;
-        }
-
-        .contact-info-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: calc(1.5 * var(--spacing-unit));
-            margin-top: calc(2 * var(--spacing-unit));
-        }
-
-        .contact-item {
-            background-color: var(--white);
-            padding: var(--spacing-unit);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            min-width: 280px;
+        /* Yhteystiedot-osio */
+        #yhteystiedot .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
             text-align: left;
         }
 
-        .contact-item h3 {
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
+        #yhteystiedot .contact-info-block {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-        
-        .contact-item h3::before {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            margin-right: 0.5rem;
-            vertical-align: middle;
-        }
-        
-        .contact-item.phone h3::before { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007bff"><path d="M6.62 10.79a15.42 15.42 0 0 0 6.59 6.59l2.21-2.21a.996.996 0 0 1 1.07-.21c1.11.37 2.33.58 3.57.58.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 0 1 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1l-2.21 2.21z"/></svg>'); }
-        .contact-item.email h3::before { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007bff"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>'); }
-        .contact-item.address h3::before { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007bff"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>'); }
 
-        .social-media {
-            margin-top: var(--spacing-unit);
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
+        #yhteystiedot .contact-info-block h3 {
+            color: #3498db;
+            margin-bottom: 15px;
         }
-        .social-media a {
-            font-size: 1.8rem;
-            color: var(--text-color);
+
+        #yhteystiedot .contact-info-block p {
+            margin-bottom: 0.5em;
+        }
+
+        #yhteystiedot .contact-info-block ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        #yhteystiedot .contact-info-block ul li {
+            margin-bottom: 8px;
+        }
+
+        #yhteystiedot .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: #555;
             transition: color 0.3s ease;
         }
-        .social-media a:hover {
-            color: var(--secondary-color);
-        }
-        /* Sosiaalisen median ikonit (esim. Font Awesomea käyttäen, mutta tässä SVG-placeholder) */
-        .social-icon {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background-color: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .social-icon:hover {
-            background-color: var(--primary-color);
+
+        #yhteystiedot .social-links a:hover {
+            color: #3498db;
         }
 
-        /* Yhteydenottolomake */
+        /* Yhteydenotto-lomake */
         #yhteydenotto {
-            background-color: var(--light-bg);
+            background-color: #f2f7fb;
         }
-        
-        #yhteydenotto .form-container {
+
+        #yhteydenotto .contact-form {
             max-width: 700px;
             margin: 0 auto;
-            background-color: var(--white);
-            padding: calc(2 * var(--spacing-unit));
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-        .form-group {
-            margin-bottom: var(--spacing-unit);
+        #yhteydenotto .form-group {
+            margin-bottom: 20px;
         }
 
-        .form-group label {
+        #yhteydenotto label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--primary-color);
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ced4da;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus,
-        .form-group input[type="tel"]:focus,
-        .form-group textarea:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-            outline: none;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1.1rem;
+            margin-bottom: 8px;
             font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            color: #555;
         }
 
-        .form-group button:hover {
-            background-color: #004085;
-            transform: translateY(-2px);
+        #yhteydenotto input[type="text"],
+        #yhteydenotto input[type="email"],
+        #yhteydenotto input[type="tel"],
+        #yhteydenotto textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        #yhteydenotto input:focus,
+        #yhteydenotto textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        #yhteydenotto textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark-bg);
-            color: var(--white);
+            background-color: #2c3e50;
+            color: #ecf0f1;
             text-align: center;
-            padding: var(--spacing-unit) 0;
-            font-size: 0.9rem;
-            margin-top: var(--spacing-unit);
+            padding: 40px 20px;
+            font-size: 0.9em;
         }
 
         footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
         }
 
-        footer .social-media {
-            margin-top: 1rem;
-        }
-
-        /* Responsiveness */
+        /* Responsiivisuus */
         @media (max-width: 992px) {
-            #hero h1 {
-                font-size: 3.2rem;
+            h1 { font-size: 3em; }
+            h2 { font-size: 2em; }
+            #hero p { font-size: 1.3em; }
+
+            nav ul {
+                display: none; /* Hide desktop nav */
             }
-            #hero p {
-                font-size: 1.3rem;
+
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            /* Simple mobile nav - stack links vertically */
+            nav.mobile-nav ul {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            nav.mobile-nav ul li {
+                margin: 5px 0;
             }
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.5rem;
-                margin-top: var(--spacing-unit);
-            }
-            .nav-links a {
-                padding: 0.8rem var(--spacing-unit);
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            .nav-links a::after {
-                display: none;
-            }
-            .nav-links a:hover {
-                background-color: var(--light-bg);
-            }
-
-            #hero {
-                min-height: 60vh;
-                padding: calc(3 * var(--spacing-unit)) 0;
-            }
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-            #hero p {
-                font-size: 1.1rem;
-            }
-
-            .service-grid, .why-choose-us-grid, .contact-info-grid {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            #hero { padding: 100px 20px; min-height: 50vh; }
+            #hero p { font-size: 1.1em; }
+            section { padding: 60px 0; }
+            .service-grid, .reason-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-
-            .contact-item {
-                min-width: unset;
-                width: 100%;
-            }
-
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            h3 { font-size: 1.5rem; }
+            #ajanvaraus iframe { height: 400px; }
+            #yhteydenotto .contact-form { padding: 30px; }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                text-align: center;
-                width: 100%;
-                margin-bottom: var(--spacing-unit);
-            }
-            .nav-links {
-                align-items: center;
-            }
-            .nav-links a {
-                padding: 0.8rem 0;
-                text-align: center;
-            }
-            #hero h1 {
-                font-size: 2rem;
-            }
-            #hero p {
-                font-size: 1rem;
-            }
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-            section {
-                padding: var(--spacing-unit) 0;
-            }
-            .contact-info-grid {
-                gap: var(--spacing-unit);
-            }
-            .form-container {
-                padding: var(--spacing-unit);
-            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            #hero { padding: 80px 15px; min-height: 40vh; }
+            #hero p { font-size: 1em; }
+            .button { padding: 12px 20px; font-size: 0.9em; }
+            nav ul li { margin-left: 15px; }
+            nav ul li a { font-size: 0.85em; }
+            #ajanvaraus iframe { height: 300px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container navbar">
-            <a href="#hero" class="logo">Muuraus ja laatoitus Osju Oy</a>
+        <div class="container">
+            <div class="logo">Osju Oy</div>
             <nav>
-                <ul class="nav-links">
-                    <li><a href="#hero">Etusivu</a></li>
+                <ul>
                     <li><a href="#palvelut">Palvelut</a></li>
-                    <li><a href="#miksi-me">Miksi valita meidät</a></li>
-                    <li><a href="#hinnasto">Hinnasto</a></li>
+                    <li><a href="#miksi-me">Miksi me?</a></li>
+                    <li><a href="#hinnasto">Hinnat</a></li>
                     <li><a href="#ajanvaraus">Ajanvaraus</a></li>
                     <li><a href="#yhteystiedot">Yhteystiedot</a></li>
                     <li><a href="#yhteydenotto">Ota yhteyttä</a></li>
@@ -566,173 +487,175 @@
     </header>
 
     <main>
-        <!-- 1) Hero-intro yrityksestä -->
-        <section id="hero" class="container">
-            <div>
-                <h1>Laadukkaat laatoitukset ja muuraukset Porin seudulla</h1>
-                <p>Muuraus ja laatoitus Osju Oy on luotettava kumppanisi kaikkiin laatoitus- ja muuraustarpeisiin Porissa ja lähikunnissa. Ammattitaidolla ja kokemuksella toteutamme unelmien kylpyhuoneet, keittiöt ja muut pintaremontit kestävillä ratkaisuilla.</p>
-                <a href="#yhteydenotto" class="btn">Pyydä ilmainen tarjous!</a>
+        <section id="hero">
+            <div class="container">
+                <h1>Muuraus ja laatoitus Osju Oy</h1>
+                <p>Ammattitaitoista muurausta ja laatoitusta Porissa – yli 20 vuoden kokemuksella!</p>
+                <a href="#yhteydenotto" class="button">Pyydä maksuton tarjousarvio!</a>
             </div>
         </section>
 
-        <!-- 2) Palvelut -->
-        <section id="palvelut" class="container">
-            <h2>Palvelumme</h2>
-            <p>Tarjoamme kattavat laatoitus- ja muurauspalvelut niin yksityisille kuin yritysasiakkaillekin. Panostamme laatuun ja asiakastyytyväisyyteen jokaisessa projektissa.</p>
-            <div class="service-grid">
-                <div class="service-item">
-                    <img src="https://images.unsplash.com/photo-1627916960814-25805562d989?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfHNlYXJjaHw3fHx0aWxpbmclMjB3b3JrfGVufDB8fHx8MTcxNTQ2Njc2OHww&ixlib=rb-4.0.3&q=80&w=1080" alt="Kylpyhuoneen laatoitusta">
-                    <h3>Kylpyhuone- ja saunalaatoitukset</h3>
-                    <p>Toteutamme vesieristykset ja laatoitukset ammattitaidolla, varmistaen tiiviit ja kestävät ratkaisut märkätiloihin. Avaimet käteen -palveluna tai osana suurempaa remonttia.</p>
-                </div>
-                <div class="service-item">
-                    <img src="https://images.unsplash.com/photo-1601760441416-d3b5b1a64e29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfHNlYXJjaHw0OXx8a2l0Y2hlbiUyMHJlbW9kZWxpbmd8ZW58MHx8fHwxNzE1NDY5NTk0fDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Keittiön välitila laatoitusta">
-                    <h3>Keittiöiden ja lattioiden laatoitukset</h3>
-                    <p>Uusimme keittiön välitilat, kodinhoitohuoneet ja lattiat kestävillä sekä tyylikkäillä laatoilla. Valikoimastamme löytyy ratkaisuja jokaiseen makuun ja tarpeeseen.</p>
-                </div>
-                <div class="service-item">
-                    <img src="https://images.unsplash.com/photo-1582268611958-f2ed26e47872?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc1NTJ8MHwxfHNlYXJjaHwzfHxqYmNrfHxlbnwwfHx8fDE3MTU0NjcwNDd8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Muuraustyökaluja">
-                    <h3>Muuraukset ja muut rakennustyöt</h3>
-                    <p>Teemme pienimuotoisia muuraustöitä, kuten takkojen ja hormien pinnoituksia sekä harkkomuurauksia. Kysy myös muista rakentamiseen liittyvistä tarpeista.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3) Miksi valita meidät -->
-        <section id="miksi-me" class="container">
-            <h2>Miksi valita Muuraus ja laatoitus Osju Oy?</h2>
-            <p>Haluamme olla luottamuksesi arvoinen valinta. Panostamme laatuun, aikatauluihin ja asiakaslähtöiseen palveluun.</p>
-            <div class="why-choose-us-grid">
-                <div class="why-item">
-                    <h3>Ammattitaito ja kokemus</h3>
-                    <p>Vuosien kokemus laatoitus- ja muuraustöistä takaa moitteettoman lopputuloksen jokaisessa kohteessa. Koulutetut ammattilaisemme tuntevat parhaat tekniikat ja materiaalit.</p>
-                </div>
-                <div class="why-item">
-                    <h3>Laatu ja kestävyys</h3>
-                    <p>Käytämme ainoastaan laadukkaita, testattuja materiaaleja ja työtapoja, jotka takaavat työmme kestävyyden ja pitkän käyttöiän. Myönnämme työllemme takuun.</p>
-                </div>
-                <div class="why-item">
-                    <h3>Luotettavuus ja aikataulut</h3>
-                    <p>Pidämme kiinni sovitusta ja kunnioitamme asiakkaidemme aikatauluja. Voit luottaa siihen, että projekti valmistuu ajallaan ja sovitun budjetin puitteissa.</p>
-                </div>
-                <div class="why-item">
-                    <h3>Asiakaslähtöinen palvelu</h3>
-                    <p>Kuuntelemme asiakkaidemme toiveita ja tarpeita huolellisesti. Suunnittelemme ratkaisut yhdessä kanssasi, jotta lopputulos vastaa odotuksiasi ja jopa ylittää ne.</p>
-                </div>
-                <div class="why-item">
-                    <h3>Paikallinen toimija Porissa</h3>
-                    <p>Olemme porilainen yritys ja tunnemme paikalliset olosuhteet sekä vaatimukset. Palvelemme joustavasti Porissa ja sen lähialueilla.</p>
-                </div>
-                <div class="why-item">
-                    <h3>Vastuullisuus ja ympäristö</h3>
-                    <p>Huomioimme työssämme ympäristön ja vastuullisuuden. Pyrimme minimoimaan jätteen määrän ja suosimme ympäristöystävällisiä materiaaleja mahdollisuuksien mukaan.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4) Hinnasto -->
-        <section id="hinnasto" class="container">
-            <h2>Hinnasto ja tarjouspyynnöt</h2>
-            <p class="price-info">
-                Laatoitus- ja muuraustyöt ovat aina yksilöllisiä projekteja, joiden hinta määräytyy kohteen vaatimusten, materiaalien ja työn laajuuden mukaan. Tämän vuoksi emme tarjoa kiinteää hinnastoa verkossa.
-            </p>
-            <p class="price-info">
-                Pyydä meiltä ilmainen arviokäynti ja räätälöity tarjous juuri sinun tarpeisiisi! Kartoitamme kohteen paikan päällä ja annamme kilpailukykyisen tarjouksen.
-            </p>
-            <a href="#yhteydenotto" class="btn">Pyydä ilmainen tarjous</a>
-        </section>
-
-        <!-- 5) Ajanvarausosio kalenterin upotuksella -->
-        <section id="ajanvaraus" class="container">
-            <h2>Varaa aika tai pyydä arviokäynti</h2>
-            <p>Voit varata meiltä kätevästi arviokäynnin tai suunnitella projektisi aloitusajankohtaa. Alla olevasta kalenterista näet vapaat ajat tai voit ottaa meihin suoraan yhteyttä.</p>
-            <p>Huom! Tämä on esimerkkikalenteri. Oikean kalenterin tähän saa upottamalla esim. Timma-, Vello- tai Google Calendar -varausnäkymän.</p>
-            <div class="iframe-wrapper">
-                <!-- Esimerkki iframe ajanvarauskalenterille. Korvaa omalla palvelullasi! -->
-                <iframe src="https://calendar.google.com/calendar/embed?src=fi.finnish%23holiday%40group.v.calendar.google.com&ctz=Europe%2FHelsinki"
-                        style="border: 0;" width="100%" height="600" frameborder="0" scrolling="no"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        title="Ajanvarauskalenteri"></iframe>
-            </div>
-        </section>
-
-        <!-- 6) Yhteystiedot -->
-        <section id="yhteystiedot" class="container">
-            <h2>Yhteystiedot</h2>
-            <p>Ota yhteyttä – vastaamme mielellämme kysymyksiisi ja autamme löytämään parhaat ratkaisut!</p>
-            <div class="contact-info-grid">
-                <div class="contact-item phone">
-                    <h3>Puhelin</h3>
-                    <p><a href="tel:+358401234567">040 123 4567</a></p>
-                    <p>Arkisin klo 8:00 - 16:00</p>
-                </div>
-                <div class="contact-item email">
-                    <h3>Sähköposti</h3>
-                    <p><a href="mailto:info@osju.fi">info@osju.fi</a></p>
-                    <p>Vastaamme yleensä 24 tunnin sisällä.</p>
-                </div>
-                <div class="contact-item address">
-                    <h3>Osoite</h3>
-                    <p>Muuraus ja laatoitus Osju Oy</p>
-                    <address>
-                        Esimerkkikatu 123<br>
-                        28100 Pori
-                    </address>
-                </div>
-            </div>
-            <div class="contact-info-grid">
-                <div class="contact-item">
-                    <h3>Tietoja</h3>
-                    <p>Y-tunnus: 1234567-8</p>
-                </div>
-                <div class="contact-item">
-                    <h3>Aukioloajat</h3>
-                    <p>Ma-Pe: 8:00 - 17:00</p>
-                    <p>La-Su: Suljettu (sopimuksen mukaan)</p>
-                </div>
-            </div>
-            <div class="social-media">
-                <p>Seuraa meitä sosiaalisessa mediassa:</p>
-                <a href="https://facebook.com/OsjuOy" target="_blank" rel="noopener noreferrer" class="social-icon">FB</a>
-                <a href="https://instagram.com/OsjuOy" target="_blank" rel="noopener noreferrer" class="social-icon">IG</a>
-                <!-- Jos olisi oikeat ikonit Font Awesome, ne näyttäisivät paremmilta -->
-            </div>
-        </section>
-
-        <!-- 7) Yhteydenottolomake -->
-        <section id="yhteydenotto" class="container">
-            <h2>Lähetä meille viesti</h2>
-            <p>Kysy tarjousta, pyydä lisätietoja tai jätä viesti lomakkeen kautta. Otamme sinuun yhteyttä mahdollisimman pian!</p>
-            <div class="form-container">
-                <form action="#" method="post"> <!-- Toiminnallisuus vaatisi palvelimen puolen käsittelyn -->
-                    <div class="form-group">
-                        <label for="name">Nimi:</label>
-                        <input type="text" id="name" name="name" required>
+        <section id="palvelut">
+            <div class="container">
+                <h2>Palvelumme Porin alueella</h2>
+                <p>Tarjoamme kattavat muuraus- ja laatoituspalvelut niin yksityisille kuin yritysasiakkaillekin. Asiantuntemuksemme kattaa kaiken pienistä korjauksista aina suuriin saneerausprojekteihin asti.</p>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <img src="https://source.unsplash.com/400x300/?tiling,bathroom" alt="Laatoitustöitä kylpyhuoneessa" loading="lazy">
+                        <h3>Laatoitustyöt</h3>
+                        <p>Toteutamme laatoitukset uudis- ja saneerauskohteisiin ammattitaidolla:</p>
+                        <ul>
+                            <li>Kylpyhuoneiden ja saunojen laatoitukset</li>
+                            <li>Keittiöiden ja eteisten laatoitukset</li>
+                            <li>Vedeneristystyöt (sertifioitu tekijä)</li>
+                            <li>Vanhojen laatoitusten purkutyöt ja pohjatöiden tekeminen</li>
+                            <li>Tasoitukset ja lattiavalut</li>
+                        </ul>
+                        <p>Käytämme vain laadukkaita materiaaleja ja varmistamme kestävän lopputuloksen.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Sähköposti:</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="service-item">
+                        <img src="https://source.unsplash.com/400x300/?brickwork,fireplace" alt="Takka muuraus" loading="lazy">
+                        <h3>Muuraustyöt</h3>
+                        <p>Kokeneena muuraajana toteutamme niin perinteiset kuin modernimmatkin muurauskohteet:</p>
+                        <ul>
+                            <li>Takkojen ja leivinuunien muuraukset</li>
+                            <li>Savupiippujen korjaukset ja muuraukset</li>
+                            <li>Piipunhattujen asennukset</li>
+                            <li>Hormisaneeraukset</li>
+                            <li>Pienemmät ulko- ja sisämuuraustyöt</li>
+                        </ul>
+                        <p>Huolellinen työnjälki ja kestävä rakenne ovat meille kunnia-asioita.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Puhelinnumero (valinnainen):</label>
-                        <input type="tel" id="phone" name="phone">
+                    <div class="service-item">
+                        <img src="https://source.unsplash.com/400x300/?renovation,home-repair" alt="Remonttipalveluita" loading="lazy">
+                        <h3>Muut remonttipalvelut</h3>
+                        <p>Tarjoamme laatoitus- ja muuraustöiden lisäksi myös muita pienempiä remonttipalveluita kokonaisvaltaisen palvelun takaamiseksi:</p>
+                        <ul>
+                            <li>Pienet lattia- ja seinäremontit</li>
+                            <li>Parketti- ja laminaattiasennukset</li>
+                            <li>Apua materiaalien valinnassa</li>
+                            <li>Yhteistyö luotettavien kumppaneiden kanssa kattavammissa projekteissa</li>
+                        </ul>
+                        <p>Ota yhteyttä ja keskustellaan remonttitarpeistasi!</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Viesti:</label>
-                        <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section id="miksi-me">
+            <div class="container">
+                <h2>Miksi valita Muuraus ja laatoitus Osju Oy?</h2>
+                <div class="reason-grid">
+                    <div class="reason-item">
+                        <img src="https://source.unsplash.com/800x600/?craftsmanship,precision" alt="Ammattitaitoista työtä" loading="lazy">
+                        <h3>Vankka kokemus ja ammattitaito</h3>
+                        <p>Yli 20 vuoden kokemuksella muuraus- ja laatoitusalalta takaamme asiantuntevan ja korkealaatuisen lopputuloksen jokaiseen projektiin.</p>
                     </div>
-                    <div class="form-group">
-                        <button type="submit">Lähetä viesti</button>
+                    <div class="reason-item">
+                        <img src="https://source.unsplash.com/800x600/?quality,construction" alt="Laadukasta työnjälkeä" loading="lazy">
+                        <h3>Luotettava ja huolellinen työnjälki</h3>
+                        <p>Suoritamme kaikki työt sovitussa aikataulussa, huolellisesti ja viimeistellysti. Tyytyväinen asiakas on toimintamme ydin.</p>
                     </div>
-                </form>
+                    <div class="reason-item">
+                        <img src="https://source.unsplash.com/800x600/?certified,waterproofing" alt="Sertifikaatti vedeneristykseen" loading="lazy">
+                        <h3>Sertifioidut vedeneristykset</h3>
+                        <p>Meillä on märkätilojen vedeneristyssertifikaatti, mikä takaa työn asianmukaisuuden ja kestävyyden vaativimmissakin kohteissa.</p>
+                    </div>
+                    <div class="reason-item">
+                        <img src="https://source.unsplash.com/800x600/?customer-service,consulting" alt="Hyvää asiakaspalvelua" loading="lazy">
+                        <h3>Asiakaslähtöinen palvelu</h3>
+                        <p>Kuuntelemme asiakkaan toiveita ja tarpeita. Tarjoamme maksuttoman arviointikäynnin ja selkeän tarjouksen ilman piilokuluja.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hinnasto">
+            <div class="container">
+                <h2>Hinnasto ja tarjouspyynnöt</h2>
+                <p>Koska jokainen kohde on yksilöllinen, emme käytä kiinteää hinnastoa. Panostamme läpinäkyvään ja kilpailukykyiseen hinnoitteluun, joka perustuu aina kohteen todellisiin tarpeisiin.</p>
+                <p>Pyydä meiltä <strong>maksuton arviointikäynti</strong> kohteeseesi Porin alueella. Tämän jälkeen saat tarkan ja sitovan tarjouksen ilman piilokuluja. Näin varmistamme, että saat parhaan mahdollisen palvelun oikeaan hintaan.</p>
+                <a href="#yhteydenotto" class="button button-secondary">Pyydä tarjous nyt!</a>
+            </div>
+        </section>
+
+        <section id="ajanvaraus">
+            <div class="container">
+                <h2>Varaa aika</h2>
+                <p>Voit varata meiltä maksuttoman arviointikäynnin, konsultaatioajan tai keskusteluajan projektistasi suoraan alla olevasta kalenterista. Valitse sinulle sopiva ajankohta, niin olemme sinuun yhteydessä!</p>
+                <div class="iframe-wrapper">
+                    <!-- Huom: Tämä on esimerkki Googlen kalenterin upotuskoodista. Korvaa omalla, jos sinulla on sellainen. -->
+                    <iframe src="https://calendar.google.com/calendar/embed?src=example%40gmail.com&ctz=Europe%2FHelsinki&dates=20231101/20231130" style="border: 0" width="800" height="600" frameborder="0" scrolling="no" loading="lazy"></iframe>
+                </div>
+                <p style="margin-top: 30px;">Mikäli et löydä sopivaa aikaa, olethan meihin yhteydessä puhelimitse tai lomakkeen kautta.</p>
+            </div>
+        </section>
+
+        <section id="yhteystiedot">
+            <div class="container">
+                <h2>Yhteystiedot</h2>
+                <p>Olemme tavoitettavissa ja autamme mielellämme kaikissa muuraus- ja laatoitustarpeissanne.</p>
+                <div class="contact-grid">
+                    <div class="contact-info-block">
+                        <h3>Osju Oy</h3>
+                        <p><strong>Puhelin:</strong> <a href="tel:+358401234567">040 123 4567</a></p>
+                        <p><strong>Sähköposti:</strong> <a href="mailto:info@osju.fi">info@osju.fi</a></p>
+                        <p><strong>Osoite:</strong> Esimerkkikatu 123, 28100 Pori</p>
+                        <p><strong>Y-tunnus:</strong> 1234567-8</p>
+                    </div>
+                    <div class="contact-info-block">
+                        <h3>Aukioloajat</h3>
+                        <ul>
+                            <li><strong>Ma–Pe:</strong> 8.00–16.00</li>
+                            <li><strong>La–Su:</strong> Suljettu (tai sopimuksen mukaan)</li>
+                        </ul>
+                        <p>Olemme joustavia ja tapaamiset onnistuvat myös muina aikoina sopimuksen mukaan.</p>
+                    </div>
+                    <div class="contact-info-block">
+                        <h3>Seuraa meitä somessa</h3>
+                        <p>Pysy ajan tasalla projekteistamme ja uutisistamme sosiaalisessa mediassa:</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com/OsjuOy" target="_blank" rel="noopener noreferrer">Facebook</a> |
+                            <a href="https://instagram.com/OsjuOy" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </div>
+                        <p style="margin-top: 15px;">(Huom: Nämä ovat esimerkkilinkkejä, korvaa omilla tunnuksillasi.)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="yhteydenotto">
+            <div class="container">
+                <h2>Ota yhteyttä – lähetä viesti</h2>
+                <p>Jätä meille viesti tai tarjouspyyntö alla olevalla lomakkeella. Otamme sinuun yhteyttä mahdollisimman pian!</p>
+                <div class="contact-form">
+                    <form action="#" method="POST"> <!-- Tähän kohtaan tarvitaan palvelinpuolen skripti lomakkeen käsittelyyn. -->
+                        <div class="form-group">
+                            <label for="name">Nimi *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Sähköposti *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Puhelin</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Viesti / Tarjouspyyntö *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="button">Lähetä viesti</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Muuraus ja laatoitus Osju Oy. Kaikki oikeudet pidätetään.</p>
-            <p>Laadukkaat laatoitus- ja muurauspalvelut Porissa.</p>
+            <p>&copy; 2023 Muuraus ja laatoitus Osju Oy. Kaikki oikeudet pidätetään.</p>
         </div>
     </footer>
 </body>
