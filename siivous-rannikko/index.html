@@ -4,597 +4,742 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siivous Rannikko – Ammattitaitoista siivouspalvelua kaikenlaisiin tiloihin</title>
+    <title>Siivous Rannikko – Luotettavat siivouspalvelut Porissa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Yleiset tyylit ja resetointi */
+        /* Yleiset tyylit ja resetit */
+        :root {
+            --primary-color: #007BFF; /* Sininen */
+            --secondary-color: #28A745; /* Vihreä (esim. painikkeille/korostuksille) */
+            --accent-color: #FFC107; /* Keltainen (esim. tähdille/huomioille) */
+            --text-color: #343A40; /* Tummanharmaa */
+            --light-text-color: #6C757D; /* Vaaleampi harmaa */
+            --bg-light: #F8F9FA; /* Vaalea tausta */
+            --bg-dark: #343A40; /* Tumma tausta */
+            --white: #FFFFFF;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f8f8;
+            color: var(--text-color);
+            background-color: var(--white);
             scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
         a {
-            color: #3498db;
+            color: var(--primary-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #2980b9;
+            color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        h4 { font-size: 1.4rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
         .btn {
             display: inline-block;
-            background-color: #3498db;
-            color: #fff;
-            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
             border-radius: 5px;
-            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s ease;
             border: none;
             cursor: pointer;
-            text-align: center;
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            color: var(--white); /* Ensure text color remains white on hover */
         }
 
         .section-padding {
-            padding: 80px 0;
+            padding: 4rem 0;
         }
 
         .text-center {
             text-align: center;
         }
 
-        /* Navigaatio */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        /* Header ja navigointi */
+        .main-header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        header .container {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Salli rivitys pienemmillä näytöillä */
+            flex-wrap: wrap; /* Allow wrapping for mobile */
         }
 
         .logo {
-            font-size: 28px;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--primary-color);
+            margin-right: auto; /* Push menu-toggle to the right on desktop */
+        }
+
+        .logo span {
+            color: var(--text-color);
         }
 
         .main-nav ul {
             list-style: none;
             display: flex;
-            flex-wrap: wrap; /* Salli rivitys */
-            gap: 20px;
         }
 
-        .main-nav a {
+        .main-nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        .main-nav ul li a {
+            color: var(--text-color);
             font-weight: 600;
-            color: #555;
-            padding: 5px 0;
-            position: relative;
         }
 
-        .main-nav a:hover {
-            color: #3498db;
+        .main-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobiilinavigaatio (hamburger) */
+        .menu-toggle {
+            display: none; /* Hidden by default for desktop */
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            border: none;
+            background: transparent;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--text-color);
+            margin: 4px 0;
+            border-radius: 2px;
         }
 
         /* Hero-osio */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?office+cleaning') no-repeat center center/cover;
-            color: #fff;
-            padding: 150px 0;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581578335349-8c5478d3878b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80') no-repeat center center/cover;
+            color: var(--white);
             text-align: center;
+            padding: 8rem 0;
             display: flex;
             align-items: center;
-            min-height: 600px;
+            justify-content: center;
+            min-height: 70vh;
+        }
+
+        .hero-content {
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 56px;
-            margin-bottom: 20px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 22px;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #eee;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--bg-light);
         }
 
         /* Palvelut-osio */
-        #palvelut {
-            background-color: #fff;
-        }
-
-        #palvelut h2 {
-            margin-bottom: 40px;
-            font-size: 38px;
-        }
-
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-top: 3rem;
         }
 
         .service-card {
-            background-color: #f4f7f6;
-            padding: 30px;
+            background-color: var(--bg-light);
+            padding: 2rem;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .service-card h3 {
-            color: #3498db;
-            margin-bottom: 15px;
-            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
-        /* Miksi valita meidät -osio */
-        #miksi-valita-meidt {
-            background-color: #eaf2f8;
-            position: relative;
-            overflow: hidden;
+        .service-card p {
+            color: var(--light-text-color);
+            font-size: 0.95rem;
         }
 
-        #miksi-valita-meidt::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://source.unsplash.com/1600x900/?cleaning') no-repeat center center/cover;
-            opacity: 0.1;
-            z-index: 0;
+        /* Miksi me-osio */
+        .why-choose-us {
+            background-color: var(--bg-light);
+            padding: 6rem 0;
         }
 
-        #miksi-valita-meidt .container {
-            position: relative;
-            z-index: 1;
+        .why-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            align-items: center;
         }
 
-        #miksi-valita-meidt h2 {
-            margin-bottom: 40px;
-            font-size: 38px;
+        .why-content h2 {
+            color: var(--primary-color);
         }
 
-        .usp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            text-align: left;
+        .why-list {
+            list-style: none;
+            padding-left: 0;
         }
 
-        .usp-item {
-            background-color: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-            border-left: 5px solid #3498db;
+        .why-list li {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
         }
 
-        .usp-item h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #2c3e50;
+        .why-list li::before {
+            content: '✓'; /* Or any other icon */
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
         }
 
-        /* Hinnasto ja Ajanvaraus -osiot */
-        #hinnasto, #ajanvaraus {
-            background-color: #fff;
-            padding: 60px 0;
+        .why-image {
             text-align: center;
-            border-bottom: 1px solid #eee;
         }
 
-        #hinnasto h2, #ajanvaraus h2 {
-            font-size: 38px;
-            margin-bottom: 30px;
+        .why-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        #hinnasto p, #ajanvaraus p {
-            font-size: 18px;
+        /* Hinnasto-osio */
+        .pricing-section {
+            background-color: var(--white);
+        }
+
+        .pricing-content {
             max-width: 800px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        /* Yhteystiedot ja Yhteydenottolomake */
-        #yhteystiedot {
-            background-color: #f4f7f6;
+        .pricing-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
-        #yhteystiedot h2 {
-            font-size: 38px;
-            margin-bottom: 40px;
+        /* Ajanvaraus-osio */
+        .booking-section {
+            background-color: var(--bg-light);
+        }
+
+        .booking-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .booking-iframe {
+            width: 100%;
+            height: 600px; /* Adjust as needed */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 2rem;
+            overflow: hidden; /* Hide scrollbars if content is smaller */
+        }
+
+        /* Yhteystiedot-osio */
+        .contact-info {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            padding: 6rem 0;
         }
 
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            color: var(--white);
         }
 
-        .contact-info ul {
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p, .contact-item ul {
+            color: var(--bg-light);
+            font-size: 1.05rem;
+        }
+
+        .contact-item ul {
             list-style: none;
             padding: 0;
         }
 
-        .contact-info li {
-            margin-bottom: 15px;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
+        .contact-item ul li {
+            margin-bottom: 0.5rem;
         }
 
-        .contact-info li strong {
-            display: inline-block;
-            min-width: 100px;
-            color: #2c3e50;
+        .contact-item ul li a {
+            color: var(--bg-light);
         }
-        
-        .contact-info .hours-list li {
-            display: block; /* Aukioloajoille erillinen rivi */
-            margin-bottom: 5px;
+
+        .contact-item ul li a:hover {
+            color: var(--white);
         }
 
         .social-links {
-            margin-top: 30px;
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .social-links a {
-            display: inline-block;
-            font-size: 24px;
-            margin-right: 15px;
-            color: #555;
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #3498db;
+            background-color: var(--secondary-color);
+            color: var(--white); /* Ensure color stays white */
+        }
+        .social-links svg {
+            fill: currentColor; /* Inherit color from parent 'a' tag */
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+
+        /* Ota yhteyttä -lomake */
+        .contact-form-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .contact-form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-wrapper h2 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
         }
 
         .contact-form label {
-            display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #2c3e50;
+            color: var(--text-color);
         }
 
         .contact-form input[type="text"],
         .contact-form input[type="email"],
         .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ced4da;
             border-radius: 5px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 16px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            width: 100%;
         }
 
         .contact-form textarea {
+            min-height: 120px;
             resize: vertical;
-            min-height: 150px;
         }
 
         .contact-form input[type="submit"] {
             width: auto;
-            padding: 12px 30px;
+            align-self: flex-start; /* To keep the button left aligned */
         }
 
         /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 40px 0;
+        .main-footer {
+            background-color: var(--bg-dark);
+            color: var(--white);
             text-align: center;
-            font-size: 14px;
+            padding: 2rem 0;
+            font-size: 0.9rem;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .main-footer p {
+            margin: 0;
+            color: var(--bg-light);
         }
 
-        /* Responsiivisuus */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-            .hero p {
-                font-size: 20px;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-info, .contact-form {
-                margin-bottom: 40px;
-            }
-        }
-
+        /* Responsive design */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
+            .nav-content {
+                flex-direction: row; /* Keep logo and toggle on one row */
+                align-items: center;
+                flex-wrap: wrap; /* Allow nav to wrap below */
             }
-            header .container {
+
+            .logo {
+                flex-grow: 1; /* Allows logo to take space, pushing toggle right */
+                margin-right: 1rem;
+                text-align: left; /* Keep logo left-aligned */
+            }
+
+            .menu-toggle {
+                display: flex; /* Show hamburger menu */
+            }
+
+            .main-nav {
+                flex-basis: 100%; /* Take full width below header items */
                 flex-direction: column;
-                gap: 15px;
+                display: none; /* Hidden by default */
+                margin-top: 1rem;
+                background-color: var(--white);
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                border-radius: 5px;
             }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+            }
+
             .main-nav ul {
                 flex-direction: column;
-                align-items: center;
-                gap: 10px;
+                width: 100%;
+                padding: 1rem 0;
             }
+
+            .main-nav ul li {
+                margin: 0;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #eee;
+            }
+
+            .main-nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .main-nav ul li a {
+                display: block;
+            }
+
             .hero {
-                padding: 100px 0;
-                min-height: 450px;
+                padding: 6rem 0;
             }
+
             .hero h1 {
-                font-size: 38px;
+                font-size: 2.5rem;
             }
+
             .hero p {
-                font-size: 18px;
+                font-size: 1.1rem;
             }
-            .section-padding {
-                padding: 60px 0;
-            }
-            h2 {
-                font-size: 32px !important;
-            }
-            .service-card {
-                padding: 25px;
-            }
-            .usp-grid {
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+
+            .services-grid, .why-grid, .contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .why-image {
+                margin-top: 2rem;
+            }
+
+            .contact-form-wrapper {
+                padding: 2rem;
+                margin: 0 1.5rem; /* Ensure padding on smaller screens */
             }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                font-size: 24px;
-            }
             .hero h1 {
-                font-size: 32px;
+                font-size: 2rem;
             }
             .hero p {
-                font-size: 16px;
-            }
-            h2 {
-                font-size: 28px !important;
+                font-size: 1rem;
             }
             .btn {
-                padding: 10px 20px;
-                font-size: 14px;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
             }
-            .contact-info li {
-                font-size: 16px;
+            .section-padding {
+                padding: 3rem 0;
+            }
+            .logo {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Navigaatio -->
-    <header>
-        <div class="container">
-            <div class="logo">Siivous Rannikko</div>
+    <header class="main-header">
+        <div class="container nav-content">
+            <a href="#hero" class="logo">Siivous <span>Rannikko</span></a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#hero">Etusivu</a></li>
                     <li><a href="#palvelut">Palvelut</a></li>
-                    <li><a href="#miksi-valita-meidt">Miksi valita meidät?</a></li>
+                    <li><a href="#miksi-me">Miksi me?</a></li>
                     <li><a href="#hinnasto">Hinnasto</a></li>
                     <li><a href="#ajanvaraus">Ajanvaraus</a></li>
                     <li><a href="#yhteystiedot">Yhteystiedot</a></li>
+                    <li><a href="#ota-yhteytta">Ota yhteyttä</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero-osio -->
-    <section id="hero" class="hero">
-        <div class="container">
-            <h1>Siivous Rannikko</h1>
-            <p>Ammattitaitoista siivouspalvelua kaikenlaisiin tiloihin Rannikkoseudulla – joustavasti ja luotettavasti.</p>
-            <a href="#yhteystiedot" class="btn">Pyydä ilmainen tarjous!</a>
-        </div>
-    </section>
-
-    <!-- Palvelut-osio -->
-    <section id="palvelut" class="section-padding text-center">
-        <div class="container">
-            <h2>Palvelumme</h2>
-            <p>Tarjoamme kattavia siivouspalveluita niin yksityishenkilöille kuin yrityksillekin. Tutustu palveluihimme ja löydä itsellesi sopivin ratkaisu.</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Kotisiivous</h3>
-                    <p>Säännölliset siivoukset viikoittain tai kahden viikon välein, perusteelliset suursiivoukset, ikkunanpesut ja ylläpitosiivoukset. Koti puhtaaksi ilman stressiä!</p>
-                </div>
-                <div class="service-card">
-                    <h3>Yrityssiivous</h3>
-                    <p>Toimistojen, liiketilojen, teollisuushallien ja muiden yritystilojen siivoukset. Räätälöimme sopimukset yrityksesi tarpeiden mukaan.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Muuttosiivous</h3>
-                    <p>Muuttosiivous helpottaa elämääsi, olitpa sitten muuttamassa sisään tai ulos. Siivoamme asunnon lattiasta kattoon, jotta voit keskittyä muuhun.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Rakennussiivous</h3>
-                    <p>Rakennuskohteiden siivoukset ennen luovutusta. Poistamme pölyn, roskat ja rakennusjätteet varmistaen siistin lopputuloksen.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Erikoissiivoukset</h3>
-                    <p>Desinfiointisiivoukset, allergiasiivoukset ja muut erityistä huomiota vaativat siivoukset. Kysy lisää erikoispalveluistamme.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Taloyhtiösiivous</h3>
-                    <p>Porraskäytävien, yleisten tilojen ja piha-alueiden siivoukset taloyhtiöille. Pidämme huolta asuinkiinteistöjen viihtyvyydestä ja puhtaudesta.</p>
-                </div>
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Siivouspalvelut Porissa ja Lähikunnissa</h1>
+                <p>Luotettavaa, laadukasta ja ympäristöystävällistä siivousta koteihin ja yrityksiin. Anna meidän huolehtia puhtaudesta, jotta sinä voit keskittyä olennaiseen.</p>
+                <a href="#ota-yhteytta" class="btn">Pyydä ilmainen tarjous</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Miksi valita meidät -osio -->
-    <section id="miksi-valita-meidt" class="section-padding text-center">
-        <div class="container">
-            <h2>Miksi valita Siivous Rannikko?</h2>
-            <p>Olemme luotettava kumppanisi kaikissa siivoustarpeissa. Panostamme asiakastyytyväisyyteen ja laadukkaaseen lopputulokseen.</p>
-            <div class="usp-grid">
-                <div class="usp-item">
-                    <h3>Yli 10 vuoden kokemus</h3>
-                    <p>Toimimme vankalla kokemuksella alalta, tunnemme siivouksen parhaat käytännöt.</p>
-                </div>
-                <div class="usp-item">
-                    <h3>Joustavat ja luotettavat</h3>
-                    <p>Tarjoamme räätälöityjä palveluita ja joustavat ajat, jotka sopivat elämääsi ja aikatauluihisi.</p>
-                </div>
-                <div class="usp-item">
-                    <h3>Ympäristöystävälliset tuotteet</h3>
-                    <p>Käytämme ensisijaisesti ympäristöystävällisiä ja tehokkaita puhdistusaineita.</p>
-                </div>
-                <div class="usp-item">
-                    <h3>Kokenut henkilökunta</h3>
-                    <p>Ammattitaitoinen ja luotettava tiimimme varmistaa laadukkaan ja huolellisen siivouksen.</p>
-                </div>
-                <div class="usp-item">
-                    <h3>Asiakaslähtöinen palvelu</h3>
-                    <p>Kuuntelemme asiakkaidemme tarpeita ja pyrimme ylittämään odotukset joka kerta.</p>
-                </div>
-                <div class="usp-item">
-                    <h3>Tyytyväisyystakuu</h3>
-                    <p>Seisomme työmme takana. Jos et ole tyytyväinen, korjaamme asian viipymättä.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hinnasto-osio -->
-    <section id="hinnasto" class="section-padding">
-        <div class="container">
-            <h2>Hinnasto</h2>
-            <p>Palveluidemme hinnat vaihtelevat kohteen koon, siivouksen laajuuden ja säännöllisyyden mukaan. Tavoitteenamme on tarjota kilpailukykyiset hinnat laadusta tinkimättä.</p>
-            <p>Pyydä meiltä aina henkilökohtainen tarjous, joka on räätälöity juuri sinun tarpeisiisi! Näin varmistamme, että saat parhaan mahdollisen palvelun oikeaan hintaan.</p>
-            <a href="#yhteystiedot" class="btn">Pyydä tarjous</a>
-        </div>
-    </section>
-
-    <!-- Ajanvaraus-osio -->
-    <section id="ajanvaraus" class="section-padding" style="background-color: #eaf2f8;">
-        <div class="container">
-            <h2>Varaa aika siivoukselle</h2>
-            <p>Siivouksen varaaminen on helppoa! Voit ottaa meihin yhteyttä puhelimitse tai sähköpostitse, tai täyttää kätevän yhteydenottolomakkeen alempana sivulla.</p>
-            <p>Toistaiseksi käytössämme ei ole suoraa verkkokalenteria, mutta pyrimme vastaamaan kaikkiin tiedusteluihin mahdollisimman pian ja löytämään sinulle sopivan ajan.</p>
-            <a href="#yhteystiedot-lomake" class="btn">Lähetä varauspyyntö</a>
-        </div>
-    </section>
-
-    <!-- Yhteystiedot ja lomake -osio -->
-    <section id="yhteystiedot" class="section-padding">
-        <div class="container">
-            <h2>Ota yhteyttä</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Yhteystiedot</h3>
-                    <ul>
-                        <li><strong>Osoite:</strong> Rantatie 10, 00930 Helsinki</li>
-                        <li><strong>Puhelin:</strong> <a href="tel:0401234567">040 123 4567</a></li>
-                        <li><strong>Sähköposti:</strong> <a href="mailto:info@siivousrannikko.fi">info@siivousrannikko.fi</a></li>
-                        <li><strong>Y-tunnus:</strong> 1234567-8</li>
-                    </ul>
-
-                    <h3>Aukioloajat</h3>
-                    <ul class="hours-list">
-                        <li><strong>Ma–Pe:</strong> 8:00 – 16:00</li>
-                        <li><strong>La:</strong> 9:00 – 14:00 (sopimuksen mukaan)</li>
-                        <li><strong>Su:</strong> Suljettu</li>
-                    </ul>
-
-                    <div class="social-links">
-                        <a href="https://facebook.com/siivousrannikko" target="_blank" aria-label="Facebook">F</a>
-                        <a href="https://instagram.com/siivousrannikko" target="_blank" aria-label="Instagram">I</a>
-                        <a href="https://twitter.com/siivousrannikko" target="_blank" aria-label="Twitter">T</a>
+        <section id="palvelut" class="section-padding">
+            <div class="container text-center">
+                <h2>Palvelumme</h2>
+                <p>Tarjoamme kattavan valikoiman siivouspalveluita kaikkiin tarpeisiin. Räätälöimme palvelut aina asiakkaan toiveiden ja kohteen vaatimusten mukaisesti.</p>
+                <div class="grid services-grid">
+                    <div class="service-card">
+                        <h3>Kotisiivous</h3>
+                        <p>Kattavat kotisiivouspalvelut säännöllisesti tai kertaluontoisesti. Sisältää mm. imuroinnin, lattioiden pesun, pölyjen pyyhinnän sekä keittiön ja kylpyhuoneen puhdistuksen.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Toimistosiivous</h3>
+                        <p>Ylläpidämme puhtautta ja viihtyvyyttä työtiloissa, mikä parantaa työntekijöiden hyvinvointia ja asiakkaiden ensivaikutelmaa. Joustavat sopimussiivoukset yrityksille.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Muuttosiivous</h3>
+                        <p>Huolellinen siivous asunnon vaihtuessa varmistaa, että uusi asukas pääsee muuttamaan puhtaaseen kotiin. Voimme hoitaa myös ikkunanpesut samalla kertaa.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Ikkunanpesu</h3>
+                        <p>Kirkkaat ikkunat antavat valon tulvia sisään. Tarjoamme ikkunanpesua erillisenä palveluna tai osana laajempaa siivouskokonaisuutta.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Erikoissiivoukset</h3>
+                        <p>Haastavammat siivoustehtävät, kuten remonttisiivous, rakennussiivous tai likaisempien kohteiden perusteellinen puhdistus. Kysy rohkeasti lisää!</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="contact-form" id="yhteystiedot-lomake">
-                    <h3>Lähetä meille viesti</h3>
-                    <form action="#" method="POST">
-                        <label for="name">Nimi:</label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="email">Sähköposti:</label>
-                        <input type="email" id="email" name="email" required>
-
-                        <label for="subject">Aihe:</label>
-                        <input type="text" id="subject" name="subject">
-
-                        <label for="message">Viesti:</label>
-                        <textarea id="message" name="message" required></textarea>
-
-                        <input type="submit" value="Lähetä viesti" class="btn">
-                    </form>
+        <section id="miksi-me" class="why-choose-us section-padding">
+            <div class="container grid why-grid">
+                <div class="why-content">
+                    <h2>Miksi valita Siivous Rannikko?</h2>
+                    <p>Siivous Rannikko on Porin ja lähikuntien alueen luotettava kumppani, kun etsit ammattitaitoista ja laadukasta siivousapua. Panostamme jokaiseen yksityiskohtaan varmistaaksemme asiakastyytyväisyyden.</p>
+                    <ul class="why-list">
+                        <li><strong>Ammattitaito:</strong> Kokeneet ja koulutetut siivoojamme takaavat moitteettoman ja laadukkaan lopputuloksen.</li>
+                        <li><strong>Luotettavuus:</strong> Pidämme aina kiinni sovituista ajoista ja lupauksista. Voit luottaa meihin täysin.</li>
+                        <li><strong>Joustavuus:</strong> Räätälöimme palvelut vastaamaan juuri sinun yksilöllisiä tarpeitasi ja aikataulujasi.</li>
+                        <li><strong>Ympäristöystävällisyys:</strong> Käytämme mahdollisuuksien mukaan ekologisia ja turvallisia puhdistusaineita ja -menetelmiä.</li>
+                        <li><strong>Kilpailukykyiset hinnat:</strong> Tarjoamme laadukasta siivousta kohtuulliseen hintaan. Pyydä meiltä tarjous!</li>
+                    </ul>
+                </div>
+                <div class="why-image">
+                    <img src="https://images.unsplash.com/photo-1582234057064-9273f32c6955?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80" alt="Siivous Rannikko toimistosiivous">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
+        <section id="hinnasto" class="pricing-section section-padding">
+            <div class="container pricing-content">
+                <h2>Hinnasto ja tarjouspyyntö</h2>
+                <p>Koska jokainen kohde ja siivoustarve on yksilöllinen, emme tarjoa kiinteää hinnastoa verkossa. Panostamme läpinäkyvään ja kilpailukykyiseen hinnoitteluun, joka perustuu todellisiin tarpeisiisi.</p>
+                <p><strong>Pyydä meiltä ilmainen ja sitoumukseton tarjous!</strong> Keskustellaan yhdessä parhaasta ratkaisusta ja räätälöimme juuri sinulle sopivan palvelukokonaisuuden.</p>
+                <a href="#ota-yhteytta" class="btn">Pyydä tarjous nyt</a>
+            </div>
+        </section>
+
+        <section id="ajanvaraus" class="booking-section section-padding">
+            <div class="container booking-content">
+                <h2>Varaa aika siivoukselle</h2>
+                <p>Haluamme tehdä siivouspalveluiden varaamisesta mahdollisimman helppoa. Voit varata ajan kätevästi alla olevan ajanvarauskalenterin kautta. Valitse sinulle sopiva palvelu ja ajankohta.</p>
+                <!-- Oikea ajanvarauskalenteri upotettaisiin tähän iframe-muodossa. Korvaa "https://example.com/ajanvarauskalenteri" oikealla osoitteella. -->
+                <div class="booking-iframe">
+                    <iframe src="https://example.com/ajanvarauskalenteri" title="Ajanvarauskalenteri Siivous Rannikko" width="100%" height="100%" frameborder="0" loading="lazy" allowfullscreen></iframe>
+                    <p style="margin-top: 1rem; color: var(--light-text-color);"><em>Huom: Tämä on esimerkkikalenteri. Oikea kalenteri upotettaisiin tähän.</em></p>
+                </div>
+                <p style="margin-top: 2rem;">Jos sinulla on erityistoiveita tai et löydä sopivaa aikaa, ota meihin yhteyttä suoraan!</p>
+                <a href="#ota-yhteytta" class="btn">Ota yhteyttä</a>
+            </div>
+        </section>
+
+        <section id="yhteystiedot" class="contact-info">
+            <div class="container grid contact-grid">
+                <div class="contact-item">
+                    <h3>Ota yhteyttä</h3>
+                    <p>Vastaamme mielellämme kysymyksiisi ja autamme löytämään parhaat siivousratkaisut.</p>
+                    <ul class="contact-details">
+                        <li><strong>Puhelin:</strong> <a href="tel:+358401234567">040 123 4567</a></li>
+                        <li><strong>Sähköposti:</strong> <a href="mailto:info@siivousrannikko.fi">info@siivousrannikko.fi</a></li>
+                        <li><strong>Osoite:</strong> Siivoustie 1, 28100 Pori</li>
+                    </ul>
+                </div>
+                <div class="contact-item">
+                    <h3>Aukioloajat</h3>
+                    <p>Palvelemme sinua seuraavasti:</p>
+                    <p>
+                        Ma-Pe: 8:00 - 16:00 <br>
+                        La-Su: Suljettu tai sopimuksen mukaan
+                    </p>
+                    <p>Olemme joustavia ja pyrimme löytämään sopivan ajankohdan myös aukioloaikojen ulkopuolella.</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Seuraa meitä</h3>
+                    <p>Pysy ajan tasalla uutisistamme ja tarjouksistamme sosiaalisessa mediassa!</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/siivousrannikko" target="_blank" rel="noopener noreferrer" aria-label="Siivous Rannikko Facebookissa"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.271 0-4.192 1.543-4.192 4.615v3.385z"/></svg></a>
+                        <a href="https://instagram.com/siivousrannikko" target="_blank" rel="noopener noreferrer" aria-label="Siivous Rannikko Instagramissa"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.772 1.66 4.972 4.912.163 2.14-.023 3.428-.023 3.428s-1.107.037-3.414.037c-2.307 0-3.414-.023-3.414-.023s-1.288.186-3.428-.023c-3.252-.2-4.772-1.72-4.912-4.972-.058-1.266-.07-4.85-.07-4.85zm0 18.06c-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.772-1.66-4.972-4.912-.163-2.14.023-3.428.023-3.428s1.107-.037 3.414-.037c2.307 0 3.414.023 3.414.023s1.288-.186 3.428.023c3.252.2 4.772 1.72 4.912 4.972.058 1.266.07 4.85.07 4.85zm-6.19-12.036c-.466 0-.846.38-.846.846s.38.846.846.846.846-.38.846-.846-.38-.846-.846-.846zm0 0zM12 6.502c-3.033 0-5.497 2.464-5.497 5.497s2.464 5.497 5.497 5.497 5.497-2.464 5.497-5.497-2.464-5.497-5.497-5.497zm0 9.096c-1.986 0-3.606-1.62-3.606-3.606s1.62-3.606 3.606-3.606 3.606 1.62 3.606 3.606-1.62 3.606-3.606 3.606z"/></svg></a>
+                        <a href="https://linkedin.com/company/siivousrannikko" target="_blank" rel="noopener noreferrer" aria-label="Siivous Rannikko LinkedInissä"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ota-yhteytta" class="contact-form-section">
+            <div class="container">
+                <div class="contact-form-wrapper">
+                    <h2>Lähetä meille viesti</h2>
+                    <p class="text-center" style="margin-bottom: 2.5rem; color: var(--light-text-color);">Onko sinulla kysyttävää palveluistamme tai haluatko pyytää tarjouksen? Täytä lomake, niin otamme sinuun yhteyttä mahdollisimman pian.</p>
+                    <div class="contact-form">
+                        <form method="post" name="contact" action="#">
+                            <label for="name">Nimi:</label>
+                            <input type="text" id="name" name="name" required placeholder="Etunimi Sukunimi">
+
+                            <label for="email">Sähköposti:</label>
+                            <input type="email" id="email" name="email" required placeholder="nimi@esimerkki.fi">
+
+                            <label for="phone">Puhelinnumero (vapaaehtoinen):</label>
+                            <input type="text" id="phone" name="phone" placeholder="040 123 4567">
+
+                            <label for="subject">Aihe:</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Esim. Tarjouspyyntö kotisiivouksesta">
+
+                            <label for="message">Viesti:</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Kerro tarpeistasi tarkemmin..."></textarea>
+
+                            <input type="submit" value="Lähetä viesti" class="btn">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2024 Siivous Rannikko. Kaikki oikeudet pidätetään.</p>
-            <p>Ammattitaitoista siivouspalvelua Rannikkoseudulla.</p>
+            <p>&copy; 2023 Siivous Rannikko. Kaikki oikeudet pidätetään.</p>
         </div>
     </footer>
 
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking
+                const nav = document.querySelector('.main-nav');
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+
+        // Toggle mobile navigation
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
 ```
