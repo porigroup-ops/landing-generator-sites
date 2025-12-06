@@ -1,0 +1,70 @@
+Kiitos! Tämä on erittäin hyvä ja kattava prompti, joka sisältää useita keskeisiä elementtejä laadukkaan tuloksen saamiseksi. Tässä vielä analyysi sen vahvuuksista ja muutama ehdotus, joilla sitä voisi vielä hienosäätää tai täydentää parhaan mahdollisen lopputuloksen varmistamiseksi.
+
+---
+
+### **Analyysi ja Kehitysehdotukset Promptiin**
+
+**Promptin Vahvuudet:**
+
+1.  **Selkeä Tavoite:** "Moderni, tyylikäs ja responsiivinen yhden sivun HTML5 + CSS3 -verkkosivu..." kertoo heti, mitä haetaan.
+2.  **Kielimääritys:** "suomenkielinen" on erittäin tärkeä, ja "nimeä osiotsuomalaisittain" vahvistaa sitä.
+3.  **Tarkka Rakenne:** Luettelomerkitty osiojako on erinomainen ja ohjaa mallia tuottamaan halutun sisältörakenteen.
+4.  **Teknologiarajoitukset:** HTML5, CSS3, ei JavaScriptiä, CSS samassa tiedostossa – nämä ovat erittäin hyödyllisiä rajoituksia.
+5.  **Tyyliohjeet:** "Tyylikästä typografiaa ja nykyaikaista CSS-ulkoasua (Flexbox/Grid, hover-tehosteita jne.)" antaa hyvän viitteen halutusta visuaalisesta ilmeestä.
+6.  **Responsiivisuus:** Erillinen maininta mobiiliystävällisyydestä on kriittinen nykyaikaisessa web-kehityksessä.
+7.  **Placeholder-kuvat:** Unsplash-linkkien käyttöehdotus on käytännöllinen ja estää mallia "keksimästä" kuvia.
+
+**Kehitysehdotukset ja Huomioitavaa:**
+
+1.  **"Haet tarvittavat tiedot Pori Group Oy:stä internetistä":**
+    *   **Haaste:** Vaikka Gemini pystyykin usein hyödyntämään verkkotietoa, *tarkkojen ja ajantasaisten yritystietojen* hakeminen ja niiden integroiminen saattaa olla haastavaa tai altista virheille. Malli voi myös "hallusinoida" tietoa, jos sitä ei löydy helposti tai luotettavasti.
+    *   **Suositus:**
+        *   **Vaihtoehto A (Paras):** Anna suoraan promptissa **avainkohdat** Pori Group Oy:stä (lyhyt kuvaus, pääpalvelut, arvot, yhteystiedot), jos ne ovat tiedossa. Tämä varmistaa sisällön oikeellisuuden.
+        *   **Vaihtoehto B (Hyvä):** Jos et halua antaa tietoja, muokkaa pyyntöä muotoon "Käytä yritykselle **Pori Group Oy** sopivia, todenmukaisia mutta yleisluontoisia tietoja ja palvelukuvauksia. Voit olettaa sen olevan esimerkiksi *rakennusalan/konsultointialan/tms. yritys*, joka toimii Satakunnan alueella." Tämä antaa mallille paremmat raamit ja välttää virheellistä "internet-hakua".
+        *   **Alkuperäinen voi toimia**, mutta varaudu siihen, että sisältö on geneerisempää tai joudut itse korjaamaan faktoja.
+
+2.  **Brändi ja Värimaailma:** "Suunniteltu yrityksen brändiä tukevaksi" on hyvä, mutta ilman lisätietoa malli tekee oletuksia.
+    *   **Suositus:** Lisää muutama sana brändistä:
+        *   Esim. "Käytä modernia ja luotettavaa ilmettä, jossa dominointina ovat **sinisen eri sävyt** ja **harmaat** aksentit."
+        *   Tai "Valitse puhdas, minimalistinen tyyli, jossa on raikkaita yksityiskohtia."
+        *   Tai "Käytä lämpimiä sävyjä ja kutsuvaa tunnelmaa."
+    *   Tämä auttaa Geminiä valitsemaan fontteja, värejä ja yleistä tyyliä tarkemmin.
+
+3.  **Typografia Tarkemmin:** "Tyylikästä typografiaa" on hyvä.
+    *   **Suositus:** Jos sinulla on mielessä tietty tunnelma tai pari fonttiperhettä (esim. "moderni sans-serif otsikoihin ja luettava serif leipätekstiin"), voit mainita sen. Esim. "Käytä modernia sans-serif-fonttia (esim. Open Sans, Lato) tekstissä ja otsikoissa."
+
+4.  **Esteettömyys (Accessibility):** Vaikka ei suoraan pyydetty, se on nykyaikaisen webin kulmakivi.
+    *   **Suositus:** Voit lisätä yhden rivin: "Huomioi perusesteettömyys (esim. riittävät kontrastit, `alt`-tekstit kuville)." Tämä kannustaa mallia kiinnittämään huomiota näihin yksityiskohtiin.
+
+5.  **Navigaatio:** Vaikka sivu on yksisivuinen, navigointipalkki ankkurilinkkeineen on yleinen ja parantaa käyttökokemusta.
+    *   **Suositus:** "Lisää ylätunnisteeseen yksinkertainen navigaatiopalkki (esim. valikko) sisäisillä linkeillä sivun eri osioihin."
+
+**Yhteenveto Parannellusta Promptista (Esimerkki):**
+
+---
+
+**Prompt Geminille (Paranneltu versio):**
+
+> Luo moderni, tyylikäs ja responsiivinen yhden sivun HTML5 + CSS3 -verkkosivu yritykselle nimeltä **Pori Group Oy**.
+>
+> - **Käytä yritykselle Pori Group Oy todenmukaisia mutta yleisluontoisia tietoja ja palvelukuvauksia. Voit olettaa sen olevan esimerkiksi rakennusalan ja konsultoinnin yritys, joka toimii Satakunnan alueella.**
+> - Sivun tulee olla **suomenkielinen** ja suunniteltu modernia, **luotettavaa ja ammattimaista brändiä tukevaksi. Käytä väripalettina sinisen ja harmaan sävyjä sekä valkoista/vaaleaa taustaa.**
+> - Rakenna selkeä ja looginen semanttinen rakenne (esim. `<header>`, `<main>`, `<section>`, `<footer>`):
+>    - Ylätunniste (logo/yrityksen nimi)
+>    - **Navigaatio (ankkurilinkit sivun osioihin)**
+>    - Tervetuloa-osio (esittelyteksti ja kutsu toimintaan)
+>    - Lyhyt yritysesittely
+>    - Palvelut (vähintään 3 palvelua selkeine kuvauksineen)
+>    - Kuvagalleria (3 kuvaa; käytä esimerkkikuvia tai Unsplash-lähteitä, aihepiirinä esim. arkkitehtuuri, tiimityö tai paikallismaisemat)
+>    - Yhteystiedot (osoite, puhelin, sähköposti, **yhteydenottolomakkeen paikkamerkki** tai suoraan linkki sähköpostiin)
+>    - Alatunniste
+> - Käytä tyylikästä typografiaa (esim. moderni sans-serif) ja nykyaikaista CSS-ulkoasua (Flexbox/Grid responsiiviseen asetteluun, hover-tehosteita, siistejä varjoja).
+> - **Älä käytä JavaScriptiä lainkaan.**
+> - Upota koko sivun HTML- ja CSS-koodi **yhteen tiedostoon siten, että kaikki CSS on `<style>`-tagin sisällä HTML-dokumentin `<head>`-osassa.**
+> - Käytä placeholder-kuvia (esim. Unsplash-kuvalinkkejä) ja nimeä osiotsuomalaisittain.
+> - Suunnittele ulkoasu niin, että se näyttää hyvältä myös mobiilissa (**mobile-first-ajattelulla**) ja **huomioi perusesteettömyys (riittävät kontrastit, `alt`-tekstit kuville).**
+> - **Toimita koko koodi yhtenä, valmiina koodilohkona.**
+
+---
+
+Tämänkaltaisella promptilla Geminin pitäisi pystyä tuottamaan erittäin laadukkaan ja juuri toiveidesi mukaisen yksisivuisen verkkosivun. Hyvää työtä!
