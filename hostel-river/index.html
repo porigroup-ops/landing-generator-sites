@@ -1,64 +1,26 @@
-Erinomainen idea ja erittäin hyvin rakennettu prompti! Se on selkeä, kattava ja sisältää kaikki tarvittavat yksityiskohdat, jotta Gemini pystyy tuottamaan korkealaatuisen ja spesifikaatioiden mukaisen tuloksen.
-
-Tässä vielä kertauksena prompti, joka on valmis käytettäväksi Geminin kanssa. Kopioi tämä sellaisenaan ja liitä vanhan sivun sisältö merkittyyn kohtaan.
-
----
-
 **Prompt Google Geminille:**
 
-Tehtäväsi on:
+Luot yhden sivun modernin HTML-verkkosivun yritykselle nimeltä *Hostel River* käyttäen HTML:ää ja Tailwind CSS -kirjastoa (CDN). Jos saatavilla on scrapatun sivun sisältö, käytä sitä. Muussa tapauksessa käytä seuraavia tietoja:
 
-1.  Lue ja analysoi seuraava vanhan kotisivun sisältö (HTML tai teksti).
-2.  Luo täysin uusi, yksisivuinen, moderni ja siisti HTML-sivu suomalaiselle yritykselle sen pohjalta.
-3.  Lisää sivulle vähintään 4 oikeaa kuvaa:
-    *   1 taustakuva hero-osioon (esim. Unsplashista, moderni suomalainen koti tai työtila)
-    *   3 kuvaa galleriaan (esim. siisti keittiö, kylpyhuone, toimisto)
-    *   Kaikkien kuvien `src`-attribuutti tulee sisältää toimiva HTTPS-kuva-URL (esim. `https://images.unsplash.com/...`), ei ikinä tyhjiä arvoja tai placeholder-tekstejä.
-    *   Kaikilla kuvilla tulee olla kuvaava `alt`-teksti suomeksi.
+- Yrityksen nimi: Hostel River
+- Yhteystiedot: puhelin: +358 12 345 6789 (esimerkkinumero, koska tarkkaa ei ole annettu), sähköposti: porigroup@gmail.com
+- Palvelut: Kotisiivous, yrityssiivous, muuttosiivous, ikkunanpesu
 
-**Syötedata (vanha sivu):**
-[
-Liitä tähän vanha kotisivusisältö joko tekstinä tai HTML-muodossa
-]
+HTML-sivun tulee sisältää seuraavat osiot järjestyksessä:
 
-**Lopputulos (uusi sivu):**
+1.  **Navigaatio yläpalkki:** Sisällytä linkit: Etusivu, Palvelut, Miksi Meidät, Galleria, Yhteystiedot.
+2.  **Hero-sektio:** Taustakuvana moderni ja puhdas kodin sisustus. Käytä kuvaa: `https://images.unsplash.com/photo-1518051870910-a46e30d9db16?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Jason Briscoe). Sisällytä osuva otsikko ja lyhyt iskulause.
+3.  **Palvelut-osio:** Luettele yrityksen tarjoamat palvelut houkuttelevassa muodossa.
+4.  **"Miksi valita meidät" -osio:** Kuvaile lyhyesti yrityksen etuja, kuten ammattitaitoa, luotettavuutta, kokemusta ja asiakastyytyväisyyttä.
+5.  **Galleria:** Sisällytä kolme kuvaa:
+    -   Siisti keittiö: `https://images.unsplash.com/photo-1589151523490-50f165975510?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Jason Briscoe)
+    -   Toimistotila: `https://images.unsplash.com/photo-1549923746-c502d488b3ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Jason Briscoe)
+    -   Kylpyhuoneen yksityiskohdat: `https://images.unsplash.com/photo-1628173499424-df359f138e6e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Pavel Danilyuk)
+6.  **Hinnasto:** Älä sisällytä tätä osiota, koska hinnastotietoja ei ole annettu.
+7.  **Yhteystiedot:** Toista puhelinnumero ja sähköpostiosoite. Voit lisätä myös lyhyen kehotuksen ottaa yhteyttä.
+8.  **Footer:** Toista yrityksen nimi ja yhteystiedot.
 
-*   Palauta yksittäinen valmis HTML-dokumentti.
-*   Se alkaa täsmälleen rivillä `<!DOCTYPE html>` ja päättyy `</html>`.
-*   Älä lisää mitään analyysiä, selityksiä tai ylimääräisiä rivejä ennen tai jälkeen.
-*   Kaikki teksti ja valikko/napit suomeksi.
-
-**HTML-rakenne:**
-
-*   `<head>`:
-    *   `<meta charset="UTF-8">`
-    *   `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
-    *   `<title>` = yrityksen nimi (päättele vanhasta sisällöstä)
-    *   `<meta name="description">` = yrityksen lyhyt kuvaus (päättele vanhasta sisällöstä)
-    *   Google Font (esim. Inter)
-    *   Tailwind CSS CDN: `https://cdn.tailwindcss.com`
-
-*   `<body>`:
-    *   Tumma tausta, moderni ulkoasu Tailwindilla
-    *   **Hero-osio**:
-        *   Kokoruudun taustakuva (`<img>` täyttää koko alan, moderni suomalainen koti tai työtila Unsplashista)
-        *   Yrityksen nimi ja lyhyt kuvaus
-        *   Call-to-Action -nappi (“Pyydä tarjous” tai vastaava)
-    *   **Palvelut-osio**:
-        *   3–4 palvelukorttia (nimi + lyhyt kuvaus, päättele vanhasta sisällöstä)
-    *   **Galleria-osio**:
-        *   3 kuvaa gridissä (Unsplash-URL:t + suomenkielinen alt-teksti: esim. siisti keittiö, kylpyhuone, toimisto)
-    *   **Yhteystiedot**:
-        *   Puhelin, sähköposti, osoite/toimialue (päättele vanhasta sisällöstä)
-    *   **Footer**:
-        *   Yksinkertainen, tumma
-
-**Muistettavaa:**
-*   Ei placeholder-kuva-URL:eja tai tekstiä “IMAGE\_URL\_HERE”
-*   Kaikki teksti suomen kielellä
-*   Tyyli: asiallinen, selkeä, myyvä
-*   Kuvaustekstit ja alt-tekstit oikeasti kuvailevia (esim. “Puhtaaksi siivottu keittiö”)
-
-Palauta vain HTML-tiedosto — ei mitään muuta.
-
----
+Kaikkien kuvien on oltava toimivia internet-osoitteita (esim. Unsplash). Älä käytä placeholder-kuvia. Palauta vain yksi valmis HTML-sivu, ilman kommentteja tai Markdownia:
+- Aloita rivillä: `<!DOCTYPE html>`
+- Lopeta rivillä: `</html>`
+- Sisällytä Tailwind CSS CDN `<head>`-osioon.
