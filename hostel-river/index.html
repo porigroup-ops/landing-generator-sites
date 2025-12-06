@@ -1,26 +1,93 @@
-**Prompt Google Geminille:**
+Tämä prompt on jo erinomainen pohja! Hion sen vielä tehokkaammaksi Geminille lisäämällä selkeyttä dynamiikan käsittelyyn, vahvistamalla "moderni ja myyvä" -näkökulmaa ja varmistamalla responsiivisuuden sekä semanttisen HTML:n.
 
-Luot yhden sivun modernin HTML-verkkosivun yritykselle nimeltä *Hostel River* käyttäen HTML:ää ja Tailwind CSS -kirjastoa (CDN). Jos saatavilla on scrapatun sivun sisältö, käytä sitä. Muussa tapauksessa käytä seuraavia tietoja:
+---
 
-- Yrityksen nimi: Hostel River
-- Yhteystiedot: puhelin: +358 12 345 6789 (esimerkkinumero, koska tarkkaa ei ole annettu), sähköposti: porigroup@gmail.com
-- Palvelut: Kotisiivous, yrityssiivous, muuttosiivous, ikkunanpesu
+**✨ OPTIMOITU PROMPT GEMINILLE: Moderni yhden sivun HTML+Tailwind-verkkosivu suomeksi ✨**
 
-HTML-sivun tulee sisältää seuraavat osiot järjestyksessä:
+**Tehtäväsi:** Toimi kokeneena web-kehittäjänä ja sisällöntuottajana. Luo täysin valmis, moderni, visuaalisesti houkutteleva ja myyvä yhden sivun responsiivinen HTML-verkkosivu yritykselle suomeksi. Käytä Tailwind CSS -kirjastoa CDN:n kautta kaikkeen tyylittelyyn.
 
-1.  **Navigaatio yläpalkki:** Sisällytä linkit: Etusivu, Palvelut, Miksi Meidät, Galleria, Yhteystiedot.
-2.  **Hero-sektio:** Taustakuvana moderni ja puhdas kodin sisustus. Käytä kuvaa: `https://images.unsplash.com/photo-1518051870910-a46e30d9db16?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Jason Briscoe). Sisällytä osuva otsikko ja lyhyt iskulause.
-3.  **Palvelut-osio:** Luettele yrityksen tarjoamat palvelut houkuttelevassa muodossa.
-4.  **"Miksi valita meidät" -osio:** Kuvaile lyhyesti yrityksen etuja, kuten ammattitaitoa, luotettavuutta, kokemusta ja asiakastyytyväisyyttä.
-5.  **Galleria:** Sisällytä kolme kuvaa:
-    -   Siisti keittiö: `https://images.unsplash.com/photo-1589151523490-50f165975510?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Jason Briscoe)
-    -   Toimistotila: `https://images.unsplash.com/photo-1549923746-c502d488b3ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Jason Briscoe)
-    -   Kylpyhuoneen yksityiskohdat: `https://images.unsplash.com/photo-1628173499424-df359f138e6e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D` (Unsplash, kuvaaja: Pavel Danilyuk)
-6.  **Hinnasto:** Älä sisällytä tätä osiota, koska hinnastotietoja ei ole annettu.
-7.  **Yhteystiedot:** Toista puhelinnumero ja sähköpostiosoite. Voit lisätä myös lyhyen kehotuksen ottaa yhteyttä.
-8.  **Footer:** Toista yrityksen nimi ja yhteystiedot.
+**💡 Tärkeää dynamiikan käsittelyssä:** Käsittele alla mainittuja `${...}` -merkinnöillä varustettuja arvoja kuin ne olisivat jo täytettyjä muuttujia. Älä toista niitä sellaisenaan koodissa, vaan käytä niistä johdettua tai niillä korvattua sisältöä.
 
-Kaikkien kuvien on oltava toimivia internet-osoitteita (esim. Unsplash). Älä käytä placeholder-kuvia. Palauta vain yksi valmis HTML-sivu, ilman kommentteja tai Markdownia:
-- Aloita rivillä: `<!DOCTYPE html>`
-- Lopeta rivillä: `</html>`
-- Sisällytä Tailwind CSS CDN `<head>`-osioon.
+📚 **Käytettävät tietolähteet:**
+
+1.  **Scrapattu vanha sivu (ensisijainen sisältölähde):**
+    *   **Kuvaus:** Tämä sisältää yrityksen vanhan verkkosivun puhdistetun tekstin.
+    *   **Arvo:** `${$('Extract HTML').first().json.cleanText || ''}`
+
+2.  **Yrityksen perustiedot Airtablesta:**
+    *   **Kuvaus:** Keskeiset yritystiedot.
+    *   **Nimi:** `${$json.business_name || $json.name || 'Yrityksen nimi'}`
+    *   **Puhelin:** `${$json.phone || ''}`
+    *   **Sähköposti:** `${$json.email || ''}`
+    *   **Sijainti/toimialue:** `${$json.city || ''}`
+    *   **Toimiala:** `${$json.industry || ''}`
+    *   **Lisäkuvaus:** `${$json.description_prompt || ''}`
+
+🔎 **Sisältölogiikka & Ohjeet:**
+
+*   **Pääsisältö:**
+    *   Jos scrapatun sivun teksti (`${$('Extract HTML').first().json.cleanText}`) **ei ole tyhjä**, käytä sitä pääsisältönä. Uudelleenkirjoita se modernimpaan, myyvämpään muotoon käyttäen aktiivista ääntä, hyötylähtöistä kieltä ja selkeitä toimintakehotuksia.
+    *   Jos scrapattu sisältö **puuttuu**, luo uusi, myyvä sisältö Airtable-tietojen (`$json`) pohjalta.
+*   **Toimiala:** Päättele toimiala **vain annetusta datasta** (`$json.industry`); älä oleta tai keksi toimialaa, ellei dataa ole. Jos toimialaa ei anneta, luo geneerinen, mutta myyvä sisältö oletetun "konsultointi" tai "palveluyritys" -teeman mukaisesti.
+*   **Palvelut:** Jos palvelut puuttuvat scrapatusta tai Airtable-datasta, päättele/luo 3–6 relevanttia palvelua annetun (tai oletetun) toimialan mukaan.
+*   **Kieli:** Kaikki tekstit, otsikot ja painikkeet ehdottomasti suomeksi.
+*   **Myyvyys:** Keskity asiakkaan hyötyihin ja ratkaisuihin. Käytä selkeitä Call-to-Action (CTA) -kehotuksia.
+
+📐 **Rakenna yksi valmis HTML-sivu seuraavilla osioilla (käytä semanttista HTML:ää, kuten `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`):**
+
+1.  **Navigaatiopalkki (kiinteästi yläosassa näkyvä, `fixed` tai `sticky` Tailwindilla):**
+    *   Yrityksen nimi/logo vasemmalla.
+    *   Linkit oikealla: Etusivu, Palvelut, Miksi meidät, Galleria, Yhteystiedot. Kaikkien linkkien tulee ohjata sivun sisäisiin ankkureihin.
+
+2.  **Hero-sektio:**
+    *   **Taustakuva:** Käytä taustana kuvaa [https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2070&auto=format&fit=crop](https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2070&auto=format&fit=crop). Varmista, että tekstin luettavuus säilyy.
+    *   Suuri, myyvä otsikko (Yrityksen nimi tai vaikuttava slogan).
+    *   1–2 lyhyttä, vakuuttavaa kappaletta johdantotekstiä, joka kuvaa yrityksen arvoa asiakkaalle.
+    *   Selkeä ja houkutteleva pääpainike: "Ota yhteyttä" tai "Pyydä tarjous".
+
+3.  **Palvelut-osio:**
+    *   Otsikko: “Palvelut”.
+    *   Listaa 3–6 palvelua. Kullekin palvelulle selkeä otsikko ja lyhyt, hyötyyn keskittyvä kuvaus. Käytä mieluiten grid-asettelua.
+
+4.  **Miksi meidät -osio:**
+    *   Otsikko: “Miksi valita meidät?” tai "Vahvuutemme".
+    *   3–4 vakuuttavaa pointtia yrityksen vahvuuksista, ainutlaatuisista myyntivalteista tai asiakkaan saavuttamista hyödyistä.
+
+5.  **Galleria-osio (3 kuvaa responsiivisessa gridissä):**
+    *   Käytä seuraavia kuvia:
+        *   [Tiimityö](https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1974&auto=format&fit=crop)
+        *   [Moderni toimisto](https://images.unsplash.com/photo-1521791136062-5cbf9b3c8c54?q=80&w=2070&auto=format&fit=crop)
+        *   [Työpiste/läppäri](https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop)
+    *   Varmista, että kuvilla on selkeät, kuvaavat ja toimialaan sopivat alt-tekstit.
+
+6.  **Hinnasto-osio (vain jos scrapatussa datassa on selkeä ja ymmärrettävä hinnoittelurakenne):**
+    *   Jos hinnasto löytyy: Esitä se selkeänä listana tai yksinkertaisena taulukkona.
+    *   **Muussa tapauksessa:** Ohita koko hinnasto-osio kokonaan. Älä luo geneeristä hinnastoa.
+
+7.  **Yhteystiedot-osio:**
+    *   Näytä yrityksen nimi, puhelinnumero ja sähköpostiosoite.
+    *   Lyhyt, rohkaiseva kehotus ottaa yhteyttä (esim. "Ota yhteyttä ja pyydä ilmainen konsultaatio!").
+    *   Mainitse toimialue (`$json.city`) tarvittaessa.
+    *   Lisää painikkeet puhelinsoitolle ja sähköpostille.
+
+8.  **Footer:**
+    *   Yrityksen nimi.
+    *   Copyright-teksti: “© [nykyinen vuosiluku] [Yrityksen nimi]. Kaikki oikeudet pidätetään.”
+
+🎨 **Tekninen toteutus:**
+
+*   **HTML-standardit:** Käytä semanttista HTML:ää.
+*   **Responsiivisuus:** Varmista täysi responsiivisuus kaikilla laitteilla (mobiili, tabletti, desktop) käyttäen Tailwindin responsiivisia luokkia.
+*   **Kieli:** Kaikki tekstit suomeksi.
+*   **Ei kommentteja, ei Markdown-muotoilua:** Tuloksena on **ainoastaan** puhdas HTML-koodi. Älä sisällytä koodikommentteja tai selitystekstejä.
+*   **Täysin valmis HTML-dokumentti:**
+    *   Ensimmäinen rivi: `<!DOCTYPE html>`
+    *   HTML-tagissa määritelty kieli: `<html lang="fi">`
+    *   Lisää `<head>`-osioon meta-tag responsiivisuutta varten: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+    *   Tailwind CSS -scripti `<head>`-osioon:
+        ```html
+        <script src="https://cdn.tailwindcss.com"></script>
+        ```
+    *   Viimeinen rivi: `</html>`
+
+---
