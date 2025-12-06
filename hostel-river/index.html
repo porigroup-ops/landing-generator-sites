@@ -1,641 +1,208 @@
-Koska alkuperäistä, vanhaa HTML-sivua ei annettu pyynnössä, olen luonut oletetun sisällön Hostel Riverille perustuen antamiisi osioihin ja modernin hostellikotisivun yleiseen sisältöön. Tekstit on kirjoitettu sujuvalla suomen kielellä ja niitä on tiivistetty selkeyden vuoksi.
+This is a well-structured and aesthetically pleasing landing page for a cleaning service, utilizing Tailwind CSS effectively for a modern, dark theme. The content is clear and well-organized.
 
-Tässä moderni, responsiivinen yhden sivun HTML5+CSS-kotisivu Hostel Riverille:
+Here's a review with suggestions for improvement, focusing on responsiveness, accessibility, and minor enhancements:
+
+---
+
+### General Observations & Strengths:
+
+*   **Responsive Base:** The use of `max-w-7xl mx-auto`, `md:flex`, `grid`, and `sm:`/`lg:` breakpoints demonstrates good foundational responsiveness.
+*   **Tailwind CSS:** Excellent use of Tailwind for styling, including custom color palettes and fonts.
+*   **Accessibility (Basic):** `alt` attributes for images, `aria-label` for social icons, and semantic HTML elements (`header`, `section`, `footer`, `h1`-`h3`, `ul`) are good.
+*   **Clear Structure:** The page flows logically from hero to services, why us, gallery, pricing, and contact.
+*   **Design:** The dark theme with `primary` blue accents is consistent and professional.
+*   **Scrollbar Styling:** Nice custom scrollbar.
+
+### Areas for Improvement and Suggestions:
+
+#### 1. Mobile Navigation (Critical)
+
+Currently, the `md:flex` on the navigation means the menu completely disappears on smaller screens without a mobile-friendly alternative (like a hamburger menu). This is the most crucial improvement.
+
+**Suggestion:** Implement a basic hamburger menu for smaller screens (e.g., `md` breakpoint and below) that toggles a hidden full-width navigation overlay or dropdown.
+
+**Example (HTML & basic JS):**
+
+*   **HTML (inside `header` div, next to logo):**
+
+    ```html
+    <div class="flex items-center space-x-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 12l2-2m0 0l7-7 7 7m-9 6v6m0-6h4m-4 0H9m6 0h3a1 1 0 001-1V9.41a1 1 0 00-.29-.7l-7-7a1 1 0 00-1.42 0l-7 7A1 1 0 003 9.41V11a1 1 0 001 1h3z" />
+      </svg>
+      <a href="#" class="font-semibold text-lg hover:text-primary">Hostel River</a> <!-- Make logo clickable -->
+    </div>
+
+    <!-- Mobile menu button -->
+    <div class="md:hidden flex items-center">
+      <button id="mobile-menu-button" class="text-white hover:text-primary focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path id="mobile-menu-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <path id="mobile-menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-6 items-center">
+      <!-- ... existing desktop nav links ... -->
+    </nav>
+
+    <!-- Mobile Nav (outside header, or as fixed overlay) -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-darker z-40 flex flex-col items-center justify-center space-y-8 text-xl">
+      <a href="#services" class="hover:text-primary" onclick="closeMobileMenu()">Palvelut</a>
+      <a href="#why-us" class="hover:text-primary" onclick="closeMobileMenu()">Miksi me</a>
+      <a href="#gallery" class="hover:text-primary" onclick="closeMobileMenu()">Galleria</a>
+      <a href="#pricing" class="hover:text-primary" onclick="closeMobileMenu()">Hinnasto</a>
+      <a href="#contact" class="hover:text-primary" onclick="closeMobileMenu()">Ota yhteyttä</a>
+      <a href="#contact" class="px-6 py-3 rounded bg-primary hover:bg-primary-hover text-white font-semibold mt-4" onclick="closeMobileMenu()">Pyydä tarjous</a>
+    </div>
+    ```
+
+*   **JavaScript (at the end of `body` or in a `<script>` tag):**
+
+    ```javascript
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('mobile-menu-icon-open');
+      const iconClose = document.getElementById('mobile-menu-icon-close');
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+      }
+
+      function closeMobileMenu() {
+        if (!mobileMenu.classList.contains('hidden')) {
+          toggleMobileMenu();
+        }
+      }
+
+      mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+      // Close menu when clicking outside (optional, but good UX)
+      // document.addEventListener('click', function(event) {
+      //   if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+      //     toggleMobileMenu();
+      //   }
+      // });
+    </script>
+    ```
+
+#### 2. Accessibility & Semantic HTML Enhancements:
+
+*   **Logo as a Link:** Make the "Hostel River" logo in the header clickable to return to the top of the page (e.g., `#`).
+    ```html
+    <a href="#" class="flex items-center space-x-2">
+      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">...</svg>
+      <span class="font-semibold text-lg">Hostel River</span>
+    </a>
+    ```
+*   **"Why Us" List Icons:** Instead of just "✓" as text, consider using a proper SVG icon for better styling and accessibility. You could use a hidden `<span>` for screen readers and visually style the SVG.
+    ```html
+    <ul class="space-y-4 text-gray-300">
+      <li class="flex items-center">
+        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+        Luotettava ja ammattitaitoinen henkilökunta
+      </li>
+      <!-- ... other list items ... -->
+    </ul>
+    ```
+*   **Focus States:** Ensure all interactive elements (buttons, links, form inputs) have clear focus states for keyboard navigation. Tailwind's default `focus:outline-none` might need to be overridden or paired with `focus:ring` utilities for better visibility. Your current hover states are good, but focus is also important.
+
+#### 3. Performance Enhancements:
+
+*   **Image Optimization:**
+    *   **Lazy Loading:** Add `loading="lazy"` to images that are not immediately visible on page load (e.g., those in the Gallery section) to improve initial page load speed.
+        ```html
+        <img src="..." alt="..." class="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+        ```
+    *   **Responsive Images:** For background images (like the hero), consider using `srcset` or `<picture>` element if you have different resolutions available, or ensure the image size is optimized for web.
+*   **Font Preload:** For critical fonts (like Inter), you might consider preloading them in the `<head>` for a faster first paint, especially if they are large or affect layout significantly.
+    ```html
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin>
+    ```
+
+#### 4. Minor UX/UI & Code Refinements:
+
+*   **Scroll-to-Top Button:** For longer pages, a small, fixed "scroll to top" button (usually in the bottom-right corner) can improve user experience.
+*   **Favicon:** Add a favicon to your `<head>` for branding in browser tabs.
+    ```html
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    ```
+*   **Form Submission:** The `alert()` is fine for a demo, but for a real website, you'd want to handle form submissions more robustly (e.g., send to an email service, a backend API, or a service like Formspree or Netlify Forms).
+*   **Redundant `body` font-family:** The `<style>` block:
+    ```css
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    ```
+    is slightly redundant if you've already configured `fontFamily.sans: ['Inter', 'sans-serif']` in your `tailwind.config.js`, as Tailwind automatically applies `font-sans` to the `body`. You can remove it unless you have a specific reason to override Tailwind's default application.
+*   **Custom Scrollbar Compatibility:** While `::-webkit-scrollbar` works for Webkit browsers (Chrome, Safari, Edge), it won't work in Firefox. If cross-browser custom scrollbars are a must, you'd need additional CSS for `scrollbar-width` and `scrollbar-color`.
+
+#### 5. Code Comments:
+
+*   Adding comments to your custom Tailwind config and complex JavaScript (like the mobile menu) can help maintainability, especially for future developers or yourself.
+
+---
+
+### Revised `head` section (example with favicon and font preload):
 
 ```html
-<!DOCTYPE html>
-<html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel River – Edullinen ja viihtyisä majoitus Porissa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hostel River – Ammattimaista siivousta</title>
+    <meta name="description" content="Hostel River tarjoaa ammattimaista koti- ja yrityssiivousta paikallisesti. Ota yhteyttä ja pyydä ilmainen arvio!" />
+    
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Preload critical fonts for better performance -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0ea5e9',
+              'primary-hover': '#0284c7',
+              dark: '#0f172a',
+              darker: '#020617',
+              surface: '#1e293b',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
     <style>
-        :root {
-            --primary-color: #2c3e50; /* Tummansininen */
-            --secondary-color: #3498db; /* Vaaleansininen */
-            --accent-color: #e67e22; /* Oranssi */
-            --text-color: #333;
-            --light-bg: #f4f7f6;
-            --white: #fff;
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Yleiset tyylit */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--light-bg);
-            scroll-behavior: smooth;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        h1 { font-size: 2.5em; }
-        h2 { font-size: 2em; }
-        h3 { font-size: 1.5em; }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        section {
-            padding: 60px 0;
-            margin-bottom: 20px;
-        }
-
-        section:nth-of-type(even) {
-            background-color: var(--white);
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .btn:hover {
-            background-color: #d35400; /* Tummempi oranssi */
-        }
-
-        /* Navigaatio */
-        .navbar {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar-brand {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.8em;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 25px;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero-osio */
-        #hero {
-            position: relative;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-            overflow: hidden;
-            background-color: var(--primary-color); /* Fallback */
-        }
-
-        #hero img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            filter: brightness(0.6);
-        }
-
-        #hero .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 20px;
-        }
-
-        #hero h1 {
-            color: var(--white);
-            font-size: 3.5em;
-            margin-bottom: 0.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        #hero p {
-            font-size: 1.3em;
-            margin-bottom: 1.5em;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-        }
-
-        /* Palvelut */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-item {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-item h3 {
-            color: var(--secondary-color);
-            margin-top: 15px;
-        }
-
-        /* Miksi valita meidät */
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .why-us-item {
-            background-color: var(--light-bg);
-            padding: 25px;
-            border-left: 4px solid var(--accent-color);
-            border-radius: 5px;
-            box-shadow: var(--shadow);
-        }
-
-        .why-us-item h3 {
-            color: var(--accent-color);
-            margin-bottom: 10px;
-        }
-
-        /* Hinnasto */
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 40px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            overflow: hidden; /* For rounded corners on table */
-        }
-
-        .price-table th, .price-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .price-table th {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .price-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .price-table tr:hover {
-            background-color: #e0e0e0;
-        }
-
-        /* Ajanvaraus */
-        #booking-iframe {
-            width: 100%;
-            height: 600px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            margin-top: 40px;
-        }
-
-        /* Yhteystiedot ja lomake */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-top: 40px;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info p strong {
-            margin-right: 10px;
-            color: var(--primary-color);
-        }
-
-        .contact-info a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin-right: 15px;
-            font-size: 1.8em;
-            color: var(--secondary-color);
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .contact-form {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1em;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact-form input[type="text"]:focus,
-        .contact-form input[type="email"]:focus,
-        .contact-form textarea:focus {
-            border-color: var(--secondary-color);
-            outline: none;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form button {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        }
-
-        .contact-form button:hover {
-            background-color: var(--primary-color);
-        }
-
-        /* Kartta */
-        .map-container {
-            margin-top: 40px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 400px;
-            border: 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 30px 0;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        /* Responsiivisuus */
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none; /* Tai toteuta hampurilaisvalikko */
-            }
-            .navbar .container {
-                justify-content: center;
-            }
-            .navbar-brand {
-                font-size: 1.5em;
-            }
-            #hero h1 {
-                font-size: 2.8em;
-            }
-            #hero p {
-                font-size: 1.1em;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form {
-                margin-top: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            h2 { font-size: 1.7em; }
-            h3 { font-size: 1.3em; }
-
-            .container {
-                padding: 15px;
-            }
-
-            section {
-                padding: 40px 0;
-            }
-
-            #hero {
-                height: 60vh;
-            }
-            #hero h1 {
-                font-size: 2.5em;
-            }
-            #hero p {
-                font-size: 1em;
-            }
-
-            .services-grid, .why-us-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .price-table th, .price-table td {
-                padding: 10px;
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #hero h1 {
-                font-size: 2em;
-            }
-            #hero p {
-                font-size: 0.9em;
-            }
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9em;
-            }
-            .navbar-brand {
-                font-size: 1.3em;
-            }
-        }
+      /* Removing explicit body font-family as Tailwind config handles it */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e293b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #0ea5e9;
+        border-radius: 6px;
+      }
+      /* Optional: Custom scrollbar for Firefox if needed */
+      /* html { scrollbar-width: thin; scrollbar-color: #0ea5e9 #1e293b; } */
     </style>
 </head>
-<body>
-    <header class="navbar">
-        <div class="container">
-            <a href="#" class="navbar-brand">Hostel River</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#hero">Etusivu</a></li>
-                    <li><a href="#palvelut">Palvelut</a></li>
-                    <li><a href="#miksivalita">Miksi meidät?</a></li>
-                    <li><a href="#hinnasto">Hinnasto</a></li>
-                    <li><a href="#ajanvaraus">Ajanvaraus</a></li>
-                    <li><a href="#yhteystiedot">Yhteystiedot</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="hero">
-            <img src="https://source.unsplash.com/1600x900/?hostel,Pori,river" alt="Hostel River Porissa">
-            <div class="hero-content">
-                <h1>Tervetuloa Hostel Riveriin – Kotisi poissa kotoa Porissa!</h1>
-                <p>Koe Pori parhaimmillaan! Edullinen ja viihtyisä majoitus kauniilla jokinäkymällä odottaa sinua. Olitpa sitten matkalla yksin, ystävien kanssa tai perheen kera, meiltä löydät täydellisen tukikohdan kaupunkiin tutustumiseen.</p>
-                <a href="#ajanvaraus" class="btn">Varaa majoitus nyt!</a>
-            </div>
-        </section>
-
-        <section id="palvelut" class="container text-center">
-            <h2>Palvelut Hostel Riverissä</h2>
-            <p>Tarjoamme laajan valikoiman palveluita, jotka tekevät vierailustasi mukavan ja vaivattoman. Prioriteettimme on, että tunnet olosi kotoisaksi ja saat kaiken tarvitsemasi Porin-seikkailuasi varten.</p>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3>Edulliset majoitushuoneet</h3>
-                    <p>Yksityis- ja jaetut huoneet budjetillesi sopivasti. Puhtaat ja viihtyisät tilat takaavat levolliset unet.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Ilmainen Wi-Fi</h3>
-                    <p>Pysy yhteydessä maailmaan nopean ja maksuttoman langattoman internet-yhteyden ansiosta kaikissa tiloissamme.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Jaettu keittiö</h3>
-                    <p>Valmista omat ateriasi täysin varustellussa keittiössämme. Säästä rahaa ja nauti kotiruoasta matkalla!</p>
-                </div>
-                <div class="service-item">
-                    <h3>Yhteinen oleskelutila</h3>
-                    <p>Rentoudu, tapaa muita matkailijoita ja jaa kokemuksia viihtyisässä oleskelutilassamme.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Liinavaatteet ja pyyhkeet</h3>
-                    <p>Ei tarvitse pakata omia! Huolehdimme puhtaista liinavaatteista ja pyyhkeistä jokaista vierasta varten.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Kierrätys- ja pesumahdollisuus</h3>
-                    <p>Huolehdimme ympäristöstä ja tarjoamme mahdollisuuden kierrätykseen sekä pienen lisämaksun vastaan pyykinpesuun.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="miksivalita" class="container text-center">
-            <h2>Miksi valita Hostel River Porissa?</h2>
-            <p>Hostel River tarjoaa ainutlaatuisen yhdistelmän mukavuutta, edullisuutta ja loistavaa sijaintia. Tässä muutama syy, miksi sinun kannattaa valita meidät:</p>
-            <div class="why-us-grid">
-                <div class="why-us-item">
-                    <h3>Erinomainen sijainti</h3>
-                    <p>Sijaitsemme Porin keskustassa Kokemäenjoen rannalla, kävelymatkan päässä tärkeimmistä nähtävyyksistä, ravintoloista ja kaupoista.</p>
-                </div>
-                <div class="why-us-item">
-                    <h3>Ystävällinen ilmapiiri</h3>
-                    <p>Haluamme, että tunnet olosi tervetulleeksi ja viihtyisäksi. Henkilökuntamme auttaa mielellään kaikissa kysymyksissäsi.</p>
-                </div>
-                <div class="why-us-item">
-                    <h3>Paras hinta-laatusuhde</h3>
-                    <p>Tarjoamme kilpailukykyiset hinnat ilman, että tinkisimme puhtaudesta tai mukavuudesta.</p>
-                </div>
-                <div class="why-us-item">
-                    <h3>Paikallistuntemus</h3>
-                    <p>Saamme annettua sinulle parhaat vinkit Porin nähtävyyksistä, tapahtumista ja piilotetuista helmistä.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="hinnasto" class="container text-center">
-            <h2>Majoitushinnasto</h2>
-            <p>Hinnat vaihtelevat sesongin ja kysynnän mukaan. Tarkimman hinnan saat ajanvarausjärjestelmästämme. Alla suuntaa-antavia hintoja:</p>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Huonetyyppi</th>
-                        <th>Alkaen (yö/hlö)</th>
-                        <th>Lisätietoja</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Jaettu huone (makuusali)</td>
-                        <td>30 €</td>
-                        <td>Viihtyisä kerrossänkypaikka, sopii budjettimatkailijoille.</td>
-                    </tr>
-                    <tr>
-                        <td>Yhden hengen huone</td>
-                        <td>55 €</td>
-                        <td>Oma rauha ja mukavuus yksin matkustavalle.</td>
-                    </tr>
-                    <tr>
-                        <td>Kahden hengen huone</td>
-                        <td>75 €</td>
-                        <td>Täydellinen pariskunnille tai kahdelle ystävälle.</td>
-                    </tr>
-                    <tr>
-                        <td>Perhehuone (3-4 hlöä)</td>
-                        <td>95 €</td>
-                        <td>Tilaa ja mukavuutta pienille perheille tai ryhmille.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="margin-top: 20px;">Kaikkiin hintoihin sisältyy liinavaatteet, pyyhkeet ja Wi-Fi.</p>
-            <a href="#ajanvaraus" class="btn">Tarkista saatavuus ja hinnat</a>
-        </section>
-
-        <section id="ajanvaraus" class="container text-center">
-            <h2>Varaa majoituksesi</h2>
-            <p>Varaa majoitus kätevästi alla olevan ajanvarauskalenterin kautta. Valitse haluamasi päivämäärät ja huonetyyppi, ja järjestelmä näyttää saatavilla olevat vaihtoehdot ja hinnat.</p>
-            <!-- Huom: Tämä on geneerinen paikkamerkki iframe-kalenterille. Todellisuudessa tähän upotettaisiin esim. Booking.comin, Hostelworldin tai muun varausjärjestelmän iframe. -->
-            <iframe id="booking-iframe" src="https://example.com/booking-widget-placeholder" title="Hostel River Ajanvarauskalenteri">
-                <p>Selaimesi ei tue upotettuja kehyksiä. Voit varata majoituksen ottamalla meihin yhteyttä suoraan: <a href="mailto:info@hostelriver.fi">info@hostelriver.fi</a></p>
-            </iframe>
-            <p style="margin-top: 20px;">Ongelmia varauksen teossa? Ota meihin yhteyttä puhelimitse tai sähköpostitse.</p>
-        </section>
-
-        <section id="yhteystiedot" class="container">
-            <h2 class="text-center">Ota yhteyttä – Hostel River</h2>
-            <p class="text-center">Onko sinulla kysyttävää? Ota meihin yhteyttä! Autamme mielellämme kaikissa majoitukseen liittyvissä asioissa.</p>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Yhteystiedot</h3>
-                    <p><strong>Osoite:</strong> Satakunnankatu 123, 28100 Pori, Suomi</p>
-                    <p><strong>Puhelin:</strong> <a href="tel:+358401234567">+358 40 123 4567</a></p>
-                    <p><strong>Sähköposti:</strong> <a href="mailto:info@hostelriver.fi">info@hostelriver.fi</a></p>
-                    <p><strong>Aukioloajat:</strong> Vastaanotto avoinna päivittäin klo 8:00 - 22:00. Muina aikoina sopimuksen mukaan.</p>
-                    <div class="social-links" style="margin-top: 20px;">
-                        <h3>Seuraa meitä:</h3>
-                        <a href="https://facebook.com/hostelriverpori" target="_blank" aria-label="Hostel River Facebookissa">Facebook</a>
-                        <a href="https://instagram.com/hostelriverpori" target="_blank" aria-label="Hostel River Instagramissa">Instagram</a>
-                        <!-- Lisää kuvakkeet esim. Font Awesome:sta, jos sallittua. Nyt vain teksti-linkit. -->
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <h3>Lähetä meille viesti</h3>
-                    <form action="#" method="POST">
-                        <label for="nimi">Nimi:</label>
-                        <input type="text" id="nimi" name="nimi" required>
-
-                        <label for="sahkoposti">Sähköposti:</label>
-                        <input type="email" id="sahkoposti" name="sahkoposti" required>
-
-                        <label for="aihe">Aihe:</label>
-                        <input type="text" id="aihe" name="aihe">
-
-                        <label for="viesti">Viesti:</label>
-                        <textarea id="viesti" name="viesti" required></textarea>
-
-                        <button type="submit">Lähetä viesti</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="map-container">
-                <h3>Sijaintimme kartalla</h3>
-                <!-- Upotettu Google Maps kartta (esimerkki Porin keskustasta) -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1576.6025066929458!2d21.791557000000003!3d61.48744549999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4686414777a8344d%3A0xc33e4b7b2a609438!2sPorin%20Kauppatori!5e0!3m2!1sfi!2sfi!4v1701357600000!5m2!1sfi!2sfi" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sijainti kartalla"></iframe>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Hostel River. Kaikki oikeudet pidätetään.</p>
-            <p>Suunniteltu ja toteutettu Porissa.</p>
-        </div>
-    </footer>
-</body>
-</html>
 ```
+
+By implementing these suggestions, especially the mobile navigation, your cleaning service landing page will be more professional, user-friendly, and accessible across a wider range of devices and users.
