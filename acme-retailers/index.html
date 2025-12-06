@@ -1,0 +1,641 @@
+Koska vanhaa HTML-tiedostoa ei ole annettu, luon esimerkkisisällön Acme Retailers -yritykselle New Yorkissa. Olen pyrkinyt laatimaan sisällön niin, että se tuntuu luottamusta herättävältä, selkeältä ja modernilta suomeksi, huomioiden vähittäiskaupan toimialan. Olen poiminut pyydetyt osiot ja kuvat Unsplashista.
+
+Tässä moderni, responsiivinen yhden sivun HTML5+CSS-kotisivu:
+
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acme Retailers – Laadukkaat Vähittäismyyntipalvelut New Yorkissa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Yleiset tyylit ja resetointi */
+        :root {
+            --primary-color: #0056b3; /* Tummempi sininen */
+            --secondary-color: #007bff; /* Perus sininen */
+            --accent-color: #ffc107; /* Keltainen korostus */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+            --white: #fff;
+            --spacing-unit: 1.5rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        section {
+            padding: calc(2 * var(--spacing-unit)) 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-bg);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        h1 { font-size: 3em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 0.8em 1.8em;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navigaatio */
+        .header {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8em;
+            color: var(--dark-bg);
+            text-decoration: none;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu ul li {
+            margin-left: var(--spacing-unit);
+        }
+
+        .nav-menu ul li a {
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu ul li a:hover,
+        .nav-menu ul li a.active {
+            color: var(--secondary-color);
+        }
+
+        /* Hero-osio */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555518776-58352b2f6723?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            color: var(--white);
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 4em;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        #hero p {
+            font-size: 1.5em;
+            margin-bottom: calc(2 * var(--spacing-unit));
+            color: var(--white);
+        }
+
+        /* Palvelut-osio */
+        #palvelut {
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+            margin-top: calc(2 * var(--spacing-unit));
+        }
+
+        .service-item {
+            background-color: var(--white);
+            padding: var(--spacing-unit);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .service-item i {
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-unit);
+        }
+        .service-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Miksi valita meidät -osio */
+        #miksi-me {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+            margin-top: calc(2 * var(--spacing-unit));
+        }
+
+        .why-choose-item {
+            background-color: var(--light-bg);
+            padding: var(--spacing-unit);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .why-choose-item i {
+            font-size: 2.5em;
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .why-choose-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Hinnasto-osio */
+        #hinnasto {
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .pricing-info p {
+            max-width: 800px;
+            margin: 0 auto calc(2 * var(--spacing-unit));
+            font-size: 1.1em;
+        }
+
+        /* Ajanvaraus-osio */
+        #ajanvaraus {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        #ajanvaraus .btn {
+            margin-top: var(--spacing-unit);
+        }
+
+        /* Yhteystiedot */
+        #yhteystiedot {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: calc(2 * var(--spacing-unit)) 0;
+        }
+
+        #yhteystiedot h2 {
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(2 * var(--spacing-unit));
+            margin-top: calc(2 * var(--spacing-unit));
+        }
+
+        .contact-info-item {
+            text-align: center;
+            padding: var(--spacing-unit);
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+
+        .contact-info-item i {
+            font-size: 2em;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-item a {
+            color: var(--white);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            margin-top: calc(2 * var(--spacing-unit));
+            text-align: center;
+        }
+
+        .social-links a {
+            font-size: 2em;
+            margin: 0 0.8rem;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .map-container {
+            margin-top: calc(2 * var(--spacing-unit));
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            height: 400px; /* Kiinteä korkeus kartalle */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Lomake */
+        #lomake {
+            background-color: var(--light-bg);
+        }
+
+        #lomake .container {
+            max-width: 800px;
+        }
+
+        #lomake h2 {
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-unit);
+            margin-top: calc(2 * var(--spacing-unit));
+            padding: calc(2 * var(--spacing-unit));
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-form label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1em;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            align-self: flex-start; /* Nappi vasemmalle */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: var(--spacing-unit) 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsiivisuus */
+        @media (max-width: 992px) {
+            h1 { font-size: 3.5em; }
+            h2 { font-size: 2em; }
+            .nav-menu ul {
+                display: none; /* Piilota navigaatio pienemmillä näytöillä */
+            }
+            .header .container {
+                flex-direction: column;
+            }
+            .logo {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            #hero p { font-size: 1.2em; }
+
+            .service-grid, .why-choose-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            #hero p { font-size: 1em; }
+            .btn {
+                padding: 0.6em 1.2em;
+                font-size: 0.9em;
+            }
+            .social-links a {
+                font-size: 1.5em;
+            }
+            .contact-form .btn {
+                width: 100%; /* Nappi täysleveyteen */
+                align-self: center;
+            }
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Acme Retailers</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#palvelut">Palvelut</a></li>
+                    <li><a href="#miksi-me">Miksi me?</a></li>
+                    <li><a href="#hinnasto">Hinnasto</a></li>
+                    <li><a href="#ajanvaraus">Ajanvaraus</a></li>
+                    <li><a href="#yhteystiedot">Yhteystiedot</a></li>
+                    <li><a href="#lomake">Ota yhteyttä</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero-osio -->
+        <section id="hero">
+            <div class="container">
+                <h1>Acme Retailers</h1>
+                <p>Laadukasta vähittäismyyntiä New Yorkin sykkeessä – aina asiakasta kuunnellen.</p>
+                <a href="#palvelut" class="btn">Tutustu palveluihimme</a>
+            </div>
+        </section>
+
+        <!-- Palvelut-osio -->
+        <section id="palvelut">
+            <div class="container">
+                <h2 class="text-center">Palvelumme</h2>
+                <p class="text-center">Acme Retailers tarjoaa monipuolisia vähittäiskaupan palveluita ja asiakaskokemuksia, jotka on suunniteltu ylittämään odotuksesi. Tavoitteenamme on tehdä ostoksista helppoa, miellyttävää ja vaivatonta.</p>
+
+                <div class="service-grid">
+                    <div class="service-item">
+                        <i class="fas fa-store"></i>
+                        <h3>Laaja tuotevalikoima</h3>
+                        <p>Tarjoamme huolella kuratoidun valikoiman laadukkaita tuotteita johtavilta brändeiltä, varmistaen että löydät aina etsimäsi ja enemmän.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Asiakaslähtöinen palvelu</h3>
+                        <p>Ystävällinen ja asiantunteva henkilökuntamme on sitoutunut tarjoamaan parasta mahdollista palvelua ja opastusta jokaiselle asiakkaalle.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-truck"></i>
+                        <h3>Joustavat toimitusvaihtoehdot</h3>
+                        <p>Tarjoamme nopean kotiinkuljetuksen ja kätevän noutopalvelun, jotta ostoksesi saapuvat perille juuri silloin kun niitä tarvitset.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-undo"></i>
+                        <h3>Helppo palautus- ja vaihtopolitiikka</h3>
+                        <p>Ostaminen on riskitöntä joustavan palautus- ja vaihtopolitiikkamme ansiosta. Tyytyväisyytesi on meille ensiarvoisen tärkeää.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Miksi valita meidät -osio -->
+        <section id="miksi-me">
+            <div class="container">
+                <h2 class="text-center">Miksi valita Acme Retailers?</h2>
+                <p class="text-center">Uskomme, että laatu, palvelu ja luotettavuus ovat avaimia menestyksekkääseen asiakassuhteeseen. Tässä muutamia syitä, miksi olemme New Yorkin suosituin vähittäiskauppa:</p>
+
+                <div class="why-choose-grid">
+                    <div class="why-choose-item">
+                        <i class="fas fa-award"></i>
+                        <h3>Ylivoimainen laatu</h3>
+                        <p>Panostamme tuotteidemme laatuun ja valitsemme vain parhaita tuotteita valikoimaamme, jotta saat aina vastinetta rahoillesi.</p>
+                    </div>
+                    <div class="why-choose-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Erinomainen sijainti</h3>
+                        <p>Liikkeemme sijaitsee kätevästi New Yorkin keskustassa, helppojen kulkuyhteyksien päässä.</p>
+                    </div>
+                    <div class="why-choose-item">
+                        <i class="fas fa-user-friends"></i>
+                        <h3>Kokenut tiimi</h3>
+                        <p>Asiantunteva tiimimme on valmis auttamaan sinua kaikissa kysymyksissä ja löytämään juuri sinulle sopivat ratkaisut.</p>
+                    </div>
+                    <div class="why-choose-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>Vastuullisuus</h3>
+                        <p>Olemme sitoutuneet eettisiin toimintatapoihin ja ympäristöystävällisiin valintoihin niin tuotteissamme kuin toiminnassammekin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hinnasto-osio -->
+        <section id="hinnasto">
+            <div class="container">
+                <h2 class="text-center">Hinnasto</h2>
+                <div class="pricing-info">
+                    <p>Acme Retailersin tuotevalikoima on laaja ja vaihtuva, ja hinnat määräytyvät tuotekohtaisesti. Pyrimme tarjoamaan markkinoiden kilpailukykyisimmät hinnat laadusta tinkimättä. Vieraile myymälässämme tai ota yhteyttä saadaksesi lisätietoja ajankohtaisista tarjouksistamme ja tuotteidemme hinnoista.</p>
+                    <p>Voit myös selata verkkokauppamme (tulossa pian!) valikoimaa ja hintoja.</p>
+                </div>
+                <a href="#lomake" class="btn">Kysy tarjous tai lisätietoja</a>
+            </div>
+        </section>
+
+        <!-- Ajanvaraus-osio -->
+        <section id="ajanvaraus">
+            <div class="container">
+                <h2 class="text-center">Varaa aika henkilökohtaiseen neuvontaan</h2>
+                <p class="text-center">Haluatko henkilökohtaista palvelua tai räätälöityä ostosneuvontaa? Varaa aika asiantuntijamme kanssa ja saat täysin yksilöllisen kokemuksen. Tarjoamme aikoja seuraaviin palveluihin:</p>
+                <ul>
+                    <li>Henkilökohtainen ostoskonsultaatio</li>
+                    <li>Tuote-esittelyt ja demot</li>
+                    <li>Erityistilausten neuvonta</li>
+                </ul>
+                <p>Voit varata ajan suoraan alla olevan linkin kautta tai ottamalla yhteyttä asiakaspalveluumme.</p>
+                <!-- Oletetaan, että Acme Retailersilla on ulkoinen ajanvarausjärjestelmä tai se ohjaa yhteydenottolomakkeeseen -->
+                <a href="#lomake" class="btn">Varaa aika nyt (ohjaa lomakkeelle)</a>
+                <p style="margin-top: 1rem;">Tai soita meille: <a href="tel:+12125551234">+1 (212) 555-1234</a></p>
+            </div>
+        </section>
+
+        <!-- Yhteystiedot -->
+        <section id="yhteystiedot">
+            <div class="container">
+                <h2 class="text-center">Yhteystiedot</h2>
+
+                <div class="contact-grid">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Osoite</h3>
+                        <p>123 Main Street</p>
+                        <p>New York, NY 10001</p>
+                        <p>USA</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Puhelin</h3>
+                        <p><a href="tel:+12125551234">+1 (212) 555-1234</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Sähköposti</h3>
+                        <p><a href="mailto:info@acmeretailers.com">info@acmeretailers.com</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Aukioloajat</h3>
+                        <p>Ma–Pe: 10:00 – 19:00</p>
+                        <p>La: 11:00 – 18:00</p>
+                        <p>Su: Suljettu</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <h3>Seuraa meitä sosiaalisessa mediassa</h3>
+                    <a href="https://facebook.com/acmeretailers" target="_blank" aria-label="Acme Retailers Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/acmeretailers" target="_blank" aria-label="Acme Retailers Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/acmeretailers" target="_blank" aria-label="Acme Retailers Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/acmeretailers" target="_blank" aria-label="Acme Retailers LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.287869389284!2d-73.98779608459424!3d40.74844067932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2598c0b5e8c1f%3A0x7d0a2d2a7f5a8c2!2sEmpire%20State%20Building!5e0!3m2!1sfi!2sfi!4v1678901234567!5m2!1sfi!2sfi"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lomake-osio -->
+        <section id="lomake">
+            <div class="container">
+                <h2 class="text-center">Ota yhteyttä – lähetä meille viesti</h2>
+                <p class="text-center">Onko sinulla kysyttävää tuotteistamme, palveluistamme tai haluatko antaa palautetta? Täytä alla oleva lomake, niin otamme sinuun yhteyttä mahdollisimman pian. Vastaamme mielellämme kaikkiin tiedusteluihin!</p>
+
+                <form class="contact-form" action="#" method="POST">
+                    <div>
+                        <label for="name">Nimi:</label>
+                        <input type="text" id="name" name="name" placeholder="Etunimi Sukunimi" required>
+                    </div>
+                    <div>
+                        <label for="email">Sähköposti:</label>
+                        <input type="email" id="email" name="email" placeholder="esim. oma.sähkoposti@example.com" required>
+                    </div>
+                    <div>
+                        <label for="phone">Puhelinnumero (vapaaehtoinen):</label>
+                        <input type="tel" id="phone" name="phone" placeholder="esim. +1 212 555 1234">
+                    </div>
+                    <div>
+                        <label for="message">Viesti:</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Kirjoita viestisi tähän..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Lähetä viesti</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Acme Retailers. Kaikki oikeudet pidätetään. | New York, USA</p>
+        </div>
+    </footer>
+</body>
+</html>
+```
