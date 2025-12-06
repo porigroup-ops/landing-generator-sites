@@ -1,100 +1,133 @@
-Kiitos pyynnöstäsi! Olen tarkistanut koodisi ja antanut palautetta sekä kielestä että teknisestä toteutuksesta.
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siivous Rannikko - Luotettavaa siivouspalvelua Porissa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans antialiased text-gray-800">
 
----
+    <!-- Navigaatio -->
+    <nav class="bg-white p-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-blue-700 mb-2 md:mb-0">Siivous Rannikko</a>
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
+                <a href="#home" class="text-gray-600 hover:text-blue-700 transition duration-200">Etusivu</a>
+                <a href="#palvelut" class="text-gray-600 hover:text-blue-700 transition duration-200">Palvelut</a>
+                <a href="#miksi" class="text-gray-600 hover:text-blue-700 transition duration-200">Miksi meidät</a>
+                <a href="#galleria" class="text-gray-600 hover:text-blue-700 transition duration-200">Galleria</a>
+                <a href="#yhteystiedot" class="text-gray-600 hover:text-blue-700 transition duration-200">Yhteystiedot</a>
+            </div>
+        </div>
+    </nav>
 
-### Yleiskuva ja positiivista palautetta
+    <!-- Hero-sektio -->
+    <section id="home" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://source.unsplash.com/featured/?business,Siivous');">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="relative z-10 text-center p-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight">Siivous Rannikko</h1>
+            <p class="text-xl md:text-2xl mb-8">Puhtautta ja raikkautta kotiisi tai toimistoosi Porin alueella – luotettavasti ja ammattitaidolla.</p>
+            <a href="#yhteystiedot" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">Ota yhteyttä</a>
+        </div>
+    </section>
 
-Sivusto on hyvin rakennettu ja modernin näköinen. Tailwind CSS:n käyttö on tehokasta, ja värimaailma on yhtenäinen ja miellyttävä. Suomen kieli on pääosin hyvää, ja sivuston rakenne on selkeä ja käyttäjäystävällinen. Erityisesti arvostan:
-*   **Värimaailma:** Tumma tausta ja siniset aksentit toimivat hyvin yhdessä.
-*   **Responsiivisuus:** Tailwindin ansiosta sivusto skaalautuu todennäköisesti hyvin eri näyttökoille.
-*   **Sivun rakenne:** Selkeät osiot, joihin on helppo navigoida.
-*   **Vierityspalkki:** Mukautettu vierityspalkki on kiva yksityiskohta.
-*   **Hero-osio:** Vaikuttava taustakuva ja selkeä viesti.
+    <!-- Palvelut -->
+    <section id="palvelut" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12">Palvelut</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Kotisiivous</h3>
+                    <p class="text-gray-700">Säännöllinen tai kertaluonteinen kotisiivous, joka räätälöidään tarpeidesi mukaan. Nauti puhtaasta kodista ilman vaivaa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Toimistosiivous</h3>
+                    <p class="text-gray-700">Pidämme työtilasi edustavana ja hygieenisenä, parantaen viihtyvyyttä ja tuottavuutta. Joustavat aikataulut yrityksille.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Ikkunanpesu</h3>
+                    <p class="text-gray-700">Kirkkaat ja tahrattomat ikkunat tuovat valoa ja avaruutta tilaan. Palvelu saatavilla koteihin ja yrityksiin.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Muuttosiivous</h3>
+                    <p class="text-gray-700">Huolellinen loppusiivous helpottaa muuttoa ja varmistaa siistin alun uudessa paikassa. Luota meihin siivouksessa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Remonttisiivous</h3>
+                    <p class="text-gray-700">Rakennuspölyn ja roskien poisto remontin jälkeen. Jätämme tilat valmiiksi käyttöön nopeasti ja tehokkaasti.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Peruspesut ja vahaukset</h3>
+                    <p class="text-gray-700">Lattioiden perusteellinen puhdistus ja suojaus vahauksella pidentää niiden ikää ja helpottaa puhtaanapitoa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
----
+    <!-- Miksi meidät -->
+    <section id="miksi" class="py-16 bg-blue-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12">Miksi valita Siivous Rannikko?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 rounded-lg bg-blue-800 shadow-lg transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4">Ammattitaito</h3>
+                    <p>Kokeneet siivoojamme takaavat ensiluokkaisen lopputuloksen jokaisella kerralla.</p>
+                </div>
+                <div class="p-6 rounded-lg bg-blue-800 shadow-lg transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4">Luotettavuus</h3>
+                    <p>Toimimme aina sovitun mukaisesti, aikataulussa ja vastuullisesti.</p>
+                </div>
+                <div class="p-6 rounded-lg bg-blue-800 shadow-lg transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4">Ympäristöystävällisyys</h3>
+                    <p>Käytämme mahdollisuuksien mukaan ympäristöystävällisiä puhdistusaineita ja -menetelmiä.</p>
+                </div>
+                <div class="p-6 rounded-lg bg-blue-800 shadow-lg transform hover:scale-105 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4">Asiakaslähtöisyys</h3>
+                    <p>Palvelumme joustavat ja mukautuvat juuri sinun yksilöllisiin tarpeisiisi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-### Kieliasu (suomi)
+    <!-- Galleria -->
+    <section id="galleria" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12">Galleria</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://source.unsplash.com/featured/?Siivous,team" alt="Siivoustiimi työskentelemässä yhdessä hymyillen" class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://source.unsplash.com/featured/?Siivous,office" alt="Siisti ja valoisa toimistotila siivouksen jälkeen" class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://source.unsplash.com/featured/?Siivous,work" alt="Siivooja puhdistamassa pintaa tehokkaasti työkohteessa" class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
 
-Kieliasu on yleisesti ottaen hyvää, mutta muutama kohta kaipaisi hienosäätöä, jotta teksti olisi luonnollisempaa ja virheettömämpää.
+    <!-- Yhteystiedot -->
+    <section id="yhteystiedot" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-8">Ota yhteyttä</h2>
+            <p class="text-xl text-gray-700 mb-4">Ota yhteyttä, vastaamme nopeasti ja annamme mielellämme tarjouksen siivouspalveluista!</p>
+            <p class="text-2xl font-semibold text-blue-700 mb-2">Sähköposti: <a href="mailto:porigroup@gmail.com" class="hover:underline transition duration-200">porigroup@gmail.com</a></p>
+            <p class="text-2xl font-semibold text-blue-700 mb-6">Puhelin: –</p>
+            <p class="text-lg text-gray-600">Palvelemme Porin alueella.</p>
+        </div>
+    </section>
 
-**Korjausehdotukset:**
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg font-bold mb-2">Siivous Rannikko</p>
+            <p class="text-sm">&copy; Siivous Rannikko – Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
 
-1.  **Navigaatio / otsikko:**
-    *   `Siivous Rannikko – Ammattimaista koti- ja yrityssiivousta`
-    *   **Ehdotus:** `Siivous Rannikko – Ammattitaitoista koti- ja yrityssiivousta` (Tai jopa `Ammattimaista siivouspalvelua koteihin ja yrityksiin`)
-
-2.  **Meta description:**
-    *   `Siivous Rannikko tarjoaa luotettavaa kotisiivousta, yrityssiivousta, muuttosiivousta ja ikkunanpesua. Paikallista palvelua reiluun hintaan.`
-    *   **Ehdotus:** `Siivous Rannikko tarjoaa luotettavaa kotisiivousta, yrityssiivousta, muuttosiivousta ja ikkunanpesua. Paikallista ja reilua palvelua.` (Tai `Reilun hinnan paikallista palvelua.` – "reiluun hintaan" on ok, mutta "reilua palvelua" kuulostaa paremmalta meta-kuvauksessa.)
-
-3.  **Hero-osio:**
-    *   `Siivous Rannikko – Puhtaampi arki`
-    *   **Ehdotus:** `Siivous Rannikko – Teemme arjestasi puhtaampaa` (tai `Puhtaampi arki kanssamme`) – alkuperäinenkin on ok, mutta ehdotus tekee siitä aktiivisemman.
-    *   `Ammattimainen koti- ja yrityssiivous paikallisesti – luotettavasti ja tehokkaasti.`
-    *   **Ehdotus:** `Ammattitaitoista koti- ja yrityssiivousta paikallisesti – luotettavasti ja tehokkaasti.` (tai `Ammattitaitoisesti ja paikallisesti tuotettua koti- ja yrityssiivousta`)
-
-4.  **Palvelut-osio:**
-    *   `Tarjoamme räätälöityjä siivousratkaisuja kaikenkokoisiin koteihin ja yrityksiin.`
-    *   **Ehdotus:** `Tarjoamme räätälöityjä siivousratkaisuja kaikenkokoisiin koteihin ja yrityksille.` (tai `...kaikenkokoisiin koteihin sekä yrityksiin.`)
-
-5.  **Miksi me -osio:**
-    *   `“Palvelu oli ammattitaitoista ja lopputulos loistava. Suosittelen lämpimästi!” – Asiakas`
-    *   **Ehdotus:** `”Palvelu oli ammattitaitoista ja lopputulos loistava. Suosittelen lämpimästi!” – Tyytyväinen asiakas` (Lisää sana "tyytyväinen" antaa paremman mielikuvan)
-
-6.  **Hinnasto-osio:**
-    *   `Tarjoamme reilun hinnoittelun tuntiperusteisesti.`
-    *   **Ehdotus:** `Tarjoamme reilun hinnoittelun tuntiperusteisesti.` (Tämä on ok, mutta voisi olla `Tarjoamme reilun, tuntiperusteisen hinnoittelun.` jos haluaa kompaktoida)
-    *   `Kaikista palveluista saat kotitalousvähennyksen.`
-    *   **Ehdotus:** `Kaikista palveluistamme saat kotitalousvähennyksen.` (Pieni lisäys "me" tekee siitä persoonallisemman.)
-    *   `Säännöllinen siivous` -> `Jatkuva puhtaus ja mukavuus säännöllisellä sopimuksella.`
-        *   **Ehdotus:** `Jatkuvaa puhtautta ja mukavuutta säännöllisellä sopimuksella.`
-    *   `Kertasiivous` -> `Yksittäinen perussiivous tarpeen mukaan – ilman sitoutumista.`
-        *   **Ehdotus:** `Yksittäinen perussiivous tarpeen mukaan – ilman pitkäaikaista sitoutumista.` (Tai vain `Yksittäinen perussiivous tarpeen mukaan. Ei sitoumuksia.`)
-    *   `Muuttosiivous` -> `Tehokas siivous ennen muuttoa tai sen jälkeen – huoleton muutto.`
-        *   **Ehdotus:** `Tehokas siivous ennen muuttoa tai sen jälkeen – takaamme huolettoman muuton.` (Tai `...jotta muutostasi tulee huoleton.`)
-
-7.  **Yhteydenotto-osio:**
-    *   `Vastaamme viestiisi yleensä 24 tunnin sisällä.`
-    *   **Ehdotus:** `Vastaamme viestiisi yleensä 24 tunnin kuluessa.` ("sisällä" on ok, mutta "kuluessa" on hieman virallisempi ja yleisempi tässä yhteydessä.)
-    *   `Tervetuloa ottamaan yhteyttä!`
-    *   **Ehdotus:** `Ota rohkeasti yhteyttä!` (Tai `Olette lämpimästi tervetulleita ottamaan yhteyttä!`)
-    *   `Puhelin: 040 000 0000`
-        *   **Huomio:** Muista lisätä maakoodi +358, jos kyseessä on oikea yritys ja toimitaan Suomessa (esim. `+358 40 000 0000`).
-    *   `Toimialue: Paikallinen alue`
-        *   **Ehdotus:** `Toimimme paikallisesti tietyllä alueella.` tai `Toimialueemme kattaa paikallisen alueen.` (Tai tarkenna alue, jos mahdollista, esim. `Toimimme pääasiassa Porin ja lähikuntien alueella.`)
-
----
-
-### Tekninen palaute
-
-Koodisi on yleisesti ottaen erinomaista ja noudattaa hyviä käytäntöjä. Muutama pieni parannusehdotus löytyy:
-
-1.  **Navigaation mobiiliversio:**
-    *   Navigaatiopalkki (`<nav class="hidden md:flex space-x-6 items-center">`) piiloutuu `md`-kokoon asti, mutta sinulla ei ole toteutettu hampurilaisvalikkoa tai muuta tapaa navigoida pienemmillä näytöillä. Tämä on kriittinen saavutettavuus- ja käytettävyyspuute mobiilissa.
-    *   **Ehdotus:** Lisää JavaScriptillä ja Tailwindilla toimiva responsiivinen navigointi (hampurilaisvalikko) mobiililaitteille.
-
-2.  **`<a>` -tagit footerissa:**
-    *   Footerin sosiaalisen median linkeissä (`<a href="#" class="hover:text-white transition">`) on `href="#"`. Tämä on tyypillinen placeholder, mutta tuotantoympäristössä se tulisi korvata oikeilla linkeillä (esim. `https://www.facebook.com/siivousrannikko`). Muuten käyttäjä klikkaa linkkiä ja sivu hyppää takaisin ylös.
-
-3.  **Kuvien alt-tekstit:**
-    *   Kaikissa `<img>` -tagien `alt`-attribuuteissa on kuvailtu kuvan sisältö hyvin, mikä on erinomaista saavutettavuuden kannalta.
-
-4.  **Skriptien sijoittelu:**
-    *   Tailwind CDN ja oma `tailwind.config` ovat `head`-osiossa, mikä on ok. Mutta jos sivulla olisi interaktiivista JavaScriptiä (esim. juuri se navigaatiovalikko), se kannattaisi yleensä sijoittaa `</body>` -tagin juuri ennen, jotta sivun sisältö latautuu ja renderöityy nopeammin ennen kuin skriptit suoritetaan. Tässä tapauksessa, kun skriptejä ei ole paljoa, järjestely on vielä hyväksyttävä.
-
-5.  **Navbarin läpinäkyvyys:**
-    *   `<header class="fixed top-0 left-0 right-0 z-50 bg-darker bg-opacity-80 backdrop-blur-md">`
-    *   Tämä on hyvän näköinen toteutus.
-
-6.  **`onsubmit` -attribuutti lomakkeessa:**
-    *   `<form onsubmit="event.preventDefault(); alert('Kiitos viestistäsi! Otamme sinuun pian yhteyttä.');" class="space-y-4">`
-    *   Tämä on yksinkertainen tapa näyttää palaute. Jos tarvittaisiin monimutkaisempaa lomakkeen käsittelyä (esim. tiedon lähettämistä palvelimelle), tarvittaisiin oikea back-end tai ulkoinen lomakepalvelu. Tässä kontekstissa, kun kyseessä on pelkkä ilmoitus, se on täysin toimiva.
-
-7.  **Vierityspalkki:**
-    *   Räätälöity vierityspalkki (`::-webkit-scrollbar`) on kiva visuaalinen yksityiskohta, mutta huomaa, että se toimii vain WebKit-pohjaisissa selaimissa (Chrome, Safari, Edge Chromium). Firefox ei tue näitä pseudoelementtejä, joten siellä se näyttää oletusarvoiselta. Tämä on yleensä hyväksyttävää ja vain ulkonäköasia.
-
----
-
-### Yhteenveto
-
-Sivusto on erittäin hyvällä pohjalla. Pienillä kieliasun korjauksilla ja etenkin mobiilinavigaation lisäämisellä sivusto olisi valmis julkaistavaksi ja tarjoaisi erinomaisen käyttäjäkokemuksen. Hyvää työtä!
+</body>
+</html>
+```
