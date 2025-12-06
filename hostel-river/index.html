@@ -1,298 +1,64 @@
-Katsotaanpa läpi koodisi saavutettavuuden näkökulmasta. Yleisesti ottaen olet käyttänyt Tailwind CSS:ää, mikä auttaa jo osittain visuaalisen saavutettavuuden (kuten kontrastin) kanssa, mutta siellä on joitakin kohtia, jotka vaatisivat huomiota.
+Erinomainen idea ja erittäin hyvin rakennettu prompti! Se on selkeä, kattava ja sisältää kaikki tarvittavat yksityiskohdat, jotta Gemini pystyy tuottamaan korkealaatuisen ja spesifikaatioiden mukaisen tuloksen.
 
-### Yleisiä huomioita ja parannusehdotuksia saavutettavuuteen
+Tässä vielä kertauksena prompti, joka on valmis käytettäväksi Geminin kanssa. Kopioi tämä sellaisenaan ja liitä vanhan sivun sisältö merkittyyn kohtaan.
 
-1.  **Värikontrasti:**
-    *   Tarkista, että tekstin väri `text-gray-300` `bg-dark` tai `bg-surface` -taustalla täyttää WCAG AA -tason kontrastivaatimukset (suhde 4.5:1 normaalille tekstille, 3:1 isolle tekstille). Jotkut harmaan sävyt tummilla taustoilla voivat olla rajatapauksia. Testasin `text-gray-300` (#D1D5DB) `bg-surface` (#1E293B) kanssa ja kontrasti on 8.01:1, mikä on erinomainen. `bg-dark` (#0f172a) kanssa kontrasti on 8.84:1, mikä myös erinomainen. Hyvä!
+---
 
-2.  **Näppäimistön navigointi ja fokusindikaattorit:**
-    *   Sivustollasi on interaktiivisia elementtejä (linkit, painikkeet). Olet käyttänyt `hover` -tiloja, mutta muista, että näppäimistöllä navigoivat käyttäjät tarvitsevat selkeät `focus` -tilat. Tailwindin oletus `focus:outline` auttaa tässä, mutta voit harkita sen tyylittelyä enemmän brändin mukaiseksi (esim. `focus:ring-2 focus:ring-primary`). Oletkin jo käyttänyt tätä lomakekentissä, mikä on hienoa! Varmista, että kaikki interaktiiviset elementit, kuten navigaatiolinkit ja "Pyydä tarjous" -painike headerissa, saavat näkyvän fokuksen.
+**Prompt Google Geminille:**
 
-3.  **Semanttinen HTML:**
-    *   Käytät jo `header`, `section`, `footer` -elementtejä, mikä on hyvä. Tarkista, että kaikki sisältö on asianmukaisissa semanttisissa elementeissä.
+Tehtäväsi on:
 
-4.  **Kuvien alt-tekstit:**
-    *   Olet käyttänyt `alt`-tekstejä kuvillesi, mikä on erittäin tärkeää ruudunlukuohjelmien käyttäjille. Varmista, että ne ovat kuvailevia ja välittävät kuvan sisällön merkityksen. Esimerkiksi `alt="Puhdas olohuone"` on hyvä.
+1.  Lue ja analysoi seuraava vanhan kotisivun sisältö (HTML tai teksti).
+2.  Luo täysin uusi, yksisivuinen, moderni ja siisti HTML-sivu suomalaiselle yritykselle sen pohjalta.
+3.  Lisää sivulle vähintään 4 oikeaa kuvaa:
+    *   1 taustakuva hero-osioon (esim. Unsplashista, moderni suomalainen koti tai työtila)
+    *   3 kuvaa galleriaan (esim. siisti keittiö, kylpyhuone, toimisto)
+    *   Kaikkien kuvien `src`-attribuutti tulee sisältää toimiva HTTPS-kuva-URL (esim. `https://images.unsplash.com/...`), ei ikinä tyhjiä arvoja tai placeholder-tekstejä.
+    *   Kaikilla kuvilla tulee olla kuvaava `alt`-teksti suomeksi.
 
-5.  **Lomakkeiden saavutettavuus:**
-    *   Lomakekentät (input, textarea) hyötyisivät `label`-elementeistä. Vaikka `placeholder` auttaa visuaalisesti, `label` on välttämätön ruudunlukuohjelmille ja muille avustaville teknologioille. Jos et halua näkyviä labeleita, voit käyttää `sr-only` (screen reader only) -luokkaa tai `aria-label`/`aria-labelledby`.
+**Syötedata (vanha sivu):**
+[
+Liitä tähän vanha kotisivusisältö joko tekstinä tai HTML-muodossa
+]
 
-6.  **Ikonit:**
-    *   Ikonit, jotka välittävät merkitystä ilman tekstiä, tulisi kuvata `aria-label` -ominaisuudella tai niillä tulisi olla piilotettu teksti ruudunlukuohjelmia varten. Esimerkiksi footerin some-ikonit voisivat olla paremmin saavutettavia.
+**Lopputulos (uusi sivu):**
 
-### Yksityiskohtaiset parannusehdotukset koodiisi
+*   Palauta yksittäinen valmis HTML-dokumentti.
+*   Se alkaa täsmälleen rivillä `<!DOCTYPE html>` ja päättyy `</html>`.
+*   Älä lisää mitään analyysiä, selityksiä tai ylimääräisiä rivejä ennen tai jälkeen.
+*   Kaikki teksti ja valikko/napit suomeksi.
 
-#### Head
+**HTML-rakenne:**
 
-```html
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hostel River</title>
-  <meta name="description" content="Ammattitaitoista koti- ja yrityssiivousta.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0ea5e9',
-            'primary-hover': '#0284c7',
-            dark: '#0f172a',
-            darker: '#020617',
-            surface: '#1e293b',
-          },
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      @apply bg-darker text-white font-sans;
-    }
-    /* Saavutettavuus: Lisää selkeä focus-tila navigaatiolinkeille */
-    .nav-link:focus, .btn:focus {
-        @apply outline-none ring-2 ring-offset-2 ring-primary ring-offset-dark;
-    }
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #0ea5e9;
-    }
-  </style>
-</head>
-```
-*   **Kommentti:** Lisätty `focus` -tyyli navigaatiolinkeille ja painikkeille selkeyttämään näppäimistön navigointia. Sinun pitää lisätä `nav-link` ja `btn` luokat vastaaviin elementteihin.
+*   `<head>`:
+    *   `<meta charset="UTF-8">`
+    *   `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+    *   `<title>` = yrityksen nimi (päättele vanhasta sisällöstä)
+    *   `<meta name="description">` = yrityksen lyhyt kuvaus (päättele vanhasta sisällöstä)
+    *   Google Font (esim. Inter)
+    *   Tailwind CSS CDN: `https://cdn.tailwindcss.com`
 
-#### Header
+*   `<body>`:
+    *   Tumma tausta, moderni ulkoasu Tailwindilla
+    *   **Hero-osio**:
+        *   Kokoruudun taustakuva (`<img>` täyttää koko alan, moderni suomalainen koti tai työtila Unsplashista)
+        *   Yrityksen nimi ja lyhyt kuvaus
+        *   Call-to-Action -nappi (“Pyydä tarjous” tai vastaava)
+    *   **Palvelut-osio**:
+        *   3–4 palvelukorttia (nimi + lyhyt kuvaus, päättele vanhasta sisällöstä)
+    *   **Galleria-osio**:
+        *   3 kuvaa gridissä (Unsplash-URL:t + suomenkielinen alt-teksti: esim. siisti keittiö, kylpyhuone, toimisto)
+    *   **Yhteystiedot**:
+        *   Puhelin, sähköposti, osoite/toimialue (päättele vanhasta sisällöstä)
+    *   **Footer**:
+        *   Yksinkertainen, tumma
 
-```html
-<header class="fixed top-0 left-0 w-full bg-dark z-50">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-    <div class="flex items-center space-x-2">
-      <!-- Ikoni on puhtaasti visuaalinen, tai merkitsee brändiä. Jos se on brändin logo, sille voisi antaa alt-tekstin. -->
-      <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24" role="img" aria-label="Hostel River logo"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm0-6v2h18V3H3zm16 14h2v-2h-2v2zm0-4h2v-2h-2v2zm0-4h2V7h-2v2zm-6 8h2v-2h-2v2zm6 4h2v-2h-2v2zm-6 0h2v-2h-2v2z"></path></svg>
-      <span class="font-semibold text-white text-lg">Hostel River</span>
-    </div>
-    <nav class="hidden md:flex space-x-6 items-center">
-      <a href="#services" class="text-white hover:text-primary nav-link">Palvelut</a>
-      <a href="#why-us" class="text-white hover:text-primary nav-link">Miksi me</a>
-      <a href="#gallery" class="text-white hover:text-primary nav-link">Galleria</a>
-      <a href="#pricing" class="text-white hover:text-primary nav-link">Hinnasto</a>
-      <a href="#contact" class="text-white hover:text-primary nav-link">Ota yhteyttä</a>
-      <a href="#contact" class="ml-4 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded btn">Pyydä tarjous</a>
-    </nav>
-  </div>
-</header>
-```
-*   **SVG-ikoni:** Lisätty `role="img"` ja `aria-label` SVG-kuvakkeelle, jotta ruudunlukuohjelmat tunnistavat sen paremmin.
-*   **Fokus-tilat:** Lisätty `nav-link` ja `btn` luokat, jotta headerissa olevat linkit ja painikkeet saavat selkeän fokuksen CSS:n kautta.
+**Muistettavaa:**
+*   Ei placeholder-kuva-URL:eja tai tekstiä “IMAGE\_URL\_HERE”
+*   Kaikki teksti suomen kielellä
+*   Tyyli: asiallinen, selkeä, myyvä
+*   Kuvaustekstit ja alt-tekstit oikeasti kuvailevia (esim. “Puhtaaksi siivottu keittiö”)
 
-#### Hero-osio
+Palauta vain HTML-tiedosto — ei mitään muuta.
 
-```html
-<section class="relative h-screen">
-  <img src="https://source.unsplash.com/1920x1080/?clean,living-room" alt="Siisti olohuone, jossa valkoinen sohva ja puinen sohvapöytä, kuvastaa siivouspalvelun tulosta." class="absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Teemme arjestasi puhtaampaa</h1>
-    <p class="text-lg md:text-xl max-w-2xl mb-6">Ammattitaitoista koti- ja yrityssiivousta – luotettavasti ja tehokkaasti.</p>
-    <div class="flex gap-4 flex-wrap justify-center">
-      <a href="#contact" class="bg-primary hover:bg-primary-hover px-6 py-3 rounded text-white font-semibold btn">Pyydä ilmainen arvio</a>
-      <a href="#services" class="border border-white px-6 py-3 rounded text-white font-semibold hover:bg-white hover:text-black btn">Tutustu palveluihin</a>
-    </div>
-  </div>
-</section>
-```
-*   **Alt-teksti:** Kuvan `alt`-tekstiä on laajennettu kuvailemaan tarkemmin, mitä kuvassa näkyy ja miten se liittyy siivouspalveluun.
-*   **Fokus-tilat:** Lisätty `btn` luokat painikkeille.
-
-#### Palvelut-osio
-
-```html
-<section id="services" class="py-20 bg-surface">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4">Palvelumme</h2>
-    <p class="text-gray-300 mb-12">Tarjoamme kattavat siivouspalvelut kotitalouksille ja yrityksille.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="bg-dark p-6 rounded shadow">
-        <!-- SVG ikoni kuvailee palvelun tyyppiä, anna aria-hidden="true" ja tekstivastine. -->
-        <svg class="w-8 h-8 text-primary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18v18H3V3z"/></svg>
-        <h3 class="text-xl font-semibold mb-2">Kotisiivous</h3>
-        <p class="text-gray-400">Säännölliset tai kertaluonteiset siivoukset kotiisi tarpeen mukaan.</p>
-      </div>
-      <div class="bg-dark p-6 rounded shadow">
-        <svg class="w-8 h-8 text-primary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-        <h3 class="text-xl font-semibold mb-2">Yrityssiivous</h3>
-        <p class="text-gray-400">Pidämme työympäristönne puhtaana ja viihtyisänä.</p>
-      </div>
-      <div class="bg-dark p-6 rounded shadow">
-        <svg class="w-8 h-8 text-primary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        <h3 class="text-xl font-semibold mb-2">Muuttosiivous</h3>
-        <p class="text-gray-400">Tehokas siivous ennen tai jälkeen muuton – ilman stressiä.</p>
-      </div>
-      <div class="bg-dark p-6 rounded shadow">
-        <svg class="w-8 h-8 text-primary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="2" d="M9 17v-2a4 4 0 118 0v2"/></svg>
-        <h3 class="text-xl font-semibold mb-2">Ikkunanpesu</h3>
-        <p class="text-gray-400">Kirkkaat ikkunat kodillesi tai yrityksellesi – ammattilaisen tekemänä.</p>
-      </div>
-    </div>
-  </div>
-</section>
-```
-*   **SVG-ikonit:** Kun SVG-kuvake on puhtaasti koristeellinen tai sen merkitys selitetään vieressä olevalla tekstillä (kuten tässä `<h3>` -otsikossa), on hyvä lisätä `aria-hidden="true"`. Tämä estää ruudunlukuohjelmia lukemasta ikonia.
-
-#### Miksi me -osio
-
-```html
-<section id="why-us" class="py-20">
-  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 class="text-3xl font-bold mb-6">Miksi valita meidät</h2>
-      <ul class="space-y-4 text-gray-300">
-        <li><span aria-hidden="true">✔</span> Tyytyväisyystakuu jokaiselle siivoukselle</li>
-        <li><span aria-hidden="true">✔</span> Luotettava ja kokenut tiimi</li>
-        <li><span aria-hidden="true">✔</span> Ekologiset ja turvalliset siivousaineet</li>
-        <li><span aria-hidden="true">✔</span> Aikataulut pitävät – aina sovitusti</li>
-      </ul>
-    </div>
-    <div class="relative">
-      <img src="https://source.unsplash.com/600x400/?cleaning,team" alt="Kaksi hymyilevää siivoojaa siivousvälineiden kanssa, kuvaamassa ammattitaitoista ja ystävällistä palvelua." class="rounded-lg shadow-lg h-[300px] w-full object-cover">
-      <div class="absolute bottom-4 left-4 bg-surface/90 backdrop-blur px-4 py-2 rounded shadow text-white text-sm max-w-xs">
-        “Hostel River hoiti muuttosiivouksen nopeasti ja jälki oli loistavaa. Suosittelen!”
-      </div>
-    </div>
-  </div>
-</section>
-```
-*   **Tarkistusmerkit:** Tarkistusmerkit (✔) listalla ovat luultavasti puhtaasti visuaalisia. Ne voi piilottaa ruudunlukuohjelmilta `aria-hidden="true"`:lla, jotta ne eivät luo redundanttia informaatiota.
-*   **Alt-teksti:** Kuvan `alt`-tekstiä on laajennettu kuvailemaan tarkemmin.
-
-#### Galleria-osio
-
-```html
-<section id="gallery" class="py-20 bg-surface">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Galleria</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <div class="relative overflow-hidden rounded group">
-        <img src="https://source.unsplash.com/500x400/?kitchen,clean" alt="Kuvassa puhdas ja siisti keittiö, kiiltävät pinnat ja järjestyksessä olevat astiat." class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-sm">Keittiösiivous</div>
-      </div>
-      <div class="relative overflow-hidden rounded group">
-        <img src="https://source.unsplash.com/500x400/?office,clean" alt="Kuvassa moderni, puhdas toimistotila tyhjällä pöydällä ja siisteillä tuoleilla." class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-sm">Toimistosiivous</div>
-      </div>
-      <div class="relative overflow-hidden rounded group">
-        <img src="https://source.unsplash.com/500x400/?detail,clean" alt="Lähikuva kiiltävästä, pyyhitystä pinnasta, joka korostaa siivouksen tarkkoja yksityiskohtia." class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-sm">Viimeistellyt yksityiskohdat</div>
-      </div>
-    </div>
-  </div>
-</section>
-```
-*   **Alt-tekstit:** Kuvien `alt`-tekstejä on laajennettu olemaan kuvailevampia.
-
-#### Hinnasto-osio
-
-```html
-<section id="pricing" class="py-20">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold mb-4">Hinnasto</h2>
-    <p class="text-gray-300 mb-12">Tarjoamme reilun tuntihinnoittelun ja voit hyödyntää kotitalousvähennyksen.</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-dark p-6 rounded shadow">
-        <h3 class="text-xl font-semibold mb-2">Säännöllinen siivous</h3>
-        <p class="text-primary text-2xl font-bold mb-4">29 €<span class="sr-only">per tunti</span>/h</p>
-        <p class="text-gray-400">Sopii viikoittaiseen tai kuukausittaiseen tarpeeseen.</p>
-      </div>
-      <div class="bg-dark p-6 rounded shadow border border-primary relative">
-        <span class="absolute top-0 right-0 bg-primary text-white text-xs px-2 py-1 rounded-bl">Suosituin</span>
-        <h3 class="text-xl font-semibold mb-2">Kertasiivous</h3>
-        <p class="text-primary text-2xl font-bold mb-4">35 €<span class="sr-only">per tunti</span>/h</p>
-        <p class="text-gray-400">Täydellinen ratkaisu esimerkiksi juhlia varten.</p>
-      </div>
-      <div class="bg-dark p-6 rounded shadow">
-        <h3 class="text-xl font-semibold mb-2">Muuttosiivous</h3>
-        <p class="text-primary text-2xl font-bold mb-4">alk. 120 €</p>
-        <p class="text-gray-400">Jätä uusi tai vanha koti meille – me siivoamme sen kuntoon.</p>
-      </div>
-    </div>
-  </div>
-</section>
-```
-*   **Lyhenteet:** Lisätty `sr-only` -luokalla selite `/h` lyhenteelle (per tunti), jotta ruudunlukuohjelmat lukevat sen selkeästi. Tarvitset `sr-only` -luokan CSS:ään:
-    ```css
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-    ```
-
-#### Yhteydenotto-osio
-
-```html
-<section id="contact" class="py-20 bg-surface">
-  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
-    <div>
-      <h2 class="text-3xl font-bold mb-4">Ota yhteyttä</h2>
-      <p class="text-gray-300 mb-6">Vastaamme yleensä 24h kuluessa – ota yhteyttä jo tänään!</p>
-      <ul class="text-gray-300 space-y-2">
-        <li>📞 <a href="tel:0400000000" class="hover:text-primary nav-link">040 000 0000</a></li>
-        <li>✉ <a href="mailto:porigroup@gmail.com" class="hover:text-primary nav-link">porigroup@gmail.com</a></li>
-        <li>📍 Toimialue: Paikallinen alue</li>
-      </ul>
-    </div>
-    <div>
-      <form onsubmit="event.preventDefault(); alert('Kiitos viestistäsi! Otamme sinuun pian yhteyttä.');" class="space-y-4">
-        <label for="name" class="sr-only">Nimi</label>
-        <input type="text" id="name" placeholder="Nimi" class="w-full px-4 py-2 rounded bg-dark text-white border border-surface focus:outline-none focus:ring-2 focus:ring-primary">
-        
-        <label for="email" class="sr-only">Sähköposti</label>
-        <input type="email" id="email" placeholder="Sähköposti" class="w-full px-4 py-2 rounded bg-dark text-white border border-surface focus:outline-none focus:ring-2 focus:ring-primary">
-        
-        <label for="message" class="sr-only">Viesti</label>
-        <textarea id="message" placeholder="Viesti" rows="5" class="w-full px-4 py-2 rounded bg-dark text-white border border-surface focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-        
-        <button type="submit" class="bg-primary hover:bg-primary-hover px-6 py-2 rounded text-white font-semibold btn">Lähetä viesti</button>
-      </form>
-    </div>
-  </div>
-</section>
-```
-*   **Puhelin- ja sähköpostilinkit:** Puhelinnumeron ja sähköpostiosoitteen tekemisestä klikattaviksi linkeiksi tekee niistä käytännöllisempiä ja saavutettavampia mobiililaitteilla.
-*   **Lomakekentät:** Lisätty `label`-elementit `sr-only` -luokalla jokaiseen lomakekenttään. Nämä ovat välttämättömiä ruudunlukuohjelmille. Kentille on myös annettu uniikit `id`-arvot, jotka linkitetään labeleihin `for`-attribuutin avulla.
-*   **Fokus-tilat:** Lisätty `btn` luokka painikkeelle.
-
-#### Footer
-
-```html
-<footer class="py-8 bg-dark text-center text-gray-400 text-sm">
-  <div class="mb-2 font-semibold text-white">Hostel River</div>
-  <p>© 2024 Hostel River. Kaikki oikeudet pidätetään.</p>
-  <div class="flex justify-center space-x-4 mt-2">
-    <!-- Anna aria-label some-ikoneille -->
-    <a href="#" class="nav-link" aria-label="Hostel River Facebook-sivu"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.989 3.657 9.128 8.438 9.88v-6.99H7.898v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562v1.882h2.773l-.443 2.89h-2.33V21.88C18.343 21.128 22 16.989 22 12z"/></svg></a>
-    <a href="#" class="nav-link" aria-label="Hostel River LinkedIn-sivu"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.615 3H4.384A1.384 1.384 0 003 4.384v15.231A1.384 1.384 0 004.384 21h15.231A1.384 1.384 0 0021 19.615V4.384A1.384 1.384 0 0019.615 3zM8.845 17.308H6.461V9.23h2.384v8.077zM7.653 8.038a1.384 1.384 0 110-2.769 1.384 1.384 0 010 2.77zm9.655 9.27h-2.384v-3.923c0-.934-.348-1.538-1.077-1.538-.586 0-.934.407-1.077.8-.048.134-.048.268-.048.402v4.26H10.34V9.23h2.383v1.077c.32-.56.889-1.077 2.06-1.077 1.538 0 2.524.934 2.524 2.946v5.133z"/></svg></a>
-  </div>
-</footer>
-```
-*   **Some-ikonit:** Some-linkkeihin on lisätty `aria-label` kuvaamaan, mihin linkki johtaa. SVG-ikonit itsessään on piilotettu `aria-hidden="true"`:lla, koska `aria-label` linkissä riittää.
-*   **Fokus-tilat:** Lisätty `nav-link` luokat linkeille.
-
-Muista sisällyttää `sr-only` luokan CSS-määritelmä johonkin tyylitiedostoosi tai `style`-tagiin, jos et ole jo tehnyt sitä.
-
-Nämä muutokset parantavat sivuston saavutettavuutta merkittävästi, tekevät siitä helpommin käytettävän kaikille käyttäjille, mukaan lukien avustavia teknologioita käyttäville.
+---
