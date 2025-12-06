@@ -1,427 +1,314 @@
+Koska alkuperäistä, vanhaa HTML-sivua ei annettu pyynnössä, olen luonut oletetun sisällön Hostel Riverille perustuen antamiisi osioihin ja modernin hostellikotisivun yleiseen sisältöön. Tekstit on kirjoitettu sujuvalla suomen kielellä ja niitä on tiivistetty selkeyden vuoksi.
+
+Tässä moderni, responsiivinen yhden sivun HTML5+CSS-kotisivu Hostel Riverille:
+
 ```html
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel River - Modernia majoitusta Porissa</title>
-    <meta name="description" content="Hostel River tarjoaa viihtyisää ja edullista majoitusta Porin sydämessä, Kokemäenjoen rannalla. Tervetuloa!">
-    <meta name="keywords" content="hostel, pori, majoitus, edullinen, joki, river, suomi, huoneet, sauna, kokemäenjoki">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@404&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-RzV2hX5f6o4tS2P8VjP7v8/hQ2c+hXhT5/v8z2w3g9l8F8J5c+z4Q2X3w1p8UqFq5b6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <title>Hostel River – Edullinen ja viihtyisä majoitus Porissa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Yleiset tyylit ja resetointi */
         :root {
-            --primary-color: #3f51b5; /* Indigonsininen */
-            --secondary-color: #ff9800; /* Oranssi */
-            --accent-color: #4CAF50; /* Vihreä */
+            --primary-color: #2c3e50; /* Tummansininen */
+            --secondary-color: #3498db; /* Vaaleansininen */
+            --accent-color: #e67e22; /* Oranssi */
             --text-color: #333;
-            --light-bg: #f5f5f5;
-            --white-color: #ffffff;
-            --dark-color: #212121;
+            --light-bg: #f4f7f6;
+            --white: #fff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Yleiset tyylit */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--white-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-
-        ul {
-            list-style: none;
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            color: var(--dark-color);
         }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; }
+        h3 { font-size: 1.5em; }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            margin-bottom: 20px;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--white);
+        }
+
+        .text-center {
+            text-align: center;
         }
 
         .btn {
             display: inline-block;
-            background: var(--primary-color);
-            color: var(--white-color);
-            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 25px;
             border-radius: 5px;
-            transition: background 0.3s ease;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
             font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
         }
 
         .btn:hover {
-            background: var(--secondary-color);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -10px;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
+            background-color: #d35400; /* Tummempi oranssi */
         }
 
         /* Navigaatio */
-        .main-header {
-            background: var(--white-color);
-            color: var(--dark-color);
-            padding: 1rem 0;
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
         }
 
-        .main-header .container {
+        .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        .navbar-brand {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.8em;
+            color: var(--white);
+            text-decoration: none;
         }
 
-        .main-nav ul {
+        .nav-links {
+            list-style: none;
             display: flex;
         }
 
-        .main-nav ul li {
+        .nav-links li {
             margin-left: 25px;
         }
 
-        .main-nav ul li a {
-            color: var(--dark-color);
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .main-nav ul li a:hover {
-            color: var(--primary-color);
         }
 
-        .main-nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            left: 0;
-            bottom: -5px;
-            transition: width 0.3s ease-in-out;
-        }
-
-        .main-nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobiilinavigaatio (piilotettu oletuksena) */
-        .menu-toggle {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--primary-color);
+        .nav-links a:hover {
+            color: var(--secondary-color);
         }
 
         /* Hero-osio */
         #hero {
             position: relative;
-            height: 70vh;
-            background: url('https://source.unsplash.com/1600x900/?pori,river,hotel') no-repeat center center/cover;
-            color: var(--white-color);
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
             text-align: center;
-            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--primary-color); /* Fallback */
         }
 
-        #hero::before {
-            content: '';
+        #hero img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Tummennus */
+            object-fit: cover;
+            z-index: 1;
+            filter: brightness(0.6);
         }
 
         #hero .hero-content {
             position: relative;
-            z-index: 1;
-            padding: 20px;
+            z-index: 2;
             max-width: 800px;
+            padding: 20px;
         }
 
         #hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--white-color);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            color: var(--white);
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         #hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            font-size: 1.3em;
+            margin-bottom: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
 
-        /* Yleinen osioiden tyyli */
-        section {
-            padding: 80px 0;
-        }
-
-        section:nth-of-type(even) {
-            background-color: var(--light-bg);
-        }
-
-        /* Palvelut-osio */
-        #palvelut .palvelut-grid {
+        /* Palvelut */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
-        .palvelu-item {
-            background: var(--white-color);
+        .service-item {
+            background-color: var(--white);
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s ease;
         }
 
-        .palvelu-item:hover {
-            transform: translateY(-10px);
+        .service-item:hover {
+            transform: translateY(-5px);
         }
 
-        .palvelu-item i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .palvelu-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        /* Miksi valita meidät -osio */
-        #miksi-me .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .reason-card {
-            background: var(--white-color);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .reason-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-
-        .reason-card i {
-            font-size: 3.5rem;
+        .service-item h3 {
             color: var(--secondary-color);
-            margin-bottom: 20px;
+            margin-top: 15px;
         }
 
-        .reason-card h3 {
-            font-size: 1.6rem;
+        /* Miksi valita meidät */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .why-us-item {
+            background-color: var(--light-bg);
+            padding: 25px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+
+        .why-us-item h3 {
+            color: var(--accent-color);
             margin-bottom: 10px;
-            color: var(--dark-color);
         }
 
-        /* Hinnasto-osio */
-        #hinnasto .hinnasto-taulukko {
+        /* Hinnasto */
+        .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            box-shadow: var(--shadow);
             border-radius: 8px;
-            overflow: hidden; /* Tarvitaan pyöristettyihin kulmiin */
+            overflow: hidden; /* For rounded corners on table */
         }
 
-        #hinnasto .hinnasto-taulukko th,
-        #hinnasto .hinnasto-taulukko td {
+        .price-table th, .price-table td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
 
-        #hinnasto .hinnasto-taulukko th {
-            background-color: var(--primary-color);
-            color: var(--white-color);
+        .price-table th {
+            background-color: var(--secondary-color);
+            color: var(--white);
             font-weight: 600;
         }
 
-        #hinnasto .hinnasto-taulukko tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        #hinnasto .hinnasto-taulukko tr:hover {
-            background-color: #f1f1f1;
+        .price-table tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
-        #hinnasto .hinnasto-info {
-            text-align: center;
-            margin-top: 30px;
-            font-style: italic;
-            color: #666;
+        .price-table tr:hover {
+            background-color: #e0e0e0;
         }
 
-        /* Ajanvaraus-osio */
-        #ajanvaraus {
-            text-align: center;
-        }
-
-        #ajanvaraus .booking-info {
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
-
-        #ajanvaraus .booking-iframe {
+        /* Ajanvaraus */
+        #booking-iframe {
             width: 100%;
             height: 600px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 900px; /* Rajoitetaan iframe-leveyttä */
-            margin: 0 auto;
-        }
-        
-        /* Yhteystiedot & Yhteydenottolomake */
-        #yhteystiedot-lomake {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            padding: 80px 0;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
         }
 
-        #yhteystiedot-lomake .section-title {
-            color: var(--white-color);
-        }
-
-        #yhteystiedot-lomake .section-title::after {
-            background: var(--secondary-color);
-        }
-
+        /* Yhteystiedot ja lomake */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 1fr 1fr;
             gap: 50px;
-            margin-top: 50px;
-        }
-
-        .contact-info h3,
-        .contact-form h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            color: var(--white-color);
+            margin-top: 40px;
         }
 
         .contact-info p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
 
-        .contact-info p i {
+        .contact-info p strong {
             margin-right: 10px;
-            color: var(--secondary-color);
-            font-size: 1.3rem;
+            color: var(--primary-color);
         }
-        
+
         .contact-info a {
             color: var(--secondary-color);
-            transition: color 0.3s ease;
+            text-decoration: none;
         }
 
         .contact-info a:hover {
-            color: var(--white-color);
+            text-decoration: underline;
         }
 
-        .contact-info .social-links a {
-            font-size: 2rem;
-            margin-right: 20px;
-            color: var(--white-color);
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.8em;
+            color: var(--secondary-color);
             transition: color 0.3s ease;
         }
 
-        .contact-info .social-links a:hover {
-            color: var(--secondary-color);
+        .social-links a:hover {
+            color: var(--primary-color);
         }
 
-        .contact-form form {
-            background: var(--white-color);
-            padding: 40px;
+        .contact-form {
+            background-color: var(--white);
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 20px;
+            box-shadow: var(--shadow);
         }
 
         .contact-form label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--dark-color);
+            color: var(--primary-color);
         }
 
         .contact-form input[type="text"],
@@ -429,19 +316,19 @@
         .contact-form textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 1rem;
             font-family: 'Open Sans', sans-serif;
+            font-size: 1em;
             transition: border-color 0.3s ease;
         }
 
         .contact-form input[type="text"]:focus,
         .contact-form input[type="email"]:focus,
         .contact-form textarea:focus {
+            border-color: var(--secondary-color);
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2);
         }
 
         .contact-form textarea {
@@ -449,139 +336,136 @@
             min-height: 120px;
         }
 
-        .contact-form .btn {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1rem;
-            background: var(--accent-color);
+        .contact-form button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
         }
 
-        .contact-form .btn:hover {
-            background: darken(var(--accent-color), 10%);
+        .contact-form button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Kartta */
+        .map-container {
+            margin-top: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
         }
 
         /* Footer */
-        .main-footer {
-            background: var(--dark-color);
-            color: var(--white-color);
-            text-align: center;
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
             padding: 30px 0;
-            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 60px;
         }
 
-        /* Responsive-säännöt */
-        @media (max-width: 900px) {
-            .main-nav ul {
-                display: none; /* Piilotetaan navigaatio oletuksena */
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--white-color);
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                border-top: 1px solid #eee;
-                padding-bottom: 10px;
-            }
+        footer p {
+            margin-bottom: 10px;
+        }
 
-            .main-nav ul.active {
-                display: flex; /* Näytetään aktiivinen navigaatio */
+        /* Responsiivisuus */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none; /* Tai toteuta hampurilaisvalikko */
             }
-
-            .main-nav ul li {
-                margin: 0;
-                border-bottom: 1px solid #eee;
+            .navbar .container {
+                justify-content: center;
             }
-
-            .main-nav ul li:last-child {
-                border-bottom: none;
+            .navbar-brand {
+                font-size: 1.5em;
             }
-
-            .main-nav ul li a {
-                display: block;
-                padding: 15px 20px;
-                text-align: center;
-                color: var(--dark-color);
-            }
-
-            .main-nav ul li a::after {
-                display: none; /* Piilotetaan hover-viiva mobiilissa */
-            }
-
-            .menu-toggle {
-                display: block; /* Näytetään toggle-nappi */
-            }
-
             #hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8em;
             }
-
             #hero p {
-                font-size: 1.2rem;
+                font-size: 1.1em;
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
             .contact-grid {
                 grid-template-columns: 1fr;
             }
-
             .contact-form {
-                margin-top: 50px;
+                margin-top: 40px;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.3em; }
+
+            .container {
+                padding: 15px;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
             #hero {
                 height: 60vh;
             }
             #hero h1 {
-                font-size: 2rem;
+                font-size: 2.5em;
             }
             #hero p {
-                font-size: 1rem;
+                font-size: 1em;
             }
-            section {
-                padding: 50px 0;
+
+            .services-grid, .why-us-grid {
+                grid-template-columns: 1fr;
             }
-            .section-title {
-                font-size: 1.8rem;
+
+            .price-table th, .price-table td {
+                padding: 10px;
+                font-size: 0.9em;
             }
-            .palvelu-item, .reason-card {
-                padding: 20px;
+        }
+
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 2em;
             }
-            .palvelu-item i, .reason-card i {
-                font-size: 2.5rem;
+            #hero p {
+                font-size: 0.9em;
             }
-            .contact-form form {
-                padding: 25px;
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
-            .contact-info h3, .contact-form h3 {
-                font-size: 1.5rem;
-            }
-            .contact-info p {
-                font-size: 1rem;
-            }
-            .contact-info .social-links a {
-                font-size: 1.5rem;
+            .navbar-brand {
+                font-size: 1.3em;
             }
         }
     </style>
 </head>
 <body>
-    <header class="main-header">
+    <header class="navbar">
         <div class="container">
-            <a href="#" class="logo">Hostel River</a>
-            <nav class="main-nav">
-                <button class="menu-toggle" aria-label="Avaa navigointivalikko"><i class="fas fa-bars"></i></button>
-                <ul id="main-menu">
+            <a href="#" class="navbar-brand">Hostel River</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero">Etusivu</a></li>
                     <li><a href="#palvelut">Palvelut</a></li>
-                    <li><a href="#miksi-me">Miksi Me?</a></li>
+                    <li><a href="#miksivalita">Miksi meidät?</a></li>
                     <li><a href="#hinnasto">Hinnasto</a></li>
                     <li><a href="#ajanvaraus">Ajanvaraus</a></li>
-                    <li><a href="#yhteystiedot-lomake">Yhteystiedot</a></li>
+                    <li><a href="#yhteystiedot">Yhteystiedot</a></li>
                 </ul>
             </nav>
         </div>
@@ -589,206 +473,169 @@
 
     <main>
         <section id="hero">
+            <img src="https://source.unsplash.com/1600x900/?hostel,Pori,river" alt="Hostel River Porissa">
             <div class="hero-content">
-                <h1>Hostel River – Modernia majoitusta Porissa</h1>
-                <p>Viihtyisää ja edullista majoitusta Kokemäenjoen rannalla, Porin sydämessä. Koe Porin parhaat puolet meiltä käsin!</p>
-                <a href="#ajanvaraus" class="btn">Varaa Majoitus</a>
+                <h1>Tervetuloa Hostel Riveriin – Kotisi poissa kotoa Porissa!</h1>
+                <p>Koe Pori parhaimmillaan! Edullinen ja viihtyisä majoitus kauniilla jokinäkymällä odottaa sinua. Olitpa sitten matkalla yksin, ystävien kanssa tai perheen kera, meiltä löydät täydellisen tukikohdan kaupunkiin tutustumiseen.</p>
+                <a href="#ajanvaraus" class="btn">Varaa majoitus nyt!</a>
             </div>
         </section>
 
-        <section id="palvelut">
-            <div class="container">
-                <h2 class="section-title">Palvelumme</h2>
-                <div class="palvelut-grid">
-                    <div class="palvelu-item">
-                        <i class="fas fa-bed"></i>
-                        <h3>Majoitus</h3>
-                        <p>Tarjoamme monipuolisia majoitusvaihtoehtoja: edullisia sänkypaikkoja jaetuissa huoneissa sekä mukavia yksityishuoneita. Kaikissa huoneissa on siisti ja rento tunnelma.</p>
-                    </div>
-                    <div class="palvelu-item">
-                        <i class="fas fa-wifi"></i>
-                        <h3>Ilmainen Wi-Fi</h3>
-                        <p>Pysy yhteydessä maailmaan! Nopea ja luotettava langaton internet-yhteys on käytössäsi veloituksetta kaikissa tiloissamme.</p>
-                    </div>
-                    <div class="palvelu-item">
-                        <i class="fas fa-kitchen-set"></i>
-                        <h3>Yhteiskeittiö</h3>
-                        <p>Käytössäsi on täysin varusteltu keittiö, jossa voit valmistaa omat ateriasi ja säästää ravintolakuluissa. Astiat, liesi, uuni ja jääkaappi käytössäsi.</p>
-                    </div>
-                    <div class="palvelu-item">
-                        <i class="fas fa-sauna"></i>
-                        <h3>Sauna</h3>
-                        <p>Rentoudu ja virkisty päivän päätteeksi hostellimme lämpimässä saunassa. Täydellinen tapa kokea aitoa suomalaista kulttuuria.</p>
-                    </div>
-                    <div class="palvelu-item">
-                        <i class="fas fa-parking"></i>
-                        <h3>Ilmainen Pysäköinti</h3>
-                        <p>Saavu autolla huoletta. Hostellimme pihassa on runsaasti ilmaisia pysäköintipaikkoja asiakkaillemme.</p>
-                    </div>
-                    <div class="palvelu-item">
-                        <i class="fas fa-bicycle"></i>
-                        <h3>Polkupyörävuokraus</h3>
-                        <p>Tutustu Porin kauniisiin maisemiin ja jokirantaan pyöräillen. Vuokraa polkupyörä vastaanotosta edullisesti!</p>
-                    </div>
+        <section id="palvelut" class="container text-center">
+            <h2>Palvelut Hostel Riverissä</h2>
+            <p>Tarjoamme laajan valikoiman palveluita, jotka tekevät vierailustasi mukavan ja vaivattoman. Prioriteettimme on, että tunnet olosi kotoisaksi ja saat kaiken tarvitsemasi Porin-seikkailuasi varten.</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Edulliset majoitushuoneet</h3>
+                    <p>Yksityis- ja jaetut huoneet budjetillesi sopivasti. Puhtaat ja viihtyisät tilat takaavat levolliset unet.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Ilmainen Wi-Fi</h3>
+                    <p>Pysy yhteydessä maailmaan nopean ja maksuttoman langattoman internet-yhteyden ansiosta kaikissa tiloissamme.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Jaettu keittiö</h3>
+                    <p>Valmista omat ateriasi täysin varustellussa keittiössämme. Säästä rahaa ja nauti kotiruoasta matkalla!</p>
+                </div>
+                <div class="service-item">
+                    <h3>Yhteinen oleskelutila</h3>
+                    <p>Rentoudu, tapaa muita matkailijoita ja jaa kokemuksia viihtyisässä oleskelutilassamme.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Liinavaatteet ja pyyhkeet</h3>
+                    <p>Ei tarvitse pakata omia! Huolehdimme puhtaista liinavaatteista ja pyyhkeistä jokaista vierasta varten.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Kierrätys- ja pesumahdollisuus</h3>
+                    <p>Huolehdimme ympäristöstä ja tarjoamme mahdollisuuden kierrätykseen sekä pienen lisämaksun vastaan pyykinpesuun.</p>
                 </div>
             </div>
         </section>
 
-        <section id="miksi-me">
-            <div class="container">
-                <h2 class="section-title">Miksi Valita Hostel River?</h2>
-                <div class="grid-3">
-                    <div class="reason-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Erinomainen Sijainti</h3>
-                        <p>Sijaitsemme Porin keskustassa, kauniin Kokemäenjoen rannalla. Kaikki palvelut ja nähtävyydet ovat kävelyetäisyydellä.</p>
-                    </div>
-                    <div class="reason-card">
-                        <i class="fas fa-dollar-sign"></i>
-                        <h3>Edulliset Hinnat</h3>
-                        <p>Tarjoamme laadukasta majoitusta kilpailukykyiseen hintaan, sopien niin reppureissaajille kuin lyhytaikaisillekin matkailijoille.</p>
-                    </div>
-                    <div class="reason-card">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <h3>Viihtyisä Tunnelma</h3>
-                        <p>Panostamme viihtyisään ja rentoon ilmapiiriin, jossa tunnet olosi kotoisaksi heti saapumisesta lähtien.</p>
-                    </div>
+        <section id="miksivalita" class="container text-center">
+            <h2>Miksi valita Hostel River Porissa?</h2>
+            <p>Hostel River tarjoaa ainutlaatuisen yhdistelmän mukavuutta, edullisuutta ja loistavaa sijaintia. Tässä muutama syy, miksi sinun kannattaa valita meidät:</p>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <h3>Erinomainen sijainti</h3>
+                    <p>Sijaitsemme Porin keskustassa Kokemäenjoen rannalla, kävelymatkan päässä tärkeimmistä nähtävyyksistä, ravintoloista ja kaupoista.</p>
+                </div>
+                <div class="why-us-item">
+                    <h3>Ystävällinen ilmapiiri</h3>
+                    <p>Haluamme, että tunnet olosi tervetulleeksi ja viihtyisäksi. Henkilökuntamme auttaa mielellään kaikissa kysymyksissäsi.</p>
+                </div>
+                <div class="why-us-item">
+                    <h3>Paras hinta-laatusuhde</h3>
+                    <p>Tarjoamme kilpailukykyiset hinnat ilman, että tinkisimme puhtaudesta tai mukavuudesta.</p>
+                </div>
+                <div class="why-us-item">
+                    <h3>Paikallistuntemus</h3>
+                    <p>Saamme annettua sinulle parhaat vinkit Porin nähtävyyksistä, tapahtumista ja piilotetuista helmistä.</p>
                 </div>
             </div>
         </section>
 
-        <section id="hinnasto">
-            <div class="container">
-                <h2 class="section-title">Hinnasto</h2>
-                <table class="hinnasto-taulukko">
-                    <thead>
-                        <tr>
-                            <th>Huonetyyppi</th>
-                            <th>Hinta / yö (alk.)</th>
-                            <th>Kuvaus</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sänkypaikka jaetussa huoneessa</td>
-                            <td>30 €</td>
-                            <td>Edullinen vaihtoehto yksinmatkustajille ja budjetin kanssa matkaaville.</td>
-                        </tr>
-                        <tr>
-                            <td>Yhden hengen huone</td>
-                            <td>60 €</td>
-                            <td>Oma rauha ja mukavuus yhdelle. Sisältää vuodevaatteet ja pyyhkeen.</td>
-                        </tr>
-                        <tr>
-                            <td>Kahden hengen huone</td>
-                            <td>80 €</td>
-                            <td>Täydellinen pariskunnille tai kahdelle ystävälle. Mukavuus ja yksityisyys taattu.</td>
-                        </tr>
-                        <tr>
-                            <td>Perhehuone (3-4 hlöä)</td>
-                            <td>110 €</td>
-                            <td>Tilaa ja mukavuutta pienille perheille tai ryhmille.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="hinnasto-info"><i>Hinnat ovat alkaen-hintoja ja voivat vaihdella sesongin sekä saatavuuden mukaan. Tiedustele tarjousta pidemmistä majoituksista tai ryhmävarauksista.</i></p>
-            </div>
+        <section id="hinnasto" class="container text-center">
+            <h2>Majoitushinnasto</h2>
+            <p>Hinnat vaihtelevat sesongin ja kysynnän mukaan. Tarkimman hinnan saat ajanvarausjärjestelmästämme. Alla suuntaa-antavia hintoja:</p>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Huonetyyppi</th>
+                        <th>Alkaen (yö/hlö)</th>
+                        <th>Lisätietoja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jaettu huone (makuusali)</td>
+                        <td>30 €</td>
+                        <td>Viihtyisä kerrossänkypaikka, sopii budjettimatkailijoille.</td>
+                    </tr>
+                    <tr>
+                        <td>Yhden hengen huone</td>
+                        <td>55 €</td>
+                        <td>Oma rauha ja mukavuus yksin matkustavalle.</td>
+                    </tr>
+                    <tr>
+                        <td>Kahden hengen huone</td>
+                        <td>75 €</td>
+                        <td>Täydellinen pariskunnille tai kahdelle ystävälle.</td>
+                    </tr>
+                    <tr>
+                        <td>Perhehuone (3-4 hlöä)</td>
+                        <td>95 €</td>
+                        <td>Tilaa ja mukavuutta pienille perheille tai ryhmille.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 20px;">Kaikkiin hintoihin sisältyy liinavaatteet, pyyhkeet ja Wi-Fi.</p>
+            <a href="#ajanvaraus" class="btn">Tarkista saatavuus ja hinnat</a>
         </section>
 
-        <section id="ajanvaraus">
-            <div class="container">
-                <h2 class="section-title">Ajanvaraus</h2>
-                <p class="booking-info">Varaa majoituksesi helposti ja nopeasti alla olevan kalenterin kautta. Valitse haluamasi päivämäärät ja huonetyyppi, ja varmista paikkasi Porin parhaassa hostellissa!</p>
-                <!-- Oletettu ajanvarauskalenteri-iframe. Korvaa oikealla URL:llä myöhemmin. -->
-                <iframe class="booking-iframe" src="https://example.com/hostelriver-booking" title="Ajanvarauskalenteri Hostel River"></iframe>
-                <p class="booking-info" style="margin-top: 20px;"><i>Huom: Yllä oleva iframe on esimerkki. Oikea varauskalenteri upotetaan tähän.</i></p>
-            </div>
+        <section id="ajanvaraus" class="container text-center">
+            <h2>Varaa majoituksesi</h2>
+            <p>Varaa majoitus kätevästi alla olevan ajanvarauskalenterin kautta. Valitse haluamasi päivämäärät ja huonetyyppi, ja järjestelmä näyttää saatavilla olevat vaihtoehdot ja hinnat.</p>
+            <!-- Huom: Tämä on geneerinen paikkamerkki iframe-kalenterille. Todellisuudessa tähän upotettaisiin esim. Booking.comin, Hostelworldin tai muun varausjärjestelmän iframe. -->
+            <iframe id="booking-iframe" src="https://example.com/booking-widget-placeholder" title="Hostel River Ajanvarauskalenteri">
+                <p>Selaimesi ei tue upotettuja kehyksiä. Voit varata majoituksen ottamalla meihin yhteyttä suoraan: <a href="mailto:info@hostelriver.fi">info@hostelriver.fi</a></p>
+            </iframe>
+            <p style="margin-top: 20px;">Ongelmia varauksen teossa? Ota meihin yhteyttä puhelimitse tai sähköpostitse.</p>
         </section>
 
-        <section id="yhteystiedot-lomake">
-            <div class="container">
-                <h2 class="section-title">Ota Yhteyttä</h2>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Hostel River</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Jokikatu 5, 28100 Pori, Suomi</p>
-                        <p><i class="fas fa-phone"></i> Puh: <a href="tel:+358401234567">040 123 4567</a></p>
-                        <p><i class="fas fa-envelope"></i> Sähköposti: <a href="mailto:info@hostelriver.fi">info@hostelriver.fi</a></p>
-                        
-                        <h3>Aukioloajat</h3>
-                        <p><i class="fas fa-clock"></i> Vastaanotto: Ma-Su klo 8:00 - 22:00</p>
-                        <p><i class="fas fa-door-open"></i> Itsepalvelu sisäänkirjautuminen saatavilla 24/7 ennakkoilmoituksella.</p>
+        <section id="yhteystiedot" class="container">
+            <h2 class="text-center">Ota yhteyttä – Hostel River</h2>
+            <p class="text-center">Onko sinulla kysyttävää? Ota meihin yhteyttä! Autamme mielellämme kaikissa majoitukseen liittyvissä asioissa.</p>
 
-                        <div class="social-links" style="margin-top: 30px;">
-                            <h3>Seuraa meitä!</h3>
-                            <a href="https://facebook.com/hostelriver" target="_blank" aria-label="Hostel River Facebookissa"><i class="fab fa-facebook-square"></i></a>
-                            <a href="https://instagram.com/hostelriver" target="_blank" aria-label="Hostel River Instagramissa"><i class="fab fa-instagram-square"></i></a>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Lähetä meille viesti</h3>
-                        <form action="#" method="POST">
-                            <div class="form-group">
-                                <label for="nimi">Nimi:</label>
-                                <input type="text" id="nimi" name="nimi" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Sähköposti:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="aihe">Aihe:</label>
-                                <input type="text" id="aihe" name="aihe">
-                            </div>
-                            <div class="form-group">
-                                <label for="viesti">Viesti:</label>
-                                <textarea id="viesti" name="viesti" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Lähetä Viesti</button>
-                        </form>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Yhteystiedot</h3>
+                    <p><strong>Osoite:</strong> Satakunnankatu 123, 28100 Pori, Suomi</p>
+                    <p><strong>Puhelin:</strong> <a href="tel:+358401234567">+358 40 123 4567</a></p>
+                    <p><strong>Sähköposti:</strong> <a href="mailto:info@hostelriver.fi">info@hostelriver.fi</a></p>
+                    <p><strong>Aukioloajat:</strong> Vastaanotto avoinna päivittäin klo 8:00 - 22:00. Muina aikoina sopimuksen mukaan.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <h3>Seuraa meitä:</h3>
+                        <a href="https://facebook.com/hostelriverpori" target="_blank" aria-label="Hostel River Facebookissa">Facebook</a>
+                        <a href="https://instagram.com/hostelriverpori" target="_blank" aria-label="Hostel River Instagramissa">Instagram</a>
+                        <!-- Lisää kuvakkeet esim. Font Awesome:sta, jos sallittua. Nyt vain teksti-linkit. -->
                     </div>
                 </div>
+
+                <div class="contact-form">
+                    <h3>Lähetä meille viesti</h3>
+                    <form action="#" method="POST">
+                        <label for="nimi">Nimi:</label>
+                        <input type="text" id="nimi" name="nimi" required>
+
+                        <label for="sahkoposti">Sähköposti:</label>
+                        <input type="email" id="sahkoposti" name="sahkoposti" required>
+
+                        <label for="aihe">Aihe:</label>
+                        <input type="text" id="aihe" name="aihe">
+
+                        <label for="viesti">Viesti:</label>
+                        <textarea id="viesti" name="viesti" required></textarea>
+
+                        <button type="submit">Lähetä viesti</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <h3>Sijaintimme kartalla</h3>
+                <!-- Upotettu Google Maps kartta (esimerkki Porin keskustasta) -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1576.6025066929458!2d21.791557000000003!3d61.48744549999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4686414777a8344d%3A0xc33e4b7b2a609438!2sPorin%20Kauppatori!5e0!3m2!1sfi!2sfi!4v1701357600000!5m2!1sfi!2sfi" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sijainti kartalla"></iframe>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
+    <footer>
         <div class="container">
             <p>&copy; 2023 Hostel River. Kaikki oikeudet pidätetään.</p>
+            <p>Suunniteltu ja toteutettu Porissa.</p>
         </div>
     </footer>
-
-    <script>
-        // Mobiilinavigaation toiminnallisuus
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainMenu = document.getElementById('main-menu');
-
-            if (menuToggle && mainMenu) {
-                menuToggle.addEventListener('click', function() {
-                    mainMenu.classList.toggle('active');
-                    const icon = menuToggle.querySelector('i');
-                    if (mainMenu.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times'); // Vaihda rasti-ikoniin
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars'); // Vaihda takaisin hampurilaisikoniin
-                    }
-                });
-
-                // Sulje menu, kun linkkiä klikataan (yksisivuisella sivulla)
-                mainMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mainMenu.classList.remove('active');
-                        const icon = menuToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
 ```
