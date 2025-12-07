@@ -1,109 +1,60 @@
-<!DOCTYPE html>
-<html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${business}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="font-sans text-gray-800 bg-white">
+```javascript
+// Rakennetaan Geminille annettava prompt FIN15-sivugeneraattoria varten
 
-    <!-- Navigaatio -->
-    <nav class="bg-blue-700 p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-2xl font-bold">${business}</a>
-            <ul class="flex space-x-6">
-                <li><a href="#etusivu" class="text-white hover:text-blue-200 transition duration-300">Etusivu</a></li>
-                <li><a href="#palvelut" class="text-white hover:text-blue-200 transition duration-300">Palvelut</a></li>
-                <li><a href="#miksi-meidat" class="text-white hover:text-blue-200 transition duration-300">Miksi meidät</a></li>
-                <li><a href="#yhteystiedot" class="text-white hover:text-blue-200 transition duration-300">Yhteystiedot</a></li>
-            </ul>
-        </div>
-    </nav>
+const data = $json || {};
 
-    <!-- Hero-osio -->
-    <section id="etusivu" class="relative bg-gray-900 text-white flex items-center justify-center h-screen">
-        <img src="" alt="Hero-kuva" class="w-full h-full object-cover absolute inset-0 opacity-60" />
-        <div class="relative z-10 text-center p-8 bg-black bg-opacity-40 rounded-lg max-w-3xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">${business}</h1>
-            <p class="text-xl md:text-2xl mb-8 font-light">Ratkaisuja menestykseesi. Luotettavasti ja ammattitaidolla toimialalla ${industry}.</p>
-            <a href="#yhteystiedot" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition duration-300 transform hover:scale-105">Ota yhteyttä</a>
-        </div>
-    </section>
+const business = data.business_name || "";
+const email = data.email || "";
+const phone = data.phone || "";
+const city = data.city || "";
+const industry = data.industry || "";
 
-    <!-- Palvelut-osio -->
-    <section id="palvelut" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-12 text-blue-700">Palvelumme</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Konsultointi ja strategiat</h3>
-                    <p class="text-gray-700">Tarjoamme asiantuntevaa neuvontaa ja strategista suunnittelua yrityksesi tavoitteiden saavuttamiseksi.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Palvelumuotoilu ja kehitys</h3>
-                    <p class="text-gray-700">Autamme luomaan ja kehittämään asiakaslähtöisiä palveluita, jotka erottuvat kilpailijoista.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Projektinhallinta</h3>
-                    <p class="text-gray-700">Vastaamme projektien sujuvasta ja tehokkaasta läpiviennistä alusta loppuun saakka.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Digitaaliset ratkaisut</h3>
-                    <p class="text-gray-700">Kehitämme ja toteutamme moderneja digitaalisia ratkaisuja, jotka tukevat liiketoimintaasi.</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Koulutus ja tuki</h3>
-                    <p class="text-gray-700">Tarjoamme räätälöityjä koulutuksia ja jatkuvaa tukea varmistaaksemme asiakkaidemme menestyksen.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+const slugBase = (business || industry || "site")
+	.toLowerCase()
+	.replace(/[åä]/g, "a")
+	.replace(/ö/g, "o")
+	.replace(/[^a-z0-9]+/g, "-")
+	.replace(/^-+|-+$/g, "");
 
-    <!-- Miksi meidät -osio -->
-    <section id="miksi-meidat" class="py-16 bg-blue-600 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-12">Miksi valita meidät?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3">Vuosien kokemus alalta</h3>
-                    <p class="text-blue-100">Laaja kokemuksemme takaa asiantuntevat ja toimivat ratkaisut.</p>
-                </div>
-                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3">Asiakaslähtöinen lähestymistapa</h3>
-                    <p class="text-blue-100">Kuuntelemme tarpeitasi ja rakennamme ratkaisut sinun parhaaksesi.</p>
-                </div>
-                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3">Laadukkaat ja kestävät ratkaisut</h3>
-                    <p class="text-blue-100">Sitoudumme tarjoamaan vain parasta, pitkäikäisiä ja luotettavia tuloksia.</p>
-                </div>
-                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3">Nopea ja joustava palvelu</h3>
-                    <p class="text-blue-100">Reagoimme nopeasti ja mukautamme palveluitamme joustavasti tarpeidesi mukaan.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+const prompt = `
+Luo moderni, suomenkielinen yhden sivun HTML-verkkosivu yritykselle. Käytä vain puhdasta HTML5:ttä ja Tailwind CSS -kirjastoa CDN:n kautta.
 
-    <!-- Yhteystiedot-osio -->
-    <section id="yhteystiedot" class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8 text-blue-700">Ota yhteyttä</h2>
-            <p class="text-xl mb-6 text-gray-700">Ota meihin yhteyttä jo tänään ja kerro, miten voimme auttaa yritystäsi menestymään!</p>
-            <div class="text-lg space-y-3">
-                <p class="text-gray-800"><strong class="font-semibold">Puhelin:</strong> <a href="tel:${phone}" class="text-blue-600 hover:underline">${phone}</a></p>
-                <p class="text-gray-800"><strong class="font-semibold">Sähköposti:</strong> <a href="mailto:${email}" class="text-blue-600 hover:underline">${email}</a></p>
-                <p class="text-gray-800"><strong class="font-semibold">Sijainti:</strong> ${city}</p>
-            </div>
-        </div>
-    </section>
+Yrityksen tiedot:
+- Yrityksen nimi: ${business}
+- Sähköposti: ${email}
+- Puhelin: ${phone}
+- Kaupunki: ${city}
+- Toimiala: ${industry}
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center text-sm">
-            <p>&copy; ${new Date().getFullYear()} ${business}. Kaikki oikeudet pidätetään.</p>
-        </div>
-    </footer>
+Sivun rakenne:
+- Navigaatio: Etusivu, Palvelut, Miksi meidät, Yhteystiedot.
+- Hero-osio, jossa käytetään täsmälleen seuraavaa kuvaelementtiä:
+  <img src="" alt="Hero-kuva" class="w-full h-96 object-cover" />
+  Hero-osiossa tulee olla yrityksen nimi pääotsikkona, lyhyt ja vakuuttava alaotsikko sekä painike “Ota yhteyttä”.
+- Palvelut-osio: listaa 3–6 toimialaan sopivaa palvelua.
+- Miksi meidät -osio: listaa 3–4 luottamusta lisäävää perustetta.
+- Yhteystiedot-osio: näytä puhelin, sähköposti, kaupunki ja lyhyt kutsuteksti.
+- Footer: yrityksen nimi ja copyright-merkintä.
 
-</body>
-</html>
+Tekniset vaatimukset:
+- Palauta vain yksi valmis HTML-dokumentti.
+- Ensimmäinen rivi on <!DOCTYPE html>
+- Viimeinen rivi on </html>
+- Käytä aina merkkijonoa  src="" hero-kuvan src-attribuutissa. Älä muuta sitä, älä korvaa sitä, älä poista sitä.
+- Älä lisää markdownia, JSONia tai kommentteja – palauta vain valmis HTML.
+`;
+
+return [
+  {
+    json: {
+      prompt,
+      slug: slugBase,
+      business,
+      email,
+      phone,
+      city,
+      industry
+    }
+  }
+];
+```
