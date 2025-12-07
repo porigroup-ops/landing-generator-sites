@@ -1,60 +1,26 @@
-```javascript
-// Rakennetaan Geminille annettava prompt FIN15-sivugeneraattoria varten
+The provided JavaScript code correctly constructs the prompt for Gemini and prepares the associated data.
 
-const data = $json || {};
+Here's a breakdown of why it's good:
 
-const business = data.business_name || "";
-const email = data.email || "";
-const phone = data.phone || "";
-const city = data.city || "";
-const industry = data.industry || "";
+1.  **Data Extraction**: It accurately extracts `business_name`, `email`, `phone`, `city`, and `industry` from the `$json` input, falling back to empty strings if not present, which is good practice.
+2.  **Slug Generation (`slugBase`)**:
+    *   It creates a URL-friendly slug from the business name or industry.
+    *   Handles Finnish special characters (`å`, `ä`, `ö`) correctly by converting them to their basic Latin counterparts.
+    *   Replaces non-alphanumeric characters with hyphens.
+    *   Removes leading/trailing hyphens, ensuring a clean slug.
+    *   This is robust and well-implemented.
+3.  **Prompt Construction**:
+    *   **Clarity**: The prompt text is clear, well-structured, and written in Finnish as requested.
+    *   **Dynamic Data**: It correctly interpolates all the business-specific details into the prompt.
+    *   **Specific Instructions**:
+        *   It explicitly requests HTML5 and Tailwind CSS (via CDN).
+        *   It details the required page structure (navigation, hero, services, why us, contact, footer).
+        *   **Crucially, it includes the exact `img` tag for the hero section with `src=""` and explicitly instructs Gemini *not* to change it.** This directly addresses the requirement "Käytä aina merkkijonoa hero-kuvan src-attribuutissa. Älä muuta sitä, älä korvaa sitä, älä poista sitä."
+        *   It specifies the `<!DOCTYPE html>` and `</html>` first/last lines.
+        *   It forbids markdown, JSON, or comments in the output, ensuring a clean HTML response.
+    *   **Completeness**: All elements requested in the initial comments are included in the prompt.
+4.  **Return Format**: The code returns an array containing a JSON object with the `prompt`, `slug`, and all relevant business details, which is suitable for consumption by an external system that would then pass this prompt to Gemini.
 
-const slugBase = (business || industry || "site")
-	.toLowerCase()
-	.replace(/[åä]/g, "a")
-	.replace(/ö/g, "o")
-	.replace(/[^a-z0-9]+/g, "-")
-	.replace(/^-+|-+$/g, "");
+**Conclusion:**
 
-const prompt = `
-Luo moderni, suomenkielinen yhden sivun HTML-verkkosivu yritykselle. Käytä vain puhdasta HTML5:ttä ja Tailwind CSS -kirjastoa CDN:n kautta.
-
-Yrityksen tiedot:
-- Yrityksen nimi: ${business}
-- Sähköposti: ${email}
-- Puhelin: ${phone}
-- Kaupunki: ${city}
-- Toimiala: ${industry}
-
-Sivun rakenne:
-- Navigaatio: Etusivu, Palvelut, Miksi meidät, Yhteystiedot.
-- Hero-osio, jossa käytetään täsmälleen seuraavaa kuvaelementtiä:
-  <img src="" alt="Hero-kuva" class="w-full h-96 object-cover" />
-  Hero-osiossa tulee olla yrityksen nimi pääotsikkona, lyhyt ja vakuuttava alaotsikko sekä painike “Ota yhteyttä”.
-- Palvelut-osio: listaa 3–6 toimialaan sopivaa palvelua.
-- Miksi meidät -osio: listaa 3–4 luottamusta lisäävää perustetta.
-- Yhteystiedot-osio: näytä puhelin, sähköposti, kaupunki ja lyhyt kutsuteksti.
-- Footer: yrityksen nimi ja copyright-merkintä.
-
-Tekniset vaatimukset:
-- Palauta vain yksi valmis HTML-dokumentti.
-- Ensimmäinen rivi on <!DOCTYPE html>
-- Viimeinen rivi on </html>
-- Käytä aina merkkijonoa "" hero-kuvan src-attribuutissa. Älä muuta sitä, älä korvaa sitä, älä poista sitä.
-- Älä lisää markdownia, JSONia tai kommentteja – palauta vain valmis HTML.
-`;
-
-return [
-  {
-    json: {
-      prompt,
-      slug: slugBase,
-      business,
-      email,
-      phone,
-      city,
-      industry
-    }
-  }
-];
-```
+The code is well-written, adheres to all specified requirements, and is ready for use. It effectively translates the input data into a precise and comprehensive prompt for a generative AI model.
