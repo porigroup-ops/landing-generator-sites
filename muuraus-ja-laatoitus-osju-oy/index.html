@@ -1,151 +1,109 @@
-```html
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muuraus ja laatoitus Osju Oy - Laadukkaat laatoituspalvelut Porissa</title>
+    <title>${business}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 bg-white">
 
     <!-- Navigaatio -->
-    <nav id="etusivu" class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#etusivu" class="text-2xl font-bold text-blue-700">Muuraus ja laatoitus Osju Oy</a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#etusivu" class="text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Etusivu</a>
-                        <a href="#palvelut" class="text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Palvelut</a>
-                        <a href="#miksi-me" class="text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Miksi meidät</a>
-                        <a href="#galleria" class="text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Galleria</a>
-                        <a href="#yhteystiedot" class="text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Yhteystiedot</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <div class="space-y-1">
-                        <a href="#etusivu" class="text-gray-600 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Etusivu</a>
-                        <a href="#palvelut" class="text-gray-600 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Palvelut</a>
-                        <a href="#miksi-me" class="text-gray-600 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Miksi meidät</a>
-                        <a href="#galleria" class="text-gray-600 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Galleria</a>
-                        <a href="#yhteystiedot" class="text-gray-600 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Yhteystiedot</a>
-                    </div>
-                </div>
-            </div>
+    <nav class="bg-blue-700 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold">${business}</a>
+            <ul class="flex space-x-6">
+                <li><a href="#etusivu" class="text-white hover:text-blue-200 transition duration-300">Etusivu</a></li>
+                <li><a href="#palvelut" class="text-white hover:text-blue-200 transition duration-300">Palvelut</a></li>
+                <li><a href="#miksi-meidat" class="text-white hover:text-blue-200 transition duration-300">Miksi meidät</a></li>
+                <li><a href="#yhteystiedot" class="text-white hover:text-blue-200 transition duration-300">Yhteystiedot</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero-sektio -->
-    <header class="relative bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://source.unsplash.com/featured/?business,Laatoitus');">
-        <div class="absolute inset-0 bg-black opacity-60"></div>
-        <div class="relative z-10 text-center px-4">
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4">Muuraus ja laatoitus Osju Oy</h1>
-            <p class="text-2xl md:text-3xl font-light mb-8">Laatua laatoituksiin Porissa ja lähialueilla</p>
-            <a href="#yhteystiedot" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">Ota yhteyttä</a>
+    <!-- Hero-osio -->
+    <section id="etusivu" class="relative bg-gray-900 text-white flex items-center justify-center h-screen">
+        <img src="" alt="Hero-kuva" class="w-full h-full object-cover absolute inset-0 opacity-60" />
+        <div class="relative z-10 text-center p-8 bg-black bg-opacity-40 rounded-lg max-w-3xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">${business}</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Ratkaisuja menestykseesi. Luotettavasti ja ammattitaidolla toimialalla ${industry}.</p>
+            <a href="#yhteystiedot" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition duration-300 transform hover:scale-105">Ota yhteyttä</a>
         </div>
-    </header>
+    </section>
 
     <!-- Palvelut-osio -->
-    <section id="palvelut" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-12 text-blue-700">Palvelut</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Kylpyhuoneremontit</h3>
-                    <p class="text-gray-600">Toteutamme kylpyhuoneremontit ammattitaidolla alusta loppuun, sisältäen vesieristykset ja laatoitukset.</p>
+    <section id="palvelut" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-blue-700">Palvelumme</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Konsultointi ja strategiat</h3>
+                    <p class="text-gray-700">Tarjoamme asiantuntevaa neuvontaa ja strategista suunnittelua yrityksesi tavoitteiden saavuttamiseksi.</p>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Keittiölaatoitukset</h3>
-                    <p class="text-gray-600">Uusimme keittiösi ilmeen moderneilla ja kestävilla laattaratkaisuilla seinä- ja lattialaatoituksissa.</p>
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Palvelumuotoilu ja kehitys</h3>
+                    <p class="text-gray-700">Autamme luomaan ja kehittämään asiakaslähtöisiä palveluita, jotka erottuvat kilpailijoista.</p>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Lattialaatoitukset</h3>
-                    <p class="text-gray-600">Asennamme kestäviä ja tyylikkäitä lattialaattoja kotiin ja julkisiin tiloihin, lattialämmityksen kanssa tai ilman.</p>
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Projektinhallinta</h3>
+                    <p class="text-gray-700">Vastaamme projektien sujuvasta ja tehokkaasta läpiviennistä alusta loppuun saakka.</p>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Saunojen ja kodinhoitohuoneiden laatoitukset</h3>
-                    <p class="text-gray-600">Erityisosaamistamme ovat myös saunojen ja kodinhoitohuoneiden vaativat laatoitustyöt.</p>
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Digitaaliset ratkaisut</h3>
+                    <p class="text-gray-700">Kehitämme ja toteutamme moderneja digitaalisia ratkaisuja, jotka tukevat liiketoimintaasi.</p>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Vesieristystyöt</h3>
-                    <p class="text-gray-600">Teemme luotettavat ja sertifioidut vesieristykset märkätiloihin, varmistaen pitkäikäisen ja turvallisen lopputuloksen.</p>
+                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Koulutus ja tuki</h3>
+                    <p class="text-gray-700">Tarjoamme räätälöityjä koulutuksia ja jatkuvaa tukea varmistaaksemme asiakkaidemme menestyksen.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Miksi meidät -osio -->
-    <section id="miksi-me" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-12 text-blue-700">Miksi valita Muuraus ja laatoitus Osju Oy?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-lg bg-gray-50 shadow-md">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Ammattitaito ja kokemus</h3>
-                    <p class="text-gray-600">Vuosien kokemuksella ja jatkuvalla kouluttautumisella takaamme virheettömän ja kestävän työnjäljen.</p>
+    <section id="miksi-meidat" class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12">Miksi valita meidät?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Vuosien kokemus alalta</h3>
+                    <p class="text-blue-100">Laaja kokemuksemme takaa asiantuntevat ja toimivat ratkaisut.</p>
                 </div>
-                <div class="p-8 rounded-lg bg-gray-50 shadow-md">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Luotettavuus ja aikataulut</h3>
-                    <p class="text-gray-600">Pidämme aina kiinni sovitusta aikataulusta ja budjetista. Luotettava kumppani laatoitusprojekteihisi.</p>
+                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Asiakaslähtöinen lähestymistapa</h3>
+                    <p class="text-blue-100">Kuuntelemme tarpeitasi ja rakennamme ratkaisut sinun parhaaksesi.</p>
                 </div>
-                <div class="p-8 rounded-lg bg-gray-50 shadow-md">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Laadukkaat materiaalit</h3>
-                    <p class="text-gray-600">Käytämme ainoastaan korkealaatuisia ja testattuja materiaaleja, jotka takaavat laatoituksen pitkäikäisyyden ja kauneuden.</p>
+                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Laadukkaat ja kestävät ratkaisut</h3>
+                    <p class="text-blue-100">Sitoudumme tarjoamaan vain parasta, pitkäikäisiä ja luotettavia tuloksia.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galleria -->
-    <section id="galleria" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-12 text-blue-700">Galleria</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://source.unsplash.com/featured/?Laatoitus,team" alt="Laatoitustiimi työssään" class="w-full h-64 object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
-                        <p class="text-white text-lg font-semibold">Ammattitaitoinen tiimi</p>
-                    </div>
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://source.unsplash.com/featured/?Laatoitus,office" alt="Yrityksen toimisto tai työtila" class="w-full h-64 object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
-                        <p class="text-white text-lg font-semibold">Moderni työtila</p>
-                    </div>
-                </div>
-                <div class="relative overflow-hidden rounded-lg shadow-lg">
-                    <img src="https://source.unsplash.com/featured/?Laatoitus,work" alt="Valmis laatoitustyö" class="w-full h-64 object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
-                        <p class="text-white text-lg font-semibold">Tarkkaa työnjälkeä</p>
-                    </div>
+                <div class="p-6 bg-blue-700 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Nopea ja joustava palvelu</h3>
+                    <p class="text-blue-100">Reagoimme nopeasti ja mukautamme palveluitamme joustavasti tarpeidesi mukaan.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Yhteystiedot -->
-    <section id="yhteystiedot" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Yhteystiedot-osio -->
+    <section id="yhteystiedot" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold mb-8 text-blue-700">Ota yhteyttä</h2>
-            <p class="text-xl text-gray-700 mb-6">Ota yhteyttä, vastaamme nopeasti ja annamme tarjouksen projektiisi!</p>
-            <div class="flex flex-col items-center space-y-4 mb-8">
-                <p class="text-2xl font-semibold text-gray-900">Sähköposti: <a href="mailto:porigroup@gmail.com" class="text-blue-700 hover:underline">porigroup@gmail.com</a></p>
-                <p class="text-2xl font-semibold text-gray-900">Puhelin: <a href="tel:0401234567" class="text-blue-700 hover:underline">040 123 4567</a></p>
+            <p class="text-xl mb-6 text-gray-700">Ota meihin yhteyttä jo tänään ja kerro, miten voimme auttaa yritystäsi menestymään!</p>
+            <div class="text-lg space-y-3">
+                <p class="text-gray-800"><strong class="font-semibold">Puhelin:</strong> <a href="tel:${phone}" class="text-blue-600 hover:underline">${phone}</a></p>
+                <p class="text-gray-800"><strong class="font-semibold">Sähköposti:</strong> <a href="mailto:${email}" class="text-blue-600 hover:underline">${email}</a></p>
+                <p class="text-gray-800"><strong class="font-semibold">Sijainti:</strong> ${city}</p>
             </div>
-            <p class="text-lg text-gray-600">Toimimme Porin seudulla ja lähikunnissa.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="mb-2 text-lg">Muuraus ja laatoitus Osju Oy</p>
-            <p class="text-sm">© Muuraus ja laatoitus Osju Oy 2025</p>
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; ${new Date().getFullYear()} ${business}. Kaikki oikeudet pidätetään.</p>
         </div>
     </footer>
 
 </body>
 </html>
-```
