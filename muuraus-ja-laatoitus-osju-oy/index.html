@@ -1,60 +1,122 @@
-```javascript
-// Rakennetaan Geminille annettava prompt FIN15-sivugeneraattoria varten
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${business} - ${industry}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigaatio -->
+    <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#etusivu" class="text-2xl font-bold">${business}</a>
+            <div class="space-x-4">
+                <a href="#etusivu" class="hover:text-blue-200">Etusivu</a>
+                <a href="#palvelut" class="hover:text-blue-200">Palvelut</a>
+                <a href="#miksi-meidat" class="hover:text-blue-200">Miksi meidät</a>
+                <a href="#yhteystiedot" class="hover:text-blue-200">Yhteystiedot</a>
+            </div>
+        </div>
+    </nav>
 
-const data = $json || {};
+    <!-- Hero-osio -->
+    <header id="etusivu" class="relative bg-gray-900 text-white flex items-center justify-center min-h-[60vh]">
+        <img src="" alt="Hero-kuva" class="w-full h-96 object-cover absolute inset-0 z-0 opacity-70" />
+        <div class="relative z-10 text-center p-8 bg-black bg-opacity-40 rounded-lg max-w-3xl mx-auto">
+            <h1 class="text-5xl font-extrabold mb-4">${business}</h1>
+            <p class="text-xl mb-8">Kumppanisi ${industry} asioissa – asiantuntemusta ja luotettavuutta vuosien kokemuksella.</p>
+            <a href="#yhteystiedot" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out inline-block">Ota yhteyttä</a>
+        </div>
+    </header>
 
-const business = data.business_name || "";
-const email = data.email || "";
-const phone = data.phone || "";
-const city = data.city || "";
-const industry = data.industry || "";
+    <main class="container mx-auto py-16 px-4">
+        <!-- Palvelut-osio -->
+        <section id="palvelut" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-12">Palvelumme</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Asiantuntijapalvelut ja konsultointi</h3>
+                    <p class="text-gray-700">Tarjoamme syvällistä konsultointia ja asiantuntijatukea kaikissa ${industry} alan haasteissa ja mahdollisuuksissa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Räätälöidyt ratkaisut ja kehitystyö</h3>
+                    <p class="text-gray-700">Suunnittelemme ja toteutamme asiakaskohtaisia ratkaisuja, jotka vastaavat juuri sinun yrityksesi tarpeisiin.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Projektinhallinta ja toteutus</h3>
+                    <p class="text-gray-700">Hoidamme projektit alusta loppuun ammattitaidolla varmistaen sujuvan ja tehokkaan toteutuksen.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Koulutus ja tuki</h3>
+                    <p class="text-gray-700">Tarjoamme koulutusta ja jatkuvaa tukea varmistaaksemme ratkaisujemme tehokkaan käytön ja hyödyntämisen.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-3">Huolto ja ylläpito</h3>
+                    <p class="text-gray-700">Huolehdimme järjestelmien ja ratkaisujen saumattomasta toiminnasta ja elinkaaren hallinnasta.</p>
+                </div>
+            </div>
+        </section>
 
-const slugBase = (business || industry || "site")
-	.toLowerCase()
-	.replace(/[åä]/g, "a")
-	.replace(/ö/g, "o")
-	.replace(/[^a-z0-9]+/g, "-")
-	.replace(/^-+|-+$/g, "");
+        <!-- Miksi meidät -osio -->
+        <section id="miksi-meidat" class="bg-blue-50 p-8 rounded-lg mb-16 shadow-inner">
+            <h2 class="text-4xl font-bold text-center mb-12">Miksi valita meidät?</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Asiantuntemus</h3>
+                        <p class="text-gray-700">Vuosien kokemus ja syvällinen ${industry} alan tuntemus takaavat laadukkaat lopputulokset.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Luotettavuus</h3>
+                        <p class="text-gray-700">Sitoudumme laadukkaaseen työhön ja pidämme aina asiakaslupauksemme.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Asiakaslähtöisyys</h3>
+                        <p class="text-gray-700">Palvelumme suunnitellaan aina yksilöllisesti vastaamaan asiakkaan tarpeita ja tavoitteita.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <svg class="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Innovatiiviset ratkaisut</h3>
+                        <p class="text-gray-700">Kehitämme jatkuvasti uusia ja tehokkaita toimintatapoja varmistaaksemme kilpailuetusi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-const prompt = `
-Luo moderni, suomenkielinen yhden sivun HTML-verkkosivu yritykselle. Käytä vain puhdasta HTML5:ttä ja Tailwind CSS -kirjastoa CDN:n kautta.
+        <!-- Yhteystiedot-osio -->
+        <section id="yhteystiedot" class="text-center bg-blue-600 text-white p-10 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-bold mb-6">Ota yhteyttä</h2>
+            <p class="text-xl mb-8">Ota yhteyttä ja keskustellaan, miten voimme auttaa sinua!</p>
+            <div class="space-y-4 text-lg">
+                <p><span class="font-semibold">Puhelin:</span> <a href="tel:${phone}" class="hover:underline">${phone}</a></p>
+                <p><span class="font-semibold">Sähköposti:</span> <a href="mailto:${email}" class="hover:underline">${email}</a></p>
+                <p><span class="font-semibold">Kaupunki:</span> ${city}</p>
+            </div>
+        </section>
+    </main>
 
-Yrityksen tiedot:
-- Yrityksen nimi: ${business}
-- Sähköposti: ${email}
-- Puhelin: ${phone}
-- Kaupunki: ${city}
-- Toimiala: ${industry}
-
-Sivun rakenne:
-- Navigaatio: Etusivu, Palvelut, Miksi meidät, Yhteystiedot.
-- Hero-osio, jossa käytetään täsmälleen seuraavaa kuvaelementtiä:
-  <img src="" alt="Hero-kuva" class="w-full h-96 object-cover" />
-  Hero-osiossa tulee olla yrityksen nimi pääotsikkona, lyhyt ja vakuuttava alaotsikko sekä painike “Ota yhteyttä”.
-- Palvelut-osio: listaa 3–6 toimialaan sopivaa palvelua.
-- Miksi meidät -osio: listaa 3–4 luottamusta lisäävää perustetta.
-- Yhteystiedot-osio: näytä puhelin, sähköposti, kaupunki ja lyhyt kutsuteksti.
-- Footer: yrityksen nimi ja copyright-merkintä.
-
-Tekniset vaatimukset:
-- Palauta vain yksi valmis HTML-dokumentti.
-- Ensimmäinen rivi on <!DOCTYPE html>
-- Viimeinen rivi on </html>
-- Käytä aina merkkijonoa  src="" hero-kuvan src-attribuutissa. Älä muuta sitä, älä korvaa sitä, älä poista sitä.
-- Älä lisää markdownia, JSONia tai kommentteja – palauta vain valmis HTML.
-`;
-
-return [
-  {
-    json: {
-      prompt,
-      slug: slugBase,
-      business,
-      email,
-      phone,
-      city,
-      industry
-    }
-  }
-];
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6 mt-16 text-center">
+        <div class="container mx-auto">
+            <p>&copy; ${new Date().getFullYear()} ${business}. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+</body>
+</html>
 ```
