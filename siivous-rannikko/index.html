@@ -1,111 +1,124 @@
-```html
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${business} - Modernit Ratkaisut Yrityksellesi</title>
+    <title>Yritys Oy - Etusivu</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans text-gray-900 bg-gray-50">
+<body class="font-sans antialiased text-gray-800">
 
     <!-- Navigaatio -->
-    <nav class="bg-gray-800 text-white p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">${business}</a>
-            <div class="space-x-4">
-                <a href="#etusivu" class="hover:text-gray-300">Etusivu</a>
-                <a href="#palvelut" class="hover:text-gray-300">Palvelut</a>
-                <a href="#miksi-me" class="hover:text-gray-300">Miksi meidät</a>
-                <a href="#yhteystiedot" class="hover:text-gray-300">Yhteystiedot</a>
-            </div>
+    <nav class="bg-blue-700 p-4 text-white shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="#home" class="text-3xl font-bold mb-3 md:mb-0">Yritys Oy</a>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-lg">
+                <li><a href="#home" class="hover:text-blue-200 transition duration-300">Etusivu</a></li>
+                <li><a href="#services" class="hover:text-blue-200 transition duration-300">Palvelut</a></li>
+                <li><a href="#why-us" class="hover:text-blue-200 transition duration-300">Miksi meidät</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition duration-300">Yhteystiedot</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Hero-osio -->
-    <section id="etusivu" class="relative bg-gray-900 text-white flex items-center justify-center min-h-[500px]">
-        <img src="" alt="Hero-kuva" class="w-full h-full absolute inset-0 object-cover opacity-60" />
-        <div class="relative z-10 text-center p-8 bg-black bg-opacity-40 rounded-lg max-w-3xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">${business}</h1>
-            <p class="text-xl md:text-2xl mb-8 font-light">Asiantuntemusta ja innovaatiota – luotettava kumppanisi ${industry}-alalla.</p>
-            <a href="#yhteystiedot" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out shadow-lg">Ota yhteyttä</a>
+    <section id="home" class="relative h-[500px] flex items-center justify-center text-center">
+        <img src="https://res.cloudinary.com/dygpxkalj/image/upload/v1765101938/cleaning_businesss_1_wocj0z.jpg" alt="Hero-kuva" class="w-full h-96 object-cover" />
+        <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Tumma overlay tekstin luettavuuden parantamiseksi -->
+        <div class="relative z-10 text-white p-8 max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Digitaalisen muutoksen kumppanisi</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Tarjoamme innovatiivisia ohjelmistoratkaisuja, jotka vievät yrityksesi menestykseen.</p>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition duration-300 transform hover:scale-105 inline-block">Ota yhteyttä</a>
         </div>
     </section>
 
     <!-- Palvelut-osio -->
-    <section id="palvelut" class="py-16 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-12">Palvelumme</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="p-8 border border-gray-200 rounded-lg shadow-md bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Konsultointi ja strategiat</h3>
-                    <p class="text-gray-700">Autamme sinua kehittämään menestyksekkäitä strategioita ja saavuttamaan liiketoimintasi tavoitteet asiantuntemuksemme avulla.</p>
+    <section id="services" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">Palvelumme</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Web-sovelluskehitys</h3>
+                    <p class="text-gray-700">Rakennamme skaalautuvia ja käyttäjäystävällisiä verkkosovelluksia tarpeidesi mukaan, moderneilla teknologioilla.</p>
                 </div>
-                <div class="p-8 border border-gray-200 rounded-lg shadow-md bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Räätälöidyt ratkaisut</h3>
-                    <p class="text-gray-700">Suunnittelemme ja toteutamme juuri sinun tarpeisiisi räätälöityjä ratkaisuja, jotka tuovat lisäarvoa ja tehokkuutta.</p>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Mobiilisovelluskehitys</h3>
+                    <p class="text-gray-700">Kehitämme natiiveja ja cross-platform-mobiilisovelluksia iOS- ja Android-alustoille, jotka vastaavat käyttäjien odotuksiin.</p>
                 </div>
-                <div class="p-8 border border-gray-200 rounded-lg shadow-md bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Käyttöönotto ja tuki</h3>
-                    <p class="text-gray-700">Tarjoamme kattavan tuen ratkaisujen käyttöönottoon ja ylläpitoon varmistaen sujuvan ja ongelmattoman toiminnan.</p>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Pilviratkaisut</h3>
+                    <p class="text-gray-700">Hyödynnämme pilviteknologiaa (AWS, Azure, Google Cloud) joustavien ja kustannustehokkaiden ratkaisujen luomiseen.</p>
                 </div>
-                <div class="p-8 border border-gray-200 rounded-lg shadow-md bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Digitalisaation kehitys</h3>
-                    <p class="text-gray-700">Ohjaamme yritystäsi digitalisaation polulla, hyödyntäen uusimpia teknologioita kilpailuedun luomiseksi.</p>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Ohjelmistokonsultointi</h3>
+                    <p class="text-gray-700">Tarjoamme asiantuntevaa neuvontaa ohjelmistoprojekteissa, arkkitehtuurista toteutukseen ja optimointiin.</p>
                 </div>
-                <div class="p-8 border border-gray-200 rounded-lg shadow-md bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700">Jatkuvat palvelut</h3>
-                    <p class="text-gray-700">Tarjoamme pitkäaikaisia palvelusuhteita, jatkuvaa kehitystä ja ennakoivaa tukea yrityksesi menestyksen varmistamiseksi.</p>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Integraatiopalvelut</h3>
+                    <p class="text-gray-700">Yhdistämme eri järjestelmät ja sovellukset saumattomasti toisiinsa tehostaen liiketoimintaprosesseja.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Käyttöliittymäsuunnittelu (UI/UX)</h3>
+                    <p class="text-gray-700">Suunnittelemme intuitiivisia ja miellyttäviä käyttöliittymiä, jotka parantavat käyttäjäkokemusta ja tehokkuutta.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Miksi meidät -osio -->
-    <section id="miksi-me" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-12">Miksi valita ${business}?</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Kokeneet asiantuntijat</h3>
-                    <p class="text-gray-700">Tiimimme koostuu alan kokeneista ammattilaisista, jotka ovat sitoutuneet laadukkaisiin tuloksiin.</p>
+    <section id="why-us" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">Miksi valita meidät?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="text-blue-600 text-4xl mr-4">💡</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-blue-600">Asiantunteva tiimi</h3>
+                        <p class="text-gray-700">Kokenut ja intohimoinen kehittäjätiimimme on valmiina ratkaisemaan haastavimmatkin projektit.</p>
+                    </div>
                 </div>
-                <div class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Asiakaslähtöinen lähestymistapa</h3>
-                    <p class="text-gray-700">Kuuntelemme asiakkaidemme tarpeita ja rakennamme ratkaisuja, jotka tukevat heidän menestystään parhaalla mahdollisella tavalla.</p>
+                <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="text-blue-600 text-4xl mr-4">🤝</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-blue-600">Asiakaslähtöinen palvelu</h3>
+                        <p class="text-gray-700">Kuuntelemme tarpeitasi ja räätälöimme ratkaisut, jotka tukevat parhaiten liiketoimintasi tavoitteita.</p>
+                    </div>
                 </div>
-                <div class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Laatu ja luotettavuus</h3>
-                    <p class="text-gray-700">Panostamme laatuun kaikessa tekemisessämme ja takaamme luotettavat ja kestävät ratkaisut vuosiksi eteenpäin.</p>
+                <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="text-blue-600 text-4xl mr-4">🚀</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-blue-600">Modernit teknologiat</h3>
+                        <p class="text-gray-700">Käytämme alan uusimpia teknologioita ja parhaita käytäntöjä varmistaaksemme laadun ja innovaation.</p>
+                    </div>
                 </div>
-                <div class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Innovatiiviset ratkaisut</h3>
-                    <p class="text-gray-700">Kehitämme jatkuvasti uusia ja innovatiivisia lähestymistapoja, jotka auttavat yrityksiä pysymään kilpailukykyisinä.</p>
+                <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="text-blue-600 text-4xl mr-4">📈</div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2 text-blue-600">Todistettu kokemus</h3>
+                        <p class="text-gray-700">Monipuoliset ja onnistuneet projektimme puhuvat puolestaan. Luota meihin digitaalisen menestyksesi rakentamisessa.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Yhteystiedot-osio -->
-    <section id="yhteystiedot" class="py-16 bg-white">
-        <div class="container mx-auto px-6 text-center">
+    <section id="contact" class="py-16 bg-blue-700 text-white">
+        <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold mb-8">Ota yhteyttä</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">Ota yhteyttä ja keskustellaan, miten voimme auttaa yritystäsi menestymään ${industry}-alalla. Vastaamme mielellämme kaikkiin kysymyksiisi!</p>
-            <div class="space-y-4 text-xl">
-                <p><span class="font-semibold text-gray-700">Puhelin:</span> <a href="tel:${phone}" class="text-indigo-600 hover:underline">${phone}</a></p>
-                <p><span class="font-semibold text-gray-700">Sähköposti:</span> <a href="mailto:${email}" class="text-indigo-600 hover:underline">${email}</a></p>
-                <p><span class="font-semibold text-gray-700">Toimipiste:</span> ${city}</p>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Valmiina keskustelemaan seuraavasta projektistasi? Otathan yhteyttä meihin! Vastaamme mielellämme kaikkiin kysymyksiisi.</p>
+            <div class="flex flex-col items-center space-y-4 text-lg">
+                <p><strong>Puhelin:</strong> <a href="tel:0123456789" class="hover:underline">012 345 6789</a></p>
+                <p><strong>Sähköposti:</strong> <a href="mailto:info@yritys.fi" class="hover:underline">info@yritys.fi</a></p>
+                <p><strong>Toimisto:</strong> Helsinki</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-6 text-center">
-        <div class="container mx-auto">
-            <p>&copy; 2023 ${business}. Kaikki oikeudet pidätetään.</p>
-        </div>
+    <footer class="bg-gray-800 text-white p-8 text-center text-sm">
+        <p>&copy; 2023 Yritys Oy. Kaikki oikeudet pidätetään.</p>
     </footer>
 
 </body>
 </html>
-```
