@@ -1,15 +1,58 @@
-```json
-[
+```javascript
+const data = $json || {};
+
+const business = data.business_name || "";
+const email = data.email || "";
+const phone = data.phone || "";
+const city = data.city || "";
+const industry = data.industry || "";
+
+const slugBase = (business || industry || "site")
+	.toLowerCase()
+	.replace(/[åä]/g, "a")
+	.replace(/ö/g, "o")
+	.replace(/[^a-z0-9]+/g, "-")
+	.replace(/^-+|-+$/g, "");
+
+const prompt = `
+Luo moderni, suomenkielinen yhden sivun HTML-verkkosivu yritykselle. Käytä vain puhdasta HTML5:ttä ja Tailwind CSS -kirjastoa CDN:n kautta.
+
+Yrityksen tiedot:
+- Yrityksen nimi: ${business}
+- Sähköposti: ${email}
+- Puhelin: ${phone}
+- Kaupunki: ${city}
+- Toimiala: ${industry}
+
+Sivun rakenne:
+- Navigaatio: Etusivu, Palvelut, Miksi meidät, Yhteystiedot.
+- Hero-osio, jossa käytetään täsmälleen seuraavaa kuvaelementtiä:
+  <img src="" alt="Hero-kuva" class="w-full h-96 object-cover" />
+  Hero-osiossa tulee olla yrityksen nimi pääotsikkona, lyhyt ja vakuuttava alaotsikko sekä painike “Ota yhteyttä”.
+- Palvelut-osio: listaa 3–6 toimialaan sopivaa palvelua.
+- Miksi meidät -osio: listaa 3–4 luottamusta lisäävää perustetta.
+- Yhteystiedot-osio: näytä puhelin, sähköposti, kaupunki ja lyhyt kutsuteksti.
+- Footer: yrityksen nimi ja copyright-merkintä.
+
+Tekniset vaatimukset:
+- Palauta vain yksi valmis HTML-dokumentti.
+- Ensimmäinen rivi on <!DOCTYPE html>
+- Viimeinen rivi on </html>
+- Käytä aina merkkijonoa  hero-kuvan src-attribuutissa. Älä muuta sitä, älä korvaa sitä, älä poista sitä.
+- Älä lisää markdownia, JSONia tai kommentteja – palauta vain valmis HTML.
+`;
+
+return [
   {
-    "json": {
-      "prompt": "\nLuo moderni, suomenkielinen yhden sivun HTML-verkkosivu yritykselle. Käytä vain puhdasta HTML5:ttä ja Tailwind CSS -kirjastoa CDN:n kautta.\n\nYrityksen tiedot:\n- Yrityksen nimi: \n- Sähköposti: \n- Puhelin: \n- Kaupunki: \n- Toimiala: \n\nSivun rakenne:\n- Navigaatio: Etusivu, Palvelut, Miksi meidät, Yhteystiedot.\n- Hero-osio, jossa käytetään täsmälleen seuraavaa kuvaelementtiä:\n  <img src=\"\" alt=\"Hero-kuva\" class=\"w-full h-96 object-cover\" />\n  Hero-osiossa tulee olla yrityksen nimi pääotsikkona, lyhyt ja vakuuttava alaotsikko sekä painike “Ota yhteyttä”.\n- Palvelut-osio: listaa 3–6 toimialaan sopivaa palvelua.\n- Miksi meidät -osio: listaa 3–4 luottamusta lisäävää perustetta.\n- Yhteystiedot-osio: näytä puhelin, sähköposti, kaupunki ja lyhyt kutsuteksti.\n- Footer: yrityksen nimi ja copyright-merkintä.\n\nTekniset vaatimukset:\n- Palauta vain yksi valmis HTML-dokumentti.\n- Ensimmäinen rivi on <!DOCTYPE html>\n- Viimeinen rivi on </html>\n- Käytä aina merkkijonoa  hero-kuvan src-attribuutissa. Älä muuta sitä, älä korvaa sitä, älä poista sitä.\n- Älä lisää markdownia, JSONia tai kommentteja – palauta vain valmis HTML.\n",
-      "slug": "site",
-      "business": "",
-      "email": "",
-      "phone": "",
-      "city": "",
-      "industry": ""
+    json: {
+      prompt,
+      slug: slugBase,
+      business,
+      email,
+      phone,
+      city,
+      industry
     }
   }
-]
+];
 ```
