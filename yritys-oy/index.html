@@ -4,119 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${business} - ${industry}</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Koodi Oy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, section, footer {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .hero {
+            background: #e4e4e4;
+            text-align: center;
+        }
+        .hero img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        h2 {
+            color: #0077cc;
+        }
+        .services ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .why-us, .contact {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
 </head>
-<body class="font-sans text-gray-800">
+<body>
 
-    <header class="bg-gray-800 text-white p-4 shadow-md">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">${business}</a>
-            <ul class="flex space-x-6">
-                <li><a href="#etusivu" class="hover:text-gray-300 transition duration-300">Etusivu</a></li>
-                <li><a href="#palvelut" class="hover:text-gray-300 transition duration-300">Palvelut</a></li>
-                <li><a href="#miksimeidat" class="hover:text-gray-300 transition duration-300">Miksi meidät</a></li>
-                <li><a href="#yhteystiedot" class="hover:text-gray-300 transition duration-300">Yhteystiedot</a></li>
-            </ul>
-        </nav>
+    <header class="hero">
+        <img src="https://example.com/images/koodi-hero.jpg" alt="Koodi Oy">
     </header>
 
-    <main>
-        <section id="etusivu" class="py-16 px-8 bg-gray-900 text-white text-center">
-            <div class="container mx-auto">
-                <img src="https://res.cloudinary.com/dygpxkalj/image/upload/v1765101938/luo_kuva_siivousyritykselle_nettisivulle_stvzms.jpg" alt="Hero-kuva" class="w-full h-96 object-cover" />
-                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight mt-8">${business}</h1>
-                <p class="text-xl md:text-2xl mb-8 font-light">Luotettavaa ${industry}-osaamista sinun tarpeisiisi.</p>
-                <a href="#yhteystiedot" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
-                    Ota yhteyttä
-                </a>
-            </div>
-        </section>
+    <section class="services">
+        <h2>Palvelumme</h2>
+        <ul>
+            <li>Web-kehitys</li>
+            <li>Mobiilisovellukset</li>
+            <li>Pilvipalvelut</li>
+            <li>Konsultointi</li>
+        </ul>
+    </section>
 
-        <section id="palvelut" class="py-16 px-8 bg-gray-50">
-            <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-bold mb-12">Palvelumme</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Konsultointipalvelut</h3>
-                        <p class="text-gray-700">Tarjoamme asiantuntevaa konsultointia ja neuvontaa ${industry}-alan projekteissasi alusta loppuun.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Asennus- ja toteutuspalvelut</h3>
-                        <p class="text-gray-700">Ammattitaitoinen tiimimme vastaa asennuksista ja ratkaisujen laadukkaasta toteutuksesta.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Huolto ja ylläpito</h3>
-                        <p class="text-gray-700">Varmistamme järjestelmien ja laitteiden moitteettoman toiminnan säännöllisellä huollolla ja ylläpidolla.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Räätälöidyt ratkaisut</h3>
-                        <p class="text-gray-700">Suunnittelemme ja toteutamme yksilöllisiä ratkaisuja, jotka vastaavat täsmälleen sinun tarpeitasi.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Projektinhallinta</h3>
-                        <p class="text-gray-700">Hoidamme projektinhallinnan tehokkaasti ja varmistamme tavoitteiden saavuttamisen aikataulussa ja budjetissa.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="why-us">
+        <h2>Miksi valita meidät</h2>
+        <p>Koodi Oy tarjoaa asiakaslähtöistä palvelua, korkeaa laatua ja vuosien kokemuksen toimialaltamme. Olemme luotettava kumppani kaikissa projekteissasi ja panostamme henkilökohtaiseen palveluun sekä asiakastyytyväisyyteen.</p>
+    </section>
 
-        <section id="miksimeidat" class="py-16 px-8 bg-white">
-            <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-bold mb-12">Miksi valita meidät?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="p-6 bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <div class="text-5xl text-indigo-600 mb-4">&#10004;</div>
-                        <h3 class="text-2xl font-semibold mb-2">Asiantuntemus</h3>
-                        <p class="text-gray-700">Vuosien kokemus ja syvällinen tietämys ${industry}-alasta.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <div class="text-5xl text-indigo-600 mb-4">&#9733;</div>
-                        <h3 class="text-2xl font-semibold mb-2">Laatu</h3>
-                        <p class="text-gray-700">Sitoudumme tarjoamaan vain korkealaatuisia tuotteita ja palveluita.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <div class="text-5xl text-indigo-600 mb-4">&#128172;</div>
-                        <h3 class="text-2xl font-semibold mb-2">Asiakaslähtöisyys</h3>
-                        <p class="text-gray-700">Kuuntelemme asiakasta ja räätälöimme ratkaisut heidän tarpeisiinsa.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                        <div class="text-5xl text-indigo-600 mb-4">&#128222;</div>
-                        <h3 class="text-2xl font-semibold mb-2">Tavoitettavuus</h3>
-                        <p class="text-gray-700">Olemme helposti tavoitettavissa ja vastaamme kysymyksiin nopeasti.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="contact">
+        <h2>Yhteystiedot</h2>
+        <p><strong>Koodi Oy</strong></p>
+        <p>Toimiala: IT-palvelut</p>
+        <p>Kaupunki: Helsinki</p>
+        <p>Puhelin: 040 123 4567</p>
+        <p>Sähköposti: info@koodi.fi</p>
+    </section>
 
-        <section id="yhteystiedot" class="py-16 px-8 bg-gray-50">
-            <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-bold mb-12">Ota yhteyttä</h2>
-                <p class="text-lg mb-8 max-w-2xl mx-auto">
-                    Olemme valmiina auttamaan sinua kaikissa ${industry}-alan tarpeissasi. Älä epäröi ottaa yhteyttä!
-                </p>
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 text-xl">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-indigo-600 text-2xl">&#128222;</span>
-                        <a href="tel:${phone}" class="hover:underline">${phone}</a>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-indigo-600 text-2xl">&#9993;</span>
-                        <a href="mailto:${email}" class="hover:underline">${email}</a>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-indigo-600 text-2xl">&#127961;</span>
-                        <span>${city}</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white text-center py-6">
-        <div class="container mx-auto">
-            <p>&copy; ${new Date().getFullYear()} ${business}. Kaikki oikeudet pidätetään.</p>
-        </div>
+    <footer>
+        &copy; 2025 Koodi Oy
     </footer>
 
 </body>
