@@ -1,53 +1,129 @@
-This is a well-structured, clean, and modern HTML and CSS code for a business website. Here's a breakdown of its strengths and some minor considerations:
+<head>` section:**
 
-**Strengths:**
-
-1.  **Semantic HTML:** Excellent use of semantic elements like `<header>`, `<main>`, `<footer>`, `<section>`, `<article>`, and appropriate heading levels (`h1`, `h2`, `h3`). This improves readability, accessibility, and SEO.
-2.  **Responsive Design:**
-    *   The `viewport` meta tag is correctly included.
-    *   The `.hero` image is set to `width: 100%; height: auto;` ensuring it scales well.
-    *   CSS Grid (`display: grid`, `grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));`) is used effectively for the `.cards` layout, making it inherently responsive and adaptive to different screen sizes.
-    *   A media query for `max-width: 600px` is included to adjust `h1` font size and make the button full width, which is a good practice for mobile devices.
-3.  **Accessibility (A11y):**
-    *   `lang="fi"` attribute is correctly set on the `<html>` tag.
-    *   `alt` attribute is provided for the hero image.
-    *   Clear and descriptive link text is used.
-    *   `tel:` and `mailto:` links are correctly implemented.
-    *   Logical heading structure.
-    *   Good color contrast for text and button.
-4.  **Modern CSS Practices:**
-    *   Uses `rem` units for font sizes and padding, which is good for scalability and accessibility.
-    *   CSS Grid for card layouts is a robust and flexible approach.
-    *   `transition` for button hover effect provides a smooth user experience.
-5.  **Code Readability:** The code is well-indented and organized, making it easy to read and maintain.
-6.  **Content:** The Finnish content is relevant and well-written for a business "Yritys Oy" offering professional services.
-
-**Minor Considerations/Suggestions (Optional):**
-
-1.  **Focus States:** While browsers provide default focus outlines, it's good practice to define custom `:focus` styles for interactive elements (like buttons and links) to ensure they are clearly visible for keyboard users. For example:
-    ```css
-    .button:focus,
-    a:focus {
-      outline: 2px solid #005fa3; /* Or any distinct focus indicator */
-      outline-offset: 2px;
-    }
+    ```html
+    <meta name="description" content="Yritys Oy tarjoaa modernia konsultointia, digiratkaisuja ja koulutusta pk-yrityksille ja suurille organisaatioille. Luotettavaa ja innovatiivista palvelua Helsingistä käsin.">
     ```
-2.  **Header Navigation:** For a more complex site, you might consider adding a navigation menu within the `<header>` element, even if it's just links to the sections within this single page. For this simple page, the "Ota yhteyttä" button suffices as the primary call to action.
-3.  **Variable for Main Color:** If the blue color (`#0077cc`, `#005fa3`) is used in many places, defining it as a CSS variable could make it easier to manage and change site-wide.
+
+### 2. SEO & Accessibility: Refine Hero Image `alt` Text
+
+While `alt="Yritys Oy"` is acceptable, a more descriptive `alt` text improves both SEO and accessibility for screen reader users. Consider what the image actually depicts.
+
+*   **Current:**
+    ```html
+    <img class="hero" src="https://res.cloudinary.com/dygpxkalj/image/upload/v1765101938/luo_kuva_siivousyritykselle_nettisivulle_stvzms.jpg" alt="Yritys Oy">
+    ```
+*   **Improved Example:** (Adjust based on the actual image content)
+    ```html
+    <img class="hero" src="https://res.cloudinary.com/dygpxkalj/image/upload/v1765101938/luo_kuva_siivousyritykselle_nettisivulle_stvzms.jpg" alt="Moderni toimistorakennus ja taivasta, symboloiden Yritys Oy:n innovatiivisia ratkaisuja.">
+    ```
+    If the image is purely decorative and doesn't convey unique information, consider moving it to CSS as a background image for better semantics (and then the `alt` attribute isn't needed). However, for a prominent hero image, a descriptive `alt` is generally preferred.
+
+### 3. Maintainability & Consistency: Use CSS Variables (Custom Properties)
+
+CSS variables make it easier to manage and update styles, especially colors and common spacing, throughout your stylesheet.
+
+*   **Add to your `:root` selector:**
+
     ```css
     :root {
-      --primary-color: #0077cc;
-      --primary-hover-color: #005fa3;
+      --primary-color: #0057d9;
+      --primary-hover-color: #003ea6;
+      --text-color: #333;
+      --light-text-color: #777;
+      --background-light: #f9f9f9;
+      --border-light: #eee;
+      --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --spacing-unit: 1.5rem; /* Example for consistent spacing */
     }
-    /* Then use: */
+
+    body {
+      margin: 0;
+      font-family: var(--font-family-base);
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #fff;
+    }
+
+    /* ... other styles ... */
+
     .button {
+      /* ... */
       background: var(--primary-color);
+      /* ... */
     }
+
     .button:hover {
       background: var(--primary-hover-color);
     }
+
+    .card {
+      background: var(--background-light);
+      /* ... */
+    }
+
+    footer {
+      /* ... */
+      color: var(--light-text-color);
+      border-top: 1px solid var(--border-light);
+    }
     ```
 
-**Conclusion:**
+### 4. Layout Consistency: Add `box-sizing: border-box;`
 
-This is an excellent example of a well-crafted web page. It demonstrates strong understanding of HTML semantics, CSS best practices, and responsive design principles. The site is clean, functional, and highly accessible. Great job!
+This is a common CSS reset that makes layout calculations more intuitive. It ensures that padding and borders are included in an element's total width and height.
+
+*   **Add this to your CSS (preferably at the very top):**
+
+    ```css
+    html {
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    ```
+
+### 5. SEO: Slightly More Descriptive `title` Tag
+
+The current title is good, but you could make it slightly more descriptive for better search engine visibility.
+
+*   **Current:**
+    ```html
+    <title>Yritys Oy</title>
+    ```
+*   **Improved Example:**
+    ```html
+    <title>Yritys Oy | Konsultointi, Digiratkaisut & Koulutuspalvelut</title>
+    ```
+    Or similar, highlighting your core services.
+
+### 6. HTML Structure & Navigation: Consider a `nav` element if more links appear
+
+Currently, the only link in the header is a call to action. If you were to add more navigation links (e.g., "Palvelut", "Meistä", "Yhteystiedot") in the header itself, it would be beneficial to wrap them in a `<nav>` element for better semantics and accessibility.
+
+Example (if you were to add a nav menu):
+
+```html
+<header>
+  <!-- ... existing hero image and h1 ... -->
+  <nav aria-label="Päänavigaatio">
+    <ul>
+      <li><a href="#palvelut">Palvelut</a></li>
+      <li><a href="#miksi">Miksi meidät?</a></li>
+      <li><a href="#yhteystiedot">Yhteystiedot</a></li>
+    </ul>
+  </nav>
+  <a class="button" href="#yhteystiedot">Ota yhteyttä</a>
+</header>
+```
+(You'd then need to style this navigation). For your current page, this is not strictly necessary as the "Ota yhteyttä" is a single call to action button.
+
+### Summary of Recommended Changes:
+
+1.  **Add `meta name="description"` tag** in `<head>`.
+2.  **Refine `alt` text** for the hero image.
+3.  **Add `box-sizing: border-box;`** to your CSS.
+4.  **(Optional but recommended) Introduce CSS variables** for colors and common values.
+5.  **(Optional) Update `title` tag** for a slightly more descriptive title.
+
+These changes will make your webpage more robust, user-friendly, and discoverable.
