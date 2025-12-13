@@ -1,171 +1,53 @@
-This is a very well-structured and clean HTML document for a basic company website! You've made excellent use of semantic HTML5 tags and a responsive CSS grid for the card layouts. The Finnish content is clear and appropriate.
+This is a well-structured, clean, and modern HTML and CSS code for a business website. Here's a breakdown of its strengths and some minor considerations:
 
-Here's a breakdown of the strengths and a few minor suggestions for improvement:
+**Strengths:**
 
-## Strengths:
-
-1.  **Semantic HTML5:** Excellent use of `<header>`, `<main>`, `<section>`, `<article>`, and `<footer>` tags, which improves accessibility and SEO.
-2.  **Responsiveness:**
+1.  **Semantic HTML:** Excellent use of semantic elements like `<header>`, `<main>`, `<footer>`, `<section>`, `<article>`, and appropriate heading levels (`h1`, `h2`, `h3`). This improves readability, accessibility, and SEO.
+2.  **Responsive Design:**
     *   The `viewport` meta tag is correctly included.
-    *   The `.cards` grid uses `repeat(auto-fit, minmax(250px, 1fr))` which is a fantastic way to create a responsive, flexible layout that adapts to different screen sizes without media queries.
-    *   The `.hero` image styling (`width: 100%; height: auto; max-height: 400px; object-fit: cover;`) ensures it scales correctly and fills its space.
-3.  **CSS Organization:** Styles are clearly defined and well-scoped to their respective elements/classes.
-4.  **Accessibility:**
-    *   `lang="fi"` is set.
-    *   `alt` text is provided for the hero image (even though `src` is empty).
-    *   Telephone (`tel:`) and email (`mailto:`) links are correctly formatted, making them clickable on mobile devices.
-5.  **Usability:** Clear navigation (`#yhteystiedot`), prominent call to action, and well-organized content.
+    *   The `.hero` image is set to `width: 100%; height: auto;` ensuring it scales well.
+    *   CSS Grid (`display: grid`, `grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));`) is used effectively for the `.cards` layout, making it inherently responsive and adaptive to different screen sizes.
+    *   A media query for `max-width: 600px` is included to adjust `h1` font size and make the button full width, which is a good practice for mobile devices.
+3.  **Accessibility (A11y):**
+    *   `lang="fi"` attribute is correctly set on the `<html>` tag.
+    *   `alt` attribute is provided for the hero image.
+    *   Clear and descriptive link text is used.
+    *   `tel:` and `mailto:` links are correctly implemented.
+    *   Logical heading structure.
+    *   Good color contrast for text and button.
+4.  **Modern CSS Practices:**
+    *   Uses `rem` units for font sizes and padding, which is good for scalability and accessibility.
+    *   CSS Grid for card layouts is a robust and flexible approach.
+    *   `transition` for button hover effect provides a smooth user experience.
+5.  **Code Readability:** The code is well-indented and organized, making it easy to read and maintain.
+6.  **Content:** The Finnish content is relevant and well-written for a business "Yritys Oy" offering professional services.
 
-## Suggestions for Improvement:
+**Minor Considerations/Suggestions (Optional):**
 
-1.  **Hero Image `src` Attribute (Critical):**
-    *   The `<img class="hero" src="https://res.cloudinary.com/dygpxkalj/image/upload/v1765101938/cleaning_businesss_1_wocj0z.jpg" alt="Yritys Oy">` currently has an empty `src` attribute. This will result in a broken image icon being displayed.
-    *   **Action:** Replace `src="https://res.cloudinary.com/dygpxkalj/image/upload/v1765101938/cleaning_businesss_1_wocj0z.jpg"` with the actual URL of your hero image. If you don't have one yet, you can use a placeholder image service like Lorem Picsum (e.g., `https://picsum.photos/id/1018/1200/400`).
+1.  **Focus States:** While browsers provide default focus outlines, it's good practice to define custom `:focus` styles for interactive elements (like buttons and links) to ensure they are clearly visible for keyboard users. For example:
+    ```css
+    .button:focus,
+    a:focus {
+      outline: 2px solid #005fa3; /* Or any distinct focus indicator */
+      outline-offset: 2px;
+    }
+    ```
+2.  **Header Navigation:** For a more complex site, you might consider adding a navigation menu within the `<header>` element, even if it's just links to the sections within this single page. For this simple page, the "Ota yhteyttä" button suffices as the primary call to action.
+3.  **Variable for Main Color:** If the blue color (`#0077cc`, `#005fa3`) is used in many places, defining it as a CSS variable could make it easier to manage and change site-wide.
+    ```css
+    :root {
+      --primary-color: #0077cc;
+      --primary-hover-color: #005fa3;
+    }
+    /* Then use: */
+    .button {
+      background: var(--primary-color);
+    }
+    .button:hover {
+      background: var(--primary-hover-color);
+    }
+    ```
 
-2.  **Favicon:**
-    *   Consider adding a favicon to your site. It helps with branding and makes the site more recognizable in browser tabs.
-    *   **Action:** Add `<link rel="icon" href="path/to/your/favicon.ico" type="image/x-icon">` or an SVG/PNG icon in the `<head>` section.
+**Conclusion:**
 
-3.  **Link Hover Styles:**
-    *   While the button has a hover effect, the contact links (phone and email) in the contact section and footer currently do not have a visual change on hover. Adding a subtle hover effect can improve user experience.
-    *   **Action:** Add a style like this:
-        ```css
-        a:hover {
-          text-decoration: underline; /* Or change color slightly */
-        }
-        /* If you only want it for specific links, be more specific: */
-        #yhteystiedot a:hover,
-        footer a:hover {
-          text-decoration: underline;
-        }
-        ```
-
-4.  **External Stylesheet (Optional, for larger projects):**
-    *   For a simple, single-page site like this, embedding CSS directly in the `<style>` tag is perfectly acceptable. However, for larger projects or if you anticipate more CSS, it's generally best practice to move your CSS into a separate `.css` file (e.g., `style.css`) and link to it from the HTML (`<link rel="stylesheet" href="style.css">`). This improves maintainability and allows browsers to cache the stylesheet separately.
-
-## Revised Code (with suggested changes):
-
-```html
-<!DOCTYPE html>
-<html lang="fi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yritys Oy</title>
-  <!-- Favicon - optional, but good for branding -->
-  <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    header { background-color: #f5f5f5; text-align: center; padding: 40px 0; }
-    /* Placeholder image for hero if you don't have one yet */
-    .hero { width: 100%; height: auto; max-height: 400px; object-fit: cover; }
-    h1 { font-size: 2.5em; margin-bottom: 10px; }
-    .button { display: inline-block; margin-top: 20px; padding: 12px 24px; background-color: #007acc; color: white; text-decoration: none; border-radius: 4px; transition: background 0.3s; }
-    .button:hover { background-color: #005fa3; }
-    section { padding: 60px 0; }
-    .section-title { font-size: 2em; text-align: center; margin-bottom: 40px; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .card { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
-    footer { background-color: #333; color: white; text-align: center; padding: 20px 0; }
-    /* General link styling - ensures default links aren't just black, and adds hover */
-    a { color: #007acc; text-decoration: none; } /* Default link color for body text */
-    /* Override for specific sections where link color should inherit */
-    footer a { color: inherit; } /* Links in footer inherit white */
-    /* Add hover effect for all links */
-    a:hover { text-decoration: underline; }
-    /* Button hover is already defined more specifically, so this won't override it */
-
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="container">
-      <!-- **CRITICAL FIX: Add an image source here** -->
-      <img class="hero" src="https://picsum.photos/id/1043/1200/400" alt="Yritys Oy:n tiimi työskentelemässä">
-      <h1>Tervetuloa Yritys Oy:n sivuille</h1>
-      <p>Laadukasta palvelua yrityksille ja yksityisille – jo yli kymmenen vuoden kokemuksella.</p>
-      <a href="#yhteystiedot" class="button">Ota yhteyttä</a>
-    </div>
-  </header>
-
-  <main>
-    <section id="palvelut">
-      <div class="container">
-        <h2 class="section-title">Palvelumme</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>IT-ratkaisut</h3>
-            <p>Tarjoamme räätälöityjä IT-järjestelmiä ja tukea kaikenkokoisille yrityksille.</p>
-          </article>
-          <article class="card">
-            <h3>Laiteasennukset</h3>
-            <p>Asennamme ja huollamme tietotekniikkalaitteet nopeasti ja luotettavasti.</p>
-          </article>
-          <article class="card">
-            <h3>Koulutuspalvelut</h3>
-            <p>Koulutamme henkilöstösi käyttämään uusia järjestelmiä tehokkaasti.</p>
-          </article>
-          <article class="card">
-            <h3>Verkkoratkaisut</h3>
-            <p>Suunnittelemme ja toteutamme vakaat ja turvalliset verkkoympäristöt.</p>
-          </article>
-          <article class="card">
-            <h3>Etätuki</h3>
-            <p>Nopea ja tehokas etätuki suoraan työasemallesi – missä tahansa oletkin.</p>
-          </article>
-          <article class="card">
-            <h3>Konsultointi</h3>
-            <p>Autamme valitsemaan kustannustehokkaimmat ratkaisut liiketoimintaasi varten.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="miksi">
-      <div class="container">
-        <h2 class="section-title">Miksi valita meidät</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Asiantuntemus</h3>
-            <p>Tiimillämme on yli vuosikymmenen kokemus tekniikasta ja palveluista.</p>
-          </article>
-          <article class="card">
-            <h3>Luotettavuus</h3>
-            <p>Teemme sen minkä lupaamme, aikataulussa ja asiakkaan tarpeet edellä.</p>
-          </article>
-          <article class="card">
-            <h3>Henkilökohtainen palvelu</h3>
-            <p>Jokainen asiakkuus on meille tärkeä – räätälöimme ratkaisumme yksilöllisesti.</p>
-          </article>
-          <article class="card">
-            <h3>Joustavuus</h3>
-            <p>Toimimme asiakkaan aikataulujen mukaan – nopeasti ja tehokkaasti.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="yhteystiedot">
-      <div class="container">
-        <h2 class="section-title">Yhteystiedot</h2>
-        <p><strong>Yritys Oy</strong></p>
-        <p>Itäväylä 123, 00100 Helsinki</p>
-        <p>Puhelin: <a href="tel:+358401234567">040 123 4567</a></p>
-        <p>Sähköposti: <a href="mailto:info@yritys.fi">info@yritys.fi</a></p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Yritys Oy – Kaikki oikeudet pidätetään.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
-```
-
-By addressing the `src` attribute and potentially adding a favicon and link hover effects, your site will be even more polished!
+This is an excellent example of a well-crafted web page. It demonstrates strong understanding of HTML semantics, CSS best practices, and responsive design principles. The site is clean, functional, and highly accessible. Great job!
