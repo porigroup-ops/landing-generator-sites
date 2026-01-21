@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="fi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Yritys – Elektroniikkahuolto | Nopeat korjaukset</title>
+  <meta name="description" content="Yritys tarjoaa elektroniikkahuolto-palveluita. Läpinäkyvä hinnasto, helppo ajanvaraus ja nopea palvelu.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0B0B0B">
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+  <style>
+    :root{
+      --bg:#0B0B0B;
+      --card:#111214;
+      --card2:#0f1012;
+      --text:#FFFFFF;
+      --muted:rgba(255,255,255,.72);
+      --border:rgba(255,255,255,.10);
+      --gold:#D4AF37;
+      --gold2:#b89226;
+      --turq:#00B8C8;
+      --shadow: 0 14px 40px rgba(0,0,0,.40);
+      --radius:18px;
+      --radius2:22px;
+      --gap:18px;
+      --max:1100px;
+      --focus: 0 0 0 3px rgba(0,184,200,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(0,184,200,.18), transparent 55%),
+                  radial-gradient(900px 700px at 90% 0%, rgba(212,175,55,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      letter-spacing:.1px;
+    }
+    a{color:var(--turq); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px; border:1px solid var(--border);
+      border-radius:999px; background:rgba(255,255,255,.02)
+    }
+    .grid{display:grid; gap:var(--gap)}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(11,11,11,.72);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:12px 24px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .logo{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+    }
+    .logo-badge{
+      width:36px; height:36px; border-radius:12px;
+      display:grid; place-items:center;
+      background:rgba(212,175,55,.12);
+      border:1px solid rgba(212,175,55,.35);
+      color:var(--gold);
+    }
+    .nav-links{display:flex; gap:14px; align-items:center}
+    .nav-links a{color:rgba(255,255,255,.86); font-weight:600; font-size:14px}
+    .nav-links a:hover{color:#fff; text-decoration:none}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border-radius:14px; padding:12px 14px; font-weight:800; font-size:14px;
+      border:1px solid transparent;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      cursor:pointer;
+      text-decoration:none !important;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:focus{outline:none; box-shadow:var(--focus)}
+    .btn-gold{background:var(--gold); color:#0B0B0B}
+    .btn-gold:hover{background:var(--gold2); box-shadow:0 12px 30px rgba(212,175,55,.22); transform:translateY(-1px)}
+    .btn-outline{
+      background:transparent; color:var(--turq);
+      border-color:rgba(0,184,200,.55);
+    }
+    .btn-outline:hover{
+      background:rgba(0,184,200,.10);
+      box-shadow:0 12px 30px rgba(0,184,200,.14);
+      transform:translateY(-1px);
+    }
+    .btn-ghost{
+      background:rgba(255,255,255,.02);
+      border-color:rgba(255,255,255,.10);
+      color:#fff;
+    }
+    .btn-ghost:hover{background:rgba(255,255,255,.05)}
+
+    @media (max-width: 860px){
+      .nav-links a{display:none}
+      .nav-links .btn-ghost{display:none}
+    }
+
+    /* HERO */
+    .hero{padding:26px 0 10px}
+    .hero-grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} }
+    .hero h1{
+      margin:8px 0 10px;
+      font-size:44px; line-height:1.05; letter-spacing:-.6px;
+    }
+    @media (max-width: 520px){ .hero h1{font-size:34px} }
+    .hero .card{padding:20px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .trust{
+      margin-top:16px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .stars{color:var(--gold); font-weight:900}
+    .hero-img{
+      width:100%; height:100%;
+      min-height: 280px;
+      object-fit:cover;
+      border-radius:var(--radius2);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .hero-img.placeholder{
+      background:
+        linear-gradient(135deg, rgba(0,184,200,.16), rgba(212,175,55,.10)),
+        rgba(255,255,255,.03);
+    }
+
+    /* SECTIONS */
+    section{padding:34px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.2px;
+    }
+    .sub{color:var(--muted); max-width:70ch}
+    .cards{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 980px){ .cards{grid-template-columns: repeat(2,1fr)} }
+    @media (max-width: 560px){ .cards{grid-template-columns: 1fr} }
+
+    .service{padding:16px}
+    .service-top{display:flex; gap:12px; align-items:center}
+    .service-icon{
+      width:38px; height:38px; border-radius:14px;
+      display:grid; place-items:center;
+      background:rgba(0,184,200,.10);
+      border:1px solid rgba(0,184,200,.35);
+      color:var(--turq);
+      flex:0 0 auto;
+    }
+    .service h3{margin:0; font-size:16px}
+    .service .meta{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      margin:12px 0 8px;
+      padding-top:10px;
+      border-top:1px dashed rgba(255,255,255,.14);
+      color:rgba(255,255,255,.86);
+      font-size:13px;
+    }
+    .link{font-weight:800; color:var(--turq)}
+    .link:hover{text-decoration:underline}
+
+    /* PRICING */
+    .pricing{padding:18px}
+    table{width:100%; border-collapse:collapse}
+    th,td{padding:12px 10px; border-bottom:1px solid rgba(255,255,255,.10)}
+    th{color:rgba(255,255,255,.88); text-align:left; font-size:13px; letter-spacing:.3px; text-transform:uppercase}
+    td{color:rgba(255,255,255,.90)}
+    td.right{text-align:right; white-space:nowrap}
+    .note{margin-top:10px; color:var(--muted); font-size:14px}
+    .cta-row{margin-top:14px; display:flex; gap:12px; flex-wrap:wrap}
+
+    /* FORMS */
+    .form{padding:18px}
+    .form-grid{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 820px){ .form-grid{grid-template-columns:1fr} }
+    label{display:block; font-size:13px; font-weight:800; margin:0 0 6px}
+    input,select,textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      color:#fff;
+      outline:none;
+    }
+    input:focus,select:focus,textarea:focus{box-shadow:var(--focus); border-color:rgba(0,184,200,.55)}
+    textarea{min-height:110px; resize:vertical}
+    .full{grid-column:1 / -1}
+    .check{display:flex; gap:10px; align-items:flex-start; color:rgba(255,255,255,.86); font-size:14px}
+    .check input{width:auto; margin-top:3px}
+    .banner{
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(212,175,55,.10);
+      border:1px solid rgba(212,175,55,.35);
+      color:rgba(255,255,255,.92);
+    }
+
+    /* GALLERY */
+    .gallery{
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 980px){ .gallery{grid-template-columns: repeat(2,1fr)} }
+    @media (max-width: 560px){ .gallery{grid-template-columns: 1fr} }
+    .gallery img{
+      width:100%; height:220px; object-fit:cover;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.02);
+    }
+
+    /* FAQ */
+    .faq-wrap{padding:18px}
+    details.faq{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      margin:10px 0;
+      overflow:hidden;
+    }
+    details.faq summary{
+      cursor:pointer;
+      padding:14px 14px;
+      font-weight:900;
+      color:#fff;
+      list-style:none;
+    }
+    details.faq summary::-webkit-details-marker{display:none}
+    .faq-a{padding:0 14px 14px; color:rgba(255,255,255,.86)}
+    .faq-a p{margin:0}
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid rgba(255,255,255,.10);
+      padding:28px 0 34px;
+      color:rgba(255,255,255,.80);
+    }
+    .footer-grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.2fr .8fr .8fr;
+    }
+    @media (max-width: 880px){ .footer-grid{grid-template-columns:1fr} }
+    .small{font-size:13px; color:rgba(255,255,255,.72)}
+    .foot-links a{display:block; margin:8px 0; color:rgba(255,255,255,.86)}
+    .foot-links a:hover{color:#fff}
+    .icons{display:flex; gap:10px; margin-top:10px}
+    .icon{
+      width:40px; height:40px; border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.02);
+      color:var(--turq);
+    }
+
+    /* COOKIE */
+    .cookie{
+      position:fixed; left:16px; right:16px; bottom:16px; z-index:60;
+      max-width:var(--max); margin:0 auto;
+      display:none;
+    }
+    .cookie .card{padding:16px}
+    .cookie .row{display:flex; gap:12px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap}
+  </style>
+
+  <script type="application/ld+json">{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;LocalBusiness&quot;,&quot;name&quot;:&quot;Yritys&quot;,&quot;description&quot;:&quot;Nopeat ja luotettavat korjaukset – läpinäkyvällä hinnoittelulla.&quot;,&quot;address&quot;:{&quot;@type&quot;:&quot;PostalAddress&quot;,&quot;addressCountry&quot;:&quot;FI&quot;},&quot;openingHours&quot;:[&quot;Ma–Pe 9–17&quot;],&quot;aggregateRating&quot;:{&quot;@type&quot;:&quot;AggregateRating&quot;,&quot;ratingValue&quot;:&quot;5.0&quot;,&quot;reviewCount&quot;:&quot;120&quot;},&quot;areaServed&quot;:&quot;Kaupunki&quot;}</script>
+</head>
+
+<body>
+  <div class="nav" role="navigation" aria-label="Päävalikko">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">⚡</div>
+        <div>
+          <div style="font-size:14px; font-weight:900;">Yritys</div>
+          <div class="small" style="margin-top:2px;">Elektroniikkahuolto</div>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#palvelut">Palvelut</a>
+        <a href="#hinnasto">Hinnasto</a>
+        <a href="#ajanvaraus">Ajanvaraus</a>
+        <a href="#yhteys">Yhteys</a>
+        <a class="btn btn-ghost" href="#meista">Yritys</a>
+        <a class="btn btn-gold" href="#ajanvaraus">Varaa aika</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero" id="etusivu">
+      <div class="hero-grid">
+        <div class="card">
+          <div class="pill">
+            <span class="stars">★★★★★</span>
+            <span class="small">5.0 / 5 (120+)</span>
+          </div>
+
+          <h1>Nopeat ja luotettavat korjaukset.</h1>
+          <p class="muted" style="font-size:18px; max-width:70ch; margin:0;">Korjaamme puhelimet ja viestintälaitteet kustannustehokkaasti – usein saman päivän aikana.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#ajanvaraus">Varaa aika</a>
+            <a class="btn btn-outline" href="#yhteys">Soita</a>
+          </div>
+
+          <div class="trust">
+            <div class="pill">
+              <span style="color:var(--gold); font-weight:900;">Paikallinen</span>
+              <span class="small">yritys vuodesta 2015</span>
+            </div>
+            <div class="pill">
+              <span style="color:var(--turq); font-weight:900;">Selkeä</span>
+              <span class="small">hinnoittelu & nopeat vasteajat</span>
+            </div>
+          </div>
+
+          <div style="margin-top:16px; display:grid; gap:10px;">
+            <div class="banner">
+              <strong>Varaa aika verkossa</strong> – tai tule suoraan liikkeeseen. <span class="small">(Teksti muokattavissa)</span>
+            </div>
+            <div class="grid" style="grid-template-columns:1fr 1fr; gap:10px;">
+              <div class="pill">
+                <span style="color:var(--turq); font-weight:900;">Puhelin</span>
+                <a href="#" class="small">lisää numero</a>
+              </div>
+              <div class="pill">
+                <span style="color:var(--turq); font-weight:900;">Sähköposti</span>
+                <a href="mailto:info@example.com" class="small">info@example.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:12px;">
+          <img class="hero-img" src="https://images.pexels.com/photos/48889/cleaning-washing-cleanup-the-ilo-48889.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="Yritys – Elektroniikkahuolto" loading="eager" decoding="async">
+          <div class="small" style="margin-top:10px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <span>📍 Katu 1,  Kaupunki</span>
+            <span>🕘 Ma–Pe 9–17</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="palvelut">
+      <div class="section-title">
+        <div>
+          <h2>Palvelut</h2>
+          <div class="sub">Selkeät vaihtoehdot yleisimpiin laitteisiin. Valitse palvelu ja varaa aika – saat vahvistuksen sähköpostiin.</div>
+        </div>
+        <a class="btn btn-outline" href="#ajanvaraus">Varaa aika</a>
+      </div>
+
+      <div class="cards">
+        
+      <article class="card service">
+        <div class="service-top">
+          <div class="service-icon" aria-hidden="true">
+            <!-- simple line icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 10l-2 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l2 2-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Näytön vaihto</h3>
+        </div>
+        <p class="muted">Nopea vaihto yleisimpiin malleihin.</p>
+        <div class="meta">
+          <span><strong>Kesto:</strong> 60–120 min</span>
+          <span><strong>Hinta:</strong> alk. 89 €</span>
+        </div>
+        <a class="link" href="#ajanvaraus" aria-label="Varaa: Näytön vaihto">Varaa →</a>
+      </article>
+    
+      <article class="card service">
+        <div class="service-top">
+          <div class="service-icon" aria-hidden="true">
+            <!-- simple line icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 10l-2 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l2 2-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Akun vaihto</h3>
+        </div>
+        <p class="muted">Parempi kesto ja turvallinen asennus.</p>
+        <div class="meta">
+          <span><strong>Kesto:</strong> 30–60 min</span>
+          <span><strong>Hinta:</strong> alk. 49 €</span>
+        </div>
+        <a class="link" href="#ajanvaraus" aria-label="Varaa: Akun vaihto">Varaa →</a>
+      </article>
+    
+      <article class="card service">
+        <div class="service-top">
+          <div class="service-icon" aria-hidden="true">
+            <!-- simple line icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 10l-2 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l2 2-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Latausliittimen korjaus</h3>
+        </div>
+        <p class="muted">Puhdistus tai vaihto tarpeen mukaan.</p>
+        <div class="meta">
+          <span><strong>Kesto:</strong> 60–120 min</span>
+          <span><strong>Hinta:</strong> alk. 59 €</span>
+        </div>
+        <a class="link" href="#ajanvaraus" aria-label="Varaa: Latausliittimen korjaus">Varaa →</a>
+      </article>
+    
+      <article class="card service">
+        <div class="service-top">
+          <div class="service-icon" aria-hidden="true">
+            <!-- simple line icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 10l-2 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l2 2-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Veden/iskun vianetsintä</h3>
+        </div>
+        <p class="muted">Diagnostiikka ja korjausehdotus.</p>
+        <div class="meta">
+          <span><strong>Kesto:</strong> 1–3 arkipäivää</span>
+          <span><strong>Hinta:</strong> alk. 29 €</span>
+        </div>
+        <a class="link" href="#ajanvaraus" aria-label="Varaa: Veden/iskun vianetsintä">Varaa →</a>
+      </article>
+    
+      <article class="card service">
+        <div class="service-top">
+          <div class="service-icon" aria-hidden="true">
+            <!-- simple line icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 10l-2 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l2 2-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Muut elektroniikkahuollot</h3>
+        </div>
+        <p class="muted">Kysy laitteestasi – arvio nopeasti.</p>
+        <div class="meta">
+          <span><strong>Kesto:</strong> vaihtelee</span>
+          <span><strong>Hinta:</strong> tarjous</span>
+        </div>
+        <a class="link" href="#ajanvaraus" aria-label="Varaa: Muut elektroniikkahuollot">Varaa →</a>
+      </article>
+    
+      </div>
+    </section>
+
+    <section id="hinnasto">
+      <div class="section-title">
+        <div>
+          <h2>Hinnasto</h2>
+          <div class="sub">Hinnat alkaen. Malli- ja varaosakohtaiset erot mahdollisia.</div>
+        </div>
+      </div>
+
+      <div class="card pricing">
+        <table aria-label="Hinnasto">
+          <thead>
+            <tr><th>Toimenpide</th><th class="right">Hinta</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Näytön vaihto (iPhone/Android)</td><td class="right">alk. 89 €</td></tr><tr><td>Akun vaihto</td><td class="right">alk. 49 €</td></tr><tr><td>Latausliitin</td><td class="right">alk. 59 €</td></tr><tr><td>Diagnostiikka</td><td class="right">29 € (hyvitetään korjauksesta)</td></tr><tr><td>Pikahuolto-lisä</td><td class="right">19 €</td></tr>
+          </tbody>
+        </table>
+        <div class="note">Huom: Diagnostiikka voidaan hyvittää korjauksesta. (Placeholder, muokattavissa Airtablessa)</div>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="#ajanvaraus">Varaa aika</a>
+          <a class="btn btn-outline" href="#yhteys">Kysy heti</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ajanvaraus">
+      <div class="section-title">
+        <div>
+          <h2>Ajanvaraus</h2>
+          <div class="sub">Täytä lomake – saat “Vastaanotettu”-vahvistuksen. (Lähetys voidaan ohjata n8n webhookiin)</div>
+        </div>
+      </div>
+
+      <div class="card form">
+        <div class="banner" style="margin-bottom:12px;">
+          <strong>Tarvitsetko nopean ajan?</strong> Soita lisää numero
+        </div>
+
+        <form id="bookingForm" method="POST" action="#" novalidate>
+          <input type="hidden" name="business_name" value="Yritys">
+          <input type="hidden" name="slug" value="">
+          <div class="form-grid">
+            <div>
+              <label for="service">Palvelu</label>
+              <select id="service" name="service" required>
+                <option value="">Valitse palvelu…</option>
+                <option value="Näytön vaihto">Näytön vaihto</option><option value="Akun vaihto">Akun vaihto</option><option value="Latausliittimen korjaus">Latausliittimen korjaus</option><option value="Veden/iskun vianetsintä">Veden/iskun vianetsintä</option><option value="Muut elektroniikkahuollot">Muut elektroniikkahuollot</option>
+              </select>
+            </div>
+            <div>
+              <label for="model">Laitteen merkki/malli</label>
+              <input id="model" name="model" placeholder="Esim. iPhone 13 / Samsung S22" required>
+            </div>
+
+            <div class="full">
+              <label for="issue">Kuvaus viasta</label>
+              <textarea id="issue" name="issue" placeholder="Kerro lyhyesti mitä tapahtui…" required></textarea>
+            </div>
+
+            <div>
+              <label for="name">Nimi</label>
+              <input id="name" name="name" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="phone">Puhelin</label>
+              <input id="phone" name="phone" autocomplete="tel" required>
+            </div>
+
+            <div>
+              <label for="email">Sähköposti</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="datetime">Päivä & aika</label>
+              <input id="datetime" name="datetime" type="datetime-local" required>
+            </div>
+
+            <div class="full check">
+              <input id="terms" type="checkbox" name="terms" required>
+              <label for="terms" style="margin:0; font-weight:700;">
+                Hyväksyn varausehdot (peruutus 24 h ennen – placeholder) ja tietosuojan.
+              </label>
+            </div>
+
+            <div class="full" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+              <button class="btn btn-gold" type="submit">Lähetä varaus</button>
+              <a class="btn btn-outline" href="#yhteys">Soita nyt</a>
+              <span class="small" id="bookingHint">⚠️ booking_webhook_url puuttuu Airtablessa – lisää se, jotta lomake lähettää n8n:ään.</span>
+            </div>
+          </div>
+        </form>
+
+        <div id="bookingSuccess" class="banner" style="display:none; margin-top:14px;">
+          <strong>Kiitos!</strong> Varauksesi vastaanotettiin. Saat vahvistuksen sähköpostiin. (Vahvistussivu voidaan tehdä omaksi poluksi)
+        </div>
+      </div>
+    </section>
+
+    <section id="meista">
+      <div class="section-title">
+        <div>
+          <h2>Yritys / Meistä</h2>
+          <div class="sub">
+            Tämä on muokattava kuvaus yrityksestä: laatu, läpinäkyvyys ja nopeus. Kerro miten toimit ja miksi sinuun voi luottaa.
+          </div>
+        </div>
+      </div>
+
+      <div class="cards" style="grid-template-columns: repeat(3, 1fr);">
+        <article class="card service">
+          <div class="service-top">
+            <div class="service-icon" aria-hidden="true">✓</div>
+            <h3>Laatu</h3>
+          </div>
+          <p class="muted">Huolellinen työ ja selkeä viestintä. (Placeholder)</p>
+        </article>
+        <article class="card service">
+          <div class="service-top">
+            <div class="service-icon" aria-hidden="true">⏱</div>
+            <h3>Nopeus</h3>
+          </div>
+          <p class="muted">Nopea vaste ja tehokas prosessi. (Placeholder)</p>
+        </article>
+        <article class="card service">
+          <div class="service-top">
+            <div class="service-icon" aria-hidden="true">🔒</div>
+            <h3>Tietoturva</h3>
+          </div>
+          <p class="muted">Tietoturva edellä; suosittelemme varmuuskopiota. (Placeholder)</p>
+        </article>
+      </div>
+
+      <div style="margin-top:14px;">
+        <div class="section-title">
+          <h2 style="font-size:20px">Työpiste / Galleria</h2>
+          <div class="sub">Kuvat tulevat automaattisesti (Pexels) tai Airtablesta (jos tuot omat kuvat).</div>
+        </div>
+        <div class="gallery">
+          <img src="https://images.pexels.com/photos/48889/cleaning-washing-cleanup-the-ilo-48889.jpeg?auto=compress&cs=tinysrgb&h=350" alt="A detailed view of a mop cleaning a wooden floor, showing texture and pattern." loading="lazy" />
+<img src="https://images.pexels.com/photos/713297/pexels-photo-713297.jpeg?auto=compress&cs=tinysrgb&h=350" alt="A man cleaning a glass barrier outdoors with a squeegee, surrounded by greenery." loading="lazy" />
+<img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Spacious and elegant kitchen featuring white cabinetry, island, and stainless steel appliances." loading="lazy" />
+<img src="https://images.pexels.com/photos/4239037/pexels-photo-4239037.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Close-up of a person wearing yellow gloves wiping a bathroom counter with a cloth." loading="lazy" />
+<img src="https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Elegant minimalistic bathroom featuring bathtub and sleek fixtures." loading="lazy" />
+<img src="https://images.pexels.com/photos/4107120/pexels-photo-4107120.jpeg?auto=compress&cs=tinysrgb&h=350" alt="A stylish cleaning setup featuring green gloves, a spray bottle, and a potted plant." loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section id="yhteys">
+      <div class="section-title">
+        <div>
+          <h2>Yhteystiedot</h2>
+          <div class="sub">Tule käymään tai lähetä viesti. Teemme vastaamisesta helppoa.</div>
+        </div>
+        <a class="btn btn-gold" href="#ajanvaraus">Varaa aika</a>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 1fr; align-items:stretch;">
+        <div class="card form">
+          <div class="grid" style="grid-template-columns:1fr; gap:10px;">
+            <div class="pill"><strong style="color:var(--gold)">Puhelin</strong>&nbsp; <a href="#">lisää numero</a></div>
+            <div class="pill"><strong style="color:var(--gold)">Sähköposti</strong>&nbsp; <a href="mailto:info@example.com">info@example.com</a></div>
+            <div class="pill"><strong style="color:var(--gold)">Osoite</strong>&nbsp; <span>Katu 1,  Kaupunki, Suomi</span></div>
+            <div class="pill"><strong style="color:var(--gold)">Aukiolo</strong>&nbsp; <span>Ma–Pe 9–17</span></div>
+            <div class="pill"><strong style="color:var(--gold)">Y-tunnus</strong>&nbsp; <span>0000000-0</span></div>
+            <div class="banner">
+              <strong>Pysäköinti / saapuminen:</strong> Lisää ohjeet tähän (placeholder).
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <form id="contactForm" method="POST" action="#" novalidate>
+              <input type="hidden" name="business_name" value="Yritys">
+              <input type="hidden" name="slug" value="">
+              <div class="form-grid" style="grid-template-columns:1fr;">
+                <div>
+                  <label for="cname">Nimi</label>
+                  <input id="cname" name="name" autocomplete="name" required>
+                </div>
+                <div>
+                  <label for="cemail">Sähköposti</label>
+                  <input id="cemail" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div>
+                  <label for="cmsg">Viesti</label>
+                  <textarea id="cmsg" name="message" required></textarea>
+                </div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+                  <button class="btn btn-outline" type="submit">Lähetä viesti</button>
+                  <span class="small">⚠️ contact_webhook_url puuttuu Airtablessa – lisää se, jotta lomake lähettää n8n:ään.</span>
+                </div>
+              </div>
+            </form>
+            <div id="contactSuccess" class="banner" style="display:none; margin-top:10px;">
+              <strong>Kiitos!</strong> Viestisi on vastaanotettu.
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:12px;">
+          <iframe
+            title="Kartta"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            style="width:100%; height:100%; min-height:420px; border:0; border-radius:18px;"
+            src="https://www.google.com/maps?q=Katu%201%2C%20%20Kaupunki%2C%20Suomi&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-title">
+        <div>
+          <h2>Usein kysyttyä</h2>
+          <div class="sub">Nopeat vastaukset yleisimpiin kysymyksiin.</div>
+        </div>
+      </div>
+
+      <div class="card faq-wrap">
+        
+    <details class="faq" open>
+      <summary>Kuinka nopeasti korjaus onnistuu?</summary>
+      <div class="faq-a">Usein saman päivän aikana, mallista ja varaosista riippuen.</div>
+    </details>
+    <details class="faq" >
+      <summary>Säilyykö data?</summary>
+      <div class="faq-a">Teemme korjaukset tietoturva edellä; suosittelemme varmuuskopiota ennen huoltoa.</div>
+    </details>
+    <details class="faq" >
+      <summary>Paljonko maksaa jos vikaa ei löydy?</summary>
+      <div class="faq-a">Diagnostiikka 29 €, hyvitetään korjauksesta (placeholder, muokattavissa).</div>
+    </details>
+      </div>
+    </section>
+
+    <section id="tietosuoja">
+      <div class="section-title">
+        <div>
+          <h2>Tietosuoja & evästeet</h2>
+          <div class="sub">Placeholder: Lisää tietosuojaseloste ja evästetiedot. Voit linkittää erilliselle sivulle tai pitää tässä.</div>
+        </div>
+        <a class="btn btn-ghost" href="#">Avaa tietosuojasivu</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div style="font-weight:900; font-size:16px;">Yritys</div>
+        <div class="small">Elektroniikkahuolto</div>
+        <p class="small" style="max-width:70ch; margin-top:10px;">
+          Tämä sivupohja on suunniteltu elektroniikkahuoltoon: selkeät palvelut, hinnasto ja ajanvaraus. Sisältö tulee Airtablesta ja on helppo muokata.
+        </p>
+        <div class="icons">
+          <a class="icon" href="#" aria-label="Facebook" title="Facebook">f</a>
+          <a class="icon" href="#" aria-label="Instagram" title="Instagram">◎</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-weight:900;">Yhteystiedot</div>
+        <div class="small" style="margin-top:10px;">
+          <div>📍 Katu 1,  Kaupunki, Suomi</div>
+          <div>🕘 Ma–Pe 9–17</div>
+          <div>☎ <a href="#">lisää numero</a></div>
+          <div>✉ <a href="mailto:info@example.com">info@example.com</a></div>
+          <div>Y-tunnus: 0000000-0</div>
+        </div>
+      </div>
+
+      <div class="foot-links">
+        <div style="font-weight:900;">Pikalinkit</div>
+        <a href="#palvelut">Palvelut</a>
+        <a href="#hinnasto">Hinnasto</a>
+        <a href="#ajanvaraus">Ajanvaraus</a>
+        <a href="#yhteys">Yhteys</a>
+        <a href="#tietosuoja">Tietosuoja</a>
+        <div style="margin-top:12px;">
+          <a class="btn btn-gold" href="#ajanvaraus">Varaa aika</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap small" style="margin-top:18px;">
+      © <span id="year"></span> Yritys. Kaikki oikeudet pidätetään.
+    </div>
+  </footer>
+
+  <div class="cookie" id="cookie">
+    <div class="card">
+      <div class="row">
+        <div style="max-width:80ch;">
+          <strong>Evästeet</strong>
+          <div class="small" style="margin-top:6px;">
+            Käytämme evästeitä käyttökokemuksen parantamiseen. (Placeholder: lisää tarkempi kuvaus ja kategorisointi.)
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-outline" id="cookieDecline" type="button">Hylkää</button>
+          <button class="btn btn-gold" id="cookieAccept" type="button">Hyväksy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // cookie banner (simple)
+    const cookie = document.getElementById("cookie");
+    const key = "fin15_cookie_choice";
+    if (!localStorage.getItem(key)) cookie.style.display = "block";
+    document.getElementById("cookieAccept").onclick = () => { localStorage.setItem(key,"accept"); cookie.style.display="none"; };
+    document.getElementById("cookieDecline").onclick = () => { localStorage.setItem(key,"decline"); cookie.style.display="none"; };
+
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click",(e)=>{
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+
+    // booking form UX (does not replace server-side handling)
+    const bookingForm = document.getElementById("bookingForm");
+    const bookingSuccess = document.getElementById("bookingSuccess");
+    if (bookingForm && bookingForm.action && bookingForm.action !== "#") {
+      bookingForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!bookingForm.reportValidity()) return;
+        try {
+          const fd = new FormData(bookingForm);
+          const res = await fetch(bookingForm.action, { method:"POST", body: fd });
+          if (res.ok) { bookingSuccess.style.display = "block"; bookingForm.reset(); }
+          else { alert("Lähetys epäonnistui. Kokeile uudelleen tai soita."); }
+        } catch {
+          alert("Lähetys epäonnistui. Kokeile uudelleen tai soita.");
+        }
+      });
+    }
+
+    const contactForm = document.getElementById("contactForm");
+    const contactSuccess = document.getElementById("contactSuccess");
+    if (contactForm && contactForm.action && contactForm.action !== "#") {
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!contactForm.reportValidity()) return;
+        try {
+          const fd = new FormData(contactForm);
+          const res = await fetch(contactForm.action, { method:"POST", body: fd });
+          if (res.ok) { contactSuccess.style.display = "block"; contactForm.reset(); }
+          else { alert("Viestin lähetys epäonnistui."); }
+        } catch {
+          alert("Viestin lähetys epäonnistui.");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
