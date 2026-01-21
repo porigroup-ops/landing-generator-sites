@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title></title>
+<style>
+body{font-family:system-ui;margin:0;background:#f7f7fb;color:#111}
+.wrap{max-width:980px;margin:0 auto;padding:28px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.box{background:white;border:1px solid #e7e7ef;border-radius:14px;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid img{width:100%;border-radius:12px;object-fit:cover}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="box">
+      <h1 style="margin:0 0 6px"></h1>
+      <div style="opacity:.75"></div>
+      <div style="margin-top:14px"></div>
+      <div style="margin-top:14px"> · </div>
+      <div style="opacity:.75"> · </div>
+    </div>
+    <div class="box">
+      <img src="https://images.pexels.com/photos/48889/cleaning-washing-cleanup-the-ilo-48889.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="" style="width:100%;border-radius:12px;max-height:360px;object-fit:cover">
+    </div>
+  </div>
+
+  <h2 style="margin:22px 0 10px">Kuvia</h2>
+  <div class="grid"><img src="https://images.pexels.com/photos/48889/cleaning-washing-cleanup-the-ilo-48889.jpeg?auto=compress&cs=tinysrgb&h=350" alt="A detailed view of a mop cleaning a wooden floor, showing texture and pattern." loading="lazy" />
+<img src="https://images.pexels.com/photos/713297/pexels-photo-713297.jpeg?auto=compress&cs=tinysrgb&h=350" alt="A man cleaning a glass barrier outdoors with a squeegee, surrounded by greenery." loading="lazy" />
+<img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Spacious and elegant kitchen featuring white cabinetry, island, and stainless steel appliances." loading="lazy" />
+<img src="https://images.pexels.com/photos/4239037/pexels-photo-4239037.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Close-up of a person wearing yellow gloves wiping a bathroom counter with a cloth." loading="lazy" />
+<img src="https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&h=350" alt="Elegant minimalistic bathroom featuring bathtub and sleek fixtures." loading="lazy" />
+<img src="https://images.pexels.com/photos/4107120/pexels-photo-4107120.jpeg?auto=compress&cs=tinysrgb&h=350" alt="A stylish cleaning setup featuring green gloves, a spray bottle, and a potted plant." loading="lazy" /></div>
+</div>
+</body></html>
