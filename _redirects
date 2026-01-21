@@ -1,5 +1,5 @@
 # FIN15 production redirects (auto-managed)
 /kokeilu-luuttaajat-oy/* /kokeilu-luuttaajat-oy/v-20260121-0939/:splat 301!
-/testi-siivous-oy/* /testi-siivous-oy/v-20260121-1418/:splat 301!
 /kestin-siivous-oy/* /kestin-siivous-oy/v-20260121-1531/:splat 301!
 /hostel-river/* /hostel-river/v-20260121-1538/:splat 301!
+/testi-siivous-oy/* /testi-siivous-oy/v-20260121-1543/:splat 301!
