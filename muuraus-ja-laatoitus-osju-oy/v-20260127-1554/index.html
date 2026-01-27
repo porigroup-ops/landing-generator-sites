@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Muuraus ja laatoitus Osju Oy – Cleaning</title>
+  <meta name="description" content="Muuraus ja laatoitus Osju Oy tarjoaa cleaning-palveluita alueella Pori.">
+  <meta name="theme-color" content="#0B0B0B">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Muuraus ja laatoitus Osju Oy","description":"Luotettava palvelu – nopeasti ja selkeästi.","email":"porigroup@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Pori","addressCountry":"FI"},"openingHours":["Ma–Pe 9–17"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"100+"},"areaServed":"Pori"}</script>
+  <style>
+:root{
+  --bg:#0B0B0B;
+  --card:#111214;
+  --card2:#0f1012;
+  --text:#FFFFFF;
+  --muted:rgba(255,255,255,.72);
+  --border:rgba(255,255,255,.10);
+  --primary:#D4AF37;
+  --primary2:#b89226;
+  --accent:#00B8C8;
+  --accent2:rgba(0,184,200,.10);
+  --shadow: 0 14px 40px rgba(0,0,0,.25);
+  --radius:18px;
+  --radius2:22px;
+  --btnRadius:14px;
+  --gap:18px;
+  --max:1100px;
+  --focus:0 0 0 3px rgba(0,184,200,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(0,184,200,.18), transparent 55%),
+    radial-gradient(900px 700px at 90% 0%, rgba(212,175,55,.14), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.55;
+  letter-spacing:.1px;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max); margin:0 auto; padding:24px}
+.small{font-size:13px; color:var(--muted)}
+.muted{color:var(--muted)}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  border:1px solid var(--border);
+  border-radius:var(--radius2);
+  box-shadow:var(--shadow);
+}
+.grid{display:grid; gap:var(--gap)}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  border-radius:var(--btnRadius);
+  padding:12px 14px;
+  font-weight:800; font-size:14px;
+  border:1px solid transparent;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+  cursor:pointer;
+  text-decoration:none !important;
+  user-select:none;
+  white-space:nowrap;
+}
+.btn:focus{outline:none; box-shadow:var(--focus)}
+.btn-primary{background:var(--primary); color:#0B0B0B}
+.btn-primary:hover{background:var(--primary2); box-shadow:0 12px 30px rgba(0,0,0,.18); transform:translateY(-1px)}
+.btn-outline{
+  background:transparent; color:var(--accent);
+  border-color:rgba(0,184,200,.55);
+}
+.btn-outline:hover{background:var(--accent2); transform:translateY(-1px)}
+.btn-ghost{
+  background:rgba(255,255,255,.02);
+  border-color:var(--border);
+  color:var(--text);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.05)}
+
+
+  .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:rgba(0,0,0,.55); border-bottom:1px solid var(--border);}
+  .nav-inner{max-width:var(--max); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
+  .nav-links{display:flex; gap:14px; align-items:center}
+  .nav-links a{color:rgba(255,255,255,.86); font-weight:700; font-size:14px}
+  @media (max-width: 860px){ .nav-links a{display:none} }
+
+  .hero{padding:26px 0 10px}
+  .hero-grid{display:grid; gap:18px; grid-template-columns: 1.15fr .85fr; align-items:stretch;}
+  @media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} }
+  h1{margin:8px 0 10px; font-size:44px; line-height:1.05; letter-spacing:-.6px;}
+  @media (max-width: 520px){ h1{font-size:34px} }
+  .hero .card{padding:20px}
+  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+  .pill{display:inline-flex; gap:10px; align-items:center; padding:10px 12px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.02)}
+  .stars{color:var(--primary); font-weight:900}
+  .hero-img{width:100%; height:100%; min-height: 280px; object-fit:cover; border-radius:var(--radius2); border:1px solid var(--border)}
+  .hero-img.placeholder{background: linear-gradient(135deg, var(--accent2), rgba(255,255,255,.03));}
+
+  section{padding:34px 0}
+  .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;}
+  h2{margin:0; font-size:26px; letter-spacing:-.2px;}
+  .sub{color:var(--muted); max-width:70ch}
+  .cards{display:grid; gap:14px; grid-template-columns: repeat(3, 1fr);}
+  @media (max-width: 980px){ .cards{grid-template-columns: repeat(2,1fr)} }
+  @media (max-width: 560px){ .cards{grid-template-columns: 1fr} }
+  .service{padding:16px}
+  .service-top{display:flex; gap:12px; align-items:center}
+  .service-icon{width:38px; height:38px; border-radius:14px; display:grid; place-items:center; background:var(--accent2); border:1px solid var(--border); color:var(--accent)}
+  .service h3{margin:0; font-size:16px}
+  .service .meta{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; margin:12px 0 8px; padding-top:10px; border-top:1px dashed var(--border); font-size:13px}
+  .link{font-weight:800; color:var(--accent)}
+  .pricing{padding:18px}
+  table{width:100%; border-collapse:collapse}
+  th,td{padding:12px 10px; border-bottom:1px solid var(--border)}
+  th{text-align:left; font-size:13px; letter-spacing:.3px; text-transform:uppercase}
+  td.right{text-align:right; white-space:nowrap}
+
+  .form{padding:18px}
+  .form-grid{display:grid; gap:12px; grid-template-columns: 1fr 1fr;}
+  @media (max-width: 820px){ .form-grid{grid-template-columns:1fr} }
+  label{display:block; font-size:13px; font-weight:800; margin:0 0 6px}
+  input,select,textarea{width:100%; padding:12px 12px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text); outline:none}
+  input:focus,select:focus,textarea:focus{box-shadow:var(--focus)}
+  textarea{min-height:110px; resize:vertical}
+  .full{grid-column:1 / -1}
+  .banner{padding:12px 14px; border-radius:16px; background:rgba(255,255,255,.04); border:1px solid var(--border)}
+  footer{border-top:1px solid var(--border); padding:28px 0 34px;}
+  .footer-grid{display:grid; gap:18px; grid-template-columns: 1.2fr .8fr .8fr;}
+  @media (max-width: 880px){ .footer-grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  
+  <div class="nav" role="navigation" aria-label="Päävalikko">
+    <div class="nav-inner">
+      <div style="display:flex; align-items:center; gap:10px; font-weight:900;">
+        <div style="width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid var(--border);">⚡</div>
+        <div>
+          <div style="font-size:14px;">Muuraus ja laatoitus Osju Oy</div>
+          <div class="small" style="margin-top:2px;">Cleaning</div>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#palvelut">Palvelut</a>
+        <a href="#hinnasto">Hinnasto</a>
+        <a href="#ajanvaraus">Ajanvaraus</a>
+        <a href="#yhteys">Yhteys</a>
+        <a class="btn btn-primary" href="#ajanvaraus">Varaa aika</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero" id="etusivu">
+      <div class="hero-grid">
+        <div class="card">
+          <div class="pill">
+            <span class="stars">★★★★★</span>
+            <span class="small">4.9 / 5 (100+)</span>
+          </div>
+
+          <h1>Luotettava paikallinen palvelu.</h1>
+          <p class="muted" style="font-size:18px; max-width:70ch; margin:0;">Luotettava palvelu – nopeasti ja selkeästi.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#ajanvaraus">Varaa aika</a>
+            <a class="btn btn-outline" href="#yhteys">Soita</a>
+          </div>
+
+          <div style="margin-top:16px; display:grid; gap:10px;">
+            <div class="banner">
+              <strong>Nopea huolto</strong> – saat vahvistuksen sähköpostiin.
+            </div>
+            <div class="grid" style="grid-template-columns:1fr 1fr; gap:10px;">
+              <div class="banner">
+                <div class="small"><strong>Puhelin</strong></div>
+                <a href="#">Lisää numero</a>
+              </div>
+              <div class="banner">
+                <div class="small"><strong>Sähköposti</strong></div>
+                <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:12px;">
+          <img class="hero-img" src="https://images.pexels.com/photos/1257860/pexels-photo-1257860.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="Muuraus ja laatoitus Osju Oy – Cleaning" loading="eager" decoding="async">
+          <div class="small" style="margin-top:10px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <span>📍 Katu 1,  Pori</span>
+            <span>🕘 Ma–Pe 9–17</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="palvelut">
+      <div class="section-title">
+        <div>
+          <h2>Palvelut</h2>
+          <div class="sub">Sisältö tulee Airtablesta (services_json).</div>
+        </div>
+      </div>
+      <div class="cards">
+    <article class="card service">
+      <div class="service-top">
+        <div class="service-icon" aria-hidden="true">⚙</div>
+        <h3>Näytön vaihto</h3>
+      </div>
+      <p class="muted">Nopea vaihto yleisimpiin malleihin.</p>
+      <div class="meta">
+        <span><strong>Kesto:</strong> 60–120 min</span>
+        <span><strong>Hinta:</strong> alk. 89 €</span>
+      </div>
+      <a class="link" href="#ajanvaraus">Varaa →</a>
+    </article>
+  
+    <article class="card service">
+      <div class="service-top">
+        <div class="service-icon" aria-hidden="true">⚙</div>
+        <h3>Akun vaihto</h3>
+      </div>
+      <p class="muted">Parempi kesto ja turvallinen asennus.</p>
+      <div class="meta">
+        <span><strong>Kesto:</strong> 30–60 min</span>
+        <span><strong>Hinta:</strong> alk. 49 €</span>
+      </div>
+      <a class="link" href="#ajanvaraus">Varaa →</a>
+    </article>
+  
+    <article class="card service">
+      <div class="service-top">
+        <div class="service-icon" aria-hidden="true">⚙</div>
+        <h3>Latausliittimen korjaus</h3>
+      </div>
+      <p class="muted">Puhdistus tai vaihto tarpeen mukaan.</p>
+      <div class="meta">
+        <span><strong>Kesto:</strong> 60–120 min</span>
+        <span><strong>Hinta:</strong> alk. 59 €</span>
+      </div>
+      <a class="link" href="#ajanvaraus">Varaa →</a>
+    </article>
+  </div>
+    </section>
+
+    <section id="hinnasto">
+      <div class="section-title">
+        <div>
+          <h2>Hinnasto</h2>
+          <div class="sub">Hinnat alkaen.</div>
+        </div>
+      </div>
+      <div class="card pricing">
+        <table aria-label="Hinnasto">
+          <thead><tr><th>Toimenpide</th><th class="right">Hinta</th></tr></thead>
+          <tbody><tr><td>Näytön vaihto (iPhone/Android)</td><td class="right">alk. 89 €</td></tr><tr><td>Akun vaihto</td><td class="right">alk. 49 €</td></tr><tr><td>Diagnostiikka</td><td class="right">29 €</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ajanvaraus">
+      <div class="section-title">
+        <div>
+          <h2>Ajanvaraus</h2>
+          <div class="sub">Lomake voi postata suoraan n8n webhookiin (booking_webhook_url).</div>
+        </div>
+      </div>
+      <div class="card form">
+        <form id="bookingForm" method="POST" action="#" novalidate>
+          <input type="hidden" name="business_name" value="Muuraus ja laatoitus Osju Oy">
+          <input type="hidden" name="slug" value="muuraus-ja-laatoitus-osju-oy">
+          <div class="form-grid">
+            <div>
+              <label>Palvelu</label>
+              <select name="service" required>
+                <option value="">Valitse…</option>
+                <option value="Näytön vaihto">Näytön vaihto</option><option value="Akun vaihto">Akun vaihto</option><option value="Latausliittimen korjaus">Latausliittimen korjaus</option>
+              </select>
+            </div>
+            <div>
+              <label>Malli</label>
+              <input name="model" placeholder="Esim. iPhone 13" required>
+            </div>
+            <div class="full">
+              <label>Vian kuvaus</label>
+              <textarea name="issue" required></textarea>
+            </div>
+            <div>
+              <label>Nimi</label>
+              <input name="name" required>
+            </div>
+            <div>
+              <label>Puhelin</label>
+              <input name="phone" required>
+            </div>
+            <div>
+              <label>Sähköposti</label>
+              <input name="email" type="email" required>
+            </div>
+            <div>
+              <label>Päivä & aika</label>
+              <input name="datetime" type="datetime-local" required>
+            </div>
+            <div class="full" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+              <button class="btn btn-primary" type="submit">Lähetä varaus</button>
+              <a class="btn btn-outline" href="#yhteys">Soita nyt</a>
+              <span class="small">⚠️ booking_webhook_url puuttuu Airtablessa.</span>
+            </div>
+          </div>
+        </form>
+        <div id="bookingSuccess" class="banner" style="display:none; margin-top:14px;">
+          <strong>Kiitos!</strong> Varauksesi vastaanotettiin.
+        </div>
+      </div>
+    </section>
+
+    <section id="yhteys">
+      <div class="section-title">
+        <div>
+          <h2>Yhteys</h2>
+          <div class="sub">Voit myös lähettää viestin (contact_webhook_url).</div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 1fr; align-items:stretch;">
+        <div class="card form">
+          <div class="banner">
+            <div><strong>📍</strong> Katu 1,  Pori</div>
+            <div><strong>🕘</strong> Ma–Pe 9–17</div>
+            <div><strong>☎</strong> <a href="#">Lisää numero</a></div>
+            <div><strong>✉</strong> <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a></div>
+            
+          </div>
+
+          <div style="margin-top:12px;">
+            <form id="contactForm" method="POST" action="#" novalidate>
+              <input type="hidden" name="business_name" value="Muuraus ja laatoitus Osju Oy">
+              <input type="hidden" name="slug" value="muuraus-ja-laatoitus-osju-oy">
+              <div class="grid" style="gap:10px;">
+                <div>
+                  <label>Nimi</label>
+                  <input name="name" required>
+                </div>
+                <div>
+                  <label>Sähköposti</label>
+                  <input name="email" type="email" required>
+                </div>
+                <div>
+                  <label>Viesti</label>
+                  <textarea name="message" required></textarea>
+                </div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+                  <button class="btn btn-outline" type="submit">Lähetä viesti</button>
+                  <span class="small">⚠️ contact_webhook_url puuttuu Airtablessa.</span>
+                </div>
+              </div>
+            </form>
+            <div id="contactSuccess" class="banner" style="display:none; margin-top:10px;">
+              <strong>Kiitos!</strong> Viestisi on vastaanotettu.
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:12px;">
+          <iframe
+            title="Kartta"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            style="width:100%; height:100%; min-height:420px; border:0; border-radius:18px;"
+            src="https://www.google.com/maps?q=Katu%201%2C%20%20Pori%2C%20Suomi&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div style="font-weight:900; font-size:16px;">Muuraus ja laatoitus Osju Oy</div>
+        <div class="small">Cleaning</div>
+        <div style="display:flex; gap:10px; margin-top:10px;">
+          <a class="btn btn-ghost" href="#">Facebook</a>
+          <a class="btn btn-ghost" href="#">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:900;">Tietosuoja</div>
+        <div class="small" style="margin-top:10px;">Lisää tietosuojaseloste Airtablessa (privacy_text) tai linkitä erilliselle sivulle (privacy_url).</div>
+        <div style="margin-top:10px;"><a class="btn btn-ghost" href="#">Avaa tietosuojasivu</a></div>
+      </div>
+      <div>
+        <div style="font-weight:900;">Pikalinkit</div>
+        <div class="small" style="margin-top:10px;">
+          <div><a href="#palvelut">Palvelut</a></div>
+          <div><a href="#hinnasto">Hinnasto</a></div>
+          <div><a href="#ajanvaraus">Ajanvaraus</a></div>
+          <div><a href="#yhteys">Yhteys</a></div>
+        </div>
+        <div style="margin-top:12px;">
+          <a class="btn btn-primary" href="#ajanvaraus">Varaa aika</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap small" style="margin-top:18px;">© <span id="year"></span> Muuraus ja laatoitus Osju Oy.</div>
+  </footer>
+  
+  <script>
+  const y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click",(e)=>{
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+
+  async function bindForm(formId, successId){
+    const form = document.getElementById(formId);
+    const ok = document.getElementById(successId);
+    if (!form) return;
+    if (!form.action || form.action === "#") return;
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      try{
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:"POST", body: fd });
+        if (res.ok){
+          if (ok) ok.style.display = "block";
+          form.reset();
+        } else {
+          alert("Lähetys epäonnistui. Kokeile uudelleen.");
+        }
+      } catch {
+        alert("Lähetys epäonnistui. Kokeile uudelleen.");
+      }
+    });
+  }
+  bindForm("bookingForm","bookingSuccess");
+  bindForm("contactForm","contactSuccess");
+</script>
+</body>
+</html>
