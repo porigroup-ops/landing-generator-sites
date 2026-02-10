@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RS-Rakennus - Rakentamisen ammattilaiset</title>
+  <meta name="description" content="Rauman seudulla yli 35 vuotta toiminut rakennusalan perheyritys. Teollisuus-, liike- ja asuinrakentaminen.">
+  <meta name="theme-color" content="#07110C">
+  <style>
+:root{
+  --bg:#07110C;
+  --card:#0C1913;
+  --card2:#0A150F;
+  --text:#ECFDF5;
+  --muted:rgba(236,253,245,.70);
+  --border:rgba(236,253,245,.10);
+  --primary:#22C55E;
+  --primary2:#16A34A;
+  --accent:#A3E635;
+  --accent2:rgba(163,230,53,.12);
+  --focus:0 0 0 3px rgba(34,197,94,.25);
+  --btnRadius:10px;
+  --shadow:0 14px 40px rgba(0,0,0,.25);
+  --radius:18px;
+  --radius2:22px;
+  --gap:18px;
+  --max:1100px;
+  --font:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --heroOverlay:transparent;
+  --heroOverlay2:transparent;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: var(--font);
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(34,197,94,.18), transparent 55%),
+    radial-gradient(900px 700px at 90% 0%, rgba(163,230,53,.10), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.55;
+  letter-spacing:.1px;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max); margin:0 auto; padding:24px}
+.small{font-size:13px; color:var(--muted)}
+.muted{color:var(--muted)}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  border:1px solid var(--border);
+  border-radius:var(--radius2);
+  box-shadow:var(--shadow);
+}
+.grid{display:grid; gap:var(--gap)}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  border-radius:var(--btnRadius);
+  padding:12px 14px;
+  font-weight:800; font-size:14px;
+  border:1px solid transparent;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+  cursor:pointer;
+  text-decoration:none !important;
+  user-select:none;
+  white-space:nowrap;
+}
+.btn:focus{outline:none; box-shadow:var(--focus)}
+.btn-primary{
+  background:var(--primary);
+  color:#0B0B0B;
+}
+.btn-primary:hover{
+  background:var(--primary2);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  transform:translateY(-1px)
+}
+.btn-outline{
+  background:transparent;
+  color:var(--accent);
+  border-color: rgba(255,255,255,.12);
+}
+.btn-outline:hover{
+  background:var(--accent2);
+  border-color: rgba(255,255,255,.18);
+  transform:translateY(-1px)
+}
+
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(140%) blur(10px);
+  background:rgba(0,0,0,.35);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{max-width:var(--max); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
+.nav-links{display:flex; gap:14px; align-items:center}
+.nav-links a{color:var(--text); font-weight:800; font-size:14px; opacity:.9}
+.nav-links a:hover{opacity:1; text-decoration:none}
+@media (max-width: 860px){ .nav-links a{display:none} }
+
+.hero{padding:26px 0 10px}
+.hero-grid{display:grid; gap:18px; grid-template-columns: 1.15fr .85fr; align-items:stretch;}
+@media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} }
+h1{margin:8px 0 10px; font-size:44px; line-height:1.05; letter-spacing:-.6px;}
+@media (max-width: 520px){ h1{font-size:34px} }
+.hero .card{padding:20px}
+.hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+
+.hero-media{position:relative; width:100%; height:100%; min-height:320px; border-radius:var(--radius2); overflow:hidden; border:1px solid var(--border);}
+.hero-img{width:100%; height:100%; object-fit:cover; display:block;}
+.hero-overlay{position:absolute; inset:0; background:var(--heroOverlay);}
+.hero-overlay2{position:absolute; inset:0; background:var(--heroOverlay2);}
+.hero-img.placeholder{background: linear-gradient(135deg, var(--accent2), rgba(255,255,255,.03)); width:100%; min-height:320px; border-radius:var(--radius2); border:1px solid var(--border);}
+
+section{padding:34px 0}
+.section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;}
+h2{margin:0; font-size:26px; letter-spacing:-.2px;}
+.sub{color:var(--muted); max-width:70ch}
+
+.cards{display:grid; gap:14px; grid-template-columns: repeat(4, 1fr);}
+@media (max-width: 980px){ .cards{grid-template-columns: repeat(2,1fr)} }
+@media (max-width: 560px){ .cards{grid-template-columns: 1fr} }
+.item{padding:16px}
+.item h3{margin:0 0 8px; font-size:16px}
+
+.gallery{display:grid; gap:12px; grid-template-columns: repeat(3, 1fr);}
+@media (max-width: 980px){ .gallery{grid-template-columns: repeat(2,1fr)} }
+@media (max-width: 560px){ .gallery{grid-template-columns: 1fr} }
+.gallery img{width:100%; height:220px; object-fit:cover; border-radius:18px; border:1px solid var(--border)}
+
+.contact-grid{display:grid; gap:14px; grid-template-columns: 1fr 1fr;}
+@media (max-width: 980px){ .contact-grid{grid-template-columns:1fr} }
+label{display:block; font-size:13px; font-weight:900; margin:0 0 6px}
+input,textarea{width:100%; padding:12px 12px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text); outline:none}
+textarea{min-height:120px; resize:vertical}
+input:focus,textarea:focus{box-shadow:var(--focus)}
+
+footer{border-top:1px solid var(--border); padding:26px 0 34px}
+</style>
+</head>
+<body>
+  
+<div class="nav" role="navigation" aria-label="Päävalikko">
+  <div class="nav-inner">
+    <div style="display:flex; align-items:center; gap:10px; font-weight:1000;">
+      <div style="width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid var(--border);">◆</div>
+      <div>
+        <div style="font-size:14px;">RS Rakennus</div>
+        <div class="small" style="margin-top:2px;">Construction</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#top">Etusivu</a><a href="#about">Meistä</a><a href="#gallery">Galleria</a><a href="#contact">Yhteys</a>
+      <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+    </div>
+  </div>
+</div>
+
+  <main class="wrap">
+    
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="card">
+      <h1>Rakentamisen ammattilaiset</h1>
+      <p class="muted" style="font-size:18px; max-width:70ch; margin:0;">Rauman RS-Rakennus Oy on Rauman seudulla yli 35 vuotta toiminut ammattitaitoinen ja monipuolinen rakennusalan perheyritys.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+        <a class="btn btn-outline" href="tel:0500591339">Soita</a>
+      </div>
+
+      <div style="margin-top:16px; display:grid; gap:10px;">
+        <div class="small">📍   Rauma</div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:12px;">
+      
+    <div class="hero-media">
+      <img class="hero-img" src="https://images.pexels.com/photos/5484744/pexels-photo-5484744.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="RS Rakennus" loading="eager" decoding="async">
+      
+      
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+
+<section id="about">
+  <div class="section-title">
+    <div>
+      <h2>Meistä</h2>
+      <div class="sub">Rauman RS-Rakennus Oy on Rauman seudulla yli 35 vuotta toiminut ammattitaitoinen ja monipuolinen rakennusalan perheyritys. Palvelukenttäämme kuuluvat niin teollisuus-, liike- kuin asuinrakentaminenkin. Uudiskohteiden lisäksi olemme toteuttaneet taloyhtiöille useita korjaus- ja huoltotöitä. Linjasaneeraukset ovat osa vahvaa ammattiosaamistamme. Lisäksi meillä on oma betonielementtitehdas Rakentajantiellä Kollassa.</div>
+    </div>
+  </div>
+  
+</section>
+
+
+<section id="gallery">
+  <div class="section-title">
+    <div>
+      <h2>Galleria</h2>
+      <div class="sub">Kuvia toiminnasta ja lopputuloksista.</div>
+    </div>
+  </div>
+  <div class="gallery">
+    <img src="https://images.pexels.com/photos/5484744/pexels-photo-5484744.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="Kuva 1" loading="lazy" onerror="this.style.display='none'"><img src="https://images.pexels.com/photos/33954649/pexels-photo-33954649.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="Kuva 2" loading="lazy" onerror="this.style.display='none'"><img src="https://images.pexels.com/photos/209266/pexels-photo-209266.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="Kuva 3" loading="lazy" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title">
+    <div>
+      <h2>Yhteys</h2>
+      <div class="sub">Ota yhteyttä – vastaamme mahdollisimman pian.</div>
+    </div>
+  </div>
+  <div class="contact-grid">
+    <div class="grid" style="gap:14px;">
+      
+<div class="card" style="padding:18px;">
+  <div style="display:grid; gap:8px;">
+    <div><b>📍</b>   Rauma</div>
+    <div><b>☎</b> <a href="tel:0500591339">0500591339</a></div>
+    <div><b>✉</b> <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a></div>
+  </div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+    <a class="btn btn-primary" href="tel:0500591339">Soita</a>
+    <a class="btn btn-outline" href="mailto:porigroup@gmail.com">Lähetä sähköposti</a>
+  </div>
+</div>
+
+      
+    </div>
+    
+<div class="card" style="padding:12px;">
+  <iframe
+    title="Kartta"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    style="width:100%; height:100%; min-height:420px; border:0; border-radius:18px;"
+    src="https://www.google.com/maps?q=%2C%20%20Rauma%2C%20Suomi&output=embed"></iframe>
+</div>
+
+  </div>
+</section>
+  </main>
+  
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+    <span class="small">© <span id="year"></span> RS Rakennus • Construction</span>
+    <span class="small">Rauma</span>
+  </div>
+</footer>
+
+  <script>
+  const y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click",(e)=>{
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+
+  async function bindForm(formId, successId){
+    const form = document.getElementById(formId);
+    const ok = document.getElementById(successId);
+    if (!form) return;
+    if (!form.action || form.action === "#") return;
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      try{
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:"POST", body: fd });
+        if (res.ok){
+          if (ok) ok.style.display = "block";
+          form.reset();
+        } else {
+          alert("Lähetys epäonnistui. Kokeile uudelleen.");
+        }
+      } catch {
+        alert("Lähetys epäonnistui. Kokeile uudelleen.");
+      }
+    });
+  }
+  bindForm("contactForm","contactSuccess");
+</script>
+</body>
+</html>
