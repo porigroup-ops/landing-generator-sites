@@ -1,6 +1,5 @@
 # FIN15 production redirects (auto-managed)
 /kokeilu-luuttaajat-oy/* /kokeilu-luuttaajat-oy/v-20260121-0939/:splat 301!
-/kestin-siivous-oy/* /kestin-siivous-oy/v-20260121-1531/:splat 301!
 /testi-siivous-oy/* /testi-siivous-oy/v-20260121-1543/:splat 301!
 /satakunnan-nuohous/* /satakunnan-nuohous/v-20260127-0718/:splat 301!
 /muuraus-ja-laatoitus-osju-oy/* /muuraus-ja-laatoitus-osju-oy/v-20260127-1554/:splat 301!
@@ -9,3 +8,4 @@
 /lehtopeat/* /lehtopeat/v-20260210-2013/:splat 301!
 /rauman-siivouspalvelu/* /rauman-siivouspalvelu/v-20260213-1656/:splat 301!
 /rs-rakennus/* /rs-rakennus/v-20260213-1712/:splat 301!
+/kestin-siivous-oy/* /kestin-siivous-oy/v-20260213-1713/:splat 301!
