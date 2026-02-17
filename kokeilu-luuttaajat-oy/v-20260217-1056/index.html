@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kokeilu luuttaajat Oy</title>
+  <meta name="description" content="">
+  <meta name="theme-color" content="#070707">
+  <style>
+:root{
+  --bg:#070707;
+  --text:#FFFFFF;
+  --muted:rgba(255,255,255,.72);
+  --card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.10);
+  --primary:#D4AF37;
+  --primary2:#b89226;
+  --accent:#00B8C8;
+  --accent2:rgba(0,184,200,.10);
+  --shadow:0 18px 55px rgba(0,0,0,.35);
+  --radius:24px;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.06), transparent 55%), var(--bg);
+  color:var(--text);
+  line-height:1.55;
+  overflow-x:hidden;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max); margin:0 auto; padding:24px}
+.small{font-size:13px; color:var(--muted)}
+.muted{color:var(--muted)}
+
+.card{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  border-radius:16px;
+  padding:12px 14px;
+  font-weight:900; font-size:14px;
+  border:1px solid transparent;
+  transition: transform .12s ease, background .12s ease, opacity .12s ease, box-shadow .12s ease;
+  cursor:pointer;
+  text-decoration:none !important;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--primary);
+  color:#0B0B0B;
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
+}
+.btn-primary:hover{background:var(--primary2); transform:translateY(-1px)}
+.btn-outline{background:transparent; color:var(--accent); border:1px solid var(--border)}
+.btn-outline:hover{background:var(--accent2); transform:translateY(-1px)}
+.btn-ghost{background:transparent; color:var(--text); border:1px solid transparent; opacity:.9}
+.btn-ghost:hover{opacity:1; background:rgba(255,255,255,.06)}
+
+.social{display:flex; gap:10px; align-items:center}
+.sicon{
+  width:38px; height:38px; border-radius:14px;
+  display:grid; place-items:center;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  transition: transform .12s ease, background .12s ease, opacity .12s ease;
+}
+.sicon:hover{transform:translateY(-1px); background:rgba(255,255,255,.06); text-decoration:none}
+
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(140%) blur(12px);
+  background:rgba(0,0,0,.35);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{max-width:var(--max); margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
+.nav-links{display:flex; gap:14px; align-items:center}
+.nav-links a{color:var(--text); font-weight:900; font-size:14px; opacity:.9}
+.nav-links a:hover{opacity:1; text-decoration:none}
+@media (max-width: 980px){ .nav-links a.nav-a{display:none} }
+
+.hero{padding:0;}
+.hero-full{
+  position:relative;
+  min-height: clamp(520px, 74vh, 820px);
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+  background: radial-gradient(900px 600px at 20% 10%, rgba(255,255,255,.10), transparent 55%),
+              radial-gradient(900px 600px at 70% 20%, rgba(0,0,0,.35), transparent 55%);
+}
+.hero-media{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover;
+  transform:scale(1.03);
+  filter:saturate(1.05) contrast(1.05);
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.86) 0%, rgba(0,0,0,.22) 60%, transparent 100%);
+}
+.hero-grain{
+  position:absolute; inset:-40%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.06), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(0,0,0,.25), transparent 55%),
+    radial-gradient(circle at 50% 70%, rgba(0,0,0,.35), transparent 55%);
+  opacity:.55;
+  filter: blur(18px);
+  animation: floaty 12s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes floaty{
+  from{ transform: translate3d(-2%, -1%, 0) scale(1.02); }
+  to{ transform: translate3d(2%, 1%, 0) scale(1.06); }
+}
+.hero-inner{
+  position:relative; z-index:2;
+  max-width:var(--max);
+  margin:0 auto;
+  padding: clamp(42px, 7vw, 86px) 24px;
+  display:flex;
+  align-items:flex-end;
+  min-height: inherit;
+}
+.hero-box{ max-width: 760px; }
+h1{margin:10px 0 10px; font-size: clamp(36px, 4.2vw, 62px); line-height:1.02; letter-spacing:-.8px;}
+.hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+.pills{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  font-size:13px;
+}
+
+section{padding:30px 0}
+.section-title{margin-bottom:14px;}
+h2{margin:0; font-size:28px; letter-spacing:-.2px;}
+.sub{color:var(--muted); max-width:72ch}
+
+.cards{display:grid; gap:14px; grid-template-columns: repeat(3, 1fr);}
+@media (max-width: 980px){ .cards{grid-template-columns: repeat(2,1fr)} }
+@media (max-width: 560px){ .cards{grid-template-columns: 1fr} }
+.item{padding:16px}
+.item h3{margin:0 0 6px; font-size:16px}
+.item .small{margin-top:6px}
+
+.gallery{display:grid; gap:12px; grid-template-columns: repeat(3, 1fr);}
+@media (max-width: 980px){ .gallery{grid-template-columns: repeat(2,1fr)} }
+@media (max-width: 560px){ .gallery{grid-template-columns: 1fr} }
+
+.gitem{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.02);
+  cursor:pointer;
+  transform: translateZ(0);
+}
+.gitem img{
+  width:100%; height:240px;
+  object-fit:cover;
+  display:block;
+  transition: transform .35s ease, filter .35s ease;
+  filter: saturate(1.02) contrast(1.02);
+}
+.gitem::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.55) 100%);
+  opacity:.85;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+.gitem:hover img{ transform: scale(1.06); filter: saturate(1.08) contrast(1.06); }
+.gitem:hover::after{ opacity:.65; }
+
+.gcap{
+  position:absolute; left:12px; bottom:12px; right:12px;
+  font-size:13px; color: rgba(255,255,255,.86);
+  text-shadow: 0 10px 30px rgba(0,0,0,.55);
+}
+
+.embed{
+  border-radius:20px;
+  border:1px solid var(--border);
+  overflow:hidden;
+  background:rgba(255,255,255,.02);
+}
+
+.contact-stack{display:grid; gap:14px; grid-template-columns: 1fr;}
+input,textarea{width:100%; padding:12px 12px; border-radius:16px; border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text); outline:none}
+textarea{min-height:120px; resize:vertical}
+
+footer{border-top:1px solid var(--border); padding:26px 0 34px}
+.footer-inner{max-width:var(--max); margin:0 auto; padding:0 24px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;}
+</style>
+</head>
+<body>
+  
+<div class="nav" role="navigation" aria-label="Päävalikko">
+  <div class="nav-inner">
+    <div style="display:flex; align-items:center; gap:10px; font-weight:1000;">
+      <div style="width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--border);">◆</div>
+      <div>
+        <div style="font-size:14px; font-weight:1000;">Kokeilu luuttaajat Oy</div>
+        <div class="small" style="margin-top:2px;">Cleaning</div>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a class="nav-a" href="#top">Etusivu</a><a class="nav-a" href="#about">Tietoa</a><a class="nav-a" href="#services">Palvelut</a><a class="nav-a" href="#pricing">Hinnat</a><a class="nav-a" href="#gallery">Kuvat</a><a class="nav-a" href="#contact">Yhteys</a>
+      
+      <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+    </div>
+  </div>
+</div>
+
+  
+<section class="hero" id="top">
+  <div class="hero-full">
+    <img class="hero-media" src="https://images.pexels.com/photos/3770215/pexels-photo-3770215.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Kokeilu luuttaajat Oy" loading="eager" decoding="async"
+           referrerpolicy="no-referrer"
+           onerror="this.remove();">
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+
+    <div class="hero-inner">
+      <div class="hero-box">
+        <div class="small" style="font-weight:900; letter-spacing:.3px; opacity:.95;">
+          Cleaning • Kanada
+        </div>
+
+        <h1>Kokeilu luuttaajat Oy</h1>
+
+        
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+          <a class="btn btn-outline" href="tel:0445641933">Soita</a>
+          <a class="btn btn-ghost" href="#services">Katso lisää</a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">Nopea yhteydenotto</span>
+          <span class="pill">Selkeä eteneminen</span>
+          <span class="pill">Huolellinen lopputulos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Lyhyesti</h2>
+      <div class="sub">Selkeä ja moderni sivu, joka sopii yritykselle ja yhdistykselle — ilman toimialakohtaista räätälöintiä.</div>
+    </div>
+  </div>
+</section>
+
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Miten homma etenee</h2>
+      <div class="sub">Yleismallinen rakenne, joka toimii lähes kaikessa tekemisessä.</div>
+    </div>
+    <div class="cards">
+      
+        <article class="card item">
+          <h3>Suunnittelu</h3>
+          <div class="small">Selkeä tavoite ja reitti toteutukseen.</div>
+        </article>
+      
+        <article class="card item">
+          <h3>Toteutus</h3>
+          <div class="small">Sovitaan, tehdään, varmistetaan lopputulos.</div>
+        </article>
+      
+        <article class="card item">
+          <h3>Tuki</h3>
+          <div class="small">Pidetään yhteys ja hoidetaan asiat maaliin asti.</div>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Hinnat</h2>
+      <div class="sub">Pyydä tarjous – sovitetaan tarpeeseen.</div>
+    </div>
+    
+      <div class="card" style="padding:18px;">
+        <div class="muted">Hinta riippuu sisällöstä ja laajuudesta. Saat nopean arvion viestillä.</div>
+        <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#contact">Pyydä tarjous</a>
+          <a class="btn btn-outline" href="tel:0445641933">Soita</a>
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Kuvia</h2>
+      <div class="sub">Yleiskuva tekemisestä / fiiliksestä (kuvapankkikuvat ok).</div>
+    </div>
+    
+      <div class="gallery" id="galleryGrid">
+        
+          <div class="gitem" data-full="https://images.pexels.com/photos/7661135/pexels-photo-7661135.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" data-alt="Text 'Small Business Marketing' written on white paper for creative use." tabindex="0" role="button" aria-label="Avaa kuva 1">
+            <img src="https://images.pexels.com/photos/7661135/pexels-photo-7661135.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Text 'Small Business Marketing' written on white paper for creative use." loading="lazy" decoding="async"
+                 referrerpolicy="no-referrer"
+                 onerror="this.closest('.gitem').style.display='none'">
+            <div class="gcap">Text 'Small Business Marketing' written on white paper for creative use.</div>
+          </div>
+        
+          <div class="gitem" data-full="https://images.pexels.com/photos/6872575/pexels-photo-6872575.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" data-alt="Sponge covered in soap suds held beside a car, highlighting car cleaning." tabindex="0" role="button" aria-label="Avaa kuva 2">
+            <img src="https://images.pexels.com/photos/6872575/pexels-photo-6872575.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Sponge covered in soap suds held beside a car, highlighting car cleaning." loading="lazy" decoding="async"
+                 referrerpolicy="no-referrer"
+                 onerror="this.closest('.gitem').style.display='none'">
+            <div class="gcap">Sponge covered in soap suds held beside a car, highlighting car cleaning.</div>
+          </div>
+        
+          <div class="gitem" data-full="https://images.pexels.com/photos/6684752/pexels-photo-6684752.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" data-alt="A person wiping a table indoors with a cloth, emphasizing cleanliness and work." tabindex="0" role="button" aria-label="Avaa kuva 3">
+            <img src="https://images.pexels.com/photos/6684752/pexels-photo-6684752.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A person wiping a table indoors with a cloth, emphasizing cleanliness and work." loading="lazy" decoding="async"
+                 referrerpolicy="no-referrer"
+                 onerror="this.closest('.gitem').style.display='none'">
+            <div class="gcap">A person wiping a table indoors with a cloth, emphasizing cleanliness and work.</div>
+          </div>
+        
+      </div>
+    
+  </div>
+</section>
+
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Ota yhteyttä</h2>
+      <div class="sub">Vastaamme mahdollisimman pian.</div>
+    </div>
+
+    <div class="contact-stack">
+      <div class="card" style="padding:18px;">
+        <div style="display:grid; gap:8px;">
+          <div><b>📍</b> Kanada</div>
+          <div><b>☎</b> <a href="tel:0445641933">(044) 564-1933</a></div>
+          <div><b>✉</b> <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a></div>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; align-items:center; justify-content:space-between;">
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="tel:0445641933">Soita</a>
+            <a class="btn btn-outline" href="mailto:porigroup@gmail.com">Sähköposti</a>
+          </div>
+          
+        </div>
+      </div>
+
+      
+
+      
+      <div class="card" style="padding:12px;">
+        <iframe
+          title="Kartta"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          style="width:100%; height:420px; border:0; border-radius:18px;"
+          src="https://www.google.com/maps?q=Kanada&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<footer>
+  <div class="footer-inner">
+    <div class="small">© <span id="year"></span> Kokeilu luuttaajat Oy • Cleaning</div>
+    
+    <div class="small">Kanada</div>
+  </div>
+</footer>
+
+  <script>
+  const y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+
+  async function bindForm(formId, successId){
+    const form = document.getElementById(formId);
+    const ok = document.getElementById(successId);
+    if (!form) return;
+    if (!form.action || form.action === "#") return;
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      try{
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:"POST", body: fd });
+        if (res.ok){
+          if (ok) ok.style.display = "block";
+          form.reset();
+        } else alert("Lähetys epäonnistui. Kokeile uudelleen.");
+      } catch { alert("Lähetys epäonnistui. Kokeile uudelleen."); }
+    });
+  }
+  bindForm("contactForm","contactSuccess");
+
+  (function(){
+    const grid = document.getElementById("galleryGrid");
+    if (!grid) return;
+    const overlay = document.createElement("div");
+    overlay.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:9999;padding:18px;";
+    const img = document.createElement("img");
+    img.style.cssText = "max-width:min(1100px,96vw);max-height:86vh;border-radius:18px;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 90px rgba(0,0,0,.55);";
+    overlay.appendChild(img);
+    overlay.addEventListener("click", ()=> overlay.style.display="none");
+    document.body.appendChild(overlay);
+
+    const open = (url)=>{ img.src = url; overlay.style.display="flex"; };
+    grid.querySelectorAll(".gitem").forEach(el=>{
+      el.addEventListener("click", ()=> open(el.dataset.full));
+      el.addEventListener("keydown", (e)=>{ if(e.key==="Enter") open(el.dataset.full); });
+    });
+  })();
+</script>
+</body>
+</html>
