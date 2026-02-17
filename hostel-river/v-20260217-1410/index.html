@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hostel River | Majatalo ja kokoustilat Porissa</title>
+  <meta name="description" content="Hostel River on ystävällisen palvelun majatalo ja hostel Porin keskustassa.">
+  <meta name="theme-color" content="#0E0C0A">
+  <style>
+:root{
+  --bg:#0E0C0A; --text:#FFF7ED; --muted:rgba(255,247,237,.75);
+  --card:rgba(255,247,237,.05); --border:rgba(255,247,237,.14);
+  --primary:#F3C28C; --primary2:#E3A96B;
+  --accent:#7DD3FC; --accent2:rgba(125,211,252,.12);
+  --shadow:0 18px 70px rgba(0,0,0,.45); --navbg:rgba(0,0,0,.44);
+  --btnr:16px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max);margin:0 auto;padding:20px} /* tighter */
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow)}
+.small{font-size:13px;color:var(--muted)}
+.muted{color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:var(--btnr);padding:12px 14px;font-weight:900;font-size:14px;border:1px solid transparent;cursor:pointer;transition:transform .12s ease, background .12s ease}
+.btn-primary{background:var(--primary);color:#0B0B0B}
+.btn-primary:hover{background:var(--primary2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--accent);border:1px solid var(--border)}
+.btn-outline:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid transparent;opacity:.92}
+.btn-ghost:hover{opacity:1;background:rgba(255,247,237,.06)}
+
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(12px);background:var(--navbg);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:1000}
+.brand .mark{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:rgba(255,247,237,.06);border:1px solid var(--border)}
+.brand .name{font-size:14px;font-weight:1000}
+
+.hero-bleed{width:100vw;margin-left:calc(50% - 50vw);position:relative;overflow:hidden;min-height:86vh} /* higher */
+@media (max-width:560px){.hero-bleed{min-height:70vh}}
+.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.80;transform:scale(1.03);filter:saturate(1.05) contrast(1.08) brightness(.92)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.90) 0%, rgba(0,0,0,.34) 62%, transparent 100%)}
+.hero-inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:70px 20px 50px}
+
+h1{margin:14px 0 10px;font-size:clamp(36px,4.4vw,66px);line-height:1.01;letter-spacing:-.9px}
+h2{margin:0;font-size:28px;letter-spacing:-.2px}
+section{padding:30px 0}
+
+.cards{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.item{padding:18px}
+
+.serviceCard{transition:transform .18s ease, background .18s ease, border-color .18s ease}
+.serviceCard:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22);background:rgba(255,247,237,.06)}
+.serviceIcon{width:42px;height:42px;border-radius:16px;display:grid;place-items:center;border:1px solid var(--border);background:rgba(255,247,237,.06);color:var(--accent);transition:transform .18s ease,color .18s ease}
+.serviceCard:hover .serviceIcon{transform:rotate(-4deg) scale(1.04);color:var(--primary)}
+
+.gallery{display:grid;gap:8px;grid-template-columns:repeat(12,1fr)} /* tighter gap */
+.gi{grid-column:span 4;border-radius:22px;overflow:hidden;border:1px solid var(--border);background:rgba(255,247,237,.06);box-shadow:0 18px 70px rgba(0,0,0,.45)}
+@media (max-width:980px){.gi{grid-column:span 6}}
+@media (max-width:560px){.gi{grid-column:span 12}}
+.gi img{width:100%;height:clamp(240px,22vw,340px);object-fit:cover;display:block;filter:saturate(1.05) contrast(1.08) brightness(.92);transform:scale(1.02);transition:transform .25s ease,opacity .25s ease}
+.gi:hover img{transform:scale(1.06);opacity:1}
+
+.contact-stack{display:grid;gap:12px;grid-template-columns:1fr}
+input,textarea{width:100%;padding:12px;border-radius:var(--btnr);border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);outline:none}
+textarea{min-height:120px;resize:vertical}
+footer{border-top:1px solid var(--border);padding:26px 0 34px}
+</style>
+</head>
+<body>
+  
+<div class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="mark">◆</div>
+      <div class="name">Hostel River</div>
+    </div>
+    <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+  </div>
+</div>
+
+  
+<section class="hero-bleed" id="top">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata"><source src="https://v5.airtableusercontent.com/v3/u/50/50/1771351200000/-J28Gxac24YP0hjR3DQ0Hg/p3eAIJio8U9ZQKd6mgt8md5eXAv5xFFCzK2T3l0GXWYldUy8VFwDebSuM92QRiz_lbcEYiDQgsmoGHn1BTfIB0XzmsLg-nzudgxy57neEuGw9LDpXjUsIKlZ9yH06RmS5uZgMWY7nooRp4Vk3s4hy9fL630Hjr2yvVLp0lm8n3Zt7lW5wUlo5Dg18o_P6m_D/je9vIw6d977joGHg2JFBF9MRO0RB7E32nDjAT0Mfj_8" type="video/mp4"></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="small" style="font-weight:900;letter-spacing:.3px;">Professional Services • Pori</div>
+    <h1>Hostel River</h1>
+    <p class="muted" style="font-size:18px;max-width:72ch;margin:0;">YSTÄVÄLLISEN PALVELUN MAJATALO & KOKOUSTILAT PORISSA</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+      <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+      <a class="btn btn-outline" href="tel:0445641933">Soita</a>
+      <a class="btn btn-ghost" href="#services">Katso palvelut</a>
+    </div>
+  </div>
+</section>
+
+  
+<section id="about">
+  <div class="wrap">
+    <h2>Tietoa</h2>
+    <div class="muted" style="max-width:72ch;margin-top:8px">Hostel River on laadukas ja persoonallinen, hyvän palvelun retrohenkinen majoituspaikka aivan Porin keskustan tuntumassa. Hostel Riverissä majoitut omassa huoneessasi tai voit reppureissuhenkisesti majoittua yhteishuoneessa muiden matkalijoiden kanssa.</div>
+  </div>
+</section>
+
+  
+<section id="services">
+  <div class="wrap">
+    <h2>Palvelut</h2>
+    <div class="muted" style="max-width:72ch;margin-top:8px">Valitse sopivat kokonaisuudet – räätälöidään tarvittaessa.</div>
+    <div class="cards" style="margin-top:14px">
+      
+          <article class="card item serviceCard">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div class="serviceIcon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13l6 6L20 5"/></svg></div>
+              <div>
+                <div style="font-weight:1000">Majatalo. Laadukas majoitus. monta vaihtoehtoa.</div>
+                <div class="small" style="margin-top:6px">Selkeä toteutus ja sovitut vaiheet.</div>
+              </div>
+            </div>
+          </article>
+        
+          <article class="card item serviceCard">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div class="serviceIcon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+              <div>
+                <div style="font-weight:1000">Huoneita paljon ja ne on tilavia. Tilavat huoneet</div>
+                <div class="small" style="margin-top:6px">Selkeä toteutus ja sovitut vaiheet.</div>
+              </div>
+            </div>
+          </article>
+        
+          <article class="card item serviceCard">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div class="serviceIcon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"/><path d="M12 3v18"/></svg></div>
+              <div>
+                <div style="font-weight:1000">Koirat ovat sallittuja myös.</div>
+                <div class="small" style="margin-top:6px">Selkeä toteutus ja sovitut vaiheet.</div>
+              </div>
+            </div>
+          </article>
+        
+          <article class="card item serviceCard">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div class="serviceIcon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V7l-8-5-8 5v5c0 6 8 10 8 10z"/></svg></div>
+              <div>
+                <div style="font-weight:1000">Kotieläomet huomioidaan erityisen hyvin</div>
+                <div class="small" style="margin-top:6px">Selkeä toteutus ja sovitut vaiheet.</div>
+              </div>
+            </div>
+          </article>
+        
+    </div>
+  </div>
+</section>
+
+  
+<section id="pricing">
+  <div class="wrap">
+    <h2>Hinnat</h2>
+    <div class="muted" style="max-width:72ch;margin-top:8px">Jokainen hinta omana laatikkona.</div>
+
+    
+      <div class="cards" style="margin-top:14px">
+        
+          <article class="card item">
+            <div style="font-weight:1000;font-size:16px">Huone 1000e/yö</div>
+            
+            
+          </article>
+        
+          <article class="card item">
+            <div style="font-weight:1000;font-size:16px">2 yötä 1200 euroa</div>
+            
+            
+          </article>
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+<section id="gallery" aria-label="Kuvat">
+  <div class="wrap">
+    <div class="muted" style="max-width:72ch">Esimerkkejä tunnelmasta ja tekemisen tyylistä.</div>
+    <div class="gallery" style="margin-top:14px">
+      
+        <figure class="gi">
+          <img src="https://images.pexels.com/photos/15858311/pexels-photo-15858311.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="" loading="lazy" onerror="this.style.display='none'">
+        </figure>
+      
+        <figure class="gi">
+          <img src="https://images.pexels.com/photos/4050284/pexels-photo-4050284.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="" loading="lazy" onerror="this.style.display='none'">
+        </figure>
+      
+        <figure class="gi">
+          <img src="https://images.pexels.com/photos/8947691/pexels-photo-8947691.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="" loading="lazy" onerror="this.style.display='none'">
+        </figure>
+      
+    </div>
+  </div>
+</section>
+
+  
+<section id="contact">
+  <div class="wrap">
+    <h2>Yhteys</h2>
+    <div class="muted" style="max-width:72ch;margin-top:8px">Lähetä viesti – vastaamme mahdollisimman pian.</div>
+
+    <div class="contact-stack" style="margin-top:14px">
+      <div class="card" style="padding:18px">
+        <div style="display:grid;gap:8px">
+          <div><b>📍</b> Pori</div>
+          <div><b>☎</b> <a href="tel:0445641933">(044) 564-1933</a></div>
+          <div><b>✉</b> <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a></div>
+        </div>
+
+        
+      </div>
+
+      
+      <div class="card" style="padding:18px">
+        <div class="muted">
+          Lomake on ruksattu Airtablessa, mutta <b>contact_form_webhook_url</b> puuttuu tai ei ole URL.
+        </div>
+        <div style="margin-top:12px"><a class="btn btn-primary" href="mailto:porigroup@gmail.com">Lähetä sähköposti</a></div>
+      </div>
+      
+
+      
+      <div class="card" style="padding:12px">
+        <iframe
+          title="Kartta"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          style="width:100%;height:420px;border:0;border-radius:18px"
+          src="https://www.google.com/maps?q=Hyyp%C3%A4ntie%209%2C%2028220%20Pori%2C%20Pori&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <span class="small">© <span id="year"></span> Hostel River • Professional Services</span>
+    <span class="small">Pori</span>
+  </div>
+</footer>
+
+  <script>
+document.getElementById("year").textContent = new Date().getFullYear();
+async function bindForm(formId, successId){
+  const form = document.getElementById(formId);
+  const ok = document.getElementById(successId);
+  if (!form || !form.action || form.action === "#") return;
+  form.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    try{
+      const fd = new FormData(form);
+      const res = await fetch(form.action, { method:"POST", body: fd });
+      if (res.ok){
+        if (ok) ok.style.display = "block";
+        form.reset();
+      } else alert("Lähetys epäonnistui. Kokeile uudelleen.");
+    } catch { alert("Lähetys epäonnistui. Kokeile uudelleen."); }
+  });
+}
+bindForm("contactForm","contactSuccess");
+</script>
+</body>
+</html>
