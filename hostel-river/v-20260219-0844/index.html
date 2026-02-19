@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hostel River | Majatalo ja kokoustilat Porissa</title>
+  <meta name="description" content="Hostel River on ystävällisen palvelun majatalo ja hostel Porin keskustassa.">
+  <meta name="theme-color" content="#071823">
+  <style>
+:root{
+  --bg:#071823;
+  --surface:rgba(255,255,255,.06);
+  --border:rgba(230,242,255,.14);
+  --text:#E6F2FF;
+  --muted:rgba(230,242,255,.74);
+  --accent:#00B3A4;
+  --accent2:#D4AF37;
+  --nav:rgba(7,24,35,.52);
+  --r:24px;
+  --btnr:16px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+}
+a{color:var(--accent2); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max); margin:0 auto; padding:28px}
+.small{font-size:13px; color:var(--muted)}
+.muted{color:var(--muted)}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+}
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(140%) blur(12px);
+  background:var(--nav);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:var(--max); margin:0 auto; padding:12px 18px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:1000}
+.brand-badge{
+  width:38px; height:38px; border-radius:14px;
+  display:grid; place-items:center;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 14px;
+  border-radius:var(--btnr);
+  font-weight:900; font-size:14px;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition: transform .12s ease, opacity .12s ease, background .12s ease;
+  text-decoration:none !important;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--accent); color:#0B0B0B}
+.btn-primary:hover{transform:translateY(-1px); opacity:.95}
+.btn-outline{background:transparent; color:var(--text); border:1px solid var(--border)}
+.btn-outline:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
+/* HERO */
+.hero{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  position:relative;
+  overflow:hidden;
+  min-height:86vh;
+}
+@media (max-width:560px){ .hero{min-height:72vh} }
+.hero-media{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.85; filter:saturate(1.05) contrast(1.08)}
+.hero-overlay{position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.35) 55%, transparent 100%)}
+
+.hero-inner{position:relative; z-index:2; max-width:var(--max); margin:0 auto; padding:68px 18px 48px}
+h1{margin:12px 0 10px; font-size: clamp(36px, 4.4vw, 66px); line-height:1.01; letter-spacing:-.9px;}
+.hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+section{padding:34px 0}
+h2{margin:0; font-size:28px; letter-spacing:-.2px;}
+/* cards grid */
+.cards{display:grid; gap:14px; grid-template-columns:repeat(3, 1fr);}
+@media (max-width:980px){ .cards{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .cards{grid-template-columns:1fr} }
+.item{padding:18px}
+/* service icon */
+.svc{display:flex; gap:12px; align-items:flex-start}
+.ico{
+  width:40px; height:40px; border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  display:grid; place-items:center;
+  transition: transform .16s ease, background .16s ease, color .16s ease;
+  color:var(--accent2);
+}
+.ico svg{width:18px; height:18px}
+.card:hover .ico{
+  transform: translateY(-2px) rotate(-2deg);
+  background: rgba(255,255,255,.12);
+  color: var(--accent);
+}
+/* GALLERY 3/1, wider, less gap */
+.gallery{
+  display:grid;
+  gap:10px;
+  grid-template-columns:repeat(3, 1fr);
+}
+@media (max-width:560px){ .gallery{grid-template-columns:1fr} }
+.gi{
+  border-radius:22px; overflow:hidden;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+}
+.gi img{
+  width:100%;
+  height: clamp(240px, 18vw, 340px);
+  object-fit:cover;
+  display:block;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.gi:hover img{transform:scale(1.04); opacity:1}
+/* Contact stack */
+.stack{display:grid; gap:14px; grid-template-columns:1fr}
+input,textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius:var(--btnr);
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  outline:none;
+}
+textarea{min-height:120px; resize:vertical}
+footer{border-top:1px solid var(--border); padding:26px 0 34px}
+</style>
+</head>
+<body>
+  
+<div class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-badge">◆</div>
+      <div style="display:grid">
+        <div style="font-size:14px; font-weight:1000;">Hostel River</div>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+  </div>
+</div>
+
+  
+<section class="hero" id="top">
+  <video class="hero-media" autoplay muted loop playsinline preload="metadata">
+       <source src="https://v5.airtableusercontent.com/v3/u/50/50/1771502400000/kEctQ0u7IvTfRLUYslvDEg/2aEClJdlyE8wxJ1C217S5_6pJVPRMjQk5BoN2JFLFAVwBmscKo2m0kgR-yaHBCKPFH2bPp5Hy0YvS9eBG1HibTmRurbOdP_7MpNkMEAQA3ZkLMG74jTWtHVp7zIB6KJ6xdMPeHJHiUc4Ecro7Dyncgf3GcluP9L8Vc6Sf1RZfpKMJvSUxAgXUqueCX_6wUbJ/UznF7qNUn4_3GngxLlWqQi_zPXkOURA5u-0UbqDzJ_U" type="video/mp4">
+     </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="small" style="font-weight:900; letter-spacing:.3px;">Professional Services • Pori</div>
+    <h1>Hostel River</h1>
+    <p class="muted" style="font-size:18px; max-width:72ch; margin:0;">YSTÄVÄLLISEN PALVELUN MAJATALO & KOKOUSTILAT PORISSA</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+      <a class="btn btn-outline" href="tel:0445641933">Soita</a>
+      <a class="btn btn-outline" href="#services">Katso palvelut</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="muted" style="max-width:78ch;">Esimerkkejä tunnelmasta ja tekemisen tyylistä.</div>
+    <div class="gallery" style="margin-top:14px;">
+      
+        <div class="gi">
+          <img src="https://www.jaajo.fi/media/tiedostot/kuvituskuvat/scase-isa.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+      
+        <div class="gi">
+          <img src="https://images.pexels.com/photos/7897990/pexels-photo-7897990.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+      
+        <div class="gi">
+          <img src="https://images.pexels.com/photos/5264677/pexels-photo-5264677.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="about">
+  <div class="wrap">
+    <h2>Tietoa</h2>
+    <div class="muted" style="max-width:78ch; margin-top:10px;">Hostel River on laadukas ja persoonallinen, hyvän palvelun retrohenkinen majoituspaikka aivan Porin keskustan tuntumassa. Hostel Riverissä majoitut omassa huoneessasi tai voit reppureissuhenkisesti majoittua yhteishuoneessa muiden matkalijoiden kanssa.</div>
+  </div>
+</section>
+
+
+<section id="services">
+  <div class="wrap">
+    <h2>Palvelut</h2>
+    <div class="muted" style="max-width:78ch; margin-top:10px;">Valitse sopivat kokonaisuudet – räätälöidään tarvittaessa.</div>
+    <div class="cards" style="margin-top:14px;">
+      
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div>
+                  <div style="font-weight:1000;">Majatalo. Laadukas majoitus. monta vaihtoehtoa.</div>
+                  <div class="small" style="margin-top:6px;">Selkeä toteutus ja sovitut vaiheet.</div>
+                </div>
+              </div>
+            </article>
+          
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                <div>
+                  <div style="font-weight:1000;">Huoneita paljon ja ne on tilavia. Tilavat huoneet</div>
+                  <div class="small" style="margin-top:6px;">Selkeä toteutus ja sovitut vaiheet.</div>
+                </div>
+              </div>
+            </article>
+          
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div>
+                  <div style="font-weight:1000;">Koirat ovat sallittuja myös.</div>
+                  <div class="small" style="margin-top:6px;">Selkeä toteutus ja sovitut vaiheet.</div>
+                </div>
+              </div>
+            </article>
+          
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6.6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div>
+                  <div style="font-weight:1000;">Kotieläomet huomioidaan erityisen hyvin</div>
+                  <div class="small" style="margin-top:6px;">Selkeä toteutus ja sovitut vaiheet.</div>
+                </div>
+              </div>
+            </article>
+          
+    </div>
+  </div>
+</section>
+
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Hinnat</h2>
+    <div class="muted" style="max-width:78ch; margin-top:10px;">Suuntaa antavia esimerkkejä – lopullinen hinta määräytyy tarpeen mukaan.</div>
+
+    
+      <div class="cards" style="margin-top:14px;">
+        
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="width:100%;">
+                  <div style="display:flex; justify-content:space-between; gap:12px; align-items:baseline;">
+                    <div style="font-weight:1000;">Huone</div>
+                    <div style="font-weight:1000; color:var(--accent);">100€ / yö</div>
+                  </div>
+                  <div class="small" style="margin-top:6px;">Yöpyminen 1–2 hlö</div>
+                </div>
+              </div>
+            </article>
+          
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                <div style="width:100%;">
+                  <div style="display:flex; justify-content:space-between; gap:12px; align-items:baseline;">
+                    <div style="font-weight:1000;">Kokoustila</div>
+                    <div style="font-weight:1000; color:var(--accent);">150€</div>
+                  </div>
+                  <div class="small" style="margin-top:6px;">Tilavuokra / päivä</div>
+                </div>
+              </div>
+            </article>
+          
+            <article class="card item">
+              <div class="svc">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="width:100%;">
+                  <div style="display:flex; justify-content:space-between; gap:12px; align-items:baseline;">
+                    <div style="font-weight:1000;">Sauna</div>
+                    <div style="font-weight:1000; color:var(--accent);">15€</div>
+                  </div>
+                  <div class="small" style="margin-top:6px;">Yksityinen saunavuoro 1h</div>
+                </div>
+              </div>
+            </article>
+          
+      </div>
+    
+  </div>
+</section>
+
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Yhteys</h2>
+    <div class="muted" style="max-width:78ch; margin-top:10px;">Lähetä viesti – vastaamme mahdollisimman pian.</div>
+
+    <div class="stack" style="margin-top:14px;">
+      <div class="card" style="padding:18px;">
+        <div style="display:grid; gap:8px;">
+          <div><b>📍</b> Pori</div>
+          <div><b>☎</b> <a href="tel:0445641933">(044) 564-1933</a></div>
+          <div><b>✉</b> <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a></div>
+          <div><b>🏠</b> Hyypäntie 9, 28220 Pori</div>
+        </div>
+
+        
+      </div>
+
+      
+      <div class="card" style="padding:18px;">
+        <form id="contactForm" method="POST" action="porigroup@gmail.com" novalidate>
+          <input type="hidden" name="business_name" value="Hostel River">
+          <input type="hidden" name="rid" value="recTYhekpY5OZS6eB">
+          <input type="hidden" name="page_url" value="https://fin15.netlify.app/hostel-river/?rid=recTYhekpY5OZS6eB">
+          <div style="display:grid; gap:10px;">
+            <div>
+              <div class="small" style="font-weight:900;margin-bottom:6px;">Nimi</div>
+              <input name="name" required>
+            </div>
+            <div>
+              <div class="small" style="font-weight:900;margin-bottom:6px;">Sähköposti</div>
+              <input name="email" type="email" required>
+            </div>
+            <div>
+              <div class="small" style="font-weight:900;margin-bottom:6px;">Viesti</div>
+              <textarea name="message" required></textarea>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+              <button class="btn btn-primary" type="submit">Lähetä</button>
+              <span class="small">Vastaamme mahdollisimman pian.</span>
+            </div>
+          </div>
+        </form>
+        <div id="contactSuccess" class="card" style="display:none; margin-top:12px; padding:14px; border-radius:16px;">
+          <strong>Kiitos!</strong> Viestisi on vastaanotettu.
+        </div>
+      </div>
+      
+
+      
+      <div class="card" style="padding:12px;">
+        <iframe
+          title="Kartta"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          style="width:100%; height:420px; border:0; border-radius:18px;"
+          src="https://www.google.com/maps?q=Hyyp%C3%A4ntie%209%2C%2028220%20Pori%2C%20Pori&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+    <span class="small">© <span id="year"></span> Hostel River</span>
+    <span class="small">Pori</span>
+  </div>
+</footer>
+
+  <script>
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  async function bindForm(formId, successId){
+    const form = document.getElementById(formId);
+    const ok = document.getElementById(successId);
+    if (!form) return;
+    if (!form.action || form.action === "#") return;
+
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      try{
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:"POST", body: fd });
+        if (res.ok){
+          if (ok) ok.style.display = "block";
+          form.reset();
+        } else {
+          alert("Lähetys epäonnistui. Kokeile uudelleen.");
+        }
+      } catch {
+        alert("Lähetys epäonnistui. Kokeile uudelleen.");
+      }
+    });
+  }
+  bindForm("contactForm","contactSuccess");
+</script>
+</body>
+</html>
