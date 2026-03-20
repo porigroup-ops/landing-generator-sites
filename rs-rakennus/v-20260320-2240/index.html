@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RS-Rakennus - Rakentamisen ammattilaiset</title>
+  <meta name="description" content="Rauman seudulla yli 35 vuotta toiminut rakennusalan perheyritys. Teollisuus-, liike- ja asuinrakentaminen.">
+  <meta name="theme-color" content="#f8efe3">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@500;700&family=Playfair+Display:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#f8efe3;
+  --text:#352b23;
+  --muted:rgba(53,43,35,.66);
+  --surface:rgba(255,251,246,.88);
+  --border:rgba(53,43,35,.08);
+  --primary:#d8b48b;
+  --primaryText:#2c241d;
+  --outline:#90b8ba;
+  --shadow:0 18px 42px rgba(120,94,71,.09);
+  --radius:28px;
+  --btnr:18px;
+  --heroMin:84vh;
+  --galleryH:360px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Manrope', system-ui, sans-serif;
+  color:var(--text);
+  background:radial-gradient(1000px 600px at 0% 0%, rgba(216,180,139,.18), transparent 55%), radial-gradient(900px 550px at 100% 10%, rgba(144,184,186,.14), transparent 55%), var(--bg);
+  line-height:1.55;
+}
+a{text-decoration:none;color:inherit}
+img,video{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.section{padding:64px 0}
+.muted{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+h1,h2,h3{margin:0}
+h1{
+  font-family:'Playfair Display', serif;
+  font-size:clamp(42px,6vw,82px);
+  line-height:1.02;
+  letter-spacing:-.04em;
+}
+h2{
+  font-family:'Playfair Display', serif;
+  font-size:clamp(28px,3vw,44px);
+  line-height:1.05;
+  letter-spacing:-.03em;
+}
+h3{
+  font-size:18px;
+  line-height:1.2;
+  font-weight:800;
+}
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px) saturate(150%);
+  background:rgba(248,239,227,.78);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:40px;height:40px;border-radius:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  display:grid;place-items:center;
+  box-shadow:var(--shadow);
+}
+.brand-name{font-size:17px;font-weight:900;letter-spacing:-.02em}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border-radius:var(--btnr);
+  padding:12px 16px;
+  font-weight:800;
+  font-size:14px;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{
+  background:var(--primary);
+  color:var(--primaryText);
+  box-shadow:0 12px 28px rgba(0,0,0,.10);
+}
+.btn-outline{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+@media (max-width:980px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .grid-3{grid-template-columns:1fr}
+  .wrap{padding:0 18px}
+}
+
+.section-head{margin-bottom:20px}
+.section-head p{max-width:760px;margin:10px 0 0;color:var(--muted)}
+
+.hero{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  min-height:var(--heroMin);
+  position:relative;
+  overflow:hidden;
+}
+.hero-media{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.hero-overlay{
+  position:absolute;inset:0;background:linear-gradient(90deg, rgba(248,239,227,.64) 0%, rgba(248,239,227,.24) 48%, rgba(248,239,227,.05) 100%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:var(--max);
+  margin:0 auto;
+  padding:84px 24px 64px;
+  min-height:var(--heroMin);
+  display:grid;
+  align-items:center;
+}
+.hero-copy{max-width:760px}
+.hero-kicker{
+  font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.hero-sub{
+  max-width:760px;margin-top:18px;font-size:clamp(17px,2vw,22px);color:var(--muted);
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hero-panel{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.trust-pill{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow);
+  font-size:13px;color:var(--muted);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:28px;
+  align-items:center;
+}
+.hero-card{
+  min-height:420px;
+  overflow:hidden;
+  position:relative;
+}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+.hero-card-float{
+  position:absolute;
+  background:#fff;
+  color:#0f172a;
+  border-radius:20px;
+  padding:14px 16px;
+  box-shadow:0 20px 40px rgba(15,23,42,.12);
+  border:1px solid rgba(15,23,42,.06);
+}
+.hero-card-float.top{top:18px;right:18px}
+.hero-card-float.bottom{left:18px;bottom:18px}
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:26px;
+}
+.stat-box{
+  padding:16px;border-radius:22px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);
+}
+.stat-box strong{display:block;font-size:28px;letter-spacing:-.03em}
+
+.service-card{padding:20px;transition:transform .2s ease}
+.service-card:hover{transform:translateY(-4px)}
+.service-row{display:flex;align-items:flex-start;gap:14px}
+.service-icon{
+  width:46px;height:46px;flex:0 0 auto;border-radius:16px;
+  background:rgba(255,255,255,.06);border:1px solid var(--border);
+  display:grid;place-items:center;color:var(--outline);
+  transition:transform .18s ease, background .18s ease, color .18s ease;
+}
+body[data-theme="warm_sand"] .service-icon,
+body[data-theme="info_sheet"] .service-icon,
+body[data-theme="fin15_flow"] .service-icon{
+  background:rgba(0,0,0,.03);
+}
+.service-icon svg{width:22px;height:22px}
+.service-card:hover .service-icon{
+  transform:translateY(-2px) rotate(-4deg) scale(1.04);
+  background:var(--primary);
+  color:var(--primaryText);
+}
+.pricing-card{
+  padding:20px;display:flex;flex-direction:column;gap:10px;min-height:210px;
+  transition:transform .2s ease;
+}
+.pricing-card:hover{transform:translateY(-4px)}
+.price{margin-top:auto;font-size:30px;font-weight:900;letter-spacing:-.03em}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+@media (max-width:720px){.gallery{grid-template-columns:1fr}}
+.gallery-item{
+  border-radius:calc(var(--radius) - 4px);overflow:hidden;border:1px solid var(--border);
+  background:var(--surface);box-shadow:var(--shadow);
+}
+.gallery-item img{
+  width:100%;height:var(--galleryH);object-fit:cover;transition:transform .25s ease;
+}
+.gallery-item:hover img{transform:scale(1.04)}
+.social-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.social-btn{
+  display:inline-flex;align-items:center;gap:10px;padding:12px 14px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);
+}
+.social-btn svg{width:18px;height:18px}
+.embed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+@media (max-width:980px){.embed-grid{grid-template-columns:1fr}}
+.embed-card{overflow:hidden;min-height:420px}
+.embed-card iframe{width:100%;height:420px;border:0}
+.form-card,.info-card{padding:20px}
+.field{display:grid;gap:6px;margin-bottom:12px}
+.input,.textarea{
+  width:100%;border:1px solid var(--border);background:rgba(255,255,255,.04);
+  color:var(--text);border-radius:16px;padding:13px 14px;font:inherit;
+}
+body[data-theme="warm_sand"] .input,
+body[data-theme="warm_sand"] .textarea,
+body[data-theme="info_sheet"] .input,
+body[data-theme="info_sheet"] .textarea,
+body[data-theme="fin15_flow"] .input,
+body[data-theme="fin15_flow"] .textarea{
+  background:rgba(0,0,0,.03);
+}
+.textarea{min-height:140px;resize:vertical}
+.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px}
+@media (max-width:980px){.contact-grid{grid-template-columns:1fr}}
+.map-card{overflow:hidden;padding:10px}
+.map-card iframe{
+  width:100%;height:430px;border:0;border-radius:calc(var(--radius) - 8px);
+}
+.footer{padding:28px 0 36px;border-top:1px solid var(--border);margin-top:20px}
+.booking-embed{overflow:hidden;padding:10px}
+.booking-embed iframe{
+  width:100%;height:760px;border:0;border-radius:calc(var(--radius) - 8px);
+}
+.cta-band{
+  padding:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;
+}
+
+/* -------- info_sheet -------- */
+body[data-theme="info_sheet"] .hero{
+  width:auto;margin-left:0;min-height:auto;overflow:visible;
+}
+body[data-theme="info_sheet"] .hero-inner{
+  min-height:auto;padding:34px 24px 10px;
+}
+body[data-theme="info_sheet"] .hero-grid{
+  grid-template-columns:1fr;
+  gap:18px;
+}
+body[data-theme="info_sheet"] .hero-copy{
+  max-width:none;
+}
+body[data-theme="info_sheet"] .hero-sheet{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:18px;
+}
+body[data-theme="info_sheet"] .hero-sheet-main,
+body[data-theme="info_sheet"] .hero-sheet-side{
+  padding:24px;
+  border-radius:var(--radius);
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+body[data-theme="info_sheet"] h1{
+  font-size:clamp(34px,5vw,56px);
+}
+body[data-theme="info_sheet"] .hero-panel{
+  margin-top:16px;
+}
+body[data-theme="info_sheet"] .hero-stats{
+  grid-template-columns:1fr;
+  margin-top:0;
+}
+body[data-theme="info_sheet"] .section{
+  padding:40px 0;
+}
+body[data-theme="info_sheet"] .services-info-grid,
+body[data-theme="info_sheet"] .pricing-info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+@media (max-width:900px){
+  body[data-theme="info_sheet"] .hero-sheet,
+  body[data-theme="info_sheet"] .services-info-grid,
+  body[data-theme="info_sheet"] .pricing-info-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* -------- fin15_flow -------- */
+body[data-theme="fin15_flow"] .hero{
+  min-height:92vh;
+}
+body[data-theme="fin15_flow"] .hero-inner{
+  padding:120px 24px 70px;
+}
+body[data-theme="fin15_flow"] .hero-copy h1{
+  font-size:clamp(48px,7vw,86px);
+}
+body[data-theme="fin15_flow"] .hero-copy .accent{
+  color:var(--primary);
+}
+body[data-theme="fin15_flow"] .hero-showcase{
+  position:relative;
+}
+body[data-theme="fin15_flow"] .hero-showcase .hero-card{
+  border-radius:32px;
+  border:8px solid #fff;
+  box-shadow:0 30px 60px rgba(15,23,42,.18);
+}
+body[data-theme="fin15_flow"] .blob{
+  position:absolute;border-radius:999px;filter:blur(42px);z-index:0;opacity:.5;
+}
+body[data-theme="fin15_flow"] .blob.a{
+  width:260px;height:260px;background:rgba(34,199,201,.35);top:-60px;right:-50px;
+}
+body[data-theme="fin15_flow"] .blob.b{
+  width:300px;height:300px;background:rgba(96,165,250,.24);left:-40px;bottom:-80px;
+}
+body[data-theme="fin15_flow"] .feature-lead{
+  text-align:center;max-width:760px;margin:0 auto 24px;
+}
+body[data-theme="fin15_flow"] .feature-cards{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+body[data-theme="fin15_flow"] .feature-card{
+  overflow:hidden;border-radius:28px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);
+}
+body[data-theme="fin15_flow"] .feature-card-top{
+  height:180px;overflow:hidden;
+}
+body[data-theme="fin15_flow"] .feature-card-top img{
+  width:100%;height:100%;object-fit:cover;transition:transform .35s ease;
+}
+body[data-theme="fin15_flow"] .feature-card:hover .feature-card-top img{
+  transform:scale(1.06);
+}
+body[data-theme="fin15_flow"] .feature-card-body{
+  padding:18px;
+}
+@media (max-width:980px){
+  body[data-theme="fin15_flow"] .hero-grid{grid-template-columns:1fr}
+  body[data-theme="fin15_flow"] .feature-cards{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  body[data-theme="fin15_flow"] .feature-cards{grid-template-columns:1fr}
+}
+
+/* -------- warm_sand slight softness -------- */
+body[data-theme="warm_sand"] .hero-copy h1{
+  line-height:1.04;
+}
+body[data-theme="warm_sand"] .hero .trust-pill{
+  background:rgba(255,251,246,.95);
+}
+</style>
+</head>
+<body data-theme="warm_sand">
+  
+<div class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">◆</div>
+      <div class="brand-name">RS Rakennus</div>
+    </div>
+    <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+  </div>
+</div>
+
+  
+<section class="hero" id="top">
+  <video class="hero-media" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-hidden="true"><source src="https://v5.airtableusercontent.com/v3/u/51/51/1774058400000/m6m_gfG39ETEDdrHheR4OA/pYdVYI0Zm7_ukaeQKSdfaAgyvNsqJiUOqcOdIPRHP9fArSRECO5wKzmW7PdAiRX5z2IXEQsZ_CUmYWAncUzu4pR3C_-n3S2V-PCQfqSpnqauvP-8h3iMQnZLF4lj5tTEJHLeRIzB54qZXhvi8hUJUd4bkTOVMC7CFxSpODaujmxDa_4M2Ev-zMEC9szV9euf/4N1Znx_orVoWnRzc5hoteqeCOMi4_61qTdT8HO1nL2c" type="video/mp4"></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-kicker">Construction • Rauma</div>
+      <h1>RS Rakennus</h1>
+      <div class="hero-sub">Rauman RS-Rakennus Oy on Rauman seudulla yli 35 vuotta toiminut ammattitaitoinen ja monipuolinen rakennusalan perheyritys.</div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Ota yhteyttä</a>
+        <a class="btn btn-outline" href="tel:0500591339">Soita</a>
+        <a class="btn btn-outline" href="mailto:porigroup@gmail.com">Sähköposti</a>
+      </div>
+      <div class="hero-panel"><span class="trust-pill">● Paikallinen palvelu</span><span class="trust-pill">● Selkeä yhteydenpito</span><span class="trust-pill">● Laadukas toteutus</span><span class="trust-pill">● Construction</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Kuvat</h2>
+      <p>Esimerkkejä työn tyylistä, kohteista ja kokonaisuuksista.</p>
+    </div>
+    <div class="gallery">
+      
+        <figure class="gallery-item">
+          <img src="https://images.pexels.com/photos/5511097/pexels-photo-5511097.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="" loading="lazy">
+        </figure>
+      
+        <figure class="gallery-item">
+          <img src="https://images.pexels.com/photos/6094857/pexels-photo-6094857.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="" loading="lazy">
+        </figure>
+      
+        <figure class="gallery-item">
+          <img src="https://images.pexels.com/photos/7817429/pexels-photo-7817429.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200" alt="" loading="lazy">
+        </figure>
+      
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tietoa</h2>
+      <p>Rauman RS-Rakennus Oy on Rauman seudulla yli 35 vuotta toiminut ammattitaitoinen ja monipuolinen rakennusalan perheyritys. Palvelukenttäämme kuuluvat niin teollisuus-, liike- kuin asuinrakentaminenkin. Uudiskohteiden lisäksi olemme toteuttaneet taloyhtiöille useita korjaus- ja huoltotöitä. Linjasaneeraukset ovat osa vahvaa ammattiosaamistamme. Lisäksi meillä on oma betonielementtitehdas Rakentajantiellä Kollassa.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Palvelut</h2>
+      <p>Valitse tarpeeseesi sopiva kokonaisuus. Sisältö ja toteutus voidaan mukauttaa asiakkaan tarpeiden mukaan.</p>
+    </div>
+    <div class="grid-3">
+      
+        <article class="card service-card">
+          <div class="service-row">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h16"/><path d="M6 20V8l6-4 6 4v12"/><path d="M10 12h4"/></svg></div>
+            <div>
+              <h3>Remontointi</h3>
+              <div class="small" style="margin-top:8px;">Sisäremontit ja pintatyöt</div>
+            </div>
+          </div>
+        </article>
+      
+        <article class="card service-card">
+          <div class="service-row">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 4v10l-7 4-7-4V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div>
+              <h3>Rakennustyöt</h3>
+              <div class="small" style="margin-top:8px;">Pienrakentaminen ja korjaukset</div>
+            </div>
+          </div>
+        </article>
+      
+        <article class="card service-card">
+          <div class="service-row">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13h16"/><path d="M6 6h12v12H6z"/></svg></div>
+            <div>
+              <h3>Suunnittelu</h3>
+              <div class="small" style="margin-top:8px;">Projektien suunnittelu ja konsultointi</div>
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Hinnat</h2>
+      <p>Esimerkkihintoja tai valmiita paketteja. Lopullinen sisältö voidaan sopia tapauskohtaisesti.</p>
+    </div>
+    
+      <div class="grid-3">
+        
+          <article class="card pricing-card">
+            <h3>Auton pesu</h3>
+            <div class="muted">Sisältää pesun ja vahauksen</div>
+            <div class="price">15 €</div>
+          </article>
+        
+          <article class="card pricing-card">
+            <h3>Kotisiivous</h3>
+            <div class="muted">Perussiivous 2h</div>
+            <div class="price">79 €</div>
+          </article>
+        
+          <article class="card pricing-card">
+            <h3>Kattoremontti</h3>
+            <div class="muted">Kartoitus ja tarjous</div>
+            <div class="price">Alk. 490 €</div>
+          </article>
+        
+      </div>
+    
+  </div>
+</section>
+
+
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="card cta-band">
+      <div>
+        <h3 style="font-size:26px;">Tarvitsetko tarjouksen?</h3>
+        <div class="muted" style="margin-top:6px;">Kerro lyhyesti tarpeestasi ja ota yhteyttä helposti.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#contact">Pyydä tarjous</a>
+        <a class="btn btn-outline" href="tel:0500591339">Soita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Yhteys</h2>
+      <p>Ota yhteyttä ja kerro lyhyesti tarpeestasi.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div style="display:grid;gap:18px;">
+        <div class="card info-card">
+          <div style="display:grid;gap:10px;">
+            <div><strong>Paikkakunta:</strong> Rauma</div>
+            <div><strong>Osoite:</strong> Hyypäntie 9, 28220 Pori</div>
+            <div><strong>Puhelin:</strong> <a href="tel:0500591339">0500591339</a></div>
+            <div><strong>Sähköposti:</strong> <a href="mailto:porigroup@gmail.com">porigroup@gmail.com</a></div>
+            <div><strong>Aukiolo:</strong> ma-pe klo 8-16</div>
+            <div><strong>Y-tunnus:</strong> 12388_0</div>
+          </div>
+
+          
+        </div>
+
+        
+        <div class="card map-card">
+          <iframe
+            title="Kartta"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Hyyp%C3%A4ntie%209%2C%2028220%20Pori%2C%20Rauma%2C%20Finland&output=embed"></iframe>
+        </div>
+        
+      </div>
+
+      <div style="display:grid;gap:18px;">
+        
+        <div class="card form-card">
+          <form id="contactForm" method="POST" action="/.netlify/functions/send-form" novalidate>
+            <input type="hidden" name="business_name" value="RS Rakennus">
+            <input type="hidden" name="slug" value="rs-rakennus">
+            <input type="hidden" name="rid" value="recGBa4WJiEVLgHpK">
+
+            <div class="field">
+              <label class="small">Nimi</label>
+              <input class="input" name="name" required>
+            </div>
+            <div class="field">
+              <label class="small">Sähköposti</label>
+              <input class="input" name="email" type="email" required>
+            </div>
+            <div class="field">
+              <label class="small">Viesti</label>
+              <textarea class="textarea" name="message" required></textarea>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <button class="btn btn-primary" type="submit">Lähetä viesti</button>
+              <span class="small">Vastaamme mahdollisimman pian.</span>
+            </div>
+          </form>
+
+          <div id="contactSuccess" class="card" style="display:none;margin-top:14px;padding:14px;">
+            <strong>Kiitos.</strong> Viestisi on vastaanotettu.
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<footer class="footer">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+    <span class="small">© <span id="year"></span> RS Rakennus</span>
+    <span class="small">Rauma • Construction</span>
+  </div>
+</footer>
+
+  <script>
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
+
+const heroVideoEl = document.querySelector(".hero video");
+if (heroVideoEl) {
+  heroVideoEl.muted = true;
+  heroVideoEl.defaultMuted = true;
+
+  const tryPlay = () => {
+    const p = heroVideoEl.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+  };
+
+  heroVideoEl.addEventListener("ended", () => {
+    heroVideoEl.currentTime = 0;
+    tryPlay();
+  });
+
+  heroVideoEl.addEventListener("pause", () => {
+    if (!heroVideoEl.ended) tryPlay();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) tryPlay();
+  });
+
+  tryPlay();
+}
+
+(function bindForm(){
+  const form = document.getElementById("contactForm");
+  const ok = document.getElementById("contactSuccess");
+  if (!form) return;
+  if (!form.action || form.action === "#") return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    try {
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        form.reset();
+        if (ok) ok.style.display = "block";
+      } else {
+        alert("Lähetys epäonnistui. Tarkista lomakeasetukset.");
+      }
+    } catch (err) {
+      alert("Lähetys epäonnistui. Tarkista lomakeasetukset.");
+    }
+  });
+})();
+</script>
+</body>
+</html>
